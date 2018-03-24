@@ -1,0 +1,1023 @@
+package com.saitejn.services.impl;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.saitejn.mapper.JbExcelInputCustomerMapper;
+import com.saitejn.mapper.JbRawdataHandle1CustomerMapper;
+import com.saitejn.mapper.JbRawdataHandle2Mapper;
+import com.saitejn.pojo.FileUpInfo;
+import com.saitejn.pojo.Fileupifo;
+import com.saitejn.pojo.JbClassinfor;
+import com.saitejn.pojo.JbExcelInput;
+import com.saitejn.pojo.JbExcelMiddle;
+import com.saitejn.pojo.JbRawdataHandle1;
+import com.saitejn.pojo.JbRawdataHandle2;
+import com.saitejn.services.DataServices;
+
+/**
+ * 数据方面相关业务层
+ * @class DataServicesImpl.java
+ * @Description:
+ * @author:罗康元
+ * Company:赛特工信科技有限公司
+ * @date :2016-9-18
+ */
+public class DataServicesImpl  implements DataServices{
+	@Autowired
+	private JbExcelInputCustomerMapper jbExcelInputCustomerMapper;
+	@Autowired
+	private JbRawdataHandle1CustomerMapper jbRawdataHandle1CustomerMapper;
+	@Autowired JbRawdataHandle2Mapper jbRawdataHandle2Mapper;
+	private Double average;
+	@Override
+	public void saveDate(JbExcelInput jbExcelInput) throws Exception {
+		jbExcelInputCustomerMapper.saveDate(jbExcelInput);
+	}
+	@Override
+	public List<JbExcelInput> selectDateByTime(String sdate, String edate) throws Exception {
+		return jbExcelInputCustomerMapper.selectDateByTime(sdate, edate);
+	}
+	@Override
+	public List<JbExcelInput> selectAll() throws Exception {
+		
+		return jbExcelInputCustomerMapper.selectAll();
+	}
+	@Override
+	public void saveUpFileIfo(FileUpInfo fileupifo) throws Exception {
+		jbExcelInputCustomerMapper.saveUpFileIfo(fileupifo);
+		
+	}
+	@Override
+	public int selectcount() throws Exception {
+		
+		return jbExcelInputCustomerMapper.selectcount();
+	}
+	@Override
+	public int selecthand1count() throws Exception {
+		
+		return jbExcelInputCustomerMapper.selecthand1count();
+	}
+	@Override
+	public int isSameDate(String jbtime) throws Exception {
+		int number = jbExcelInputCustomerMapper.fingInputByJbtime(jbtime);
+		return number;
+	}
+	@Override
+	public List<JbExcelMiddle> readJyXls(String filePath) throws Exception {
+		String excelPath =filePath;
+		InputStream is = new FileInputStream(excelPath);//读取文件路径
+		HSSFWorkbook hssfWorkbook = new HSSFWorkbook(is);
+		JbExcelMiddle jbExcelInput = null;
+		List<JbExcelMiddle> list = new ArrayList<JbExcelMiddle>();
+		//循环工作表
+		for(int numSheet = 0 ; numSheet < hssfWorkbook.getNumberOfSheets(); numSheet++){
+			System.out.println(hssfWorkbook.getNumberOfSheets());
+			HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(numSheet);
+			if(hssfSheet == null){
+				continue;
+			}
+			//循环Row
+			for(int rowNum = 3; rowNum <hssfSheet.getLastRowNum()+1; rowNum ++){
+				System.out.println(hssfSheet.getLastRowNum());
+				HSSFRow hssfRow = hssfSheet.getRow(rowNum);
+				if(hssfRow != null){
+					jbExcelInput = new JbExcelMiddle();
+					HSSFCell time = hssfRow.getCell(0);
+				if(time !=null || time.getCellType()!= HSSFCell.CELL_TYPE_BLANK){
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+					SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					String datetime = getValues(time);
+					if(datetime.length()>0){
+						Date date = sdf.parse(datetime);
+						String timeis = sdf1.format(date);
+						int isdate = jbExcelInputCustomerMapper.fingInputByJbtime(timeis);
+						if(isdate==0){
+						jbExcelInput.setJbtime(date);
+						HSSFCell fi103 = hssfRow.getCell(1);
+						jbExcelInput.setFi103(Double.valueOf(getValues(fi103)));
+						HSSFCell fi000 = hssfRow.getCell(2);
+						jbExcelInput.setFi000(Double.valueOf(getValues(fi000)));
+						HSSFCell fi104 = hssfRow.getCell(3);
+						jbExcelInput.setFi104(Double.valueOf(getValues(fi104)));
+						HSSFCell fi101 = hssfRow.getCell(4);
+						jbExcelInput.setFi101(Double.valueOf(getValues(fi101)));
+						HSSFCell fi106 = hssfRow.getCell(5);
+						jbExcelInput.setFi106(Double.valueOf(getValues(fi106)));
+						HSSFCell fi109 = hssfRow.getCell(6);
+						jbExcelInput.setFi109(Double.valueOf(getValues(fi109)));
+						HSSFCell fr401 = hssfRow.getCell(7);
+						jbExcelInput.setFr401(Double.valueOf(getValues(fr401)));
+						HSSFCell fr402 = hssfRow.getCell(8);
+						jbExcelInput.setFr402(Double.valueOf(getValues(fr402)));
+						HSSFCell fr405 = hssfRow.getCell(9);
+						jbExcelInput.setFr405(Double.valueOf(getValues(fr405)));
+						HSSFCell fr406 = hssfRow.getCell(10);
+						jbExcelInput.setFr406(Double.valueOf(getValues(fr406)));
+						HSSFCell fr407 = hssfRow.getCell(11);
+	                    jbExcelInput.setFr407(Double.valueOf(getValues(fr407)));
+						HSSFCell fr408 = hssfRow.getCell(12);
+						jbExcelInput.setFr408(Double.valueOf(getValues(fr408)));
+						HSSFCell fi410	= hssfRow.getCell(13);
+						jbExcelInput.setFi410(Double.valueOf(getValues(fi410)));
+						HSSFCell finh3	= hssfRow.getCell(14);
+						jbExcelInput.setFinh3(Double.valueOf(getValues(finh3)));
+						HSSFCell fr141	= hssfRow.getCell(15);
+						jbExcelInput.setFr141(Double.valueOf(getValues(fr141)));
+						HSSFCell fr142	= hssfRow.getCell(16);
+						jbExcelInput.setFr142(Double.valueOf(getValues(fr142)));
+						HSSFCell fr143	= hssfRow.getCell(17);
+						jbExcelInput.setFr143(Double.valueOf(getValues(fr143)));
+						HSSFCell ti122	= hssfRow.getCell(18);
+						jbExcelInput.setTi122(Double.valueOf(getValues(ti122)));
+						HSSFCell ti123	= hssfRow.getCell(19);
+						jbExcelInput.setTi123(Double.valueOf(getValues(ti123)));
+						HSSFCell ti164	= hssfRow.getCell(20);
+						jbExcelInput.setTi164(Double.valueOf(getValues(ti164)));
+						HSSFCell ti131	= hssfRow.getCell(21);
+						jbExcelInput.setTi131(Double.valueOf(getValues(ti131)));
+						HSSFCell ti132	= hssfRow.getCell(22);
+						jbExcelInput.setTi132(Double.valueOf(getValues(ti132)));
+						HSSFCell ti211	= hssfRow.getCell(23);
+						jbExcelInput.setTi211(Double.valueOf(getValues(ti211)));
+						HSSFCell ti210a	= hssfRow.getCell(24);
+						jbExcelInput.setTi210a(Double.valueOf(getValues(ti210a)));
+						HSSFCell ti134	= hssfRow.getCell(25);
+						jbExcelInput.setTi134(Double.valueOf(getValues(ti134)));
+						HSSFCell ti215	= hssfRow.getCell(26);
+						jbExcelInput .setTi215(Double.valueOf(getValues(ti215)));
+						HSSFCell tr413	= hssfRow.getCell(27);
+						jbExcelInput.setTr413(Double.valueOf(getValues(tr413)));
+						HSSFCell tr403	= hssfRow.getCell(28);
+						jbExcelInput.setTr403(Double.valueOf(getValues(tr403)));
+						HSSFCell tr407	= hssfRow.getCell(29);
+						jbExcelInput.setTr407(Double.valueOf(getValues(tr407)));
+						HSSFCell ti407a	= hssfRow.getCell(30);
+						jbExcelInput.setTi407a(Double.valueOf(getValues(ti407a)));
+						HSSFCell ti407b	= hssfRow.getCell(31);
+						jbExcelInput.setTi407b(Double.valueOf(getValues(ti407b)));
+						HSSFCell pi213	= hssfRow.getCell(32);
+						jbExcelInput.setPi213(Double.valueOf(getValues(pi213)));
+						HSSFCell pi105	= hssfRow.getCell(33);
+						jbExcelInput.setPi105(Double.valueOf(getValues(pi105)));
+						HSSFCell pi112	= hssfRow.getCell(34);
+						jbExcelInput.setPi112(Double.valueOf(getValues(pi112)));
+						HSSFCell pi114	= hssfRow.getCell(35);
+						jbExcelInput.setPi114(Double.valueOf(getValues(pi114)));
+						HSSFCell pi234	= hssfRow.getCell(36);
+						jbExcelInput.setPi234(Double.valueOf(getValues(pi234)));
+						HSSFCell pr401	= hssfRow.getCell(37);
+						jbExcelInput.setPr401(Double.valueOf(getValues(pr401)));
+						HSSFCell pr403	= hssfRow.getCell(38);
+						jbExcelInput.setPr403(Double.valueOf(getValues(pr403)));
+						HSSFCell ipq003 = hssfRow.getCell(39);
+						jbExcelInput.setIpq003(Double.valueOf(getValues(ipq003)));
+						HSSFCell pi422	= hssfRow.getCell(40);
+						
+						jbExcelInput.setPi422(Double.valueOf(getValues(pi422)));
+						HSSFCell pr416	= hssfRow.getCell(41);
+						jbExcelInput.setPr416(Double.valueOf(getValues(pr416)));
+						HSSFCell pi288	= hssfRow.getCell(42);
+						jbExcelInput.setPi288(Double.valueOf(getValues(pi288)));
+						HSSFCell ipq004 =  hssfRow.getCell(43);
+						jbExcelInput.setIpq004(Double.valueOf(getValues(ipq004)));
+						HSSFCell ar101	= hssfRow.getCell(44);
+						jbExcelInput.setAr101(Double.valueOf(getValues(ar101)));
+						HSSFCell ar109	= hssfRow.getCell(45);
+						jbExcelInput.setAr109(Double.valueOf(getValues(ar109)));
+						HSSFCell ar110	= hssfRow.getCell(46);
+						jbExcelInput.setAr110(Double.valueOf(getValues(ar110)));
+						HSSFCell ai104	= hssfRow.getCell(47);
+						jbExcelInput.setAi104(Double.valueOf(getValues(ai104)));
+						HSSFCell ai103	= hssfRow.getCell(48);
+						jbExcelInput.setAi103(Double.valueOf(getValues(ai103)));
+						HSSFCell ar111	= hssfRow.getCell(49);
+						jbExcelInput.setAr111(Double.valueOf(getValues(ar111)));
+						HSSFCell ar112	= hssfRow.getCell(50);
+						jbExcelInput.setAr112(Double.valueOf(getValues(ar112)));
+						HSSFCell ar113	= hssfRow.getCell(51);
+						jbExcelInput.setAr113(Double.valueOf(getValues(ar113)));
+						HSSFCell ar114	= hssfRow.getCell(52);
+						jbExcelInput.setAr114(Double.valueOf(getValues(ar114)));
+						HSSFCell k001	= hssfRow.getCell(53);
+						jbExcelInput.setK001(Double.valueOf(getValues(k001)));
+						HSSFCell h2oc	= hssfRow.getCell(54);
+						jbExcelInput.setH2oc(Double.valueOf(getValues(h2oc)));
+						HSSFCell lr403	= hssfRow.getCell(55);
+						jbExcelInput.setLr403(Double.valueOf(getValues(lr403)));
+						HSSFCell lr402	= hssfRow.getCell(56);
+						jbExcelInput.setLr402(Double.valueOf(getValues(lr402)));
+						HSSFCell fiqnh3	= hssfRow.getCell(57);
+						jbExcelInput.setFiqnh3(Double.valueOf(getValues(fiqnh3)));
+						HSSFCell fiq000	= hssfRow.getCell(58);
+						jbExcelInput.setFiq000(Double.valueOf(getValues(fiq000)));
+						HSSFCell ipq001	= hssfRow.getCell(59);
+						jbExcelInput.setIpq001(Double.valueOf(getValues(ipq001)));
+						HSSFCell ipq002	= hssfRow.getCell(60);
+						jbExcelInput.setIpq002(Double.valueOf(getValues(ipq002)));
+						HSSFCell fiq101	= hssfRow.getCell(61);
+						jbExcelInput.setFiq101(Double.valueOf(getValues(fiq101)));
+						HSSFCell ftq109	= hssfRow.getCell(62);
+						jbExcelInput.setFtq109(Double.valueOf(getValues(ftq109)));
+						HSSFCell sysload = hssfRow.getCell(63);
+						jbExcelInput.setSysload(Double.valueOf(getValues(sysload)));
+			
+					  list.add(jbExcelInput);
+					  Collections.sort(list,new Comparator<JbExcelMiddle>() {
+
+						@Override
+						public int compare(JbExcelMiddle o1, JbExcelMiddle o2) {
+							if(o1.getJbtime().getTime() > o2.getJbtime().getTime()){
+								return 1;
+							}
+							if(o1.getJbtime().getTime() == o2.getJbtime().getTime()){
+								return 0;
+							}
+							
+							return -1;
+						}
+					});
+			
+			}else {
+				continue;
+			}
+					}
+					
+				}
+					
+				}
+			}
+			
+		}
+		return list;
+	}
+	private String getValues(HSSFCell hssfCell){
+		if(hssfCell.getCellType()== hssfCell.CELL_TYPE_BOOLEAN){
+			//返回布尔类型的值
+			return  String.valueOf(hssfCell.getBooleanCellValue());
+			}else if(hssfCell.getCellType() == hssfCell.CELL_TYPE_NUMERIC){
+				//返回数值类型的值
+				return String.valueOf(hssfCell.getNumericCellValue());
+			}
+			else{
+				//返回字符串类型的值
+			
+				return String.valueOf(hssfCell.getStringCellValue());
+			}
+	}
+	@Override
+	public void saveDatetomiddle(JbExcelMiddle jbExcelMiddle) throws Exception {
+		jbExcelInputCustomerMapper.saveDatetomiddle(jbExcelMiddle);
+	}
+	@Override
+	public JbExcelMiddle selectTopInput() throws Exception {
+		
+		return jbExcelInputCustomerMapper.selectTopInput();
+	}
+	@Override
+	public List<JbExcelMiddle> selectAllMiddle() throws Exception {
+		// TODO Auto-generated method stub
+		return jbExcelInputCustomerMapper.selectAllMiddle();
+	}
+	@Override
+	public void savetoexcel() throws Exception {
+		 List<JbExcelMiddle> cdataList = jbExcelInputCustomerMapper.selectAllMiddle();
+		
+		    	   for(int g = 0; g < cdataList.size(); g++){
+						 JbExcelInput jbExcelInput = new JbExcelInput();
+						 JbExcelMiddle btime = cdataList.get(g);//后一刻时间
+						//原始基本数据
+						Date datetimeDate = btime.getJbtime();
+						jbExcelInput.setData_time(datetimeDate);
+						jbExcelInput.setFi_103(btime.getFi103());
+						jbExcelInput.setFi_000(btime.getFi000());
+						jbExcelInput.setFi_104(btime.getFi104());
+						jbExcelInput.setFi_101(btime.getFi101());
+						jbExcelInput.setFi_106(btime.getFi106());
+						jbExcelInput.setFi_109(btime.getFi109());
+						jbExcelInput.setFr_401(btime.getFr401());
+						jbExcelInput.setFr_402(btime.getFr402());
+						jbExcelInput.setFr_405(btime.getFr405());
+						jbExcelInput.setFr_406(btime.getFr406());
+						jbExcelInput.setFr_407(btime.getFr407());
+						jbExcelInput.setFr_408(btime.getFr408());
+						jbExcelInput.setFi_410(btime.getFi410());
+						jbExcelInput.setFi_NH3(btime.getFinh3());
+						jbExcelInput.setFr_141(btime.getFr141());
+						jbExcelInput.setFr_142(btime.getFr142());
+						jbExcelInput.setFr_143(btime.getFr143());
+						jbExcelInput.setTi_122(btime.getTi122());
+						jbExcelInput.setTi_123(btime.getTi123());
+						jbExcelInput.setTi_164(btime.getTi164());
+						jbExcelInput.setTi_131(btime.getTi131());
+						jbExcelInput.setTi_132(btime.getTi132());
+						jbExcelInput.setTi_211(btime.getTi211());
+						jbExcelInput.setTi_210a(btime.getTi210a());
+						jbExcelInput.setTi_134(btime.getTi134());
+						jbExcelInput.setTi_215(btime.getTi215());
+						jbExcelInput.setTr_413(btime.getTr413());
+						jbExcelInput.setTr_403(btime.getTr403());
+						jbExcelInput.setTr_407(btime.getTr407());
+						jbExcelInput.setTi_407a(btime.getTi407a());
+						jbExcelInput.setTi_407b(btime.getTi407b());
+						jbExcelInput.setPi_213(btime.getPi213());
+						jbExcelInput.setPi_105(btime.getPi105());
+						jbExcelInput.setPi_112(btime.getPi112());
+						jbExcelInput.setPi_114(btime.getPi114());
+						jbExcelInput.setPi_234(btime.getPi234());
+						jbExcelInput.setPr_401(btime.getPr401());
+						jbExcelInput.setPr_403(btime.getPr403());
+						jbExcelInput.setPi_422(btime.getPi422());
+						jbExcelInput.setPr_416(btime.getPr416());
+						jbExcelInput.setPi_288(btime.getPi288());
+						jbExcelInput.setAr_101(btime.getAr101());
+						jbExcelInput.setAr_109(btime.getAr109());
+						jbExcelInput.setAr_110(btime.getAr110());
+						jbExcelInput.setAi_104(btime.getAi104());
+						jbExcelInput.setAi_103(btime.getAi103());
+						jbExcelInput.setAr_111(btime.getAr111());
+						jbExcelInput.setAr_112(btime.getAr112());
+						jbExcelInput.setAr_113(btime.getAr113());
+						jbExcelInput.setAr_114(btime.getAr114());
+						jbExcelInput.setK_001(btime.getK001());
+						jbExcelInput.setH2oc(btime.getH2oc());
+						jbExcelInput.setLr_403(btime.getLr403());
+						jbExcelInput.setLr_402(btime.getLr402());
+						jbExcelInput.setFiqnh3(btime.getFiqnh3());
+						jbExcelInput.setIpq001(btime.getIpq001());
+						jbExcelInput.setIpq002(btime.getIpq002());
+						jbExcelInput.setIpq003(btime.getIpq003());
+						jbExcelInput.setIpq004(btime.getIpq004());
+						jbExcelInput.setFiq101(btime.getFiq101());
+						jbExcelInput.setFtq109(btime.getFtq109());
+						jbExcelInput.setFiq000(btime.getFiq000());
+						
+						
+						
+						jbExcelInput.setSystem_load(btime.getSysload());
+						
+						
+						//保存到数据库
+				       jbExcelInputCustomerMapper.savetoexcel(jbExcelInput);
+				       
+				       
+				       //问题所在
+				       
+		       }
+		       
+			
+		
+	}
+	@SuppressWarnings("unused")
+	@Override
+	public void savatohandle1() throws Exception {
+		//1.取出excel中的按时间的最后一条记录
+		JbExcelMiddle jbExcelMiddle = jbExcelInputCustomerMapper.selectTopInput();
+		System.out.println(jbExcelMiddle.getAi103());
+		if(jbExcelMiddle != null){
+			List<JbExcelMiddle> list = jbExcelInputCustomerMapper.selectAllMiddle();
+			list.add(jbExcelMiddle);
+			 Collections.sort(list,new Comparator<JbExcelMiddle>() {
+				@Override
+				public int compare(JbExcelMiddle o1, JbExcelMiddle o2) {
+					if(o1.getJbtime().getTime() > o2.getJbtime().getTime()){
+						return 1;
+					}
+					if(o1.getJbtime().getTime() == o2.getJbtime().getTime()){
+						return 0;
+					}
+					
+					return -1;
+				}
+			});
+			/* 计算保存到excel表中*/
+			//获取用户上传的数据
+			    	   for(int g = 0; g <list.size()-1; g++){
+							 JbRawdataHandle1 jbRawdataHandle1 = new JbRawdataHandle1();
+							
+							JbExcelMiddle ftime = list.get(g);//前一刻时间
+							JbExcelMiddle btime = list.get(g+1);//后一刻时间
+							//原始基本数据
+							Date datetimeDate = btime.getJbtime();
+							jbRawdataHandle1.setData_time(datetimeDate);
+							jbRawdataHandle1.setFi_103(btime.getFi103());
+							jbRawdataHandle1.setFi_000(btime.getFi000());
+							jbRawdataHandle1.setFi_104(btime.getFi104());
+							jbRawdataHandle1.setFi_101(btime.getFi101());
+							jbRawdataHandle1.setFi_106(btime.getFi106());
+							jbRawdataHandle1.setFi_109(btime.getFi109());
+							jbRawdataHandle1.setFr_401(btime.getFr401());
+							jbRawdataHandle1.setFr_402(btime.getFr402());
+							jbRawdataHandle1.setFr_405(btime.getFr405());
+							jbRawdataHandle1.setFr_406(btime.getFr406());
+							jbRawdataHandle1.setFr_407(btime.getFr407());
+							jbRawdataHandle1.setFr_408(btime.getFr408());
+							jbRawdataHandle1.setFi_410(btime.getFi410());
+							jbRawdataHandle1.setFi_NH3(btime.getFinh3());
+							jbRawdataHandle1.setFr_141(btime.getFr141());
+							jbRawdataHandle1.setFr_142(btime.getFr142());
+							jbRawdataHandle1.setFr_143(btime.getFr143());
+							jbRawdataHandle1.setTi_122(btime.getTi122());
+							jbRawdataHandle1.setTi_123(btime.getTi123());
+							jbRawdataHandle1.setTi_164(btime.getTi164());
+							jbRawdataHandle1.setTi_131(btime.getTi131());
+							jbRawdataHandle1.setTi_132(btime.getTi132());
+							jbRawdataHandle1.setTi_211(btime.getTi211());
+							jbRawdataHandle1.setTi_210a(btime.getTi210a());
+							jbRawdataHandle1.setTi_134(btime.getTi134());
+							jbRawdataHandle1.setTi_215(btime.getTi215());
+							jbRawdataHandle1.setTr_413(btime.getTr413());
+							jbRawdataHandle1.setTr_403(btime.getTr403());
+							jbRawdataHandle1.setTr_407(btime.getTr407());
+							jbRawdataHandle1.setTi_407a(btime.getTi407a());
+							jbRawdataHandle1.setTi_407b(btime.getTi407b());
+							jbRawdataHandle1.setPi_213(btime.getPi213());
+							jbRawdataHandle1.setPi_105(btime.getPi105());
+							jbRawdataHandle1.setPi_112(btime.getPi112());
+							jbRawdataHandle1.setPi_114(btime.getPi114());
+							jbRawdataHandle1.setPi_234(btime.getPi234());
+							jbRawdataHandle1.setPr_401(btime.getPr401());
+							jbRawdataHandle1.setPr_403(btime.getPr403());
+							jbRawdataHandle1.setPi_422(btime.getPi422());
+							jbRawdataHandle1.setPr_416(btime.getPr416());
+							jbRawdataHandle1.setPi_288(btime.getPi288());
+							jbRawdataHandle1.setAr_101(btime.getAr101());
+							jbRawdataHandle1.setAr_109(btime.getAr109());
+							jbRawdataHandle1.setAr_110(btime.getAr110());
+							jbRawdataHandle1.setAi_104(btime.getAi104());
+							jbRawdataHandle1.setAi_103(btime.getAi103());
+							jbRawdataHandle1.setAr_111(btime.getAr111());
+							jbRawdataHandle1.setAr_112(btime.getAr112());
+							jbRawdataHandle1.setAr_113(btime.getAr113());
+							jbRawdataHandle1.setAr_114(btime.getAr114());
+							jbRawdataHandle1.setK_001(btime.getK001());
+							jbRawdataHandle1.setH2oc(btime.getH2oc());
+							jbRawdataHandle1.setLr_403(btime.getLr403());
+							jbRawdataHandle1.setLr_402(btime.getLr402());
+							jbRawdataHandle1.setFiqnh3(btime.getFiqnh3());
+							jbRawdataHandle1.setIpq001(btime.getIpq001());
+							jbRawdataHandle1.setIpq002(btime.getIpq002());
+							jbRawdataHandle1.setIpq003(btime.getIpq003());
+							jbRawdataHandle1.setIpq004(btime.getIpq004());
+							jbRawdataHandle1.setFiq101(btime.getFiq101());
+							jbRawdataHandle1.setFtq109(btime.getFtq109());
+							jbRawdataHandle1.setFiq000(btime.getFiq000());
+							//原始计算后的数据
+							//计算后的时段氨产量，没有精确度
+							Double timeNh3 = btime.getFiqnh3()-ftime.getFiqnh3();
+							BigDecimal b = new BigDecimal(timeNh3);
+							//四舍五入后，保留三位小数的时段氨产量
+							Double etimeNh3 = b.setScale(3,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTime_nh3_yield(etimeNh3);
+							
+							//时段电耗计算
+							//时段电耗1
+							Double timeIpq01 = btime.getIpq001()-ftime.getIpq001();
+							//时段电耗2
+							Double timeIpq02 = btime.getIpq002()-ftime.getIpq002();
+							//时段电耗3
+							Double timeIpq03 = btime.getIpq003()-ftime.getIpq003();
+							//时段电耗4
+							Double timeIpq04 = btime.getIpq004()-ftime.getIpq004();
+							//时段电耗
+							Double ebIpq = timeIpq01+timeIpq02-timeIpq03-timeIpq04;
+							//四舍五入保留两位小数时段电耗
+							BigDecimal bi = new BigDecimal(ebIpq);
+							Double eebIpq = bi.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTime_electric_consume(eebIpq);
+							
+							//时段原料气耗计算
+							Double timefiq = btime.getFiq101()-ftime.getFiq101();
+							BigDecimal bf = new BigDecimal(timefiq);
+							Double etimefiq = bf.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTime_raw_gas_consume(etimefiq);
+							//时段燃料气耗
+							Double timeftq = btime.getFtq109()-ftime.getFtq109();
+							BigDecimal bt = new BigDecimal(timeftq);
+							Double etimeftq = bt.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTime_fuel_consume(etimeftq);
+							//时段气耗
+							Double timefiq000 = btime.getFiq000()-ftime.getFiq000();
+							BigDecimal biq = new BigDecimal(timefiq000);
+							Double etimefiq000 = biq.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTime_gas_consume(etimefiq000);
+							//系统负荷
+							Double sysload = btime.getFi101()/5600*100;
+							BigDecimal bfi = new BigDecimal(sysload);
+							Double esysload = bfi.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setSystem_load(esysload);
+							//小时氨产量计算
+							Double hourNh3 = 6*timeNh3;
+							BigDecimal bhn = new BigDecimal(hourNh3);
+							Double ehourNh3 = bhn.setScale(3,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setHour_nh3_yield(ehourNh3);
+							//吨氨气耗计算
+							Double tFiq = 0.0;
+							Double etFiq = 0.0;
+							 Double tIpq = 0.0;
+							 Double etIpq = 0.0 ;
+							 Double etftq = 0.0;
+							if(timeNh3 != 0){
+								 tFiq = timefiq000/timeNh3;
+								BigDecimal bfiq = new BigDecimal(tFiq);
+								 etFiq = bfiq.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+								  tIpq = ebIpq/timeNh3;
+								BigDecimal bipq = new BigDecimal(tIpq);
+								 etIpq = bipq.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+								 Double tfiq = timefiq/timeNh3;
+								BigDecimal btfiq = new BigDecimal(tfiq);
+								Double etfiq = btfiq.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+								jbRawdataHandle1.setTonnh3_raw_gas_consume(etfiq);
+								//吨氨燃料气耗
+								Double tftq = timeftq/timeNh3;
+								BigDecimal btftq = new BigDecimal(tftq);
+								etftq = btftq.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+									
+							}
+							
+							//吨氨电耗计算
+							
+							//吨氨综合消耗计算
+							Double tNh3 = (1.2143*tFiq+0.1229*tIpq);
+							BigDecimal btnh3 = new BigDecimal(tNh3);
+							Double etNh3 = btnh3.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTonnh3_compre_consume(etNh3);
+							jbRawdataHandle1.setTonnh3_gas_consume(etFiq);
+							//吨氨原料气耗计算
+							
+							
+							jbRawdataHandle1.setTonnh3_fuel_consume(etftq);
+							jbRawdataHandle1.setTonnh3_electric_consume(etIpq);
+							//班次计算
+							//获取用户信息里的班次信息
+							
+							//根据时间获取对应的班次信息
+							Date date = btime.getJbtime();
+							String classtime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+							//截取年
+							String year = classtime.substring(0, 10);
+							JbClassinfor jbClassinfor = seclectByTime(year);
+						
+							//截取时分秒
+							String mdate = classtime.substring(11, 19);
+							if(isInTime("16:09-00:01", mdate)){
+								int m = jbClassinfor.getMorclass();
+								jbRawdataHandle1.setShift(m);
+							}
+							if(isInTime("00:09-08:01", mdate)){
+								int a = jbClassinfor.getAftclass();
+								jbRawdataHandle1.setShift(a);
+							}
+							if(isInTime("08:09-16:01", mdate)){
+								int e = jbClassinfor.getEveclass();
+								jbRawdataHandle1.setShift(e);
+							}
+					       jbExcelInputCustomerMapper.savatohandle1(jbRawdataHandle1);
+					       jbExcelInputCustomerMapper.savatomiddel1(jbRawdataHandle1);
+			       }
+			       
+				
+		}else{
+			List<JbExcelMiddle> list = jbExcelInputCustomerMapper.selectAllMiddle();
+			
+			 Collections.sort(list,new Comparator<JbExcelMiddle>() {
+				@Override
+				public int compare(JbExcelMiddle o1, JbExcelMiddle o2) {
+					if(o1.getJbtime().getTime() > o2.getJbtime().getTime()){
+						return 1;
+					}
+					if(o1.getJbtime().getTime() == o2.getJbtime().getTime()){
+						return 0;
+					}
+					
+					return -1;
+				}
+			});
+			/* 计算保存到excel表中*/
+			//获取用户上传的数据
+			    	   for(int g = 0; g <list.size()-1; g++){
+							 JbRawdataHandle1 jbRawdataHandle1 = new JbRawdataHandle1();
+							
+							JbExcelMiddle ftime = list.get(g);//前一刻时间
+							JbExcelMiddle btime = list.get(g+1);//后一刻时间
+							//原始基本数据
+							Date datetimeDate = btime.getJbtime();
+							jbRawdataHandle1.setData_time(datetimeDate);
+							jbRawdataHandle1.setFi_103(btime.getFi103());
+							jbRawdataHandle1.setFi_000(btime.getFi000());
+							jbRawdataHandle1.setFi_104(btime.getFi104());
+							jbRawdataHandle1.setFi_101(btime.getFi101());
+							jbRawdataHandle1.setFi_106(btime.getFi106());
+							jbRawdataHandle1.setFi_109(btime.getFi109());
+							jbRawdataHandle1.setFr_401(btime.getFr401());
+							jbRawdataHandle1.setFr_402(btime.getFr402());
+							jbRawdataHandle1.setFr_405(btime.getFr405());
+							jbRawdataHandle1.setFr_406(btime.getFr406());
+							jbRawdataHandle1.setFr_407(btime.getFr407());
+							jbRawdataHandle1.setFr_408(btime.getFr408());
+							jbRawdataHandle1.setFi_410(btime.getFi410());
+							jbRawdataHandle1.setFi_NH3(btime.getFinh3());
+							jbRawdataHandle1.setFr_141(btime.getFr141());
+							jbRawdataHandle1.setFr_142(btime.getFr142());
+							jbRawdataHandle1.setFr_143(btime.getFr143());
+							jbRawdataHandle1.setTi_122(btime.getTi122());
+							jbRawdataHandle1.setTi_123(btime.getTi123());
+							jbRawdataHandle1.setTi_164(btime.getTi164());
+							jbRawdataHandle1.setTi_131(btime.getTi131());
+							jbRawdataHandle1.setTi_132(btime.getTi132());
+							jbRawdataHandle1.setTi_211(btime.getTi211());
+							jbRawdataHandle1.setTi_210a(btime.getTi210a());
+							jbRawdataHandle1.setTi_134(btime.getTi134());
+							jbRawdataHandle1.setTi_215(btime.getTi215());
+							jbRawdataHandle1.setTr_413(btime.getTr413());
+							jbRawdataHandle1.setTr_403(btime.getTr403());
+							jbRawdataHandle1.setTr_407(btime.getTr407());
+							jbRawdataHandle1.setTi_407a(btime.getTi407a());
+							jbRawdataHandle1.setTi_407b(btime.getTi407b());
+							jbRawdataHandle1.setPi_213(btime.getPi213());
+							jbRawdataHandle1.setPi_105(btime.getPi105());
+							jbRawdataHandle1.setPi_112(btime.getPi112());
+							jbRawdataHandle1.setPi_114(btime.getPi114());
+							jbRawdataHandle1.setPi_234(btime.getPi234());
+							jbRawdataHandle1.setPr_401(btime.getPr401());
+							jbRawdataHandle1.setPr_403(btime.getPr403());
+							jbRawdataHandle1.setPi_422(btime.getPi422());
+							jbRawdataHandle1.setPr_416(btime.getPr416());
+							jbRawdataHandle1.setPi_288(btime.getPi288());
+							jbRawdataHandle1.setAr_101(btime.getAr101());
+							jbRawdataHandle1.setAr_109(btime.getAr109());
+							jbRawdataHandle1.setAr_110(btime.getAr110());
+							jbRawdataHandle1.setAi_104(btime.getAi104());
+							jbRawdataHandle1.setAi_103(btime.getAi103());
+							jbRawdataHandle1.setAr_111(btime.getAr111());
+							jbRawdataHandle1.setAr_112(btime.getAr112());
+							jbRawdataHandle1.setAr_113(btime.getAr113());
+							jbRawdataHandle1.setAr_114(btime.getAr114());
+							jbRawdataHandle1.setK_001(btime.getK001());
+							jbRawdataHandle1.setH2oc(btime.getH2oc());
+							jbRawdataHandle1.setLr_403(btime.getLr403());
+							jbRawdataHandle1.setLr_402(btime.getLr402());
+							jbRawdataHandle1.setFiqnh3(btime.getFiqnh3());
+							jbRawdataHandle1.setIpq001(btime.getIpq001());
+							jbRawdataHandle1.setIpq002(btime.getIpq002());
+							jbRawdataHandle1.setIpq003(btime.getIpq003());
+							jbRawdataHandle1.setIpq004(btime.getIpq004());
+							jbRawdataHandle1.setFiq101(btime.getFiq101());
+							jbRawdataHandle1.setFtq109(btime.getFtq109());
+							jbRawdataHandle1.setFiq000(btime.getFiq000());
+							//原始计算后的数据
+							//计算后的时段氨产量，没有精确度
+							Double timeNh3 = btime.getFiqnh3()-ftime.getFiqnh3();
+							BigDecimal b = new BigDecimal(timeNh3);
+							//四舍五入后，保留三位小数的时段氨产量
+							Double etimeNh3 = b.setScale(3,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTime_nh3_yield(etimeNh3);
+							
+							//时段电耗计算
+							//时段电耗1
+							Double timeIpq01 = btime.getIpq001()-ftime.getIpq001();
+							//时段电耗2
+							Double timeIpq02 = btime.getIpq002()-ftime.getIpq002();
+							//时段电耗3
+							Double timeIpq03 = btime.getIpq003()-ftime.getIpq003();
+							//时段电耗4
+							Double timeIpq04 = btime.getIpq004()-ftime.getIpq004();
+							//时段电耗
+							Double ebIpq = timeIpq01+timeIpq02-timeIpq03-timeIpq04;
+							//四舍五入保留两位小数时段电耗
+							BigDecimal bi = new BigDecimal(ebIpq);
+							Double eebIpq = bi.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTime_electric_consume(eebIpq);
+							
+							//时段原料气耗计算
+							Double timefiq = btime.getFiq101()-ftime.getFiq101();
+							BigDecimal bf = new BigDecimal(timefiq);
+							Double etimefiq = bf.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTime_raw_gas_consume(etimefiq);
+							//时段燃料气耗
+							Double timeftq = btime.getFtq109()-ftime.getFtq109();
+							BigDecimal bt = new BigDecimal(timeftq);
+							Double etimeftq = bt.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTime_fuel_consume(etimeftq);
+							//时段气耗
+							Double timefiq000 = btime.getFiq000()-ftime.getFiq000();
+							BigDecimal biq = new BigDecimal(timefiq000);
+							Double etimefiq000 = biq.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTime_gas_consume(etimefiq000);
+							//系统负荷
+							Double sysload = btime.getFi101()/5600*100;
+							BigDecimal bfi = new BigDecimal(sysload);
+							Double esysload = bfi.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setSystem_load(esysload);
+							//小时氨产量计算
+							Double hourNh3 = 6*timeNh3;
+							BigDecimal bhn = new BigDecimal(hourNh3);
+							Double ehourNh3 = bhn.setScale(3,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setHour_nh3_yield(ehourNh3);
+							//吨氨气耗计算
+							Double tFiq = timefiq000/timeNh3;
+							BigDecimal bfiq = new BigDecimal(tFiq);
+							Double etFiq = bfiq.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							//吨氨电耗计算
+							Double tIpq = ebIpq/timeNh3;
+							BigDecimal bipq = new BigDecimal(tIpq);
+							Double etIpq = bipq.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							
+							//吨氨综合消耗计算
+							Double tNh3 = (1.2143*tFiq+0.1229*tIpq);
+							BigDecimal btnh3 = new BigDecimal(tNh3);
+							Double etNh3 = btnh3.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTonnh3_compre_consume(etNh3);
+							jbRawdataHandle1.setTonnh3_gas_consume(etFiq);
+							//吨氨原料气耗计算
+							Double tfiq = timefiq/timeNh3;
+							BigDecimal btfiq = new BigDecimal(tfiq);
+							Double etfiq = btfiq.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							jbRawdataHandle1.setTonnh3_raw_gas_consume(etfiq);
+							//吨氨燃料气耗
+							Double tftq = timeftq/timeNh3;
+							BigDecimal btftq = new BigDecimal(tftq);
+							Double etftq = btftq.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
+							
+							jbRawdataHandle1.setTonnh3_fuel_consume(etftq);
+							jbRawdataHandle1.setTonnh3_electric_consume(etIpq);
+							//班次计算
+							//获取用户信息里的班次信息
+							
+							//根据时间获取对应的班次信息
+							Date date = btime.getJbtime();
+							String classtime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+							//截取年
+							String year = classtime.substring(0, 10);
+							JbClassinfor jbClassinfor = seclectByTime(year);
+						
+							//截取时分秒
+							String mdate = classtime.substring(11, 19);
+							if(isInTime("16:09-00:01", mdate)){
+								int m = jbClassinfor.getMorclass();
+								jbRawdataHandle1.setShift(m);
+							}
+							if(isInTime("00:09-08:01", mdate)){
+								int a = jbClassinfor.getAftclass();
+								jbRawdataHandle1.setShift(a);
+							}
+							if(isInTime("08:09-16:01", mdate)){
+								int e = jbClassinfor.getEveclass();
+								jbRawdataHandle1.setShift(e);
+							}
+					       jbExcelInputCustomerMapper.savatohandle1(jbRawdataHandle1);
+					       jbExcelInputCustomerMapper.savatomiddel1(jbRawdataHandle1);
+			       }
+		}
+	}
+	@Override
+	public JbClassinfor seclectByTime(String time) throws Exception {
+		
+		return jbRawdataHandle1CustomerMapper.seclectByTime(time);
+	}
+	//判断时间是否在区间里面
+		public static boolean isInTime(String sourceTime, String curTime) {
+		    if (sourceTime == null || !sourceTime.contains("-") || !sourceTime.contains(":")) {
+		        throw new IllegalArgumentException("Illegal Argument arg:" + sourceTime);
+		    }
+		    if (curTime == null || !curTime.contains(":")) {
+		        throw new IllegalArgumentException("Illegal Argument arg:" + curTime);
+		    }
+		    String[] args = sourceTime.split("-");
+		    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		    try {
+		        long now = sdf.parse(curTime).getTime();
+		        long start = sdf.parse(args[0]).getTime();
+		        long end = sdf.parse(args[1]).getTime();
+		        if (args[1].equals("00:00")) {
+		            args[1] = "24:00";
+		        }
+		        if (end < start) {
+		            if (now >= end && now < start) {
+		                return false;
+		            } else {
+		                return true;
+		            }
+		        } 
+		        else {
+		            if (now >= start && now < end) {
+		                return true;
+		            } else {
+		                return false;
+		            }
+		        }
+		    } catch (ParseException e) {
+		        e.printStackTrace();
+		        throw new IllegalArgumentException("Illegal Argument arg:" + sourceTime);
+		    }
+
+		}
+		
+		
+		@Override
+		public void savatohandle2() throws Exception {
+	 
+		   List<JbRawdataHandle1> jbRawdataHandle1s = jbExcelInputCustomerMapper.selectMidleList();//全部上传的数据
+	    	 int upcount = jbRawdataHandle1s.size();
+	        JbRawdataHandle2 jbRawdataHandle2 = new JbRawdataHandle2();
+		       //定义总的小时氨产量
+		       Double total_hour_nh3_yield = 0.0;
+		       //获取平均值
+		       for(int k = 0; k<jbRawdataHandle1s.size();k++){
+		    	   JbRawdataHandle1 handle1 = jbRawdataHandle1s.get(k);
+		    	
+			  	   //小时氨产量
+			  	   Double hour_nh3_yield = handle1.getHour_nh3_yield();
+			  	   //小时氨产量的总数
+			  	   total_hour_nh3_yield += hour_nh3_yield;
+			  	   //平均氨产量
+			  	   Double average = total_hour_nh3_yield/upcount;
+			  	  
+			  	   BigDecimal baverage = new BigDecimal(average);
+						Double eaverage = baverage.setScale(3,BigDecimal.ROUND_HALF_UP).doubleValue();
+			  	   this.average = eaverage;
+				       }
+				       //剔除异常数据
+				       for(int h= 0; h<jbRawdataHandle1s.size(); h++){
+				    	   JbRawdataHandle1 handle1 = jbRawdataHandle1s.get(h);
+				    	   //小时氨产量
+				    	   Double hour_nh3_yield = handle1.getHour_nh3_yield();
+				    	  if(hour_nh3_yield == 0){
+				    		  //获取异常ID
+				    		  int orig_id = handle1.getOrig_id();
+				    		  //根据异常ID删除异常记录
+				    		  jbRawdataHandle2Mapper.deleteByPrimaryKey(orig_id);
+				    		 
+				    	  }
+				    	  //小时氨产量”数据与平均值误差绝对值超过平均值35%时
+				    	  Double aver = hour_nh3_yield-average;
+				    	  aver = new Double(Math.abs(aver.doubleValue()));
+				    	 
+				    	  if((aver>average*0.35)){
+				    		  //获取异常ID
+				    		  int orig_id = handle1.getOrig_id();
+				    		
+				    		  jbRawdataHandle2Mapper.deleteByPrimaryKey(orig_id);
+				    		  continue;
+				    	  }
+				    	   //吨氨综合消耗
+				    	   Double tonnh3_compre_consume = handle1.getTonnh3_compre_consume();
+				    	   if(tonnh3_compre_consume == 0){
+					    		  //获取异常ID
+					    		  int orig_id = handle1.getOrig_id();
+					    		  System.out.println("吨氨综合消耗异常数据编号"+orig_id+"==================================");
+					    		  //根据异常ID删除异常记录
+					    		  jbRawdataHandle2Mapper.deleteByPrimaryKey(orig_id);
+					    		  continue;
+					    	  }
+				    	   //吨氨气耗
+				    	   Double  tonnh3_gas_consume = handle1.getTonnh3_gas_consume();
+				    	   if(tonnh3_gas_consume == 0){
+					    		  //获取异常ID
+					    		  int orig_id = handle1.getOrig_id();
+					    		  System.out.println("吨氨气耗异常数据编号"+orig_id+"==================================");
+					    		  //根据异常ID删除异常记录
+					    		  jbRawdataHandle2Mapper.deleteByPrimaryKey(orig_id);
+					    		  continue;
+					    	  }
+				    	   //吨氨原料气耗
+				    	   Double tonnh3_raw_gas_consume = handle1.getTonnh3_raw_gas_consume();
+				    	   if(tonnh3_raw_gas_consume == 0){
+					    		  //获取异常ID
+					    		  int orig_id = handle1.getOrig_id();
+					    		  System.out.println("吨氨原料气耗异常数据编号"+orig_id+"==================================");
+					    		  //根据异常ID删除异常记录
+					    		  jbRawdataHandle2Mapper.deleteByPrimaryKey(orig_id);
+					    		  continue;
+					    	  }
+				    	   //吨氨燃料气耗
+				    	   Double tonnh3_fuel_consume = handle1.getTonnh3_fuel_consume();
+				    	   if(tonnh3_fuel_consume == 0){
+					    		  //获取异常ID
+					    		  int orig_id = handle1.getOrig_id();
+					    		  System.out.println("吨氨燃料气耗异常数据编号"+orig_id+"==================================");
+					    		  //根据异常ID删除异常记录
+					    		  jbRawdataHandle2Mapper.deleteByPrimaryKey(orig_id);
+					    		  continue;
+					    	  }
+				    	   //吨氨电耗
+				    	   Double tonnh3_electric_consume = handle1.getTonnh3_electric_consume();
+				    	   if(tonnh3_electric_consume == 0){
+					    		  //获取异常ID
+					    		  int orig_id = handle1.getOrig_id();
+					    		  System.out.println("吨氨电耗异常数据编号"+orig_id+"==================================");
+					    		  //根据异常ID删除异常记录
+					    		  jbRawdataHandle2Mapper.deleteByPrimaryKey(orig_id);
+					    		  continue;
+					    	  }
+				    	  
+					    	 //基本数据获取开始
+					    	   Date datetime = handle1.getData_time();
+					    	   jbRawdataHandle2.setData_time(datetime);
+					    	   jbRawdataHandle2.setFi_103(handle1.getFi_103());
+					    	   jbRawdataHandle2.setFi_000(handle1.getFi_000());
+					    	   jbRawdataHandle2.setFi_104(handle1.getFi_104());
+					    	   jbRawdataHandle2.setFi_101(handle1.getFi_101());
+					    	   jbRawdataHandle2.setFi_106(handle1.getFi_106());
+					    	   jbRawdataHandle2.setFi_109(handle1.getFi_109());
+					    	   jbRawdataHandle2.setFr_401(handle1.getFr_401());
+					    	   jbRawdataHandle2.setFr_402(handle1.getFr_402());
+					    	   jbRawdataHandle2.setFr_405(handle1.getFr_405());
+					    	   jbRawdataHandle2.setFr_406(handle1.getFr_406());
+					    	   jbRawdataHandle2.setFr_407(handle1.getFr_407());
+					    	   jbRawdataHandle2.setFr_408(handle1.getFr_408());
+					    	   jbRawdataHandle2.setFi_410(handle1.getFi_410());
+					    	   jbRawdataHandle2.setFi_NH3(handle1.getFi_NH3());
+					    	   jbRawdataHandle2.setFr_141(handle1.getFr_141());
+					    	   jbRawdataHandle2.setFr_142(handle1.getFr_142());
+					    	   jbRawdataHandle2.setFr_143(handle1.getFr_143());
+					    	   jbRawdataHandle2.setTi_122(handle1.getTi_122());
+					    	   jbRawdataHandle2.setTi_123(handle1.getTi_123());
+					    	   jbRawdataHandle2.setTi_164(handle1.getTi_164());
+					    	   jbRawdataHandle2.setTi_131(handle1.getTi_131());
+					    	   jbRawdataHandle2.setTi_132(handle1.getTi_132());
+					    	   jbRawdataHandle2.setTi_211(handle1.getTi_211());
+					    	   jbRawdataHandle2.setTi_210a(handle1.getTi_210a());
+					    	   jbRawdataHandle2.setTi_134(handle1.getTi_134());
+					    	   jbRawdataHandle2.setTi_215(handle1.getTi_215());
+					    	   jbRawdataHandle2.setTr_413(handle1.getTr_413());
+					    	   jbRawdataHandle2.setTr_403(handle1.getTr_403());
+					    	   jbRawdataHandle2.setTr_407(handle1.getTr_407());
+					    	   jbRawdataHandle2.setTi_407a(handle1.getTi_407a());
+					    	   jbRawdataHandle2.setTi_407b(handle1.getTi_407b());
+					    	   jbRawdataHandle2.setPi_213(handle1.getPi_213());
+					    	   jbRawdataHandle2.setPi_105(handle1.getPi_105());
+					    	   jbRawdataHandle2.setPi_112(handle1.getPi_112());
+					    	   jbRawdataHandle2.setPi_114(handle1.getPi_114());
+					    	   jbRawdataHandle2.setPi_234(handle1.getPi_234());
+					    	   jbRawdataHandle2.setPr_401(handle1.getPr_401());
+					    	   jbRawdataHandle2.setPr_403(handle1.getPr_403());
+					    	   jbRawdataHandle2.setPi_422(handle1.getPi_422());
+					    	   jbRawdataHandle2.setPr_416(handle1.getPr_416());
+					    	   jbRawdataHandle2.setPi_288(handle1.getPi_288());
+					    	   jbRawdataHandle2.setAr_101(handle1.getAr_101());
+					    	   jbRawdataHandle2.setAr_109(handle1.getAr_109());
+					    	   jbRawdataHandle2.setAr_110(handle1.getAr_110());
+					    	   jbRawdataHandle2.setAi_104(handle1.getAi_104());
+					    	   jbRawdataHandle2.setAi_103(handle1.getAi_103());
+					    	   jbRawdataHandle2.setAr_111(handle1.getAr_111());
+					    	   jbRawdataHandle2.setAr_112(handle1.getAr_112());
+					    	   jbRawdataHandle2.setAr_113(handle1.getAr_113());
+					    	   jbRawdataHandle2.setAr_114(handle1.getAr_114());
+					    	   jbRawdataHandle2.setK_001(handle1.getK_001());
+					    	   jbRawdataHandle2.setH2oc(handle1.getH2oc());
+					    	   jbRawdataHandle2.setLr_403(handle1.getLr_403());
+					    	   jbRawdataHandle2.setLr_402(handle1.getLr_402());
+					    	   jbRawdataHandle2.setFiqnh3(handle1.getFiqnh3());
+					    	   jbRawdataHandle2.setIpq001(handle1.getIpq001());
+					    	   jbRawdataHandle2.setIpq002(handle1.getIpq002());
+					    	   jbRawdataHandle2.setIpq003(handle1.getIpq003());
+					    	   jbRawdataHandle2.setIpq004(handle1.getIpq004());
+					    	   jbRawdataHandle2.setFiq101(handle1.getFiq101());
+					    	   jbRawdataHandle2.setFtq109(handle1.getFtq109());
+					    	   jbRawdataHandle2.setFiq000(handle1.getFiq000());
+					    	   jbRawdataHandle2.setTime_nh3_yield(handle1.getTime_nh3_yield());
+					    	   jbRawdataHandle2.setTime_electric_consume(handle1.getTime_electric_consume());
+					    	   jbRawdataHandle2.setTime_raw_gas_consume(handle1.getTime_raw_gas_consume());
+					    	   jbRawdataHandle2.setTime_fuel_consume(handle1.getTime_fuel_consume());
+					    	   jbRawdataHandle2.setTime_gas_consume(handle1.getTime_gas_consume());
+					    	   jbRawdataHandle2.setSystem_load(handle1.getSystem_load());
+					    	   jbRawdataHandle2.setHour_nh3_yield(handle1.getHour_nh3_yield());
+					    	   jbRawdataHandle2.setTonnh3_compre_consume(handle1.getTonnh3_compre_consume());
+					    	   jbRawdataHandle2.setTonnh3_gas_consume(handle1.getTonnh3_gas_consume());
+					    	   jbRawdataHandle2.setTonnh3_raw_gas_consume(handle1.getTonnh3_raw_gas_consume());
+					    	   jbRawdataHandle2.setTonnh3_fuel_consume(handle1.getTonnh3_fuel_consume());
+					    	   jbRawdataHandle2.setTonnh3_electric_consume(handle1.getTonnh3_electric_consume());
+					    	   jbRawdataHandle2.setShift(handle1.getShift());
+					    	//基本数据获取结束
+					    	   //保存到干净数据中
+					    	   jbExcelInputCustomerMapper.savatohandle2(jbRawdataHandle2);
+		}
+			      
+
+}
+		@Override
+		public void deletemiddle1() throws Exception {
+			// TODO Auto-generated method stub
+			jbExcelInputCustomerMapper.deletemiddle1();
+		}
+		@Override
+		public void deletemiddle2() throws Exception {
+			jbExcelInputCustomerMapper.deletemiddle2();
+			
+		}
+}

@@ -1,0 +1,74 @@
+package com.saitejn.mapper;
+
+import java.util.List;
+
+import com.saitejn.pojo.FileUpInfo;
+import com.saitejn.pojo.Fileupifo;
+import com.saitejn.pojo.JbExcelInput;
+import com.saitejn.pojo.JyExcelInput;
+import com.saitejn.pojo.JyFileupifo;
+
+/**
+ * Excel数据扩展类
+ * @class JbExcelInputCustomerMapper.java
+ * @Description:
+ * @author:罗康元
+ * Company:赛特工信科技有限公司
+ * @date :2016-9-18
+ */
+public interface JyExcelInputCustomerMapper {
+	/**
+	 * 保存数据到数据表中
+	 * @param jbExcelInput
+	 * @throws Exception
+	 */
+	public void saveDate(JyExcelInput jyExcelInput) throws Exception; 
+	
+	/**
+	 * 保存干净数据到数据库中
+	 * 计算后不剔除异常点的数据集，用于生成能耗监测报表
+	 * @throws Exception
+	 */
+	//public void saveNewDate() throws Exception;
+	/**
+	 * 根据开始结束时间获取对应时间段的用户上传的数据信息
+	 * @param sdate开始时间年月日
+	 * @param edate结束时间年月日
+	 * @param stime开始时间时分秒
+	 * @param etime结束时间时分秒
+	 * @return 返回用户上传数据集合
+	 * @throws Exception
+	 */
+	//public List<JbExcelInput> selectDateByTime(String sdate,String edate)throws Exception;
+	/**
+	 * 获取所有的原始数据，用于计算，剔除异常点数据
+	 * @return
+	 * @throws Exception
+	 */
+	public List<JyExcelInput> selectAll()throws Exception;
+	/**
+	 * 保存文件上传信息
+	 * @param fileupifo
+	 * @throws Exception
+	 */
+	public void saveUpFileIfo(JyFileupifo jyFileupifo)throws Exception;
+	/**
+	 * 查询input表的记录数
+	 * @return
+	 * @throws Exception
+	 */
+	public int selectcount()throws Exception;
+	/**
+	 * 查询handle1表的记录数
+	 * @return
+	 * @throws Exception
+	 */
+	public int selecthand1count()throws Exception;
+	/**
+	 * 根据时间查询数据库是否有重复记录，用于剔除上传的时候的重复记录
+	 * @param jytime
+	 * @return
+	 * @throws Exception
+	 */
+	public int fingInputByJytime(String jbtime)throws Exception;
+}

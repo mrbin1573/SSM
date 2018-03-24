@@ -1,0 +1,186 @@
+package com.saitejn.services.impl;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.saitejn.mapper.JF_guidePageMapper;
+import com.saitejn.pojo.Adminguideifo;
+import com.saitejn.pojo.Jb_feedback01;
+import com.saitejn.pojo.Jb_feedback02;
+import com.saitejn.pojo.Jb_feedback03;
+import com.saitejn.pojo.Jb_feedback05;
+import com.saitejn.pojo.JfGuiImg;
+import com.saitejn.pojo.Messageleaving;
+import com.saitejn.services.JF_guidePageServices;
+
+public class JF_guidePageServicesImpl implements JF_guidePageServices {
+	@Autowired
+	private JF_guidePageMapper jf_guidePageMapper;
+	@Override
+	public String showBefoFile(String filename) throws Exception {
+		if(filename.equals("优化工艺")){
+			String guidename = 	jf_guidePageMapper.BeforFileShow("优化工艺");
+			if(guidename == null){
+				guidename = "erorr.html";
+				return guidename;
+			}else{
+				 return  guidename ;
+			}
+			
+			}
+		if(filename.equals("变量关联")){
+		String guidename = 	jf_guidePageMapper.BeforFileShow("变量关联");
+		if(guidename == null){
+			guidename = "erorr.html";
+			return guidename;
+		}else{
+			 return  guidename ;
+		}
+		
+		}
+		if(filename.equals("动态调控")){
+			String guidename = 	jf_guidePageMapper.BeforFileShow("动态调控");
+			if(guidename == null){
+				guidename = "erorr.html";
+				return guidename;
+			}else{
+				 return  guidename ;
+			}
+			
+			}
+		else{
+			String guidename = 	jf_guidePageMapper.BeforFileShow("跟踪分析");
+			if(guidename == null){
+				guidename = "erorr.html";
+				return guidename;
+			}else{
+				 return  guidename ;
+			}
+			
+			}
+	}
+
+	@Override
+	public List<Adminguideifo> getAllAdminGuideifo() throws Exception {
+		return jf_guidePageMapper.getAllAdminGuideifo();
+	}
+
+	@Override
+	public String showguidehis(int gid) throws Exception {
+		Adminguideifo adminguideifo = jf_guidePageMapper.selectByPrimaryKey(gid);
+		String name = adminguideifo.getNewname();
+		String guidename = "/pic/guide/"+name;
+		return guidename;
+	}
+
+	@Override
+	public List<JfGuiImg> getGuideImage(Integer fid, Integer imgid)
+			throws Exception {
+		return jf_guidePageMapper.getGuideImage(fid, imgid);
+	}
+
+	@Override
+	public List<Jb_feedback02> selectVar() throws Exception {
+		Jb_feedback01 jb_feedback01 = jf_guidePageMapper.selectFeedBack01();
+		if(jb_feedback01 !=null){
+			int id  = jb_feedback01.getId();
+			List<Jb_feedback02> feedback02s = jf_guidePageMapper.selectvarByid(id);
+			return feedback02s;
+		}
+		else{
+			return null;
+		}
+	}
+
+	@Override
+	public Date selectCheckTime() throws Exception {
+		Jb_feedback01 jb_feedback01 = jf_guidePageMapper.selectFeedBack01();
+		if(jb_feedback01 != null){
+			return jb_feedback01.getChecktime();
+		}else{
+			return null;
+		}
+	}
+
+	@Override
+	public void insertUserVar(Jb_feedback05 jb_feedback05) throws Exception {
+		jf_guidePageMapper.insertUserVar(jb_feedback05);
+		
+	}
+
+	@Override
+	public List<Jb_feedback01> selectAllfeedback() throws Exception {
+		return jf_guidePageMapper.selectAllfeedback();
+	}
+
+	@Override
+	public void updatefeedbacktype() throws Exception {
+		Jb_feedback01 jb_feedback01 = jf_guidePageMapper.selectFeedBack01();
+		if(jb_feedback01 != null){
+			int id = jb_feedback01.getId();
+			jf_guidePageMapper.updatefeedbacktype(id);
+		}
+	}
+
+	@Override
+	public List<Jb_feedback02> selectFeedbackforhis(int pid) throws Exception {
+		return jf_guidePageMapper.selectFeedbackforhis(pid);
+	}
+
+	@Override
+	public List<Messageleaving> selectMessageByConpany(String company)
+			throws Exception {
+		return jf_guidePageMapper.selectMessageByConpany(company);
+	}
+
+	@Override
+	public void updateMessage() throws Exception {
+		jf_guidePageMapper.updateMessByid();
+		
+	}
+
+	@Override
+	public void insertfeedback01() throws Exception {
+		Date date = new Date();
+		Jb_feedback01 jb_feedback01 = new Jb_feedback01();
+		jb_feedback01.setTime(date);
+		jb_feedback01.setType("1");
+		jf_guidePageMapper.insertfeedback01(jb_feedback01);
+	}
+
+	@Override
+	public void insertfeedback02(String par) throws Exception {
+		int id = jf_guidePageMapper.selectfeedback01id();
+		Jb_feedback02 jb_feedback02 = new Jb_feedback02();
+		jb_feedback02.setTimid(id);
+		jb_feedback02.setType("0");
+		jb_feedback02.setPassivevar(par);
+		jf_guidePageMapper.insertfeedback02(jb_feedback02);
+	}
+
+	@Override
+	public void insertfeedback03(String actvar) throws Exception {
+		int id = jf_guidePageMapper.selectfeedback02id();
+		Jb_feedback03 jb_feedback03 = new Jb_feedback03();
+		jb_feedback03.setParid(id);
+		jb_feedback03.setActivevar(actvar);
+		jf_guidePageMapper.insertfeedback03(jb_feedback03);
+	}
+
+	@Override
+	public void updatefeedtype() throws Exception {
+		Jb_feedback01 jb_feedback01 = jf_guidePageMapper.selectFeedBack01();
+		if(jb_feedback01 != null){
+			int id = jb_feedback01.getId();
+			jf_guidePageMapper.updatefeedbacktype2(id);
+		}
+	}
+
+	@Override
+	public void updatefeedbacktype1(int id) throws Exception {
+		jf_guidePageMapper.updatefeedbacktype1(id);
+	}
+
+}

@@ -1,0 +1,28 @@
+package com.saitejn.pojo;
+
+public class Jb_feedback05 {
+	private int id;
+	private String useractive;
+	private int parid;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getUseractive() {
+		return useractive;
+	}
+	public void setUseractive(String useractive) {
+		this.useractive = useractive;
+	}
+	public int getParid() {
+		return parid;
+	}
+	public void setParid(int parid) {
+		this.parid = parid;
+	}
+	
+	
+	
+}

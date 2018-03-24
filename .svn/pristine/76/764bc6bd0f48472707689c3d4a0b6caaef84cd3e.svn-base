@@ -1,0 +1,7 @@
+package com.saitejn.test;
+
+public class Testif {
+	public static void main(String[] args) {
+		String a = ("sdfs"==" ")?"aaa":"bbb";
+		System.out.println(a);
+	}}

@@ -1,0 +1,113 @@
+package com.saitejn.controller;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.saitejn.pojo.JbUserifo;
+import com.saitejn.pojo.JyExcelInput;
+import com.saitejn.pojo.JyFileupifo;
+import com.saitejn.services.JyDataServices;
+import com.saitejn.services.JyRawdataHandle1Services;
+import com.saitejn.util.ReadExcel;
+@Controller
+public class JY_touploadController {
+	@Autowired
+	private JyRawdataHandle1Services jyRawdataHandle1Services;
+	@Autowired
+	private JyDataServices jyDataServices;
+	   int number =0;
+	   //去文件上传页面
+		@RequestMapping("/jytoupload")
+		public String toupload()throws Exception{
+			return "jy/jy_upload";
+		}
+		@RequestMapping("/jyfileUpload")
+		public String TestUpload(@RequestParam("file") MultipartFile[] file,Model model,HttpSession session)throws Exception{
+			//判断文件是否为空
+			int number = jyDataServices.isSameDate("2015-09-10 08:00:03");
+			System.out.println(number);
+			if(file != null){
+				//存储文件的 路径
+				String file_path = "E:\\myeclipse10\\upload\\temp\\file\\jy\\";
+				for(int i = 0; i<file.length;i++){
+					//获取每一个原始文件的文件名
+					String OriginalFilename = file[i].getOriginalFilename();
+					//新的文件名
+					String newFileName = UUID.randomUUID()+OriginalFilename.substring(OriginalFilename.lastIndexOf("."));
+					//新文件
+					File newFile = new File(file_path+newFileName);
+					//将内存中的数据写入磁盘
+					file[i].transferTo(newFile);
+					//文件上传时间
+					Date nowtime  = new Date();
+					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					String uptime =   format.format(nowtime);
+					//文件上传者
+					JbUserifo user = (JbUserifo) session.getAttribute("user");
+					String upperson = user.getUtruename();
+					//文件真正名字
+					String upname = OriginalFilename;
+					//文件下载名字
+					String fileename = newFileName;
+					//文件状态
+					String filtype = "未处理";
+					JyFileupifo fileupifo = new JyFileupifo();
+					fileupifo.setFileename(fileename);
+					fileupifo.setFiltype(filtype);
+					fileupifo.setUpname(upname);
+					fileupifo.setUpperson(upperson);
+					fileupifo.setUptime(uptime);
+					jyDataServices.saveUpFileIfo(fileupifo);
+					String filePath = newFile.toString();
+					String fileyear = upname.substring(17, 21);
+					
+					//ReadExcel readExcel = new ReadExcel();
+					//List list = readExcel.readJyXls(filePath,fileyear);
+					List list = jyDataServices.readJyXls(filePath,fileyear);
+					//查询出每一次的记录
+					int count = list.size();
+					number =  number +count;
+					System.out.println(number);
+					
+					//计算出共上传了多少行数据
+					
+					
+					//保存数据到数据库
+					 List<JyExcelInput> datalist =  jyDataServices.readJyXls(filePath,fileyear);
+					 for(JyExcelInput jy : datalist){
+						 JyExcelInput jyExcelInput = jy;
+						 jyDataServices.saveDate(jyExcelInput);
+					 }
+					 
+					 //在从数据库中去出数据，用于计算，并将计算后的数据保存到原始数据库表中开始
+					//jyRawdataHandle1Services.deleteHand1();
+					
+					
+					
+				}
+				  
+				
+			}
+			//查询l对应表的数据量
+			 int ecount = jyDataServices.selectcount();
+			  //计算原始数据中有多少条记录
+			 int ycount = jyDataServices.selectcount();
+			 jyRawdataHandle1Services.saveDate(ecount,number);
+			 jyRawdataHandle1Services.saveToDate2(ycount,number);
+			return "redirect:/jytoupload.action";
+		}
+		
+
+}

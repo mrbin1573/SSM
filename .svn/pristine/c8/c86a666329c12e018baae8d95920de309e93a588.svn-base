@@ -1,0 +1,124 @@
+package com.saitejn.mapper;
+
+import java.util.List;
+
+import com.saitejn.pojo.FileUpInfo;
+import com.saitejn.pojo.Fileupifo;
+import com.saitejn.pojo.JbExcelInput;
+import com.saitejn.pojo.JbExcelMiddle;
+import com.saitejn.pojo.JbMiddle;
+import com.saitejn.pojo.JbRawdataHandle1;
+import com.saitejn.pojo.JbRawdataHandle2;
+import com.saitejn.pojo.JfRawdataHandle1;
+
+/**
+ * Excel数据扩展类
+ * @class JbExcelInputCustomerMapper.java
+ * @Description:
+ * @author:罗康元
+ * Company:赛特工信科技有限公司
+ * @date :2016-9-18
+ */
+public interface JbExcelInputCustomerMapper {
+	/**
+	 * 保存数据到数据表中
+	 * @param jbExcelInput
+	 * @throws Exception
+	 */
+	public void saveDate(JbExcelInput jbExcelInput) throws Exception; 
+	
+	/**
+	 * 保存数据到数据表中
+	 * @param jbExcelInput
+	 * @throws Exception
+	 */
+	public void saveDatetomiddle(JbExcelMiddle jbExcelMiddle) throws Exception; 
+	
+	/**
+	 * 保存干净数据到数据库中
+	 * 计算后不剔除异常点的数据集，用于生成能耗监测报表
+	 * @throws Exception
+	 */
+	public void saveNewDate() throws Exception;
+	/**
+	 * 根据开始结束时间获取对应时间段的用户上传的数据信息
+	 * @param sdate开始时间年月日
+	 * @param edate结束时间年月日
+	 * @param stime开始时间时分秒
+	 * @param etime结束时间时分秒
+	 * @return 返回用户上传数据集合
+	 * @throws Exception
+	 */
+	public List<JbExcelInput> selectDateByTime(String sdate,String edate)throws Exception;
+	/**
+	 * 获取所有的原始数据，用于计算，剔除异常点数据
+	 * @return
+	 * @throws Exception
+	 */
+	public List<JbExcelInput> selectAll()throws Exception;
+	/**
+	 * 保存文件上传信息
+	 * @param fileupifo
+	 * @throws Exception
+	 */
+	public void saveUpFileIfo(FileUpInfo fileupifo)throws Exception;
+	/**
+	 * 查询input表的记录数
+	 * @return
+	 * @throws Exception
+	 */
+	public int selectcount()throws Exception;
+	/**
+	 * 查询handle1表的记录数
+	 * @return
+	 * @throws Exception
+	 */
+	public int selecthand1count()throws Exception;
+	/**
+	 * 根据时间查询数据库是否有重复记录，用于剔除上传的时候的重复记录
+	 * @param jytime
+	 * @return
+	 * @throws Exception
+	 */
+	public int fingInputByJbtime(String jytime)throws Exception;
+	/**
+	 * 取出excel表中的最后一条记录
+	 */
+	public JbExcelMiddle selectTopInput()throws Exception;
+	/**
+	 * 查询所有的中间表的数据
+	 * @return
+	 * @throws Exception
+	 */
+	public List<JbExcelMiddle> selectAllMiddle()throws Exception;
+	/**
+	 * 保存数据到excel表中
+	 * @param list
+	 * @throws Exception
+	 */
+	public void savetoexcel(JbExcelInput jbExcelInput)throws Exception;
+	/**
+	 * 保存数据到handle1表中去
+	 * @throws Exception
+	 */
+	public void savatohandle1(JbRawdataHandle1 jbRawdataHandle1)throws Exception;
+	
+	/**
+	 * 保存数据到handle1表中去
+	 * @throws Exception
+	 */
+	public void savatomiddel1(JbRawdataHandle1 jbRawdataHandle1)throws Exception;
+	/**
+	 * 保存数据到handle1表中去
+	 * @throws Exception
+	 */
+	public void savatohandle2(JbRawdataHandle2 jbRawdataHandle2)throws Exception;
+	
+	public List<JbRawdataHandle1> selectMidleList ()throws Exception;
+	
+	public void deletemiddle1()throws Exception;
+	public void deletemiddle2()throws Exception;
+	
+	public JbRawdataHandle1 getLastTime() throws Exception;
+	
+}

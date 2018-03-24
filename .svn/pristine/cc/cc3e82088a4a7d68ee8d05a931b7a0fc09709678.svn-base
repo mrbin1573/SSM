@@ -1,0 +1,188 @@
+package com.saitejn.services.impl;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.saitejn.mapper.AdminGuideDataMapper;
+import com.saitejn.mapper.AdminguideifoMapper;
+import com.saitejn.pojo.Adminguideifo;
+import com.saitejn.pojo.JbGuiImg;
+import com.saitejn.pojo.JbPushgrid101;
+import com.saitejn.pojo.JbPushgrid111WithBLOBs;
+import com.saitejn.pojo.JbPushgrid112WithBLOBs;
+import com.saitejn.pojo.JbPushgrid113WithBLOBs;
+import com.saitejn.pojo.JbPushgrid114WithBLOBs;
+import com.saitejn.pojo.JbPushgrid11WithBLOBs;
+import com.saitejn.pojo.JbPushgrid12;
+import com.saitejn.pojo.JbPushgrid13WithBLOBs;
+import com.saitejn.pojo.JbPushgrid14WithBLOBs;
+import com.saitejn.pojo.JbPushgrid15WithBLOBs;
+import com.saitejn.pojo.JbPushgrid21;
+import com.saitejn.pojo.JbPushgrid22WithBLOBs;
+import com.saitejn.pojo.JbPushgrid23WithBLOBs;
+import com.saitejn.pojo.JbPushgrid24WithBLOBs;
+import com.saitejn.pojo.JbPushgrid31WithBLOBs;
+import com.saitejn.pojo.JbPushgrid41;
+import com.saitejn.pojo.JbPushgrid51;
+import com.saitejn.pojo.JbPushgrid61;
+import com.saitejn.pojo.JbPushgrid71;
+import com.saitejn.pojo.JbPushgrid81WithBLOBs;
+import com.saitejn.pojo.JbPushgrid82WithBLOBs;
+import com.saitejn.pojo.JbPushgrid91WithBLOBs;
+import com.saitejn.pojo.JbPushgrid92WithBLOBs;
+import com.saitejn.pojo.JbPushgrid93WithBLOBs;
+import com.saitejn.pojo.JbPushgrid94WithBLOBs;
+import com.saitejn.pojo.Jb_feedback01;
+import com.saitejn.pojo.Jb_feedback02;
+import com.saitejn.pojo.Jb_feedback05;
+import com.saitejn.services.AdminGuideDataServices;
+
+public class AdminGuideDataServicesImpl implements AdminGuideDataServices {
+	@Autowired
+	private AdminGuideDataMapper adminGuideDataMapper;
+	@Autowired
+	private AdminguideifoMapper adminguideifoMapper;
+
+
+	@Override
+	public void insertUpInfo(Adminguideifo adminguideifo) throws Exception {
+		adminGuideDataMapper.insertUpInfo(adminguideifo);
+		
+	}
+	
+		
+		
+	
+	//前台指导文件查看
+	@Override
+	public String showBefoFile(String filename) throws Exception {
+		
+		if(filename.equals("优化工艺")){
+			String guidename = 	adminGuideDataMapper.BeforFileShow("优化工艺");
+			if(guidename == null){
+				guidename = "erorr.html";
+				return guidename;
+			}else{
+				 return  guidename ;
+			}
+			
+			}
+		if(filename.equals("变量关联")){
+		String guidename = 	adminGuideDataMapper.BeforFileShow("变量关联");
+		if(guidename == null){
+			guidename = "erorr.html";
+			return guidename;
+		}else{
+			 return  guidename ;
+		}
+		
+		}
+		if(filename.equals("动态调控")){
+			String guidename = 	adminGuideDataMapper.BeforFileShow("动态调控");
+			if(guidename == null){
+				guidename = "erorr.html";
+				return guidename;
+			}else{
+				 return  guidename ;
+			}
+			
+			}
+		else{
+			String guidename = 	adminGuideDataMapper.BeforFileShow("跟踪分析");
+			if(guidename == null){
+				guidename = "erorr.html";
+				return guidename;
+			}else{
+				 return  guidename ;
+			}
+			
+			}
+		
+	}
+	@Override
+	public List<Adminguideifo> getAllAdminGuideifo() throws Exception {
+		
+		return adminGuideDataMapper.getAllAdminGuideifo();
+	}
+	@Override
+	public String showguidehis(int gid) throws Exception {
+		Adminguideifo adminguideifo = adminguideifoMapper.selectByPrimaryKey(gid);
+		String name = adminguideifo.getNewname();
+		String guidename = "/pic/guide/"+name;
+		return guidename;
+	}
+	@Override
+	public void deleteuserByid(int uid) throws Exception {
+		adminGuideDataMapper.deleteuserByid(uid);
+	}
+
+
+
+
+	@Override
+	public List<JbGuiImg> getGuideImage(Integer fid, Integer imgid)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return adminGuideDataMapper.getGuideImage(fid, imgid);
+	}
+
+
+
+
+	@Override
+	public List<Jb_feedback02> selectVar_jb() throws Exception {
+		Jb_feedback01 jb_feedback01 = adminGuideDataMapper.selectFeedBack01();
+		if(jb_feedback01 !=null){
+			int id  = jb_feedback01.getId();
+			List<Jb_feedback02> feedback02s = adminGuideDataMapper.selectvarByid_jb(id);
+			return feedback02s;
+		}
+		else{
+			return null;
+		}
+	}
+	@Override
+	public Date selectCheckTime() throws Exception {
+		Jb_feedback01 jb_feedback01 = adminGuideDataMapper.selectFeedBack01();
+		if(jb_feedback01 != null){
+			return jb_feedback01.getChecktime();
+		}else{
+			return null;
+		}
+		
+	}
+
+
+
+
+	@Override
+	public void insertUserVar_jb(Jb_feedback05 jb_feedback05) throws Exception {
+		adminGuideDataMapper.insertUserVar_jb(jb_feedback05);
+	}
+
+
+
+
+	@Override
+	public List<Jb_feedback01> selectAllfeedback_jb() throws Exception {
+		return adminGuideDataMapper.selectAllfeedback_jb();
+	}
+
+
+
+
+	@Override
+	public void updatefeedbacktype_jb() throws Exception {
+		Jb_feedback01 jb_feedback01 = adminGuideDataMapper.selectFeedBack01();
+		if(jb_feedback01 != null){
+			int id = jb_feedback01.getId();
+			adminGuideDataMapper.updatefeedbacktype_jb(id);
+		}
+		
+	}
+
+	
+
+}

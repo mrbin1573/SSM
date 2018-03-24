@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JB_EnergyMapper" >
+	<!-- 金杯日报表统计时间为8：01-23：59 -->
+	<select id="selectDailyreportFortime1_jb" resultType="com.saitejn.pojo.JbRawdataHandle1">
+		select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time ,sum(time_nh3_yield) time_nh3_yield ,
+		sum(shift) shift ,count(orig_id)orig_id,sum(time_electric_consume) time_electric_consume ,
+		sum(time_raw_gas_consume) time_raw_gas_consume from jb_rawdata_handle_1 where
+ 		(((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '08:01:00' and
+ 		((RIGHT (convert(varchar(50),data_time,120)  ,8 )))  &lt;= '23:59:00')
+ 		and  data_time &gt;= #{0} and data_time &lt;= #{1} and data_time  &gt;= '2017-06-17'
+		group by convert(varchar(10),data_time,120)+' 00:00:00' order by data_time asc 
+	</select>
+	<!-- 金杯日报表统计时间为0：00-8：01 -->
+	<select id="selectDailyreportFortime2_jb" resultType="com.saitejn.pojo.JbRawdataHandle1">
+		select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time ,sum(time_nh3_yield) time_nh3_yield ,
+		sum(shift) shift ,count(orig_id)orig_id,sum(time_electric_consume) time_electric_consume ,
+		sum(time_raw_gas_consume) time_raw_gas_consume from jb_rawdata_handle_1 where
+ 		(((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '00:00:00' and
+ 		((RIGHT (convert(varchar(50),data_time,120)  ,8 )))  &lt;= '08:01:00')
+ 		and  data_time &gt;= #{0} and data_time &lt;= #{1} and data_time  &gt;= '2017-06-17'
+		group by convert(varchar(10),data_time,120)+' 00:00:00' order by data_time asc 
+	</select>
+    <!-- 金杯日报表按班统计时间为白班8：01-20：01 -->
+    <select id="selectDailyReportForClass1_jb" resultType="com.saitejn.pojo.JbRawdataHandle1">
+    	select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time ,sum(time_nh3_yield) time_nh3_yield ,
+    	sum(shift) shift ,count(orig_id)orig_id,sum(time_electric_consume) time_electric_consume ,
+    	sum(time_raw_gas_consume) time_raw_gas_consume ,1 'classNumber' from jb_rawdata_handle_1 where
+ 		(((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '08:01:00' and
+ 		((RIGHT (convert(varchar(50),data_time,120)  ,8 )))  &lt;= '20:01:00')
+ 		and  data_time &gt;= #{0} and data_time &lt;= #{1} and data_time  &gt;= '2017-06-17'
+        group by convert(varchar(10),data_time,120)+' 00:00:00' order by data_time asc 
+    </select>
+    <!-- 金杯日报表按班统计时间为夜班20：01-23：59 -->
+     <select id="selectDailyReportForClass2_1_jb" resultType="com.saitejn.pojo.JbRawdataHandle1">
+    	select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time ,sum(time_nh3_yield) time_nh3_yield ,
+    	sum(shift) shift ,count(orig_id)orig_id,sum(time_electric_consume) time_electric_consume ,
+    	sum(time_raw_gas_consume) time_raw_gas_consume ,2 'classNumber' from jb_rawdata_handle_1 where
+ 		(((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '20:01:00' and
+ 		((RIGHT (convert(varchar(50),data_time,120)  ,8 )))  &lt;= '23:59:00')
+ 		and  data_time &gt;= #{0} and data_time &lt;= #{1} and data_time  &gt;= '2017-06-17'
+        group by convert(varchar(10),data_time,120)+' 00:00:00' order by data_time asc 
+    </select>
+  <!--   金杯日报表按班统计时间为次日夜班00：00-08：01 -->
+     <select id="selectDailyReportForClass2_2_jb" resultType="com.saitejn.pojo.JbRawdataHandle1">
+    	select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time ,sum(time_nh3_yield) time_nh3_yield ,
+    	sum(shift) shift ,count(orig_id)orig_id,sum(time_electric_consume) time_electric_consume ,
+    	sum(time_raw_gas_consume) time_raw_gas_consume ,2 'classNumber' from jb_rawdata_handle_1 where
+ 		(((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '00:00:00' and
+ 		((RIGHT (convert(varchar(50),data_time,120)  ,8 )))  &lt;= '08:01:00')
+ 		and  data_time &gt;= #{0} and data_time &lt;= #{1} and data_time  &gt;= '2017-06-17'
+        group by convert(varchar(10),data_time,120)+' 00:00:00' order by data_time asc 
+    </select>
+</mapper>

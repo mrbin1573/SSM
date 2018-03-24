@@ -1,0 +1,22 @@
+package com.saitejn.mapper;
+
+import com.saitejn.pojo.GajyUploadMiddle;
+
+/**
+ * 广安玖源
+ * @GajyMapper
+ * @Description
+ * @author 罗康元
+ * @company 成都赛特工信科技有限公司
+ * @date 2017-8-8
+ */
+public interface GajyMapper {
+	//保存数据到上传临时表中
+	public void gajyInsertToMiddle(GajyUploadMiddle gajyUploadMiddle) throws Exception;
+	//保存数据到原始表中
+	public void gajyInsertToExcel(GajyUploadMiddle gajyUploadMiddle) throws Exception;
+	//查询数据库是否有相同记录
+	public int gajyfindInputByTime(String time) throws Exception;
+	//删除上传数据临时表中的数据
+	public void gajyDeleteUploadMiddle()throws Exception;
+}

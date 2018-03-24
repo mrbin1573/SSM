@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+    <button onclick="downloadSG()">pdf</button>
+    <div id="appmsg">
+        <h3>12341235345</h3>
+        <h3>12341235345</h3>
+        <h3>你好</h3>
+        <h3>12341235345</h3>
+        <h3>12341235345</h3>
+
+        
+
+
+
+
+    </div>
+
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jspdf.min.js"></script>
+    <script type="text/javascript" src="js/jspdf.debug.js"></script>
+    <script type="text/javascript" src="js/html2canvas.js"></script>
+
+    <script>
+        function downloadSG() {
+            html2canvas($('#appmsg'), {
+                height: 1000,
+                onrendered: function(canvas) {
+                    var imgData = canvas.toDataURL('img/notice/png');
+                    var doc = new jsPDF('p', 'px', 'a3');
+                    //第一列 左右边距  第二列上下边距  第三列是图片左右拉伸  第四列 图片上下拉伸  
+                    doc.addImage(imgData, 'PNG', 10, 10, 0, 0);
+                    doc.addPage();
+                    doc.addImage(imgData, 'PNG', 10, -900, 0, 0);
+                    doc.save('test.pdf');
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>

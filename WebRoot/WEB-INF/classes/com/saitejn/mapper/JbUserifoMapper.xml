@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JbUserifoMapper" >
+  <resultMap id="BaseResultMap" type="com.saitejn.pojo.JbUserifo" >
+    <id column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="uloginname" property="uloginname" jdbcType="VARCHAR" />
+    <result column="uloginpass" property="uloginpass" jdbcType="VARCHAR" />
+    <result column="utruename" property="utruename" jdbcType="VARCHAR" />
+    <result column="uphone" property="uphone" jdbcType="VARCHAR" />
+    <result column="ucycle" property="ucycle" jdbcType="INTEGER" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="headimage" property="headimage" jdbcType="VARCHAR" />
+    <result column="classinfo" property="classinfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    uid, uloginname, uloginpass, utruename, uphone, ucycle, company, headimage, classinfo
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.saitejn.pojo.JbUserifoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jb_userifo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jb_userifo
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jb_userifo
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.saitejn.pojo.JbUserifoExample" >
+    delete from jb_userifo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.saitejn.pojo.JbUserifo" >
+    insert into jb_userifo (uid, uloginname, uloginpass, 
+      utruename, uphone, ucycle, 
+      company, headimage, classinfo
+      )
+    values (#{uid,jdbcType=INTEGER}, #{uloginname,jdbcType=VARCHAR}, #{uloginpass,jdbcType=VARCHAR}, 
+      #{utruename,jdbcType=VARCHAR}, #{uphone,jdbcType=VARCHAR}, #{ucycle,jdbcType=INTEGER}, 
+      #{company,jdbcType=VARCHAR}, #{headimage,jdbcType=VARCHAR}, #{classinfo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.saitejn.pojo.JbUserifo" >
+    insert into jb_userifo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="uloginname != null" >
+        uloginname,
+      </if>
+      <if test="uloginpass != null" >
+        uloginpass,
+      </if>
+      <if test="utruename != null" >
+        utruename,
+      </if>
+      <if test="uphone != null" >
+        uphone,
+      </if>
+      <if test="ucycle != null" >
+        ucycle,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="headimage != null" >
+        headimage,
+      </if>
+      <if test="classinfo != null" >
+        classinfo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="uloginname != null" >
+        #{uloginname,jdbcType=VARCHAR},
+      </if>
+      <if test="uloginpass != null" >
+        #{uloginpass,jdbcType=VARCHAR},
+      </if>
+      <if test="utruename != null" >
+        #{utruename,jdbcType=VARCHAR},
+      </if>
+      <if test="uphone != null" >
+        #{uphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ucycle != null" >
+        #{ucycle,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="headimage != null" >
+        #{headimage,jdbcType=VARCHAR},
+      </if>
+      <if test="classinfo != null" >
+        #{classinfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.saitejn.pojo.JbUserifoExample" resultType="java.lang.Integer" >
+    select count(*) from jb_userifo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update jb_userifo
+    <set >
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uloginname != null" >
+        uloginname = #{record.uloginname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uloginpass != null" >
+        uloginpass = #{record.uloginpass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.utruename != null" >
+        utruename = #{record.utruename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uphone != null" >
+        uphone = #{record.uphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ucycle != null" >
+        ucycle = #{record.ucycle,jdbcType=INTEGER},
+      </if>
+      <if test="record.company != null" >
+        company = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.headimage != null" >
+        headimage = #{record.headimage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classinfo != null" >
+        classinfo = #{record.classinfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update jb_userifo
+    set uid = #{record.uid,jdbcType=INTEGER},
+      uloginname = #{record.uloginname,jdbcType=VARCHAR},
+      uloginpass = #{record.uloginpass,jdbcType=VARCHAR},
+      utruename = #{record.utruename,jdbcType=VARCHAR},
+      uphone = #{record.uphone,jdbcType=VARCHAR},
+      ucycle = #{record.ucycle,jdbcType=INTEGER},
+      company = #{record.company,jdbcType=VARCHAR},
+      headimage = #{record.headimage,jdbcType=VARCHAR},
+      classinfo = #{record.classinfo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saitejn.pojo.JbUserifo" >
+    update jb_userifo
+    <set >
+      <if test="uloginname != null" >
+        uloginname = #{uloginname,jdbcType=VARCHAR},
+      </if>
+      <if test="uloginpass != null" >
+        uloginpass = #{uloginpass,jdbcType=VARCHAR},
+      </if>
+      <if test="utruename != null" >
+        utruename = #{utruename,jdbcType=VARCHAR},
+      </if>
+      <if test="uphone != null" >
+        uphone = #{uphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ucycle != null" >
+        ucycle = #{ucycle,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="headimage != null" >
+        headimage = #{headimage,jdbcType=VARCHAR},
+      </if>
+      <if test="classinfo != null" >
+        classinfo = #{classinfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saitejn.pojo.JbUserifo" >
+    update jb_userifo
+    set uloginname = #{uloginname,jdbcType=VARCHAR},
+      uloginpass = #{uloginpass,jdbcType=VARCHAR},
+      utruename = #{utruename,jdbcType=VARCHAR},
+      uphone = #{uphone,jdbcType=VARCHAR},
+      ucycle = #{ucycle,jdbcType=INTEGER},
+      company = #{company,jdbcType=VARCHAR},
+      headimage = #{headimage,jdbcType=VARCHAR},
+      classinfo = #{classinfo,jdbcType=VARCHAR}
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>

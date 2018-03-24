@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.UserCustomerMapper" >
+
+  <select id="selectByName" parameterType="String" resultType="com.saitejn.pojo.JbUserifo">
+  	select * from jb_userifo where uloginname like '${_parameter}'
+  </select>
+  <insert id="insertUser" parameterType="com.saitejn.pojo.JbuserInfoVo" useGeneratedKeys="true">
+  	insert into jb_userifo (uloginname,uloginpass,utruename,ucompany)values (#{uloginname},#{uloginpass},#{utruename},#{ucompany})
+  </insert>
+   <update id="updateUser">
+    	UPDATE jb_userifo SET classinfo = #{0} WHERE uid = #{1} 
+   </update>
+   <insert id="saveClassifo" parameterType="com.saitejn.pojo.JbClassinfor">
+   	insert into jb_classinfor (class_time,morclass,aftclass,eveclass) values (#{class_time},#{morclass},#{aftclass},#{eveclass})
+   </insert>
+   <update id="updateloginTime">
+   	update  jb_userifo  set lastLogin =#{0}  where jb_userifo.uid=#{1}
+   </update>
+    <update id="updateExitTime">
+   	update  jb_userifo  set lastexit =#{0}  where jb_userifo.uid=#{1}
+   </update>
+   <select id="selectByAdminName" parameterType="String" resultType="com.saitejn.pojo.Admin">
+  	select * from admin where adminname like '%${_parameter}%'
+  </select>
+ <!--  <update id="updateUser">
+  		UPDATE jb_userifo SET uloginname = #{0}, utruename = #{1} , uloginpass = #{2} WHERE uid = #{3} 
+  </update> -->
+  <update id="updateUserifo" parameterType="com.saitejn.pojo.JbUserifo" >
+        update jb_userifo set uloginname=#{uloginname},utruename=#{utruename},sex=#{sex},uphone=#{uphone},email=#{email},headimage=#{headimage} where uid=#{uid}
+    </update>
+    
+  <select id="selectAlljbUser" resultType="com.saitejn.pojo.JbUserifo">
+		select * from jb_userifo where company ='金杯有限公司' order by uid asc
+	</select>
+</mapper>

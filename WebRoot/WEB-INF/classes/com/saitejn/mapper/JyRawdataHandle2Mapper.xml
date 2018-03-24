@@ -1,0 +1,1047 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JyRawdataHandle2Mapper" >
+  <resultMap id="BaseResultMap" type="com.saitejn.pojo.JyRawdataHandle2" >
+    <result column="时间" property="时间" jdbcType="TIMESTAMP" />
+    <result column="TI_501" property="TI_501" jdbcType="FLOAT" />
+    <result column="TI_1_51" property="TI_1_51" jdbcType="FLOAT" />
+    <result column="TI_1_85" property="TI_1_85" jdbcType="FLOAT" />
+    <result column="TI_1_90" property="TI_1_90" jdbcType="FLOAT" />
+    <result column="TI_10" property="TI_10" jdbcType="FLOAT" />
+    <result column="TI_281" property="TI_281" jdbcType="FLOAT" />
+    <result column="TI_111" property="TI_111" jdbcType="FLOAT" />
+    <result column="TI_19" property="TI_19" jdbcType="FLOAT" />
+    <result column="TI_272" property="TI_272" jdbcType="FLOAT" />
+    <result column="TI_22" property="TI_22" jdbcType="FLOAT" />
+    <result column="TI_24" property="TI_24" jdbcType="FLOAT" />
+    <result column="TI_266" property="TI_266" jdbcType="FLOAT" />
+    <result column="TI_31" property="TI_31" jdbcType="FLOAT" />
+    <result column="TI_70" property="TI_70" jdbcType="FLOAT" />
+    <result column="TI_267" property="TI_267" jdbcType="FLOAT" />
+    <result column="TI_85A" property="TI_85A" jdbcType="FLOAT" />
+    <result column="TI_522" property="TI_522" jdbcType="FLOAT" />
+    <result column="TI_81" property="TI_81" jdbcType="FLOAT" />
+    <result column="TI_45" property="TI_45" jdbcType="FLOAT" />
+    <result column="TI_12" property="TI_12" jdbcType="FLOAT" />
+    <result column="FI_1" property="FI_1" jdbcType="FLOAT" />
+    <result column="FI_2" property="FI_2" jdbcType="FLOAT" />
+    <result column="FI_3" property="FI_3" jdbcType="FLOAT" />
+    <result column="FI_51" property="FI_51" jdbcType="FLOAT" />
+    <result column="FI_4001" property="FI_4001" jdbcType="FLOAT" />
+    <result column="FI_63" property="FI_63" jdbcType="FLOAT" />
+    <result column="FI_27" property="FI_27" jdbcType="FLOAT" />
+    <result column="FI_5" property="FI_5" jdbcType="FLOAT" />
+    <result column="W_C" property="w_C" jdbcType="FLOAT" />
+    <result column="A_C" property="a_C" jdbcType="FLOAT" />
+    <result column="FI_2000" property="FI_2000" jdbcType="FLOAT" />
+    <result column="FI_7" property="FI_7" jdbcType="FLOAT" />
+    <result column="FI_84" property="FI_84" jdbcType="FLOAT" />
+    <result column="FI_84A" property="FI_84A" jdbcType="FLOAT" />
+    <result column="FI_84B" property="FI_84B" jdbcType="FLOAT" />
+    <result column="FI_314" property="FI_314" jdbcType="FLOAT" />
+    <result column="FI_3110" property="FI_3110" jdbcType="FLOAT" />
+    <result column="FI_3116" property="FI_3116" jdbcType="FLOAT" />
+    <result column="FI_3117" property="FI_3117" jdbcType="FLOAT" />
+    <result column="FI_2301" property="FI_2301" jdbcType="FLOAT" />
+    <result column="FI_50" property="FI_50" jdbcType="FLOAT" />
+    <result column="FI_1502" property="FI_1502" jdbcType="FLOAT" />
+    <result column="PI_657" property="PI_657" jdbcType="FLOAT" />
+    <result column="PI_4" property="PI_4" jdbcType="FLOAT" />
+    <result column="PI_5" property="PI_5" jdbcType="FLOAT" />
+    <result column="PI_6" property="PI_6" jdbcType="FLOAT" />
+    <result column="PI_80" property="PI_80" jdbcType="FLOAT" />
+    <result column="PI_82" property="PI_82" jdbcType="FLOAT" />
+    <result column="PI_9" property="PI_9" jdbcType="FLOAT" />
+    <result column="PI_19" property="PI_19" jdbcType="FLOAT" />
+    <result column="PI_25" property="PI_25" jdbcType="FLOAT" />
+    <result column="AIA_5" property="AIA_5" jdbcType="FLOAT" />
+    <result column="AIA_5A" property="AIA_5A" jdbcType="FLOAT" />
+    <result column="AI_1" property="AI_1" jdbcType="FLOAT" />
+    <result column="AI_1B" property="AI_1B" jdbcType="FLOAT" />
+    <result column="AI_1401" property="AI_1401" jdbcType="FLOAT" />
+    <result column="AI_1401HN" property="AI_1401HN" jdbcType="FLOAT" />
+    <result column="累积氨产量" property="累积氨产量" jdbcType="FLOAT" />
+    <result column="累积总气耗" property="累积总气耗" jdbcType="FLOAT" />
+    <result column="累积原料气耗" property="累积原料气耗" jdbcType="FLOAT" />
+    <result column="累积燃料气耗" property="累积燃料气耗" jdbcType="FLOAT" />
+    <result column="累积快锅燃气" property="累积快锅燃气" jdbcType="FLOAT" />
+    <result column="累积快锅产汽" property="累积快锅产汽" jdbcType="FLOAT" />
+    <result column="时段氨产量" property="时段氨产量" jdbcType="FLOAT" />
+    <result column="时段总气耗" property="时段总气耗" jdbcType="FLOAT" />
+    <result column="时段原料气耗" property="时段原料气耗" jdbcType="FLOAT" />
+    <result column="时段燃料气耗" property="时段燃料气耗" jdbcType="FLOAT" />
+    <result column="时段快锅气耗" property="时段快锅气耗" jdbcType="FLOAT" />
+    <result column="时段净蒸汽耗" property="时段净蒸汽耗" jdbcType="FLOAT" />
+    <result column="时段气耗" property="时段气耗" jdbcType="FLOAT" />
+    <result column="时段气耗_含蒸汽折算" property="时段气耗_含蒸汽折算" jdbcType="FLOAT" />
+    <result column="系统负荷" property="系统负荷" jdbcType="FLOAT" />
+    <result column="小时氨产量" property="小时氨产量" jdbcType="FLOAT" />
+    <result column="吨氨综合消耗" property="吨氨综合消耗" jdbcType="FLOAT" />
+    <result column="吨氨气耗" property="吨氨气耗" jdbcType="FLOAT" />
+    <result column="吨氨原料气耗" property="吨氨原料气耗" jdbcType="FLOAT" />
+    <result column="吨氨燃料气耗" property="吨氨燃料气耗" jdbcType="FLOAT" />
+    <result column="吨氨气耗_含蒸汽折算" property="吨氨气耗_含蒸汽折算" jdbcType="FLOAT" />
+    <result column="班次" property="班次" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    时间, TI_501, TI_1_51, TI_1_85, TI_1_90, TI_10, TI_281, TI_111, TI_19, TI_272, TI_22, 
+    TI_24, TI_266, TI_31, TI_70, TI_267, TI_85A, TI_522, TI_81, TI_45, TI_12, FI_1, FI_2, 
+    FI_3, FI_51, FI_4001, FI_63, FI_27, FI_5, W_C, A_C, FI_2000, FI_7, FI_84, FI_84A, 
+    FI_84B, FI_314, FI_3110, FI_3116, FI_3117, FI_2301, FI_50, FI_1502, PI_657, PI_4, 
+    PI_5, PI_6, PI_80, PI_82, PI_9, PI_19, PI_25, AIA_5, AIA_5A, AI_1, AI_1B, AI_1401, 
+    AI_1401HN, 累积氨产量, 累积总气耗, 累积原料气耗, 累积燃料气耗, 累积快锅燃气, 累积快锅产汽, 时段氨产量, 时段总气耗, 时段原料气耗, 时段燃料气耗, 
+    时段快锅气耗, 时段净蒸汽耗, 时段气耗, 时段气耗_含蒸汽折算, 系统负荷, 小时氨产量, 吨氨综合消耗, 吨氨气耗, 吨氨原料气耗, 吨氨燃料气耗, 吨氨气耗_含蒸汽折算, 
+    班次
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.saitejn.pojo.JyRawdataHandle2Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jy_rawdata_handle_2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.saitejn.pojo.JyRawdataHandle2Example" >
+    delete from jy_rawdata_handle_2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.saitejn.pojo.JyRawdataHandle2" >
+    insert into jy_rawdata_handle_2 (时间, TI_501, TI_1_51, 
+      TI_1_85, TI_1_90, TI_10, 
+      TI_281, TI_111, TI_19, TI_272, 
+      TI_22, TI_24, TI_266, TI_31, 
+      TI_70, TI_267, TI_85A, TI_522, 
+      TI_81, TI_45, TI_12, FI_1, 
+      FI_2, FI_3, FI_51, FI_4001, 
+      FI_63, FI_27, FI_5, W_C, 
+      A_C, FI_2000, FI_7, FI_84, 
+      FI_84A, FI_84B, FI_314, FI_3110, 
+      FI_3116, FI_3117, FI_2301, 
+      FI_50, FI_1502, PI_657, PI_4, 
+      PI_5, PI_6, PI_80, PI_82, 
+      PI_9, PI_19, PI_25, AIA_5, 
+      AIA_5A, AI_1, AI_1B, AI_1401, 
+      AI_1401HN, 累积氨产量, 累积总气耗, 
+      累积原料气耗, 累积燃料气耗, 累积快锅燃气, 累积快锅产汽, 
+      时段氨产量, 时段总气耗, 时段原料气耗, 时段燃料气耗, 
+      时段快锅气耗, 时段净蒸汽耗, 时段气耗, 时段气耗_含蒸汽折算, 
+      系统负荷, 小时氨产量, 吨氨综合消耗, 吨氨气耗, 
+      吨氨原料气耗, 吨氨燃料气耗, 吨氨气耗_含蒸汽折算, 
+      班次)
+    values (#{时间,jdbcType=TIMESTAMP}, #{TI_501,jdbcType=FLOAT}, #{TI_1_51,jdbcType=FLOAT}, 
+      #{TI_1_85,jdbcType=FLOAT}, #{TI_1_90,jdbcType=FLOAT}, #{TI_10,jdbcType=FLOAT}, 
+      #{TI_281,jdbcType=FLOAT}, #{TI_111,jdbcType=FLOAT}, #{TI_19,jdbcType=FLOAT}, #{TI_272,jdbcType=FLOAT}, 
+      #{TI_22,jdbcType=FLOAT}, #{TI_24,jdbcType=FLOAT}, #{TI_266,jdbcType=FLOAT}, #{TI_31,jdbcType=FLOAT}, 
+      #{TI_70,jdbcType=FLOAT}, #{TI_267,jdbcType=FLOAT}, #{TI_85A,jdbcType=FLOAT}, #{TI_522,jdbcType=FLOAT}, 
+      #{TI_81,jdbcType=FLOAT}, #{TI_45,jdbcType=FLOAT}, #{TI_12,jdbcType=FLOAT}, #{FI_1,jdbcType=FLOAT}, 
+      #{FI_2,jdbcType=FLOAT}, #{FI_3,jdbcType=FLOAT}, #{FI_51,jdbcType=FLOAT}, #{FI_4001,jdbcType=FLOAT}, 
+      #{FI_63,jdbcType=FLOAT}, #{FI_27,jdbcType=FLOAT}, #{FI_5,jdbcType=FLOAT}, #{w_C,jdbcType=FLOAT}, 
+      #{a_C,jdbcType=FLOAT}, #{FI_2000,jdbcType=FLOAT}, #{FI_7,jdbcType=FLOAT}, #{FI_84,jdbcType=FLOAT}, 
+      #{FI_84A,jdbcType=FLOAT}, #{FI_84B,jdbcType=FLOAT}, #{FI_314,jdbcType=FLOAT}, #{FI_3110,jdbcType=FLOAT}, 
+      #{FI_3116,jdbcType=FLOAT}, #{FI_3117,jdbcType=FLOAT}, #{FI_2301,jdbcType=FLOAT}, 
+      #{FI_50,jdbcType=FLOAT}, #{FI_1502,jdbcType=FLOAT}, #{PI_657,jdbcType=FLOAT}, #{PI_4,jdbcType=FLOAT}, 
+      #{PI_5,jdbcType=FLOAT}, #{PI_6,jdbcType=FLOAT}, #{PI_80,jdbcType=FLOAT}, #{PI_82,jdbcType=FLOAT}, 
+      #{PI_9,jdbcType=FLOAT}, #{PI_19,jdbcType=FLOAT}, #{PI_25,jdbcType=FLOAT}, #{AIA_5,jdbcType=FLOAT}, 
+      #{AIA_5A,jdbcType=FLOAT}, #{AI_1,jdbcType=FLOAT}, #{AI_1B,jdbcType=FLOAT}, #{AI_1401,jdbcType=FLOAT}, 
+      #{AI_1401HN,jdbcType=FLOAT}, #{累积氨产量,jdbcType=FLOAT}, #{累积总气耗,jdbcType=FLOAT}, 
+      #{累积原料气耗,jdbcType=FLOAT}, #{累积燃料气耗,jdbcType=FLOAT}, #{累积快锅燃气,jdbcType=FLOAT}, #{累积快锅产汽,jdbcType=FLOAT}, 
+      #{时段氨产量,jdbcType=FLOAT}, #{时段总气耗,jdbcType=FLOAT}, #{时段原料气耗,jdbcType=FLOAT}, #{时段燃料气耗,jdbcType=FLOAT}, 
+      #{时段快锅气耗,jdbcType=FLOAT}, #{时段净蒸汽耗,jdbcType=FLOAT}, #{时段气耗,jdbcType=FLOAT}, #{时段气耗_含蒸汽折算,jdbcType=FLOAT}, 
+      #{系统负荷,jdbcType=FLOAT}, #{小时氨产量,jdbcType=FLOAT}, #{吨氨综合消耗,jdbcType=FLOAT}, #{吨氨气耗,jdbcType=FLOAT}, 
+      #{吨氨原料气耗,jdbcType=FLOAT}, #{吨氨燃料气耗,jdbcType=FLOAT}, #{吨氨气耗_含蒸汽折算,jdbcType=FLOAT}, 
+      #{班次,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saitejn.pojo.JyRawdataHandle2" >
+    insert into jy_rawdata_handle_2
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="时间 != null" >
+        时间,
+      </if>
+      <if test="TI_501 != null" >
+        TI_501,
+      </if>
+      <if test="TI_1_51 != null" >
+        TI_1_51,
+      </if>
+      <if test="TI_1_85 != null" >
+        TI_1_85,
+      </if>
+      <if test="TI_1_90 != null" >
+        TI_1_90,
+      </if>
+      <if test="TI_10 != null" >
+        TI_10,
+      </if>
+      <if test="TI_281 != null" >
+        TI_281,
+      </if>
+      <if test="TI_111 != null" >
+        TI_111,
+      </if>
+      <if test="TI_19 != null" >
+        TI_19,
+      </if>
+      <if test="TI_272 != null" >
+        TI_272,
+      </if>
+      <if test="TI_22 != null" >
+        TI_22,
+      </if>
+      <if test="TI_24 != null" >
+        TI_24,
+      </if>
+      <if test="TI_266 != null" >
+        TI_266,
+      </if>
+      <if test="TI_31 != null" >
+        TI_31,
+      </if>
+      <if test="TI_70 != null" >
+        TI_70,
+      </if>
+      <if test="TI_267 != null" >
+        TI_267,
+      </if>
+      <if test="TI_85A != null" >
+        TI_85A,
+      </if>
+      <if test="TI_522 != null" >
+        TI_522,
+      </if>
+      <if test="TI_81 != null" >
+        TI_81,
+      </if>
+      <if test="TI_45 != null" >
+        TI_45,
+      </if>
+      <if test="TI_12 != null" >
+        TI_12,
+      </if>
+      <if test="FI_1 != null" >
+        FI_1,
+      </if>
+      <if test="FI_2 != null" >
+        FI_2,
+      </if>
+      <if test="FI_3 != null" >
+        FI_3,
+      </if>
+      <if test="FI_51 != null" >
+        FI_51,
+      </if>
+      <if test="FI_4001 != null" >
+        FI_4001,
+      </if>
+      <if test="FI_63 != null" >
+        FI_63,
+      </if>
+      <if test="FI_27 != null" >
+        FI_27,
+      </if>
+      <if test="FI_5 != null" >
+        FI_5,
+      </if>
+      <if test="w_C != null" >
+        W_C,
+      </if>
+      <if test="a_C != null" >
+        A_C,
+      </if>
+      <if test="FI_2000 != null" >
+        FI_2000,
+      </if>
+      <if test="FI_7 != null" >
+        FI_7,
+      </if>
+      <if test="FI_84 != null" >
+        FI_84,
+      </if>
+      <if test="FI_84A != null" >
+        FI_84A,
+      </if>
+      <if test="FI_84B != null" >
+        FI_84B,
+      </if>
+      <if test="FI_314 != null" >
+        FI_314,
+      </if>
+      <if test="FI_3110 != null" >
+        FI_3110,
+      </if>
+      <if test="FI_3116 != null" >
+        FI_3116,
+      </if>
+      <if test="FI_3117 != null" >
+        FI_3117,
+      </if>
+      <if test="FI_2301 != null" >
+        FI_2301,
+      </if>
+      <if test="FI_50 != null" >
+        FI_50,
+      </if>
+      <if test="FI_1502 != null" >
+        FI_1502,
+      </if>
+      <if test="PI_657 != null" >
+        PI_657,
+      </if>
+      <if test="PI_4 != null" >
+        PI_4,
+      </if>
+      <if test="PI_5 != null" >
+        PI_5,
+      </if>
+      <if test="PI_6 != null" >
+        PI_6,
+      </if>
+      <if test="PI_80 != null" >
+        PI_80,
+      </if>
+      <if test="PI_82 != null" >
+        PI_82,
+      </if>
+      <if test="PI_9 != null" >
+        PI_9,
+      </if>
+      <if test="PI_19 != null" >
+        PI_19,
+      </if>
+      <if test="PI_25 != null" >
+        PI_25,
+      </if>
+      <if test="AIA_5 != null" >
+        AIA_5,
+      </if>
+      <if test="AIA_5A != null" >
+        AIA_5A,
+      </if>
+      <if test="AI_1 != null" >
+        AI_1,
+      </if>
+      <if test="AI_1B != null" >
+        AI_1B,
+      </if>
+      <if test="AI_1401 != null" >
+        AI_1401,
+      </if>
+      <if test="AI_1401HN != null" >
+        AI_1401HN,
+      </if>
+      <if test="累积氨产量 != null" >
+        累积氨产量,
+      </if>
+      <if test="累积总气耗 != null" >
+        累积总气耗,
+      </if>
+      <if test="累积原料气耗 != null" >
+        累积原料气耗,
+      </if>
+      <if test="累积燃料气耗 != null" >
+        累积燃料气耗,
+      </if>
+      <if test="累积快锅燃气 != null" >
+        累积快锅燃气,
+      </if>
+      <if test="累积快锅产汽 != null" >
+        累积快锅产汽,
+      </if>
+      <if test="时段氨产量 != null" >
+        时段氨产量,
+      </if>
+      <if test="时段总气耗 != null" >
+        时段总气耗,
+      </if>
+      <if test="时段原料气耗 != null" >
+        时段原料气耗,
+      </if>
+      <if test="时段燃料气耗 != null" >
+        时段燃料气耗,
+      </if>
+      <if test="时段快锅气耗 != null" >
+        时段快锅气耗,
+      </if>
+      <if test="时段净蒸汽耗 != null" >
+        时段净蒸汽耗,
+      </if>
+      <if test="时段气耗 != null" >
+        时段气耗,
+      </if>
+      <if test="时段气耗_含蒸汽折算 != null" >
+        时段气耗_含蒸汽折算,
+      </if>
+      <if test="系统负荷 != null" >
+        系统负荷,
+      </if>
+      <if test="小时氨产量 != null" >
+        小时氨产量,
+      </if>
+      <if test="吨氨综合消耗 != null" >
+        吨氨综合消耗,
+      </if>
+      <if test="吨氨气耗 != null" >
+        吨氨气耗,
+      </if>
+      <if test="吨氨原料气耗 != null" >
+        吨氨原料气耗,
+      </if>
+      <if test="吨氨燃料气耗 != null" >
+        吨氨燃料气耗,
+      </if>
+      <if test="吨氨气耗_含蒸汽折算 != null" >
+        吨氨气耗_含蒸汽折算,
+      </if>
+      <if test="班次 != null" >
+        班次,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="时间 != null" >
+        #{时间,jdbcType=TIMESTAMP},
+      </if>
+      <if test="TI_501 != null" >
+        #{TI_501,jdbcType=FLOAT},
+      </if>
+      <if test="TI_1_51 != null" >
+        #{TI_1_51,jdbcType=FLOAT},
+      </if>
+      <if test="TI_1_85 != null" >
+        #{TI_1_85,jdbcType=FLOAT},
+      </if>
+      <if test="TI_1_90 != null" >
+        #{TI_1_90,jdbcType=FLOAT},
+      </if>
+      <if test="TI_10 != null" >
+        #{TI_10,jdbcType=FLOAT},
+      </if>
+      <if test="TI_281 != null" >
+        #{TI_281,jdbcType=FLOAT},
+      </if>
+      <if test="TI_111 != null" >
+        #{TI_111,jdbcType=FLOAT},
+      </if>
+      <if test="TI_19 != null" >
+        #{TI_19,jdbcType=FLOAT},
+      </if>
+      <if test="TI_272 != null" >
+        #{TI_272,jdbcType=FLOAT},
+      </if>
+      <if test="TI_22 != null" >
+        #{TI_22,jdbcType=FLOAT},
+      </if>
+      <if test="TI_24 != null" >
+        #{TI_24,jdbcType=FLOAT},
+      </if>
+      <if test="TI_266 != null" >
+        #{TI_266,jdbcType=FLOAT},
+      </if>
+      <if test="TI_31 != null" >
+        #{TI_31,jdbcType=FLOAT},
+      </if>
+      <if test="TI_70 != null" >
+        #{TI_70,jdbcType=FLOAT},
+      </if>
+      <if test="TI_267 != null" >
+        #{TI_267,jdbcType=FLOAT},
+      </if>
+      <if test="TI_85A != null" >
+        #{TI_85A,jdbcType=FLOAT},
+      </if>
+      <if test="TI_522 != null" >
+        #{TI_522,jdbcType=FLOAT},
+      </if>
+      <if test="TI_81 != null" >
+        #{TI_81,jdbcType=FLOAT},
+      </if>
+      <if test="TI_45 != null" >
+        #{TI_45,jdbcType=FLOAT},
+      </if>
+      <if test="TI_12 != null" >
+        #{TI_12,jdbcType=FLOAT},
+      </if>
+      <if test="FI_1 != null" >
+        #{FI_1,jdbcType=FLOAT},
+      </if>
+      <if test="FI_2 != null" >
+        #{FI_2,jdbcType=FLOAT},
+      </if>
+      <if test="FI_3 != null" >
+        #{FI_3,jdbcType=FLOAT},
+      </if>
+      <if test="FI_51 != null" >
+        #{FI_51,jdbcType=FLOAT},
+      </if>
+      <if test="FI_4001 != null" >
+        #{FI_4001,jdbcType=FLOAT},
+      </if>
+      <if test="FI_63 != null" >
+        #{FI_63,jdbcType=FLOAT},
+      </if>
+      <if test="FI_27 != null" >
+        #{FI_27,jdbcType=FLOAT},
+      </if>
+      <if test="FI_5 != null" >
+        #{FI_5,jdbcType=FLOAT},
+      </if>
+      <if test="w_C != null" >
+        #{w_C,jdbcType=FLOAT},
+      </if>
+      <if test="a_C != null" >
+        #{a_C,jdbcType=FLOAT},
+      </if>
+      <if test="FI_2000 != null" >
+        #{FI_2000,jdbcType=FLOAT},
+      </if>
+      <if test="FI_7 != null" >
+        #{FI_7,jdbcType=FLOAT},
+      </if>
+      <if test="FI_84 != null" >
+        #{FI_84,jdbcType=FLOAT},
+      </if>
+      <if test="FI_84A != null" >
+        #{FI_84A,jdbcType=FLOAT},
+      </if>
+      <if test="FI_84B != null" >
+        #{FI_84B,jdbcType=FLOAT},
+      </if>
+      <if test="FI_314 != null" >
+        #{FI_314,jdbcType=FLOAT},
+      </if>
+      <if test="FI_3110 != null" >
+        #{FI_3110,jdbcType=FLOAT},
+      </if>
+      <if test="FI_3116 != null" >
+        #{FI_3116,jdbcType=FLOAT},
+      </if>
+      <if test="FI_3117 != null" >
+        #{FI_3117,jdbcType=FLOAT},
+      </if>
+      <if test="FI_2301 != null" >
+        #{FI_2301,jdbcType=FLOAT},
+      </if>
+      <if test="FI_50 != null" >
+        #{FI_50,jdbcType=FLOAT},
+      </if>
+      <if test="FI_1502 != null" >
+        #{FI_1502,jdbcType=FLOAT},
+      </if>
+      <if test="PI_657 != null" >
+        #{PI_657,jdbcType=FLOAT},
+      </if>
+      <if test="PI_4 != null" >
+        #{PI_4,jdbcType=FLOAT},
+      </if>
+      <if test="PI_5 != null" >
+        #{PI_5,jdbcType=FLOAT},
+      </if>
+      <if test="PI_6 != null" >
+        #{PI_6,jdbcType=FLOAT},
+      </if>
+      <if test="PI_80 != null" >
+        #{PI_80,jdbcType=FLOAT},
+      </if>
+      <if test="PI_82 != null" >
+        #{PI_82,jdbcType=FLOAT},
+      </if>
+      <if test="PI_9 != null" >
+        #{PI_9,jdbcType=FLOAT},
+      </if>
+      <if test="PI_19 != null" >
+        #{PI_19,jdbcType=FLOAT},
+      </if>
+      <if test="PI_25 != null" >
+        #{PI_25,jdbcType=FLOAT},
+      </if>
+      <if test="AIA_5 != null" >
+        #{AIA_5,jdbcType=FLOAT},
+      </if>
+      <if test="AIA_5A != null" >
+        #{AIA_5A,jdbcType=FLOAT},
+      </if>
+      <if test="AI_1 != null" >
+        #{AI_1,jdbcType=FLOAT},
+      </if>
+      <if test="AI_1B != null" >
+        #{AI_1B,jdbcType=FLOAT},
+      </if>
+      <if test="AI_1401 != null" >
+        #{AI_1401,jdbcType=FLOAT},
+      </if>
+      <if test="AI_1401HN != null" >
+        #{AI_1401HN,jdbcType=FLOAT},
+      </if>
+      <if test="累积氨产量 != null" >
+        #{累积氨产量,jdbcType=FLOAT},
+      </if>
+      <if test="累积总气耗 != null" >
+        #{累积总气耗,jdbcType=FLOAT},
+      </if>
+      <if test="累积原料气耗 != null" >
+        #{累积原料气耗,jdbcType=FLOAT},
+      </if>
+      <if test="累积燃料气耗 != null" >
+        #{累积燃料气耗,jdbcType=FLOAT},
+      </if>
+      <if test="累积快锅燃气 != null" >
+        #{累积快锅燃气,jdbcType=FLOAT},
+      </if>
+      <if test="累积快锅产汽 != null" >
+        #{累积快锅产汽,jdbcType=FLOAT},
+      </if>
+      <if test="时段氨产量 != null" >
+        #{时段氨产量,jdbcType=FLOAT},
+      </if>
+      <if test="时段总气耗 != null" >
+        #{时段总气耗,jdbcType=FLOAT},
+      </if>
+      <if test="时段原料气耗 != null" >
+        #{时段原料气耗,jdbcType=FLOAT},
+      </if>
+      <if test="时段燃料气耗 != null" >
+        #{时段燃料气耗,jdbcType=FLOAT},
+      </if>
+      <if test="时段快锅气耗 != null" >
+        #{时段快锅气耗,jdbcType=FLOAT},
+      </if>
+      <if test="时段净蒸汽耗 != null" >
+        #{时段净蒸汽耗,jdbcType=FLOAT},
+      </if>
+      <if test="时段气耗 != null" >
+        #{时段气耗,jdbcType=FLOAT},
+      </if>
+      <if test="时段气耗_含蒸汽折算 != null" >
+        #{时段气耗_含蒸汽折算,jdbcType=FLOAT},
+      </if>
+      <if test="系统负荷 != null" >
+        #{系统负荷,jdbcType=FLOAT},
+      </if>
+      <if test="小时氨产量 != null" >
+        #{小时氨产量,jdbcType=FLOAT},
+      </if>
+      <if test="吨氨综合消耗 != null" >
+        #{吨氨综合消耗,jdbcType=FLOAT},
+      </if>
+      <if test="吨氨气耗 != null" >
+        #{吨氨气耗,jdbcType=FLOAT},
+      </if>
+      <if test="吨氨原料气耗 != null" >
+        #{吨氨原料气耗,jdbcType=FLOAT},
+      </if>
+      <if test="吨氨燃料气耗 != null" >
+        #{吨氨燃料气耗,jdbcType=FLOAT},
+      </if>
+      <if test="吨氨气耗_含蒸汽折算 != null" >
+        #{吨氨气耗_含蒸汽折算,jdbcType=FLOAT},
+      </if>
+      <if test="班次 != null" >
+        #{班次,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.saitejn.pojo.JyRawdataHandle2Example" resultType="java.lang.Integer" >
+    select count(*) from jy_rawdata_handle_2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update jy_rawdata_handle_2
+    <set >
+      <if test="record.时间 != null" >
+        时间 = #{record.时间,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.TI_501 != null" >
+        TI_501 = #{record.TI_501,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_1_51 != null" >
+        TI_1_51 = #{record.TI_1_51,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_1_85 != null" >
+        TI_1_85 = #{record.TI_1_85,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_1_90 != null" >
+        TI_1_90 = #{record.TI_1_90,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_10 != null" >
+        TI_10 = #{record.TI_10,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_281 != null" >
+        TI_281 = #{record.TI_281,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_111 != null" >
+        TI_111 = #{record.TI_111,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_19 != null" >
+        TI_19 = #{record.TI_19,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_272 != null" >
+        TI_272 = #{record.TI_272,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_22 != null" >
+        TI_22 = #{record.TI_22,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_24 != null" >
+        TI_24 = #{record.TI_24,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_266 != null" >
+        TI_266 = #{record.TI_266,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_31 != null" >
+        TI_31 = #{record.TI_31,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_70 != null" >
+        TI_70 = #{record.TI_70,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_267 != null" >
+        TI_267 = #{record.TI_267,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_85A != null" >
+        TI_85A = #{record.TI_85A,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_522 != null" >
+        TI_522 = #{record.TI_522,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_81 != null" >
+        TI_81 = #{record.TI_81,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_45 != null" >
+        TI_45 = #{record.TI_45,jdbcType=FLOAT},
+      </if>
+      <if test="record.TI_12 != null" >
+        TI_12 = #{record.TI_12,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_1 != null" >
+        FI_1 = #{record.FI_1,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_2 != null" >
+        FI_2 = #{record.FI_2,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_3 != null" >
+        FI_3 = #{record.FI_3,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_51 != null" >
+        FI_51 = #{record.FI_51,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_4001 != null" >
+        FI_4001 = #{record.FI_4001,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_63 != null" >
+        FI_63 = #{record.FI_63,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_27 != null" >
+        FI_27 = #{record.FI_27,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_5 != null" >
+        FI_5 = #{record.FI_5,jdbcType=FLOAT},
+      </if>
+      <if test="record.w_C != null" >
+        W_C = #{record.w_C,jdbcType=FLOAT},
+      </if>
+      <if test="record.a_C != null" >
+        A_C = #{record.a_C,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_2000 != null" >
+        FI_2000 = #{record.FI_2000,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_7 != null" >
+        FI_7 = #{record.FI_7,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_84 != null" >
+        FI_84 = #{record.FI_84,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_84A != null" >
+        FI_84A = #{record.FI_84A,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_84B != null" >
+        FI_84B = #{record.FI_84B,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_314 != null" >
+        FI_314 = #{record.FI_314,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_3110 != null" >
+        FI_3110 = #{record.FI_3110,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_3116 != null" >
+        FI_3116 = #{record.FI_3116,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_3117 != null" >
+        FI_3117 = #{record.FI_3117,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_2301 != null" >
+        FI_2301 = #{record.FI_2301,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_50 != null" >
+        FI_50 = #{record.FI_50,jdbcType=FLOAT},
+      </if>
+      <if test="record.FI_1502 != null" >
+        FI_1502 = #{record.FI_1502,jdbcType=FLOAT},
+      </if>
+      <if test="record.PI_657 != null" >
+        PI_657 = #{record.PI_657,jdbcType=FLOAT},
+      </if>
+      <if test="record.PI_4 != null" >
+        PI_4 = #{record.PI_4,jdbcType=FLOAT},
+      </if>
+      <if test="record.PI_5 != null" >
+        PI_5 = #{record.PI_5,jdbcType=FLOAT},
+      </if>
+      <if test="record.PI_6 != null" >
+        PI_6 = #{record.PI_6,jdbcType=FLOAT},
+      </if>
+      <if test="record.PI_80 != null" >
+        PI_80 = #{record.PI_80,jdbcType=FLOAT},
+      </if>
+      <if test="record.PI_82 != null" >
+        PI_82 = #{record.PI_82,jdbcType=FLOAT},
+      </if>
+      <if test="record.PI_9 != null" >
+        PI_9 = #{record.PI_9,jdbcType=FLOAT},
+      </if>
+      <if test="record.PI_19 != null" >
+        PI_19 = #{record.PI_19,jdbcType=FLOAT},
+      </if>
+      <if test="record.PI_25 != null" >
+        PI_25 = #{record.PI_25,jdbcType=FLOAT},
+      </if>
+      <if test="record.AIA_5 != null" >
+        AIA_5 = #{record.AIA_5,jdbcType=FLOAT},
+      </if>
+      <if test="record.AIA_5A != null" >
+        AIA_5A = #{record.AIA_5A,jdbcType=FLOAT},
+      </if>
+      <if test="record.AI_1 != null" >
+        AI_1 = #{record.AI_1,jdbcType=FLOAT},
+      </if>
+      <if test="record.AI_1B != null" >
+        AI_1B = #{record.AI_1B,jdbcType=FLOAT},
+      </if>
+      <if test="record.AI_1401 != null" >
+        AI_1401 = #{record.AI_1401,jdbcType=FLOAT},
+      </if>
+      <if test="record.AI_1401HN != null" >
+        AI_1401HN = #{record.AI_1401HN,jdbcType=FLOAT},
+      </if>
+      <if test="record.累积氨产量 != null" >
+        累积氨产量 = #{record.累积氨产量,jdbcType=FLOAT},
+      </if>
+      <if test="record.累积总气耗 != null" >
+        累积总气耗 = #{record.累积总气耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.累积原料气耗 != null" >
+        累积原料气耗 = #{record.累积原料气耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.累积燃料气耗 != null" >
+        累积燃料气耗 = #{record.累积燃料气耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.累积快锅燃气 != null" >
+        累积快锅燃气 = #{record.累积快锅燃气,jdbcType=FLOAT},
+      </if>
+      <if test="record.累积快锅产汽 != null" >
+        累积快锅产汽 = #{record.累积快锅产汽,jdbcType=FLOAT},
+      </if>
+      <if test="record.时段氨产量 != null" >
+        时段氨产量 = #{record.时段氨产量,jdbcType=FLOAT},
+      </if>
+      <if test="record.时段总气耗 != null" >
+        时段总气耗 = #{record.时段总气耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.时段原料气耗 != null" >
+        时段原料气耗 = #{record.时段原料气耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.时段燃料气耗 != null" >
+        时段燃料气耗 = #{record.时段燃料气耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.时段快锅气耗 != null" >
+        时段快锅气耗 = #{record.时段快锅气耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.时段净蒸汽耗 != null" >
+        时段净蒸汽耗 = #{record.时段净蒸汽耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.时段气耗 != null" >
+        时段气耗 = #{record.时段气耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.时段气耗_含蒸汽折算 != null" >
+        时段气耗_含蒸汽折算 = #{record.时段气耗_含蒸汽折算,jdbcType=FLOAT},
+      </if>
+      <if test="record.系统负荷 != null" >
+        系统负荷 = #{record.系统负荷,jdbcType=FLOAT},
+      </if>
+      <if test="record.小时氨产量 != null" >
+        小时氨产量 = #{record.小时氨产量,jdbcType=FLOAT},
+      </if>
+      <if test="record.吨氨综合消耗 != null" >
+        吨氨综合消耗 = #{record.吨氨综合消耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.吨氨气耗 != null" >
+        吨氨气耗 = #{record.吨氨气耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.吨氨原料气耗 != null" >
+        吨氨原料气耗 = #{record.吨氨原料气耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.吨氨燃料气耗 != null" >
+        吨氨燃料气耗 = #{record.吨氨燃料气耗,jdbcType=FLOAT},
+      </if>
+      <if test="record.吨氨气耗_含蒸汽折算 != null" >
+        吨氨气耗_含蒸汽折算 = #{record.吨氨气耗_含蒸汽折算,jdbcType=FLOAT},
+      </if>
+      <if test="record.班次 != null" >
+        班次 = #{record.班次,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update jy_rawdata_handle_2
+    set 时间 = #{record.时间,jdbcType=TIMESTAMP},
+      TI_501 = #{record.TI_501,jdbcType=FLOAT},
+      TI_1_51 = #{record.TI_1_51,jdbcType=FLOAT},
+      TI_1_85 = #{record.TI_1_85,jdbcType=FLOAT},
+      TI_1_90 = #{record.TI_1_90,jdbcType=FLOAT},
+      TI_10 = #{record.TI_10,jdbcType=FLOAT},
+      TI_281 = #{record.TI_281,jdbcType=FLOAT},
+      TI_111 = #{record.TI_111,jdbcType=FLOAT},
+      TI_19 = #{record.TI_19,jdbcType=FLOAT},
+      TI_272 = #{record.TI_272,jdbcType=FLOAT},
+      TI_22 = #{record.TI_22,jdbcType=FLOAT},
+      TI_24 = #{record.TI_24,jdbcType=FLOAT},
+      TI_266 = #{record.TI_266,jdbcType=FLOAT},
+      TI_31 = #{record.TI_31,jdbcType=FLOAT},
+      TI_70 = #{record.TI_70,jdbcType=FLOAT},
+      TI_267 = #{record.TI_267,jdbcType=FLOAT},
+      TI_85A = #{record.TI_85A,jdbcType=FLOAT},
+      TI_522 = #{record.TI_522,jdbcType=FLOAT},
+      TI_81 = #{record.TI_81,jdbcType=FLOAT},
+      TI_45 = #{record.TI_45,jdbcType=FLOAT},
+      TI_12 = #{record.TI_12,jdbcType=FLOAT},
+      FI_1 = #{record.FI_1,jdbcType=FLOAT},
+      FI_2 = #{record.FI_2,jdbcType=FLOAT},
+      FI_3 = #{record.FI_3,jdbcType=FLOAT},
+      FI_51 = #{record.FI_51,jdbcType=FLOAT},
+      FI_4001 = #{record.FI_4001,jdbcType=FLOAT},
+      FI_63 = #{record.FI_63,jdbcType=FLOAT},
+      FI_27 = #{record.FI_27,jdbcType=FLOAT},
+      FI_5 = #{record.FI_5,jdbcType=FLOAT},
+      W_C = #{record.w_C,jdbcType=FLOAT},
+      A_C = #{record.a_C,jdbcType=FLOAT},
+      FI_2000 = #{record.FI_2000,jdbcType=FLOAT},
+      FI_7 = #{record.FI_7,jdbcType=FLOAT},
+      FI_84 = #{record.FI_84,jdbcType=FLOAT},
+      FI_84A = #{record.FI_84A,jdbcType=FLOAT},
+      FI_84B = #{record.FI_84B,jdbcType=FLOAT},
+      FI_314 = #{record.FI_314,jdbcType=FLOAT},
+      FI_3110 = #{record.FI_3110,jdbcType=FLOAT},
+      FI_3116 = #{record.FI_3116,jdbcType=FLOAT},
+      FI_3117 = #{record.FI_3117,jdbcType=FLOAT},
+      FI_2301 = #{record.FI_2301,jdbcType=FLOAT},
+      FI_50 = #{record.FI_50,jdbcType=FLOAT},
+      FI_1502 = #{record.FI_1502,jdbcType=FLOAT},
+      PI_657 = #{record.PI_657,jdbcType=FLOAT},
+      PI_4 = #{record.PI_4,jdbcType=FLOAT},
+      PI_5 = #{record.PI_5,jdbcType=FLOAT},
+      PI_6 = #{record.PI_6,jdbcType=FLOAT},
+      PI_80 = #{record.PI_80,jdbcType=FLOAT},
+      PI_82 = #{record.PI_82,jdbcType=FLOAT},
+      PI_9 = #{record.PI_9,jdbcType=FLOAT},
+      PI_19 = #{record.PI_19,jdbcType=FLOAT},
+      PI_25 = #{record.PI_25,jdbcType=FLOAT},
+      AIA_5 = #{record.AIA_5,jdbcType=FLOAT},
+      AIA_5A = #{record.AIA_5A,jdbcType=FLOAT},
+      AI_1 = #{record.AI_1,jdbcType=FLOAT},
+      AI_1B = #{record.AI_1B,jdbcType=FLOAT},
+      AI_1401 = #{record.AI_1401,jdbcType=FLOAT},
+      AI_1401HN = #{record.AI_1401HN,jdbcType=FLOAT},
+      累积氨产量 = #{record.累积氨产量,jdbcType=FLOAT},
+      累积总气耗 = #{record.累积总气耗,jdbcType=FLOAT},
+      累积原料气耗 = #{record.累积原料气耗,jdbcType=FLOAT},
+      累积燃料气耗 = #{record.累积燃料气耗,jdbcType=FLOAT},
+      累积快锅燃气 = #{record.累积快锅燃气,jdbcType=FLOAT},
+      累积快锅产汽 = #{record.累积快锅产汽,jdbcType=FLOAT},
+      时段氨产量 = #{record.时段氨产量,jdbcType=FLOAT},
+      时段总气耗 = #{record.时段总气耗,jdbcType=FLOAT},
+      时段原料气耗 = #{record.时段原料气耗,jdbcType=FLOAT},
+      时段燃料气耗 = #{record.时段燃料气耗,jdbcType=FLOAT},
+      时段快锅气耗 = #{record.时段快锅气耗,jdbcType=FLOAT},
+      时段净蒸汽耗 = #{record.时段净蒸汽耗,jdbcType=FLOAT},
+      时段气耗 = #{record.时段气耗,jdbcType=FLOAT},
+      时段气耗_含蒸汽折算 = #{record.时段气耗_含蒸汽折算,jdbcType=FLOAT},
+      系统负荷 = #{record.系统负荷,jdbcType=FLOAT},
+      小时氨产量 = #{record.小时氨产量,jdbcType=FLOAT},
+      吨氨综合消耗 = #{record.吨氨综合消耗,jdbcType=FLOAT},
+      吨氨气耗 = #{record.吨氨气耗,jdbcType=FLOAT},
+      吨氨原料气耗 = #{record.吨氨原料气耗,jdbcType=FLOAT},
+      吨氨燃料气耗 = #{record.吨氨燃料气耗,jdbcType=FLOAT},
+      吨氨气耗_含蒸汽折算 = #{record.吨氨气耗_含蒸汽折算,jdbcType=FLOAT},
+      班次 = #{record.班次,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

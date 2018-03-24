@@ -1,0 +1,45 @@
+package com.saitejn.test;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+
+
+
+public class TestA {
+	public static void main(String[] args) throws Exception {
+		
+		List<Integer> l1 = new ArrayList<Integer>();
+		l1.add(1);
+		l1.add(2);
+		List<Integer> l2 = new ArrayList<Integer>();
+		l2.add(1);
+		l2.add(2);
+		l2.add(3);
+		l2.add(4);
+		l2.add(5);
+		List<Integer> l3 = new ArrayList<Integer>();
+
+	    l2.removeAll(l1);
+	    l3.addAll(l2);
+	    l1.removeAll(l2);
+	  
+	   /* 
+		for(int i=0;i<l1.size();i++){
+			for(int j = 0; j <l2.size(); j++){
+				if(l1.get(i) == l2.get(j)){
+					l3.add(l1.get(i)+l2.get(j));
+				}
+			}
+		}*/
+		System.out.println(l3);
+		System.out.println(l3);
+	}
+	
+	//Fri Jan 13 15:09:54 CST 2017
+	//Wed Feb 01 15:10:43 CST 2017
+
+	
+}

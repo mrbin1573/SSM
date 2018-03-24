@@ -1,0 +1,105 @@
+package com.saitejn.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.saitejn.pojo.JbUserifo;
+import com.saitejn.pojo.JyAdminguideifo;
+import com.saitejn.pojo.Messageleaving;
+import com.saitejn.services.Jy_guidepageServices;
+
+@Controller
+public class JYGuidePageController {
+	@Autowired
+	private Jy_guidepageServices jy_guidepageServices;
+	@RequestMapping("/jy_showTrackUnCheck")
+	public void showBefoFile(Model model,HttpServletRequest request,HttpServletResponse response)throws Exception{
+		String name = jy_guidepageServices.showBefoFile("跟踪分析");
+		if(name == null ){
+			response.sendRedirect("/pic/guide/error.html");
+		}
+		String guidename = "/pic/guide/"+name;
+		response.sendRedirect(guidename);
+		
+	}
+	@RequestMapping("/jy_optpar")
+	public void optpar(Model model,HttpServletResponse response)throws Exception{
+		String name = jy_guidepageServices.showBefoFile("优化工艺");
+		if(name == null ){
+			response.sendRedirect("/pic/guide/error.html");
+		}
+		String guidename = "/pic/guide/"+name;
+		response.sendRedirect(guidename);
+	}
+	@RequestMapping("/jy_showoptimizationUnCheck")
+	public void showoptimizationUnCheck(Model model,HttpServletRequest request,HttpServletResponse response)throws Exception{
+		String name = jy_guidepageServices.showBefoFile("变量关联");
+		String guidename = "/pic/guide/"+name;
+		response.sendRedirect(guidename);
+		
+	}
+	@RequestMapping("/jy_showDynreg")
+	public void showshowDynreg(Model model,HttpServletResponse response)throws Exception{
+		String name = jy_guidepageServices.showBefoFile("动态调控");
+		String guidename = "/pic/guide/"+name;
+		response.sendRedirect(guidename);
+	}
+	//历史列表
+		@RequestMapping("/jy_showguidehist")
+		public String showguidehistory(Model model ,@RequestParam(value="page", defaultValue="1") Integer page)throws Exception{
+			PageHelper.startPage(page, 17);
+			List<JyAdminguideifo> adminguideifos = jy_guidepageServices.getAllAdminGuideifo();
+			model.addAttribute("adminguideifos", adminguideifos);
+			model.addAttribute("page", page);
+			//获取分页结果
+			PageInfo<JyAdminguideifo> pageInfo = new PageInfo<JyAdminguideifo>(adminguideifos);
+			//总记录数
+			Long count = pageInfo.getTotal();
+			model.addAttribute("count", count);
+			//总页数
+			int pages = pageInfo.getPages();
+			model.addAttribute("pages", pages);
+			return "jy/jy_history";
+		}
+		//查看历史记录
+		@RequestMapping("/jy_showg")
+		public void jy_showguidehis(int gid,HttpServletResponse response)throws Exception{
+			String guidename = jy_guidepageServices.showguidehis(gid);
+			response.sendRedirect(guidename);
+		}
+		//留言管理
+		@RequestMapping("/jy_showMessage")
+		public String showmessage(HttpSession session,Model model ,@RequestParam(value="page", defaultValue="1") Integer page)throws Exception{
+			JbUserifo jbUserifo = (JbUserifo) session.getAttribute("user");
+			PageHelper.startPage(page, 17);
+			List<Messageleaving> messageList = jy_guidepageServices.selectMessageByConpany(jbUserifo.getCompany());
+			model.addAttribute("messageList", messageList);
+			model.addAttribute("page", page);
+			//获取分页结果
+			PageInfo<Messageleaving> pageInfo = new PageInfo<Messageleaving>(messageList);
+			//总记录数
+			Long count = pageInfo.getTotal();
+			model.addAttribute("count", count);
+			//总页数
+			int pages = pageInfo.getPages();
+			model.addAttribute("pages", pages);
+			//修改留言状态
+			return "jy/jy_message_list";
+		}
+		@RequestMapping("/jy_toguide")
+		public String toguide()throws Exception{
+			return "jy/jy_use_guide";
+		}
+
+}

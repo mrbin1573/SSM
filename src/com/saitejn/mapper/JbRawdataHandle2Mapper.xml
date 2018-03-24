@@ -1,0 +1,1339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JbRawdataHandle2Mapper" >
+  <resultMap id="BaseResultMap" type="com.saitejn.pojo.JbRawdataHandle2" >
+    <id column="orig_id" property="orig_id" jdbcType="INTEGER" />
+    <result column="data_time" property="data_time" jdbcType="TIMESTAMP" />
+    <result column="fi_103" property="fi_103" jdbcType="FLOAT" />
+    <result column="fi_000" property="fi_000" jdbcType="FLOAT" />
+    <result column="fi_104" property="fi_104" jdbcType="FLOAT" />
+    <result column="fi_101" property="fi_101" jdbcType="FLOAT" />
+    <result column="fi_106" property="fi_106" jdbcType="FLOAT" />
+    <result column="fi_109" property="fi_109" jdbcType="FLOAT" />
+    <result column="fr_401" property="fr_401" jdbcType="FLOAT" />
+    <result column="fr_402" property="fr_402" jdbcType="FLOAT" />
+    <result column="fr_405" property="fr_405" jdbcType="FLOAT" />
+    <result column="fr_406" property="fr_406" jdbcType="FLOAT" />
+    <result column="fr_407" property="fr_407" jdbcType="FLOAT" />
+    <result column="fr_408" property="fr_408" jdbcType="FLOAT" />
+    <result column="fi_410" property="fi_410" jdbcType="FLOAT" />
+    <result column="fi_NH3" property="fi_NH3" jdbcType="FLOAT" />
+    <result column="fr_141" property="fr_141" jdbcType="FLOAT" />
+    <result column="fr_142" property="fr_142" jdbcType="FLOAT" />
+    <result column="fr_143" property="fr_143" jdbcType="FLOAT" />
+    <result column="ti_122" property="ti_122" jdbcType="FLOAT" />
+    <result column="ti_123" property="ti_123" jdbcType="FLOAT" />
+    <result column="ti_164" property="ti_164" jdbcType="FLOAT" />
+    <result column="ti_131" property="ti_131" jdbcType="FLOAT" />
+    <result column="ti_132" property="ti_132" jdbcType="FLOAT" />
+    <result column="ti_211" property="ti_211" jdbcType="FLOAT" />
+    <result column="ti_210a" property="ti_210a" jdbcType="FLOAT" />
+    <result column="ti_215" property="ti_215" jdbcType="FLOAT" />
+    <result column="ti_134" property="ti_134" jdbcType="FLOAT" />
+    <result column="tr_413" property="tr_413" jdbcType="FLOAT" />
+    <result column="tr_403" property="tr_403" jdbcType="FLOAT" />
+    <result column="tr_407" property="tr_407" jdbcType="FLOAT" />
+    <result column="ti_407a" property="ti_407a" jdbcType="FLOAT" />
+    <result column="ti_407b" property="ti_407b" jdbcType="FLOAT" />
+    <result column="pi_213" property="pi_213" jdbcType="FLOAT" />
+    <result column="pi_105" property="pi_105" jdbcType="FLOAT" />
+    <result column="pi_112" property="pi_112" jdbcType="FLOAT" />
+    <result column="pi_114" property="pi_114" jdbcType="FLOAT" />
+    <result column="pi_234" property="pi_234" jdbcType="FLOAT" />
+    <result column="pr_401" property="pr_401" jdbcType="FLOAT" />
+    <result column="pr_403" property="pr_403" jdbcType="FLOAT" />
+    <result column="pi_422" property="pi_422" jdbcType="FLOAT" />
+    <result column="pr_416" property="pr_416" jdbcType="FLOAT" />
+    <result column="pi_288" property="pi_288" jdbcType="FLOAT" />
+    <result column="ar_101" property="ar_101" jdbcType="FLOAT" />
+    <result column="ar_109" property="ar_109" jdbcType="FLOAT" />
+    <result column="ar_110" property="ar_110" jdbcType="FLOAT" />
+    <result column="ai_104" property="ai_104" jdbcType="FLOAT" />
+    <result column="ai_103" property="ai_103" jdbcType="FLOAT" />
+    <result column="ar_111" property="ar_111" jdbcType="FLOAT" />
+    <result column="ar_112" property="ar_112" jdbcType="FLOAT" />
+    <result column="ar_113" property="ar_113" jdbcType="FLOAT" />
+    <result column="ar_114" property="ar_114" jdbcType="FLOAT" />
+    <result column="k_001" property="k_001" jdbcType="FLOAT" />
+    <result column="h2oc" property="h2oc" jdbcType="FLOAT" />
+    <result column="lr_403" property="lr_403" jdbcType="FLOAT" />
+    <result column="lr_402" property="lr_402" jdbcType="FLOAT" />
+    <result column="fiqnh3" property="fiqnh3" jdbcType="FLOAT" />
+    <result column="ipq001" property="ipq001" jdbcType="FLOAT" />
+    <result column="ipq002" property="ipq002" jdbcType="FLOAT" />
+    <result column="ipq003" property="ipq003" jdbcType="FLOAT" />
+    <result column="ipq004" property="ipq004" jdbcType="FLOAT" />
+    <result column="fiq101" property="fiq101" jdbcType="FLOAT" />
+    <result column="ftq109" property="ftq109" jdbcType="FLOAT" />
+    <result column="fiq000" property="fiq000" jdbcType="FLOAT" />
+    <result column="time_nh3_yield" property="time_nh3_yield" jdbcType="FLOAT" />
+    <result column="time_electric_consume" property="time_electric_consume" jdbcType="FLOAT" />
+    <result column="time_raw_gas_consume" property="time_raw_gas_consume" jdbcType="FLOAT" />
+    <result column="time_fuel_consume" property="time_fuel_consume" jdbcType="FLOAT" />
+    <result column="time_gas_consume" property="time_gas_consume" jdbcType="FLOAT" />
+    <result column="system_load" property="system_load" jdbcType="FLOAT" />
+    <result column="hour_nh3_yield" property="hour_nh3_yield" jdbcType="FLOAT" />
+    <result column="tonnh3_compre_consume" property="tonnh3_compre_consume" jdbcType="FLOAT" />
+    <result column="tonnh3_gas_consume" property="tonnh3_gas_consume" jdbcType="FLOAT" />
+    <result column="tonnh3_raw_gas_consume" property="tonnh3_raw_gas_consume" jdbcType="FLOAT" />
+    <result column="tonnh3_fuel_consume" property="tonnh3_fuel_consume" jdbcType="FLOAT" />
+    <result column="tonnh3_electric_consume" property="tonnh3_electric_consume" jdbcType="FLOAT" />
+    <result column="shift" property="shift" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    orig_id, data_time, fi_103, fi_000, fi_104, fi_101, fi_106, fi_109, fr_401, fr_402, 
+    fr_405, fr_406, fr_407, fr_408, fi_410, fi_NH3, fr_141, fr_142, fr_143, ti_122, ti_123, 
+    ti_164, ti_131, ti_132, ti_211, ti_210a, ti_215, ti_134, tr_413, tr_403, tr_407, 
+    ti_407a, ti_407b, pi_213, pi_105, pi_112, pi_114, pi_234, pr_401, pr_403, pi_422, 
+    pr_416, pi_288, ar_101, ar_109, ar_110, ai_104, ai_103, ar_111, ar_112, ar_113, ar_114, 
+    k_001, h2oc, lr_403, lr_402, fiqnh3, ipq001, ipq002, ipq003, ipq004, fiq101, ftq109, 
+    fiq000, time_nh3_yield, time_electric_consume, time_raw_gas_consume, time_fuel_consume, 
+    time_gas_consume, system_load, hour_nh3_yield, tonnh3_compre_consume, tonnh3_gas_consume, 
+    tonnh3_raw_gas_consume, tonnh3_fuel_consume, tonnh3_electric_consume, shift
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.saitejn.pojo.JbRawdataHandle2Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jb_rawdata_handle_2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jb_rawdata_handle_2
+    where orig_id = #{orig_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jb_rawdata_handle_2
+    where orig_id = #{orig_id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.saitejn.pojo.JbRawdataHandle2Example" >
+    delete from jb_rawdata_handle_2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.saitejn.pojo.JbRawdataHandle2" >
+    insert into jb_rawdata_handle_2 (orig_id, data_time, fi_103, 
+      fi_000, fi_104, fi_101, fi_106, 
+      fi_109, fr_401, fr_402, fr_405, 
+      fr_406, fr_407, fr_408, fi_410, 
+      fi_NH3, fr_141, fr_142, fr_143, 
+      ti_122, ti_123, ti_164, ti_131, 
+      ti_132, ti_211, ti_210a, 
+      ti_215, ti_134, tr_413, tr_403, 
+      tr_407, ti_407a, ti_407b, 
+      pi_213, pi_105, pi_112, pi_114, 
+      pi_234, pr_401, pr_403, pi_422, 
+      pr_416, pi_288, ar_101, ar_109, 
+      ar_110, ai_104, ai_103, ar_111, 
+      ar_112, ar_113, ar_114, k_001, 
+      h2oc, lr_403, lr_402, fiqnh3, 
+      ipq001, ipq002, ipq003, ipq004, 
+      fiq101, ftq109, fiq000, time_nh3_yield, 
+      time_electric_consume, time_raw_gas_consume, 
+      time_fuel_consume, time_gas_consume, system_load, 
+      hour_nh3_yield, tonnh3_compre_consume, tonnh3_gas_consume, 
+      tonnh3_raw_gas_consume, tonnh3_fuel_consume, 
+      tonnh3_electric_consume, shift)
+    values (#{orig_id,jdbcType=INTEGER}, #{data_time,jdbcType=TIMESTAMP}, #{fi_103,jdbcType=FLOAT}, 
+      #{fi_000,jdbcType=FLOAT}, #{fi_104,jdbcType=FLOAT}, #{fi_101,jdbcType=FLOAT}, #{fi_106,jdbcType=FLOAT}, 
+      #{fi_109,jdbcType=FLOAT}, #{fr_401,jdbcType=FLOAT}, #{fr_402,jdbcType=FLOAT}, #{fr_405,jdbcType=FLOAT}, 
+      #{fr_406,jdbcType=FLOAT}, #{fr_407,jdbcType=FLOAT}, #{fr_408,jdbcType=FLOAT}, #{fi_410,jdbcType=FLOAT}, 
+      #{fi_NH3,jdbcType=FLOAT}, #{fr_141,jdbcType=FLOAT}, #{fr_142,jdbcType=FLOAT}, #{fr_143,jdbcType=FLOAT}, 
+      #{ti_122,jdbcType=FLOAT}, #{ti_123,jdbcType=FLOAT}, #{ti_164,jdbcType=FLOAT}, #{ti_131,jdbcType=FLOAT}, 
+      #{ti_132,jdbcType=FLOAT}, #{ti_211,jdbcType=FLOAT}, #{ti_210a,jdbcType=FLOAT}, 
+      #{ti_215,jdbcType=FLOAT}, #{ti_134,jdbcType=FLOAT}, #{tr_413,jdbcType=FLOAT}, #{tr_403,jdbcType=FLOAT}, 
+      #{tr_407,jdbcType=FLOAT}, #{ti_407a,jdbcType=FLOAT}, #{ti_407b,jdbcType=FLOAT}, 
+      #{pi_213,jdbcType=FLOAT}, #{pi_105,jdbcType=FLOAT}, #{pi_112,jdbcType=FLOAT}, #{pi_114,jdbcType=FLOAT}, 
+      #{pi_234,jdbcType=FLOAT}, #{pr_401,jdbcType=FLOAT}, #{pr_403,jdbcType=FLOAT}, #{pi_422,jdbcType=FLOAT}, 
+      #{pr_416,jdbcType=FLOAT}, #{pi_288,jdbcType=FLOAT}, #{ar_101,jdbcType=FLOAT}, #{ar_109,jdbcType=FLOAT}, 
+      #{ar_110,jdbcType=FLOAT}, #{ai_104,jdbcType=FLOAT}, #{ai_103,jdbcType=FLOAT}, #{ar_111,jdbcType=FLOAT}, 
+      #{ar_112,jdbcType=FLOAT}, #{ar_113,jdbcType=FLOAT}, #{ar_114,jdbcType=FLOAT}, #{k_001,jdbcType=FLOAT}, 
+      #{h2oc,jdbcType=FLOAT}, #{lr_403,jdbcType=FLOAT}, #{lr_402,jdbcType=FLOAT}, #{fiqnh3,jdbcType=FLOAT}, 
+      #{ipq001,jdbcType=FLOAT}, #{ipq002,jdbcType=FLOAT}, #{ipq003,jdbcType=FLOAT}, #{ipq004,jdbcType=FLOAT}, 
+      #{fiq101,jdbcType=FLOAT}, #{ftq109,jdbcType=FLOAT}, #{fiq000,jdbcType=FLOAT}, #{time_nh3_yield,jdbcType=FLOAT}, 
+      #{time_electric_consume,jdbcType=FLOAT}, #{time_raw_gas_consume,jdbcType=FLOAT}, 
+      #{time_fuel_consume,jdbcType=FLOAT}, #{time_gas_consume,jdbcType=FLOAT}, #{system_load,jdbcType=FLOAT}, 
+      #{hour_nh3_yield,jdbcType=FLOAT}, #{tonnh3_compre_consume,jdbcType=FLOAT}, #{tonnh3_gas_consume,jdbcType=FLOAT}, 
+      #{tonnh3_raw_gas_consume,jdbcType=FLOAT}, #{tonnh3_fuel_consume,jdbcType=FLOAT}, 
+      #{tonnh3_electric_consume,jdbcType=FLOAT}, #{shift,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saitejn.pojo.JbRawdataHandle2" >
+    insert into jb_rawdata_handle_2
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orig_id != null" >
+        orig_id,
+      </if>
+      <if test="data_time != null" >
+        data_time,
+      </if>
+      <if test="fi_103 != null" >
+        fi_103,
+      </if>
+      <if test="fi_000 != null" >
+        fi_000,
+      </if>
+      <if test="fi_104 != null" >
+        fi_104,
+      </if>
+      <if test="fi_101 != null" >
+        fi_101,
+      </if>
+      <if test="fi_106 != null" >
+        fi_106,
+      </if>
+      <if test="fi_109 != null" >
+        fi_109,
+      </if>
+      <if test="fr_401 != null" >
+        fr_401,
+      </if>
+      <if test="fr_402 != null" >
+        fr_402,
+      </if>
+      <if test="fr_405 != null" >
+        fr_405,
+      </if>
+      <if test="fr_406 != null" >
+        fr_406,
+      </if>
+      <if test="fr_407 != null" >
+        fr_407,
+      </if>
+      <if test="fr_408 != null" >
+        fr_408,
+      </if>
+      <if test="fi_410 != null" >
+        fi_410,
+      </if>
+      <if test="fi_NH3 != null" >
+        fi_NH3,
+      </if>
+      <if test="fr_141 != null" >
+        fr_141,
+      </if>
+      <if test="fr_142 != null" >
+        fr_142,
+      </if>
+      <if test="fr_143 != null" >
+        fr_143,
+      </if>
+      <if test="ti_122 != null" >
+        ti_122,
+      </if>
+      <if test="ti_123 != null" >
+        ti_123,
+      </if>
+      <if test="ti_164 != null" >
+        ti_164,
+      </if>
+      <if test="ti_131 != null" >
+        ti_131,
+      </if>
+      <if test="ti_132 != null" >
+        ti_132,
+      </if>
+      <if test="ti_211 != null" >
+        ti_211,
+      </if>
+      <if test="ti_210a != null" >
+        ti_210a,
+      </if>
+      <if test="ti_215 != null" >
+        ti_215,
+      </if>
+      <if test="ti_134 != null" >
+        ti_134,
+      </if>
+      <if test="tr_413 != null" >
+        tr_413,
+      </if>
+      <if test="tr_403 != null" >
+        tr_403,
+      </if>
+      <if test="tr_407 != null" >
+        tr_407,
+      </if>
+      <if test="ti_407a != null" >
+        ti_407a,
+      </if>
+      <if test="ti_407b != null" >
+        ti_407b,
+      </if>
+      <if test="pi_213 != null" >
+        pi_213,
+      </if>
+      <if test="pi_105 != null" >
+        pi_105,
+      </if>
+      <if test="pi_112 != null" >
+        pi_112,
+      </if>
+      <if test="pi_114 != null" >
+        pi_114,
+      </if>
+      <if test="pi_234 != null" >
+        pi_234,
+      </if>
+      <if test="pr_401 != null" >
+        pr_401,
+      </if>
+      <if test="pr_403 != null" >
+        pr_403,
+      </if>
+      <if test="pi_422 != null" >
+        pi_422,
+      </if>
+      <if test="pr_416 != null" >
+        pr_416,
+      </if>
+      <if test="pi_288 != null" >
+        pi_288,
+      </if>
+      <if test="ar_101 != null" >
+        ar_101,
+      </if>
+      <if test="ar_109 != null" >
+        ar_109,
+      </if>
+      <if test="ar_110 != null" >
+        ar_110,
+      </if>
+      <if test="ai_104 != null" >
+        ai_104,
+      </if>
+      <if test="ai_103 != null" >
+        ai_103,
+      </if>
+      <if test="ar_111 != null" >
+        ar_111,
+      </if>
+      <if test="ar_112 != null" >
+        ar_112,
+      </if>
+      <if test="ar_113 != null" >
+        ar_113,
+      </if>
+      <if test="ar_114 != null" >
+        ar_114,
+      </if>
+      <if test="k_001 != null" >
+        k_001,
+      </if>
+      <if test="h2oc != null" >
+        h2oc,
+      </if>
+      <if test="lr_403 != null" >
+        lr_403,
+      </if>
+      <if test="lr_402 != null" >
+        lr_402,
+      </if>
+      <if test="fiqnh3 != null" >
+        fiqnh3,
+      </if>
+      <if test="ipq001 != null" >
+        ipq001,
+      </if>
+      <if test="ipq002 != null" >
+        ipq002,
+      </if>
+      <if test="ipq003 != null" >
+        ipq003,
+      </if>
+      <if test="ipq004 != null" >
+        ipq004,
+      </if>
+      <if test="fiq101 != null" >
+        fiq101,
+      </if>
+      <if test="ftq109 != null" >
+        ftq109,
+      </if>
+      <if test="fiq000 != null" >
+        fiq000,
+      </if>
+      <if test="time_nh3_yield != null" >
+        time_nh3_yield,
+      </if>
+      <if test="time_electric_consume != null" >
+        time_electric_consume,
+      </if>
+      <if test="time_raw_gas_consume != null" >
+        time_raw_gas_consume,
+      </if>
+      <if test="time_fuel_consume != null" >
+        time_fuel_consume,
+      </if>
+      <if test="time_gas_consume != null" >
+        time_gas_consume,
+      </if>
+      <if test="system_load != null" >
+        system_load,
+      </if>
+      <if test="hour_nh3_yield != null" >
+        hour_nh3_yield,
+      </if>
+      <if test="tonnh3_compre_consume != null" >
+        tonnh3_compre_consume,
+      </if>
+      <if test="tonnh3_gas_consume != null" >
+        tonnh3_gas_consume,
+      </if>
+      <if test="tonnh3_raw_gas_consume != null" >
+        tonnh3_raw_gas_consume,
+      </if>
+      <if test="tonnh3_fuel_consume != null" >
+        tonnh3_fuel_consume,
+      </if>
+      <if test="tonnh3_electric_consume != null" >
+        tonnh3_electric_consume,
+      </if>
+      <if test="shift != null" >
+        shift,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orig_id != null" >
+        #{orig_id,jdbcType=INTEGER},
+      </if>
+      <if test="data_time != null" >
+        #{data_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fi_103 != null" >
+        #{fi_103,jdbcType=FLOAT},
+      </if>
+      <if test="fi_000 != null" >
+        #{fi_000,jdbcType=FLOAT},
+      </if>
+      <if test="fi_104 != null" >
+        #{fi_104,jdbcType=FLOAT},
+      </if>
+      <if test="fi_101 != null" >
+        #{fi_101,jdbcType=FLOAT},
+      </if>
+      <if test="fi_106 != null" >
+        #{fi_106,jdbcType=FLOAT},
+      </if>
+      <if test="fi_109 != null" >
+        #{fi_109,jdbcType=FLOAT},
+      </if>
+      <if test="fr_401 != null" >
+        #{fr_401,jdbcType=FLOAT},
+      </if>
+      <if test="fr_402 != null" >
+        #{fr_402,jdbcType=FLOAT},
+      </if>
+      <if test="fr_405 != null" >
+        #{fr_405,jdbcType=FLOAT},
+      </if>
+      <if test="fr_406 != null" >
+        #{fr_406,jdbcType=FLOAT},
+      </if>
+      <if test="fr_407 != null" >
+        #{fr_407,jdbcType=FLOAT},
+      </if>
+      <if test="fr_408 != null" >
+        #{fr_408,jdbcType=FLOAT},
+      </if>
+      <if test="fi_410 != null" >
+        #{fi_410,jdbcType=FLOAT},
+      </if>
+      <if test="fi_NH3 != null" >
+        #{fi_NH3,jdbcType=FLOAT},
+      </if>
+      <if test="fr_141 != null" >
+        #{fr_141,jdbcType=FLOAT},
+      </if>
+      <if test="fr_142 != null" >
+        #{fr_142,jdbcType=FLOAT},
+      </if>
+      <if test="fr_143 != null" >
+        #{fr_143,jdbcType=FLOAT},
+      </if>
+      <if test="ti_122 != null" >
+        #{ti_122,jdbcType=FLOAT},
+      </if>
+      <if test="ti_123 != null" >
+        #{ti_123,jdbcType=FLOAT},
+      </if>
+      <if test="ti_164 != null" >
+        #{ti_164,jdbcType=FLOAT},
+      </if>
+      <if test="ti_131 != null" >
+        #{ti_131,jdbcType=FLOAT},
+      </if>
+      <if test="ti_132 != null" >
+        #{ti_132,jdbcType=FLOAT},
+      </if>
+      <if test="ti_211 != null" >
+        #{ti_211,jdbcType=FLOAT},
+      </if>
+      <if test="ti_210a != null" >
+        #{ti_210a,jdbcType=FLOAT},
+      </if>
+      <if test="ti_215 != null" >
+        #{ti_215,jdbcType=FLOAT},
+      </if>
+      <if test="ti_134 != null" >
+        #{ti_134,jdbcType=FLOAT},
+      </if>
+      <if test="tr_413 != null" >
+        #{tr_413,jdbcType=FLOAT},
+      </if>
+      <if test="tr_403 != null" >
+        #{tr_403,jdbcType=FLOAT},
+      </if>
+      <if test="tr_407 != null" >
+        #{tr_407,jdbcType=FLOAT},
+      </if>
+      <if test="ti_407a != null" >
+        #{ti_407a,jdbcType=FLOAT},
+      </if>
+      <if test="ti_407b != null" >
+        #{ti_407b,jdbcType=FLOAT},
+      </if>
+      <if test="pi_213 != null" >
+        #{pi_213,jdbcType=FLOAT},
+      </if>
+      <if test="pi_105 != null" >
+        #{pi_105,jdbcType=FLOAT},
+      </if>
+      <if test="pi_112 != null" >
+        #{pi_112,jdbcType=FLOAT},
+      </if>
+      <if test="pi_114 != null" >
+        #{pi_114,jdbcType=FLOAT},
+      </if>
+      <if test="pi_234 != null" >
+        #{pi_234,jdbcType=FLOAT},
+      </if>
+      <if test="pr_401 != null" >
+        #{pr_401,jdbcType=FLOAT},
+      </if>
+      <if test="pr_403 != null" >
+        #{pr_403,jdbcType=FLOAT},
+      </if>
+      <if test="pi_422 != null" >
+        #{pi_422,jdbcType=FLOAT},
+      </if>
+      <if test="pr_416 != null" >
+        #{pr_416,jdbcType=FLOAT},
+      </if>
+      <if test="pi_288 != null" >
+        #{pi_288,jdbcType=FLOAT},
+      </if>
+      <if test="ar_101 != null" >
+        #{ar_101,jdbcType=FLOAT},
+      </if>
+      <if test="ar_109 != null" >
+        #{ar_109,jdbcType=FLOAT},
+      </if>
+      <if test="ar_110 != null" >
+        #{ar_110,jdbcType=FLOAT},
+      </if>
+      <if test="ai_104 != null" >
+        #{ai_104,jdbcType=FLOAT},
+      </if>
+      <if test="ai_103 != null" >
+        #{ai_103,jdbcType=FLOAT},
+      </if>
+      <if test="ar_111 != null" >
+        #{ar_111,jdbcType=FLOAT},
+      </if>
+      <if test="ar_112 != null" >
+        #{ar_112,jdbcType=FLOAT},
+      </if>
+      <if test="ar_113 != null" >
+        #{ar_113,jdbcType=FLOAT},
+      </if>
+      <if test="ar_114 != null" >
+        #{ar_114,jdbcType=FLOAT},
+      </if>
+      <if test="k_001 != null" >
+        #{k_001,jdbcType=FLOAT},
+      </if>
+      <if test="h2oc != null" >
+        #{h2oc,jdbcType=FLOAT},
+      </if>
+      <if test="lr_403 != null" >
+        #{lr_403,jdbcType=FLOAT},
+      </if>
+      <if test="lr_402 != null" >
+        #{lr_402,jdbcType=FLOAT},
+      </if>
+      <if test="fiqnh3 != null" >
+        #{fiqnh3,jdbcType=FLOAT},
+      </if>
+      <if test="ipq001 != null" >
+        #{ipq001,jdbcType=FLOAT},
+      </if>
+      <if test="ipq002 != null" >
+        #{ipq002,jdbcType=FLOAT},
+      </if>
+      <if test="ipq003 != null" >
+        #{ipq003,jdbcType=FLOAT},
+      </if>
+      <if test="ipq004 != null" >
+        #{ipq004,jdbcType=FLOAT},
+      </if>
+      <if test="fiq101 != null" >
+        #{fiq101,jdbcType=FLOAT},
+      </if>
+      <if test="ftq109 != null" >
+        #{ftq109,jdbcType=FLOAT},
+      </if>
+      <if test="fiq000 != null" >
+        #{fiq000,jdbcType=FLOAT},
+      </if>
+      <if test="time_nh3_yield != null" >
+        #{time_nh3_yield,jdbcType=FLOAT},
+      </if>
+      <if test="time_electric_consume != null" >
+        #{time_electric_consume,jdbcType=FLOAT},
+      </if>
+      <if test="time_raw_gas_consume != null" >
+        #{time_raw_gas_consume,jdbcType=FLOAT},
+      </if>
+      <if test="time_fuel_consume != null" >
+        #{time_fuel_consume,jdbcType=FLOAT},
+      </if>
+      <if test="time_gas_consume != null" >
+        #{time_gas_consume,jdbcType=FLOAT},
+      </if>
+      <if test="system_load != null" >
+        #{system_load,jdbcType=FLOAT},
+      </if>
+      <if test="hour_nh3_yield != null" >
+        #{hour_nh3_yield,jdbcType=FLOAT},
+      </if>
+      <if test="tonnh3_compre_consume != null" >
+        #{tonnh3_compre_consume,jdbcType=FLOAT},
+      </if>
+      <if test="tonnh3_gas_consume != null" >
+        #{tonnh3_gas_consume,jdbcType=FLOAT},
+      </if>
+      <if test="tonnh3_raw_gas_consume != null" >
+        #{tonnh3_raw_gas_consume,jdbcType=FLOAT},
+      </if>
+      <if test="tonnh3_fuel_consume != null" >
+        #{tonnh3_fuel_consume,jdbcType=FLOAT},
+      </if>
+      <if test="tonnh3_electric_consume != null" >
+        #{tonnh3_electric_consume,jdbcType=FLOAT},
+      </if>
+      <if test="shift != null" >
+        #{shift,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.saitejn.pojo.JbRawdataHandle2Example" resultType="java.lang.Integer" >
+    select count(*) from jb_rawdata_handle_2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update jb_rawdata_handle_2
+    <set >
+      <if test="record.orig_id != null" >
+        orig_id = #{record.orig_id,jdbcType=INTEGER},
+      </if>
+      <if test="record.data_time != null" >
+        data_time = #{record.data_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fi_103 != null" >
+        fi_103 = #{record.fi_103,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi_000 != null" >
+        fi_000 = #{record.fi_000,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi_104 != null" >
+        fi_104 = #{record.fi_104,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi_101 != null" >
+        fi_101 = #{record.fi_101,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi_106 != null" >
+        fi_106 = #{record.fi_106,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi_109 != null" >
+        fi_109 = #{record.fi_109,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr_401 != null" >
+        fr_401 = #{record.fr_401,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr_402 != null" >
+        fr_402 = #{record.fr_402,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr_405 != null" >
+        fr_405 = #{record.fr_405,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr_406 != null" >
+        fr_406 = #{record.fr_406,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr_407 != null" >
+        fr_407 = #{record.fr_407,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr_408 != null" >
+        fr_408 = #{record.fr_408,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi_410 != null" >
+        fi_410 = #{record.fi_410,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi_NH3 != null" >
+        fi_NH3 = #{record.fi_NH3,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr_141 != null" >
+        fr_141 = #{record.fr_141,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr_142 != null" >
+        fr_142 = #{record.fr_142,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr_143 != null" >
+        fr_143 = #{record.fr_143,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti_122 != null" >
+        ti_122 = #{record.ti_122,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti_123 != null" >
+        ti_123 = #{record.ti_123,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti_164 != null" >
+        ti_164 = #{record.ti_164,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti_131 != null" >
+        ti_131 = #{record.ti_131,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti_132 != null" >
+        ti_132 = #{record.ti_132,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti_211 != null" >
+        ti_211 = #{record.ti_211,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti_210a != null" >
+        ti_210a = #{record.ti_210a,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti_215 != null" >
+        ti_215 = #{record.ti_215,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti_134 != null" >
+        ti_134 = #{record.ti_134,jdbcType=FLOAT},
+      </if>
+      <if test="record.tr_413 != null" >
+        tr_413 = #{record.tr_413,jdbcType=FLOAT},
+      </if>
+      <if test="record.tr_403 != null" >
+        tr_403 = #{record.tr_403,jdbcType=FLOAT},
+      </if>
+      <if test="record.tr_407 != null" >
+        tr_407 = #{record.tr_407,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti_407a != null" >
+        ti_407a = #{record.ti_407a,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti_407b != null" >
+        ti_407b = #{record.ti_407b,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi_213 != null" >
+        pi_213 = #{record.pi_213,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi_105 != null" >
+        pi_105 = #{record.pi_105,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi_112 != null" >
+        pi_112 = #{record.pi_112,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi_114 != null" >
+        pi_114 = #{record.pi_114,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi_234 != null" >
+        pi_234 = #{record.pi_234,jdbcType=FLOAT},
+      </if>
+      <if test="record.pr_401 != null" >
+        pr_401 = #{record.pr_401,jdbcType=FLOAT},
+      </if>
+      <if test="record.pr_403 != null" >
+        pr_403 = #{record.pr_403,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi_422 != null" >
+        pi_422 = #{record.pi_422,jdbcType=FLOAT},
+      </if>
+      <if test="record.pr_416 != null" >
+        pr_416 = #{record.pr_416,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi_288 != null" >
+        pi_288 = #{record.pi_288,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar_101 != null" >
+        ar_101 = #{record.ar_101,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar_109 != null" >
+        ar_109 = #{record.ar_109,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar_110 != null" >
+        ar_110 = #{record.ar_110,jdbcType=FLOAT},
+      </if>
+      <if test="record.ai_104 != null" >
+        ai_104 = #{record.ai_104,jdbcType=FLOAT},
+      </if>
+      <if test="record.ai_103 != null" >
+        ai_103 = #{record.ai_103,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar_111 != null" >
+        ar_111 = #{record.ar_111,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar_112 != null" >
+        ar_112 = #{record.ar_112,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar_113 != null" >
+        ar_113 = #{record.ar_113,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar_114 != null" >
+        ar_114 = #{record.ar_114,jdbcType=FLOAT},
+      </if>
+      <if test="record.k_001 != null" >
+        k_001 = #{record.k_001,jdbcType=FLOAT},
+      </if>
+      <if test="record.h2oc != null" >
+        h2oc = #{record.h2oc,jdbcType=FLOAT},
+      </if>
+      <if test="record.lr_403 != null" >
+        lr_403 = #{record.lr_403,jdbcType=FLOAT},
+      </if>
+      <if test="record.lr_402 != null" >
+        lr_402 = #{record.lr_402,jdbcType=FLOAT},
+      </if>
+      <if test="record.fiqnh3 != null" >
+        fiqnh3 = #{record.fiqnh3,jdbcType=FLOAT},
+      </if>
+      <if test="record.ipq001 != null" >
+        ipq001 = #{record.ipq001,jdbcType=FLOAT},
+      </if>
+      <if test="record.ipq002 != null" >
+        ipq002 = #{record.ipq002,jdbcType=FLOAT},
+      </if>
+      <if test="record.ipq003 != null" >
+        ipq003 = #{record.ipq003,jdbcType=FLOAT},
+      </if>
+      <if test="record.ipq004 != null" >
+        ipq004 = #{record.ipq004,jdbcType=FLOAT},
+      </if>
+      <if test="record.fiq101 != null" >
+        fiq101 = #{record.fiq101,jdbcType=FLOAT},
+      </if>
+      <if test="record.ftq109 != null" >
+        ftq109 = #{record.ftq109,jdbcType=FLOAT},
+      </if>
+      <if test="record.fiq000 != null" >
+        fiq000 = #{record.fiq000,jdbcType=FLOAT},
+      </if>
+      <if test="record.time_nh3_yield != null" >
+        time_nh3_yield = #{record.time_nh3_yield,jdbcType=FLOAT},
+      </if>
+      <if test="record.time_electric_consume != null" >
+        time_electric_consume = #{record.time_electric_consume,jdbcType=FLOAT},
+      </if>
+      <if test="record.time_raw_gas_consume != null" >
+        time_raw_gas_consume = #{record.time_raw_gas_consume,jdbcType=FLOAT},
+      </if>
+      <if test="record.time_fuel_consume != null" >
+        time_fuel_consume = #{record.time_fuel_consume,jdbcType=FLOAT},
+      </if>
+      <if test="record.time_gas_consume != null" >
+        time_gas_consume = #{record.time_gas_consume,jdbcType=FLOAT},
+      </if>
+      <if test="record.system_load != null" >
+        system_load = #{record.system_load,jdbcType=FLOAT},
+      </if>
+      <if test="record.hour_nh3_yield != null" >
+        hour_nh3_yield = #{record.hour_nh3_yield,jdbcType=FLOAT},
+      </if>
+      <if test="record.tonnh3_compre_consume != null" >
+        tonnh3_compre_consume = #{record.tonnh3_compre_consume,jdbcType=FLOAT},
+      </if>
+      <if test="record.tonnh3_gas_consume != null" >
+        tonnh3_gas_consume = #{record.tonnh3_gas_consume,jdbcType=FLOAT},
+      </if>
+      <if test="record.tonnh3_raw_gas_consume != null" >
+        tonnh3_raw_gas_consume = #{record.tonnh3_raw_gas_consume,jdbcType=FLOAT},
+      </if>
+      <if test="record.tonnh3_fuel_consume != null" >
+        tonnh3_fuel_consume = #{record.tonnh3_fuel_consume,jdbcType=FLOAT},
+      </if>
+      <if test="record.tonnh3_electric_consume != null" >
+        tonnh3_electric_consume = #{record.tonnh3_electric_consume,jdbcType=FLOAT},
+      </if>
+      <if test="record.shift != null" >
+        shift = #{record.shift,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update jb_rawdata_handle_2
+    set orig_id = #{record.orig_id,jdbcType=INTEGER},
+      data_time = #{record.data_time,jdbcType=TIMESTAMP},
+      fi_103 = #{record.fi_103,jdbcType=FLOAT},
+      fi_000 = #{record.fi_000,jdbcType=FLOAT},
+      fi_104 = #{record.fi_104,jdbcType=FLOAT},
+      fi_101 = #{record.fi_101,jdbcType=FLOAT},
+      fi_106 = #{record.fi_106,jdbcType=FLOAT},
+      fi_109 = #{record.fi_109,jdbcType=FLOAT},
+      fr_401 = #{record.fr_401,jdbcType=FLOAT},
+      fr_402 = #{record.fr_402,jdbcType=FLOAT},
+      fr_405 = #{record.fr_405,jdbcType=FLOAT},
+      fr_406 = #{record.fr_406,jdbcType=FLOAT},
+      fr_407 = #{record.fr_407,jdbcType=FLOAT},
+      fr_408 = #{record.fr_408,jdbcType=FLOAT},
+      fi_410 = #{record.fi_410,jdbcType=FLOAT},
+      fi_NH3 = #{record.fi_NH3,jdbcType=FLOAT},
+      fr_141 = #{record.fr_141,jdbcType=FLOAT},
+      fr_142 = #{record.fr_142,jdbcType=FLOAT},
+      fr_143 = #{record.fr_143,jdbcType=FLOAT},
+      ti_122 = #{record.ti_122,jdbcType=FLOAT},
+      ti_123 = #{record.ti_123,jdbcType=FLOAT},
+      ti_164 = #{record.ti_164,jdbcType=FLOAT},
+      ti_131 = #{record.ti_131,jdbcType=FLOAT},
+      ti_132 = #{record.ti_132,jdbcType=FLOAT},
+      ti_211 = #{record.ti_211,jdbcType=FLOAT},
+      ti_210a = #{record.ti_210a,jdbcType=FLOAT},
+      ti_215 = #{record.ti_215,jdbcType=FLOAT},
+      ti_134 = #{record.ti_134,jdbcType=FLOAT},
+      tr_413 = #{record.tr_413,jdbcType=FLOAT},
+      tr_403 = #{record.tr_403,jdbcType=FLOAT},
+      tr_407 = #{record.tr_407,jdbcType=FLOAT},
+      ti_407a = #{record.ti_407a,jdbcType=FLOAT},
+      ti_407b = #{record.ti_407b,jdbcType=FLOAT},
+      pi_213 = #{record.pi_213,jdbcType=FLOAT},
+      pi_105 = #{record.pi_105,jdbcType=FLOAT},
+      pi_112 = #{record.pi_112,jdbcType=FLOAT},
+      pi_114 = #{record.pi_114,jdbcType=FLOAT},
+      pi_234 = #{record.pi_234,jdbcType=FLOAT},
+      pr_401 = #{record.pr_401,jdbcType=FLOAT},
+      pr_403 = #{record.pr_403,jdbcType=FLOAT},
+      pi_422 = #{record.pi_422,jdbcType=FLOAT},
+      pr_416 = #{record.pr_416,jdbcType=FLOAT},
+      pi_288 = #{record.pi_288,jdbcType=FLOAT},
+      ar_101 = #{record.ar_101,jdbcType=FLOAT},
+      ar_109 = #{record.ar_109,jdbcType=FLOAT},
+      ar_110 = #{record.ar_110,jdbcType=FLOAT},
+      ai_104 = #{record.ai_104,jdbcType=FLOAT},
+      ai_103 = #{record.ai_103,jdbcType=FLOAT},
+      ar_111 = #{record.ar_111,jdbcType=FLOAT},
+      ar_112 = #{record.ar_112,jdbcType=FLOAT},
+      ar_113 = #{record.ar_113,jdbcType=FLOAT},
+      ar_114 = #{record.ar_114,jdbcType=FLOAT},
+      k_001 = #{record.k_001,jdbcType=FLOAT},
+      h2oc = #{record.h2oc,jdbcType=FLOAT},
+      lr_403 = #{record.lr_403,jdbcType=FLOAT},
+      lr_402 = #{record.lr_402,jdbcType=FLOAT},
+      fiqnh3 = #{record.fiqnh3,jdbcType=FLOAT},
+      ipq001 = #{record.ipq001,jdbcType=FLOAT},
+      ipq002 = #{record.ipq002,jdbcType=FLOAT},
+      ipq003 = #{record.ipq003,jdbcType=FLOAT},
+      ipq004 = #{record.ipq004,jdbcType=FLOAT},
+      fiq101 = #{record.fiq101,jdbcType=FLOAT},
+      ftq109 = #{record.ftq109,jdbcType=FLOAT},
+      fiq000 = #{record.fiq000,jdbcType=FLOAT},
+      time_nh3_yield = #{record.time_nh3_yield,jdbcType=FLOAT},
+      time_electric_consume = #{record.time_electric_consume,jdbcType=FLOAT},
+      time_raw_gas_consume = #{record.time_raw_gas_consume,jdbcType=FLOAT},
+      time_fuel_consume = #{record.time_fuel_consume,jdbcType=FLOAT},
+      time_gas_consume = #{record.time_gas_consume,jdbcType=FLOAT},
+      system_load = #{record.system_load,jdbcType=FLOAT},
+      hour_nh3_yield = #{record.hour_nh3_yield,jdbcType=FLOAT},
+      tonnh3_compre_consume = #{record.tonnh3_compre_consume,jdbcType=FLOAT},
+      tonnh3_gas_consume = #{record.tonnh3_gas_consume,jdbcType=FLOAT},
+      tonnh3_raw_gas_consume = #{record.tonnh3_raw_gas_consume,jdbcType=FLOAT},
+      tonnh3_fuel_consume = #{record.tonnh3_fuel_consume,jdbcType=FLOAT},
+      tonnh3_electric_consume = #{record.tonnh3_electric_consume,jdbcType=FLOAT},
+      shift = #{record.shift,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saitejn.pojo.JbRawdataHandle2" >
+    update jb_rawdata_handle_2
+    <set >
+      <if test="data_time != null" >
+        data_time = #{data_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fi_103 != null" >
+        fi_103 = #{fi_103,jdbcType=FLOAT},
+      </if>
+      <if test="fi_000 != null" >
+        fi_000 = #{fi_000,jdbcType=FLOAT},
+      </if>
+      <if test="fi_104 != null" >
+        fi_104 = #{fi_104,jdbcType=FLOAT},
+      </if>
+      <if test="fi_101 != null" >
+        fi_101 = #{fi_101,jdbcType=FLOAT},
+      </if>
+      <if test="fi_106 != null" >
+        fi_106 = #{fi_106,jdbcType=FLOAT},
+      </if>
+      <if test="fi_109 != null" >
+        fi_109 = #{fi_109,jdbcType=FLOAT},
+      </if>
+      <if test="fr_401 != null" >
+        fr_401 = #{fr_401,jdbcType=FLOAT},
+      </if>
+      <if test="fr_402 != null" >
+        fr_402 = #{fr_402,jdbcType=FLOAT},
+      </if>
+      <if test="fr_405 != null" >
+        fr_405 = #{fr_405,jdbcType=FLOAT},
+      </if>
+      <if test="fr_406 != null" >
+        fr_406 = #{fr_406,jdbcType=FLOAT},
+      </if>
+      <if test="fr_407 != null" >
+        fr_407 = #{fr_407,jdbcType=FLOAT},
+      </if>
+      <if test="fr_408 != null" >
+        fr_408 = #{fr_408,jdbcType=FLOAT},
+      </if>
+      <if test="fi_410 != null" >
+        fi_410 = #{fi_410,jdbcType=FLOAT},
+      </if>
+      <if test="fi_NH3 != null" >
+        fi_NH3 = #{fi_NH3,jdbcType=FLOAT},
+      </if>
+      <if test="fr_141 != null" >
+        fr_141 = #{fr_141,jdbcType=FLOAT},
+      </if>
+      <if test="fr_142 != null" >
+        fr_142 = #{fr_142,jdbcType=FLOAT},
+      </if>
+      <if test="fr_143 != null" >
+        fr_143 = #{fr_143,jdbcType=FLOAT},
+      </if>
+      <if test="ti_122 != null" >
+        ti_122 = #{ti_122,jdbcType=FLOAT},
+      </if>
+      <if test="ti_123 != null" >
+        ti_123 = #{ti_123,jdbcType=FLOAT},
+      </if>
+      <if test="ti_164 != null" >
+        ti_164 = #{ti_164,jdbcType=FLOAT},
+      </if>
+      <if test="ti_131 != null" >
+        ti_131 = #{ti_131,jdbcType=FLOAT},
+      </if>
+      <if test="ti_132 != null" >
+        ti_132 = #{ti_132,jdbcType=FLOAT},
+      </if>
+      <if test="ti_211 != null" >
+        ti_211 = #{ti_211,jdbcType=FLOAT},
+      </if>
+      <if test="ti_210a != null" >
+        ti_210a = #{ti_210a,jdbcType=FLOAT},
+      </if>
+      <if test="ti_215 != null" >
+        ti_215 = #{ti_215,jdbcType=FLOAT},
+      </if>
+      <if test="ti_134 != null" >
+        ti_134 = #{ti_134,jdbcType=FLOAT},
+      </if>
+      <if test="tr_413 != null" >
+        tr_413 = #{tr_413,jdbcType=FLOAT},
+      </if>
+      <if test="tr_403 != null" >
+        tr_403 = #{tr_403,jdbcType=FLOAT},
+      </if>
+      <if test="tr_407 != null" >
+        tr_407 = #{tr_407,jdbcType=FLOAT},
+      </if>
+      <if test="ti_407a != null" >
+        ti_407a = #{ti_407a,jdbcType=FLOAT},
+      </if>
+      <if test="ti_407b != null" >
+        ti_407b = #{ti_407b,jdbcType=FLOAT},
+      </if>
+      <if test="pi_213 != null" >
+        pi_213 = #{pi_213,jdbcType=FLOAT},
+      </if>
+      <if test="pi_105 != null" >
+        pi_105 = #{pi_105,jdbcType=FLOAT},
+      </if>
+      <if test="pi_112 != null" >
+        pi_112 = #{pi_112,jdbcType=FLOAT},
+      </if>
+      <if test="pi_114 != null" >
+        pi_114 = #{pi_114,jdbcType=FLOAT},
+      </if>
+      <if test="pi_234 != null" >
+        pi_234 = #{pi_234,jdbcType=FLOAT},
+      </if>
+      <if test="pr_401 != null" >
+        pr_401 = #{pr_401,jdbcType=FLOAT},
+      </if>
+      <if test="pr_403 != null" >
+        pr_403 = #{pr_403,jdbcType=FLOAT},
+      </if>
+      <if test="pi_422 != null" >
+        pi_422 = #{pi_422,jdbcType=FLOAT},
+      </if>
+      <if test="pr_416 != null" >
+        pr_416 = #{pr_416,jdbcType=FLOAT},
+      </if>
+      <if test="pi_288 != null" >
+        pi_288 = #{pi_288,jdbcType=FLOAT},
+      </if>
+      <if test="ar_101 != null" >
+        ar_101 = #{ar_101,jdbcType=FLOAT},
+      </if>
+      <if test="ar_109 != null" >
+        ar_109 = #{ar_109,jdbcType=FLOAT},
+      </if>
+      <if test="ar_110 != null" >
+        ar_110 = #{ar_110,jdbcType=FLOAT},
+      </if>
+      <if test="ai_104 != null" >
+        ai_104 = #{ai_104,jdbcType=FLOAT},
+      </if>
+      <if test="ai_103 != null" >
+        ai_103 = #{ai_103,jdbcType=FLOAT},
+      </if>
+      <if test="ar_111 != null" >
+        ar_111 = #{ar_111,jdbcType=FLOAT},
+      </if>
+      <if test="ar_112 != null" >
+        ar_112 = #{ar_112,jdbcType=FLOAT},
+      </if>
+      <if test="ar_113 != null" >
+        ar_113 = #{ar_113,jdbcType=FLOAT},
+      </if>
+      <if test="ar_114 != null" >
+        ar_114 = #{ar_114,jdbcType=FLOAT},
+      </if>
+      <if test="k_001 != null" >
+        k_001 = #{k_001,jdbcType=FLOAT},
+      </if>
+      <if test="h2oc != null" >
+        h2oc = #{h2oc,jdbcType=FLOAT},
+      </if>
+      <if test="lr_403 != null" >
+        lr_403 = #{lr_403,jdbcType=FLOAT},
+      </if>
+      <if test="lr_402 != null" >
+        lr_402 = #{lr_402,jdbcType=FLOAT},
+      </if>
+      <if test="fiqnh3 != null" >
+        fiqnh3 = #{fiqnh3,jdbcType=FLOAT},
+      </if>
+      <if test="ipq001 != null" >
+        ipq001 = #{ipq001,jdbcType=FLOAT},
+      </if>
+      <if test="ipq002 != null" >
+        ipq002 = #{ipq002,jdbcType=FLOAT},
+      </if>
+      <if test="ipq003 != null" >
+        ipq003 = #{ipq003,jdbcType=FLOAT},
+      </if>
+      <if test="ipq004 != null" >
+        ipq004 = #{ipq004,jdbcType=FLOAT},
+      </if>
+      <if test="fiq101 != null" >
+        fiq101 = #{fiq101,jdbcType=FLOAT},
+      </if>
+      <if test="ftq109 != null" >
+        ftq109 = #{ftq109,jdbcType=FLOAT},
+      </if>
+      <if test="fiq000 != null" >
+        fiq000 = #{fiq000,jdbcType=FLOAT},
+      </if>
+      <if test="time_nh3_yield != null" >
+        time_nh3_yield = #{time_nh3_yield,jdbcType=FLOAT},
+      </if>
+      <if test="time_electric_consume != null" >
+        time_electric_consume = #{time_electric_consume,jdbcType=FLOAT},
+      </if>
+      <if test="time_raw_gas_consume != null" >
+        time_raw_gas_consume = #{time_raw_gas_consume,jdbcType=FLOAT},
+      </if>
+      <if test="time_fuel_consume != null" >
+        time_fuel_consume = #{time_fuel_consume,jdbcType=FLOAT},
+      </if>
+      <if test="time_gas_consume != null" >
+        time_gas_consume = #{time_gas_consume,jdbcType=FLOAT},
+      </if>
+      <if test="system_load != null" >
+        system_load = #{system_load,jdbcType=FLOAT},
+      </if>
+      <if test="hour_nh3_yield != null" >
+        hour_nh3_yield = #{hour_nh3_yield,jdbcType=FLOAT},
+      </if>
+      <if test="tonnh3_compre_consume != null" >
+        tonnh3_compre_consume = #{tonnh3_compre_consume,jdbcType=FLOAT},
+      </if>
+      <if test="tonnh3_gas_consume != null" >
+        tonnh3_gas_consume = #{tonnh3_gas_consume,jdbcType=FLOAT},
+      </if>
+      <if test="tonnh3_raw_gas_consume != null" >
+        tonnh3_raw_gas_consume = #{tonnh3_raw_gas_consume,jdbcType=FLOAT},
+      </if>
+      <if test="tonnh3_fuel_consume != null" >
+        tonnh3_fuel_consume = #{tonnh3_fuel_consume,jdbcType=FLOAT},
+      </if>
+      <if test="tonnh3_electric_consume != null" >
+        tonnh3_electric_consume = #{tonnh3_electric_consume,jdbcType=FLOAT},
+      </if>
+      <if test="shift != null" >
+        shift = #{shift,jdbcType=INTEGER},
+      </if>
+    </set>
+    where orig_id = #{orig_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saitejn.pojo.JbRawdataHandle2" >
+    update jb_rawdata_handle_2
+    set data_time = #{data_time,jdbcType=TIMESTAMP},
+      fi_103 = #{fi_103,jdbcType=FLOAT},
+      fi_000 = #{fi_000,jdbcType=FLOAT},
+      fi_104 = #{fi_104,jdbcType=FLOAT},
+      fi_101 = #{fi_101,jdbcType=FLOAT},
+      fi_106 = #{fi_106,jdbcType=FLOAT},
+      fi_109 = #{fi_109,jdbcType=FLOAT},
+      fr_401 = #{fr_401,jdbcType=FLOAT},
+      fr_402 = #{fr_402,jdbcType=FLOAT},
+      fr_405 = #{fr_405,jdbcType=FLOAT},
+      fr_406 = #{fr_406,jdbcType=FLOAT},
+      fr_407 = #{fr_407,jdbcType=FLOAT},
+      fr_408 = #{fr_408,jdbcType=FLOAT},
+      fi_410 = #{fi_410,jdbcType=FLOAT},
+      fi_NH3 = #{fi_NH3,jdbcType=FLOAT},
+      fr_141 = #{fr_141,jdbcType=FLOAT},
+      fr_142 = #{fr_142,jdbcType=FLOAT},
+      fr_143 = #{fr_143,jdbcType=FLOAT},
+      ti_122 = #{ti_122,jdbcType=FLOAT},
+      ti_123 = #{ti_123,jdbcType=FLOAT},
+      ti_164 = #{ti_164,jdbcType=FLOAT},
+      ti_131 = #{ti_131,jdbcType=FLOAT},
+      ti_132 = #{ti_132,jdbcType=FLOAT},
+      ti_211 = #{ti_211,jdbcType=FLOAT},
+      ti_210a = #{ti_210a,jdbcType=FLOAT},
+      ti_215 = #{ti_215,jdbcType=FLOAT},
+      ti_134 = #{ti_134,jdbcType=FLOAT},
+      tr_413 = #{tr_413,jdbcType=FLOAT},
+      tr_403 = #{tr_403,jdbcType=FLOAT},
+      tr_407 = #{tr_407,jdbcType=FLOAT},
+      ti_407a = #{ti_407a,jdbcType=FLOAT},
+      ti_407b = #{ti_407b,jdbcType=FLOAT},
+      pi_213 = #{pi_213,jdbcType=FLOAT},
+      pi_105 = #{pi_105,jdbcType=FLOAT},
+      pi_112 = #{pi_112,jdbcType=FLOAT},
+      pi_114 = #{pi_114,jdbcType=FLOAT},
+      pi_234 = #{pi_234,jdbcType=FLOAT},
+      pr_401 = #{pr_401,jdbcType=FLOAT},
+      pr_403 = #{pr_403,jdbcType=FLOAT},
+      pi_422 = #{pi_422,jdbcType=FLOAT},
+      pr_416 = #{pr_416,jdbcType=FLOAT},
+      pi_288 = #{pi_288,jdbcType=FLOAT},
+      ar_101 = #{ar_101,jdbcType=FLOAT},
+      ar_109 = #{ar_109,jdbcType=FLOAT},
+      ar_110 = #{ar_110,jdbcType=FLOAT},
+      ai_104 = #{ai_104,jdbcType=FLOAT},
+      ai_103 = #{ai_103,jdbcType=FLOAT},
+      ar_111 = #{ar_111,jdbcType=FLOAT},
+      ar_112 = #{ar_112,jdbcType=FLOAT},
+      ar_113 = #{ar_113,jdbcType=FLOAT},
+      ar_114 = #{ar_114,jdbcType=FLOAT},
+      k_001 = #{k_001,jdbcType=FLOAT},
+      h2oc = #{h2oc,jdbcType=FLOAT},
+      lr_403 = #{lr_403,jdbcType=FLOAT},
+      lr_402 = #{lr_402,jdbcType=FLOAT},
+      fiqnh3 = #{fiqnh3,jdbcType=FLOAT},
+      ipq001 = #{ipq001,jdbcType=FLOAT},
+      ipq002 = #{ipq002,jdbcType=FLOAT},
+      ipq003 = #{ipq003,jdbcType=FLOAT},
+      ipq004 = #{ipq004,jdbcType=FLOAT},
+      fiq101 = #{fiq101,jdbcType=FLOAT},
+      ftq109 = #{ftq109,jdbcType=FLOAT},
+      fiq000 = #{fiq000,jdbcType=FLOAT},
+      time_nh3_yield = #{time_nh3_yield,jdbcType=FLOAT},
+      time_electric_consume = #{time_electric_consume,jdbcType=FLOAT},
+      time_raw_gas_consume = #{time_raw_gas_consume,jdbcType=FLOAT},
+      time_fuel_consume = #{time_fuel_consume,jdbcType=FLOAT},
+      time_gas_consume = #{time_gas_consume,jdbcType=FLOAT},
+      system_load = #{system_load,jdbcType=FLOAT},
+      hour_nh3_yield = #{hour_nh3_yield,jdbcType=FLOAT},
+      tonnh3_compre_consume = #{tonnh3_compre_consume,jdbcType=FLOAT},
+      tonnh3_gas_consume = #{tonnh3_gas_consume,jdbcType=FLOAT},
+      tonnh3_raw_gas_consume = #{tonnh3_raw_gas_consume,jdbcType=FLOAT},
+      tonnh3_fuel_consume = #{tonnh3_fuel_consume,jdbcType=FLOAT},
+      tonnh3_electric_consume = #{tonnh3_electric_consume,jdbcType=FLOAT},
+      shift = #{shift,jdbcType=INTEGER}
+    where orig_id = #{orig_id,jdbcType=INTEGER}
+  </update>
+</mapper>

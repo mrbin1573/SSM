@@ -1,0 +1,199 @@
+package com.saitejn.services.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.saitejn.mapper.CheckLogCustomerMapper;
+import com.saitejn.mapper.JbPushgrid11CustomerMapper;
+import com.saitejn.pojo.JbPushgrid101;
+import com.saitejn.pojo.JbPushgrid11;
+import com.saitejn.pojo.JbPushgrid111WithBLOBs;
+import com.saitejn.pojo.JbPushgrid112WithBLOBs;
+import com.saitejn.pojo.JbPushgrid113WithBLOBs;
+import com.saitejn.pojo.JbPushgrid114WithBLOBs;
+import com.saitejn.pojo.JbPushgrid11WithBLOBs;
+import com.saitejn.pojo.JbPushgrid12;
+import com.saitejn.pojo.JbPushgrid13WithBLOBs;
+import com.saitejn.pojo.JbPushgrid14WithBLOBs;
+import com.saitejn.pojo.JbPushgrid15WithBLOBs;
+import com.saitejn.pojo.JbPushgrid21;
+import com.saitejn.pojo.JbPushgrid22WithBLOBs;
+import com.saitejn.pojo.JbPushgrid23WithBLOBs;
+import com.saitejn.pojo.JbPushgrid24WithBLOBs;
+import com.saitejn.pojo.JbPushgrid31WithBLOBs;
+import com.saitejn.pojo.JbPushgrid41;
+import com.saitejn.pojo.JbPushgrid51;
+import com.saitejn.pojo.JbPushgrid61;
+import com.saitejn.pojo.JbPushgrid71;
+import com.saitejn.pojo.JbPushgrid81WithBLOBs;
+import com.saitejn.pojo.JbPushgrid82WithBLOBs;
+import com.saitejn.pojo.JbPushgrid91WithBLOBs;
+import com.saitejn.pojo.JbPushgrid92WithBLOBs;
+import com.saitejn.pojo.JbPushgrid93WithBLOBs;
+import com.saitejn.pojo.JbPushgrid94WithBLOBs;
+import com.saitejn.services.GuideDataServices;
+
+/**
+ * 指导数据实现类
+ * @class GuideDataServicesImpl.java
+ * @Description:
+ * @author:罗康元
+ * Company:赛特工信科技有限公司
+ * @date :2016-10-8
+ */
+public class GuideDataServicesImpl implements GuideDataServices {
+	@Autowired
+	private JbPushgrid11CustomerMapper jbPushgrid11CustomerMapper;
+	@Autowired
+	private CheckLogCustomerMapper checkLogCustomerMapper;
+	@Override
+	public List<JbPushgrid11WithBLOBs> selectAllPush(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPush(id);
+	}
+	@Override
+	public List<JbPushgrid12> selectAllPush12(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPush12(id);
+	}
+	@Override
+	public List<JbPushgrid13WithBLOBs> selectAllPushgrid13s(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid13s(id);
+	}
+	@Override
+	public List<JbPushgrid14WithBLOBs> selectAllPushgrid14s(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid14s(id);
+	}
+	@Override
+	public List<JbPushgrid15WithBLOBs> selectAllWithBLOB15s(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllWithBLOB15s(id);
+	}
+	@Override
+	public List<JbPushgrid21> selectAllJbPushgrid21s(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllJbPushgrid21s(id);
+	}
+	@Override
+	public List<JbPushgrid22WithBLOBs> selectAllPushgrid22WithBLOBs(int id)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid22WithBLOBs(id);
+	}
+	@Override
+	public List<JbPushgrid23WithBLOBs> selectAllPushgrid23WithBLOBs(int id)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid23WithBLOBs(id);
+	}
+	@Override
+	public List<JbPushgrid24WithBLOBs> selectAllPushgrid24WithBLOBs(int id)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid24WithBLOBs(id);
+	}
+	@Override
+	public List<JbPushgrid31WithBLOBs> selectAllPushgrid31WithBLOBs(int id)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid31WithBLOBs(id);
+	}
+	@Override
+	public List<JbPushgrid41> selectAllPushgrid41s(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid41s(id);
+	}
+	@Override
+	public List<JbPushgrid51> selectAllPushgrid51s(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid51s(id);
+	}
+	@Override
+	public List<JbPushgrid61> selectAllPushgrid61s(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid61s(id);
+	}
+	@Override
+	public List<JbPushgrid81WithBLOBs> selectAllPushgrid81WithBLOBs(int id)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid81WithBLOBs(id);
+	}
+	@Override
+	public List<JbPushgrid82WithBLOBs> selectAllPushgrid82WithBLOBs(int id)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid82WithBLOBs(id);
+	}
+	@Override
+	public List<JbPushgrid91WithBLOBs> selectAllPushgrid91WithBLOBs(int id)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid91WithBLOBs(id);
+	}
+	@Override
+	public List<JbPushgrid92WithBLOBs> selectAllPushgrid92WithBLOBs(int id)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid92WithBLOBs(id);
+	}
+	@Override
+	public List<JbPushgrid93WithBLOBs> selectAllPushgrid93WithBLOBs(int id)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid93WithBLOBs(id);
+	}
+	@Override
+	public List<JbPushgrid94WithBLOBs> selectAllPushgrid94WithBLOBs(int id)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid94WithBLOBs(id);
+	}
+	@Override
+	public List<JbPushgrid101> selectAllPushgrid101WithBLOBs(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid101WithBLOBs(id);
+	}
+	@Override
+	public List<JbPushgrid111WithBLOBs> selectAllPushgrid111WithBLOBs(String guideData)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid111WithBLOBs(guideData);
+	}
+	@Override
+	public List<JbPushgrid112WithBLOBs> selectAllPushgrid112WithBLOBs(String guideData)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid112WithBLOBs(guideData);
+	}
+	@Override
+	public List<JbPushgrid113WithBLOBs> selectAllPushgrid113WithBLOBs(String guideData)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid113WithBLOBs(guideData);
+	}
+	@Override
+	public List<JbPushgrid114WithBLOBs> selectAllPushgrid114WithBLOBs(String guideData)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid114WithBLOBs(guideData);
+	}
+	@Override
+	public List<JbPushgrid71> selectAllPushgrid71s(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return jbPushgrid11CustomerMapper.selectAllPushgrid71s(id);
+	}
+	@Override
+	public int getNumberByName(String name) throws Exception {
+		// TODO Auto-generated method stub
+		return checkLogCustomerMapper.getNumberByName(name);
+	}
+	@Override
+	public void updateNumber(int id, String name) throws Exception {
+		checkLogCustomerMapper.updateNumber(id, name);
+	}
+
+}

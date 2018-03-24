@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;qt&apos;&#x0D;&#x0A;- Original project: &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Destination element: &apos;qt&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     jf_toUploadType.jsp&#x0D;&#x0A;     jf_upload.jsp" description="Copy files" element1="WebRoot/WEB-INF/jsp/jf/jf_toUploadType.jsp" element2="WebRoot/WEB-INF/jsp/jf/jf_upload.jsp" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1515124190397" target="/SaiTeGXJN/WebRoot/WEB-INF/jsp/qt" units="0" version="1.0"/>
+</session>

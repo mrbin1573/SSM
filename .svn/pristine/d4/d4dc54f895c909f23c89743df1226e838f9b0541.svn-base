@@ -1,0 +1,13 @@
+package com.saitejn.controller;
+
+import org.springframework.stereotype.Controller;
+
+/**
+ * 建峰指导文件查看页面
+ * @author Administrator
+ *
+ */
+@Controller
+public class JF_guidePageController {
+
+}

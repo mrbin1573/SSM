@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;data.js&apos; to &apos;data.js&apos;&#x0D;&#x0A;- Original project: &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Destination element: &apos;data.js&apos;&#x0D;&#x0A;- Original element: &apos;data.js&apos;" description="Copy file" element1="WebRoot/js/data.js" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1493707780612" target="/SaiTeGXJN/WebRoot/js/data.js" units="0" version="1.0"/>
+</session>

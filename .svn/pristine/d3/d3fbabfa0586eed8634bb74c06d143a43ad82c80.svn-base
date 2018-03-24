@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name></display-name>	
+  <!-- 加载spring容器 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/spring/applicationContext-*.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+  <!--  配置SpringMvc的前端控制器 -->
+ <servlet>
+ 	<servlet-name>springmvc</servlet-name>
+ 	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+ 	<!-- contextConfigLocation配置springmvce的配置文件（配置处理器适配器，映射器等） -->
+ 	<init-param>
+ 		<param-name>contextConfigLocation</param-name>
+ 		<param-value>classpath:spring/springmvc.xml</param-value>
+ 	</init-param>
+ </servlet>
+  <servlet-mapping>
+  	<servlet-name>springmvc</servlet-name>
+  	<url-pattern>*.action</url-pattern>
+  </servlet-mapping>
+  <servlet>
+	<servlet-name>validateColorServlet</servlet-name>
+	<servlet-class>com.saitejn.util.ValidateColorServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>validateColorServlet</servlet-name>
+		<url-pattern>/validateColorServlet</url-pattern>
+	</servlet-mapping>
+  <!-- post乱码过虑器 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+	  <servlet>
+	<servlet-name>left</servlet-name>
+	<jsp-file>/WEB-INF/jsp/admin/left.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>left</servlet-name>
+	<url-pattern>/left</url-pattern>
+	</servlet-mapping>
+	
+	  <servlet>
+	<servlet-name>top</servlet-name>
+	<jsp-file>/WEB-INF/jsp/admin/top.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>top</servlet-name>
+	<url-pattern>/top</url-pattern>
+	</servlet-mapping>
+	
+	  <servlet>
+	<servlet-name>main</servlet-name>
+	<jsp-file>/WEB-INF/jsp/admin/hindex.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>main</servlet-name>
+	<url-pattern>/main</url-pattern>
+	</servlet-mapping>
+	
+	  <servlet>
+	<servlet-name>button</servlet-name>
+	<jsp-file>/WEB-INF/jsp/admin/footer.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>button</servlet-name>
+	<url-pattern>/button</url-pattern>
+	</servlet-mapping>
+	<error-page>  
+    
+    <error-code>404</error-code>  
+    <location>/WEB-INF/erorr.jsp</location>  
+ 
+</error-page>
+	<welcome-file-list>
+    
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

@@ -1,0 +1,222 @@
+package com.saitejn.services.impl;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.saitejn.mapper.JB_EnergyMapper;
+import com.saitejn.pojo.JbRawdataHandle1;
+import com.saitejn.services.JB_EnergyServices;
+
+/**
+ * 金杯能耗实现类
+ * @JB_EnergyServicesImpl
+ * @Description
+ * @author 罗康元
+ * @company 成都赛特工信科技有限公司
+ * @date 2017-6-28
+ */
+public class JB_EnergyServicesImpl implements JB_EnergyServices {
+	@Autowired
+	private JB_EnergyMapper jb_EnergyMapper;
+	@Override
+	public List<JbRawdataHandle1> selectDailyreport_jb(String btime,
+			String etime) throws Exception {
+		List<JbRawdataHandle1> list1 = jb_EnergyMapper.selectDailyreportFortime1_jb(btime, etime);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date newdate1 = sdf.parse(btime);
+		Calendar c1 = Calendar.getInstance(); 
+		c1.setTime(newdate1);  
+		c1.set(Calendar.DATE, c1.get(Calendar.DATE) + 1);
+		Date data1 = c1.getTime();
+        Date newdate2 = sdf.parse(etime);
+		Calendar c2 = Calendar.getInstance(); 
+		c2.setTime(newdate2);  
+		c2.set(Calendar.DATE, c2.get(Calendar.DATE) + 1);
+        Date data2= c2.getTime();
+        String dayBefore = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(data1);
+        String dayend = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(data2);
+		List<JbRawdataHandle1> list2 = jb_EnergyMapper.selectDailyreportFortime2_jb(dayBefore, dayend);
+		List<JbRawdataHandle1> list3 = new ArrayList<JbRawdataHandle1>();
+		List<JbRawdataHandle1> list4 = new ArrayList<JbRawdataHandle1>();
+		if(list2.size()>0){
+			 for(int i = 0 ;i < list2.size(); i++){
+				 JbRawdataHandle1 jb= list2.get(i);
+				 Date date = jb.getData_time();
+				 Calendar date1 = Calendar.getInstance();
+				 date1.setTime(date);
+				 date1.set(Calendar.DATE, date1.get(Calendar.DATE) - 1);
+				 Date date2 = date1.getTime();
+				 jb.setData_time(date2);
+				 list3.add(jb);
+			 }
+			 for(JbRawdataHandle1 l1:list3){
+					for(JbRawdataHandle1 l2:list1){
+						if(l1.getData_time().getTime()==l2.getData_time().getTime()){
+							JbRawdataHandle1 jbRawdataHandle1 = new JbRawdataHandle1();
+							jbRawdataHandle1.setData_time(l2.getData_time());
+							jbRawdataHandle1.setTime_nh3_yield(l1.getTime_nh3_yield()+l2.getTime_nh3_yield());
+							jbRawdataHandle1.setTime_electric_consume(l1.getTime_electric_consume()+l2.getTime_electric_consume());
+							jbRawdataHandle1.setTime_raw_gas_consume(l1.getTime_raw_gas_consume()+l2.getTime_raw_gas_consume());
+							jbRawdataHandle1.setOrig_id(l1.getOrig_id()+l2.getOrig_id());
+							jbRawdataHandle1.setClassNumber(l1.getClassNumber());
+							list4.add(jbRawdataHandle1);
+							break;
+						}
+					}
+				}
+				for(JbRawdataHandle1 l1:list3){
+					for(JbRawdataHandle1 l2:list1){
+						if(l1.getData_time().getTime()==l2.getData_time().getTime()){
+						     list1.remove(l2);
+							break;
+						}
+					}
+				}
+		 }
+		list4.addAll(list1);
+		Collections.sort(list4,new Comparator<JbRawdataHandle1>() {
+
+			@Override
+			public int compare(JbRawdataHandle1 o1, JbRawdataHandle1 o2) {
+				if(o1.getData_time().getTime() > o2.getData_time().getTime()){
+					return 1;
+				}
+				if(o1.getData_time().getTime() == o2.getData_time().getTime()){
+					return 0;
+				}
+				
+				return -1;
+			}
+		});
+		return list4;
+	}
+	@Override
+	public List<JbRawdataHandle1> selectDailyreportForClass_jb(String btime,
+			String etime) throws Exception {
+		List<JbRawdataHandle1> list1 = jb_EnergyMapper.selectDailyReportForClass1_jb(btime, etime);
+		List<JbRawdataHandle1> list2_1 = jb_EnergyMapper.selectDailyReportForClass2_1_jb(btime, etime);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date newdate1 = sdf.parse(btime);
+		Calendar c1 = Calendar.getInstance(); 
+		c1.setTime(newdate1);  
+		c1.set(Calendar.DATE, c1.get(Calendar.DATE) + 1);
+		Date data1 = c1.getTime();
+        Date newdate2 = sdf.parse(etime);
+		Calendar c2 = Calendar.getInstance(); 
+		c2.setTime(newdate2);  
+		c2.set(Calendar.DATE, c2.get(Calendar.DATE) + 1);
+        Date data2= c2.getTime();
+        String dayBefore = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(data1);
+        String dayend = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(data2);
+        List<JbRawdataHandle1> list2_2 = jb_EnergyMapper.selectDailyReportForClass2_2_jb(dayBefore, dayend);
+        List<JbRawdataHandle1> list3 = new ArrayList<JbRawdataHandle1>();
+        List<JbRawdataHandle1> list4 = new ArrayList<JbRawdataHandle1>();
+        if(list2_2.size()>0){
+			 for(int i = 0 ;i < list2_2.size(); i++){
+				 JbRawdataHandle1 jb= list2_2.get(i);
+				 Date date = jb.getData_time();
+				 Calendar date1 = Calendar.getInstance();
+				 date1.setTime(date);
+				 date1.set(Calendar.DATE, date1.get(Calendar.DATE) - 1);
+				 Date date2 = date1.getTime();
+				 jb.setData_time(date2);
+				 list3.add(jb);
+			 }
+			 for(JbRawdataHandle1 l1:list3){
+					for(JbRawdataHandle1 l2:list2_1){
+						if(l1.getData_time().getTime()==l2.getData_time().getTime()){
+							JbRawdataHandle1 jbRawdataHandle1 = new JbRawdataHandle1();
+							jbRawdataHandle1.setData_time(l2.getData_time());
+							jbRawdataHandle1.setTime_nh3_yield(l1.getTime_nh3_yield()+l2.getTime_nh3_yield());
+							jbRawdataHandle1.setTime_electric_consume(l1.getTime_electric_consume()+l2.getTime_electric_consume());
+							jbRawdataHandle1.setTime_raw_gas_consume(l1.getTime_raw_gas_consume()+l2.getTime_raw_gas_consume());
+							jbRawdataHandle1.setOrig_id(l1.getOrig_id()+l2.getOrig_id());
+							jbRawdataHandle1.setShift(l1.getShift()+l2.getShift());
+							jbRawdataHandle1.setClassNumber(l1.getClassNumber());
+							list4.add(jbRawdataHandle1);
+							break;
+						}
+					}
+				}
+				for(JbRawdataHandle1 l1:list3){
+					for(JbRawdataHandle1 l2:list2_1){
+						if(l1.getData_time().getTime()==l2.getData_time().getTime()){
+							list2_1.remove(l2);
+							break;
+						}
+					}
+				}
+		 }
+        list4.addAll(list2_1);
+        list1.addAll(list4);
+        Collections.sort(list1,new Comparator<JbRawdataHandle1>() {
+			@Override
+			public int compare(JbRawdataHandle1 o1, JbRawdataHandle1 o2) {
+				if(o1.getData_time().getTime() > o2.getData_time().getTime()){
+					return 1;
+				}
+				if(o1.getData_time().getTime() == o2.getData_time().getTime()){
+					return 0;
+				}
+				return -1;
+			}
+		});
+		return list1;
+	}
+	@Override
+	public List<JbRawdataHandle1> selectQuarterreport_jb(String btime,
+			String etime) throws Exception {
+		List<JbRawdataHandle1> list1 = jb_EnergyMapper.selectQuarterForMouth_1_jb(btime, etime);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date newdate1 = sdf.parse(btime);
+		Calendar c1 = Calendar.getInstance(); 
+		c1.setTime(newdate1);  
+		c1.set(Calendar.DATE, c1.get(Calendar.DATE) + 1);
+		Date data1 = c1.getTime();
+        Date newdate2 = sdf.parse(etime);
+		Calendar c2 = Calendar.getInstance(); 
+		c2.setTime(newdate2);  
+		c2.set(Calendar.DATE, c2.get(Calendar.DATE) + 1);
+        Date data2= c2.getTime();
+        String dayBefore = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(data1);
+        String dayend = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(data2);
+        List<JbRawdataHandle1>list2 = jb_EnergyMapper.selectQuarterForMouth_2_jb(dayBefore, dayend);
+        List<JbRawdataHandle1>list3 = new ArrayList<JbRawdataHandle1>();
+        List<JbRawdataHandle1>list4 = new ArrayList<JbRawdataHandle1>();
+        if(list2.size()>0){
+			 for(JbRawdataHandle1 l1:list1){
+					for(JbRawdataHandle1 l2:list2){
+						Date l1time = l1.getData_time();
+						SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM");
+						String lintime = sdf2.format(l1time);
+						
+						Date listNextTime = l2.getData_time();
+						
+						String liNeTime = sdf2.format(listNextTime);
+						
+						if(lintime.equals(liNeTime)){
+							JbRawdataHandle1 jbRawdataHandle1 = new JbRawdataHandle1();
+							jbRawdataHandle1.setData_time(l2.getData_time());
+							jbRawdataHandle1.setTime_nh3_yield(l1.getTime_nh3_yield()+l2.getTime_nh3_yield());
+							jbRawdataHandle1.setTime_electric_consume(l1.getTime_electric_consume()+l2.getTime_electric_consume());
+							jbRawdataHandle1.setTime_raw_gas_consume(l1.getTime_raw_gas_consume()+l2.getTime_raw_gas_consume());
+							jbRawdataHandle1.setOrig_id(l1.getOrig_id()+l2.getOrig_id());
+							list4.add(jbRawdataHandle1);
+							break;
+						}
+					}
+				}
+				
+		 }
+       
+		return list4;
+	}
+
+}

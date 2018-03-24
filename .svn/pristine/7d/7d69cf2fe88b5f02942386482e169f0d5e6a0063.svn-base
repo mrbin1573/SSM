@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JbClassinforMapper" >
+  <resultMap id="BaseResultMap" type="com.saitejn.pojo.JbClassinfor" >
+    <id column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="class_time" property="class_time" jdbcType="TIMESTAMP" />
+    <result column="morclass" property="morclass" jdbcType="INTEGER" />
+    <result column="aftclass" property="aftclass" jdbcType="INTEGER" />
+    <result column="eveclass" property="eveclass" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cid, class_time, morclass, aftclass, eveclass
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.saitejn.pojo.JbClassinforExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jb_classinfor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jb_classinfor
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jb_classinfor
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.saitejn.pojo.JbClassinforExample" >
+    delete from jb_classinfor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.saitejn.pojo.JbClassinfor" >
+    insert into jb_classinfor (cid, class_time, morclass, 
+      aftclass, eveclass)
+    values (#{cid,jdbcType=INTEGER}, #{class_time,jdbcType=TIMESTAMP}, #{morclass,jdbcType=INTEGER}, 
+      #{aftclass,jdbcType=INTEGER}, #{eveclass,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saitejn.pojo.JbClassinfor" >
+    insert into jb_classinfor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="class_time != null" >
+        class_time,
+      </if>
+      <if test="morclass != null" >
+        morclass,
+      </if>
+      <if test="aftclass != null" >
+        aftclass,
+      </if>
+      <if test="eveclass != null" >
+        eveclass,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="class_time != null" >
+        #{class_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="morclass != null" >
+        #{morclass,jdbcType=INTEGER},
+      </if>
+      <if test="aftclass != null" >
+        #{aftclass,jdbcType=INTEGER},
+      </if>
+      <if test="eveclass != null" >
+        #{eveclass,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.saitejn.pojo.JbClassinforExample" resultType="java.lang.Integer" >
+    select count(*) from jb_classinfor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update jb_classinfor
+    <set >
+      <if test="record.cid != null" >
+        cid = #{record.cid,jdbcType=INTEGER},
+      </if>
+      <if test="record.class_time != null" >
+        class_time = #{record.class_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.morclass != null" >
+        morclass = #{record.morclass,jdbcType=INTEGER},
+      </if>
+      <if test="record.aftclass != null" >
+        aftclass = #{record.aftclass,jdbcType=INTEGER},
+      </if>
+      <if test="record.eveclass != null" >
+        eveclass = #{record.eveclass,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update jb_classinfor
+    set cid = #{record.cid,jdbcType=INTEGER},
+      class_time = #{record.class_time,jdbcType=TIMESTAMP},
+      morclass = #{record.morclass,jdbcType=INTEGER},
+      aftclass = #{record.aftclass,jdbcType=INTEGER},
+      eveclass = #{record.eveclass,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saitejn.pojo.JbClassinfor" >
+    update jb_classinfor
+    <set >
+      <if test="class_time != null" >
+        class_time = #{class_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="morclass != null" >
+        morclass = #{morclass,jdbcType=INTEGER},
+      </if>
+      <if test="aftclass != null" >
+        aftclass = #{aftclass,jdbcType=INTEGER},
+      </if>
+      <if test="eveclass != null" >
+        eveclass = #{eveclass,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saitejn.pojo.JbClassinfor" >
+    update jb_classinfor
+    set class_time = #{class_time,jdbcType=TIMESTAMP},
+      morclass = #{morclass,jdbcType=INTEGER},
+      aftclass = #{aftclass,jdbcType=INTEGER},
+      eveclass = #{eveclass,jdbcType=INTEGER}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+</mapper>

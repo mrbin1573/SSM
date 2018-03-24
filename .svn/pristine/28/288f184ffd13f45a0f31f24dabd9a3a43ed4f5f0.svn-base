@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JfExcelInputCustomerMapper" >
+<select id="fingInputByJftime" parameterType="String" resultType="int">
+select count(*) from jf_excel_input where jf_data_time = #{jf_data_time}
+   </select>
+   <insert id="saveDatetomiddle" parameterType="com.saitejn.pojo.JfUploadMiddle" useGeneratedKeys="true">
+insert into jf_upload_middle (
+jf_data_time,FI100,FC101,FC105,FFY101,FFY105,FI203,PC167,FI175,FI172,FC191,FC133,FI162,FI107,FI207,FI180,
+FI177,FI9005,FI147,FI199,TI106,TI240,TI107,TI124,TI262,TI125,TI132,TC127,TI137,TI153,TI154,TI274,TI275,PI176,PI100 ,PI109A,
+PC117,PC123,PI142,PI182A,PC153,PC156,AI113,AI108,AI100,AI101,AC102,AI103,AC111,TI5301,FI153,FI116,FI140,FI09802,FI09803,PC131,
+TC200,TI203F,TI208A,TI210H,TI266A,TI268H,TI239,TC142,TC144,FI163,FIQ203,FIQ100,FIQ172,FIQ175,FIQ162,FIQ221A,FIQ221B,
+FIQ180,FIQ9802,FIQ9005,FIQ9803,FI204,FI240,FI241,FI242,FI146,TI5302,FIQ159,PC165,PC166,FIQ153,P156,FQ116,
+TI104,TI113,TI109,PI7,TI213,TI188,PC144,PDI137,TC105,TI276,TI233,TI148,TI140,FI117,FI118,FQ146,FQ240,FQ241,FQ242
+
+)
+values 
+(#{jf_data_time},#{FI100},#{FC101},#{FC105},#{FFY101},#{FFY105},#{FI203},#{PC167},
+#{FI175},#{FI172},#{FC191},#{FC133},#{FI162},#{FI107},#{FI207},#{FI180},#{FI177},#{FI9005},#{FI147},#{FI199},#{TI106},
+#{TI240},#{TI107},#{TI124},#{TI262},#{TI125},#{TI132},#{TC127},#{TI137},#{TI153},#{TI154},#{TI274},#{TI275},#{PI176},
+#{PI100} ,#{PI109A},#{PC117},#{PC123},#{PI142},#{PI182A},#{PC153},#{PC156},#{AI113},#{AI108},#{AI100},#{AI101},#{AC102},
+#{AI103},#{AC111},#{TI5301},#{FI153},#{FI116},#{FI140},#{FI09802},#{FI09803},#{PC131},#{TC200},#{TI203F},#{TI208A},
+#{TI210H},#{TI266A},#{TI268H},#{TI239},#{TC142},#{TC144},#{FI163},#{FIQ203},#{FIQ100},#{FIQ172},#{FIQ175},#{FIQ162},
+#{FIQ221A},#{FIQ221B},#{FIQ180},#{FIQ9802},#{FIQ9005},#{FIQ9803},#{FI204},#{FI240},#{FI241},#{FI242},#{FI146},
+#{TI5302},#{FIQ159},#{PC165},#{PC166},#{FIQ153},#{P156},#{FQ116},#{TI104},#{TI113},#{TI109},#{PI7},#{TI213},#{TI188},
+#{PC144},#{PDI137},#{TC105},#{TI276},#{TI233},#{TI148},#{TI140},#{FI117},#{FI118},#{FQ146},#{FQ240},#{FQ241},#{FQ242}
+
+)
+</insert>
+<insert id="saveDatetoExcel" parameterType="com.saitejn.pojo.JfUploadMiddle" useGeneratedKeys="true">
+insert into jf_excel_input (
+jf_data_time,FI100,FC101,FC105,FFY101,FFY105,FI203,PC167,FI175,FI172,FC191,FC133,FI162,FI107,FI207,FI180,
+FI177,FI9005,FI147,FI199,TI106,TI240,TI107,TI124,TI262,TI125,TI132,TC127,TI137,TI153,TI154,TI274,TI275,PI176,PI100 ,PI109A,
+PC117,PC123,PI142,PI182A,PC153,PC156,AI113,AI108,AI100,AI101,AC102,AI103,AC111,TI5301,FI153,FI116,FI140,FI09802,FI09803,PC131,
+TC200,TI203F,TI208A,TI210H,TI266A,TI268H,TI239,TC142,TC144,FI163,FIQ203,FIQ100,FIQ172,FIQ175,FIQ162,FIQ221A,FIQ221B,
+FIQ180,FIQ9802,FIQ9005,FIQ9803,FI204,FI240,FI241,FI242,FI146,TI5302,FIQ159,PC165,PC166,FIQ153,P156,FQ116,
+TI104,TI113,TI109,PI7,TI213,TI188,PC144,PDI137,TC105,TI276,TI233,TI148,TI140,FI117,FI118,FQ146,FQ240,FQ241,FQ242
+)
+values 
+(#{jf_data_time},#{FI100},#{FC101},#{FC105},#{FFY101},#{FFY105},#{FI203},#{PC167},
+#{FI175},#{FI172},#{FC191},#{FC133},#{FI162},#{FI107},#{FI207},#{FI180},#{FI177},#{FI9005},#{FI147},#{FI199},#{TI106},
+#{TI240},#{TI107},#{TI124},#{TI262},#{TI125},#{TI132},#{TC127},#{TI137},#{TI153},#{TI154},#{TI274},#{TI275},#{PI176},
+#{PI100} ,#{PI109A},#{PC117},#{PC123},#{PI142},#{PI182A},#{PC153},#{PC156},#{AI113},#{AI108},#{AI100},#{AI101},#{AC102},
+#{AI103},#{AC111},#{TI5301},#{FI153},#{FI116},#{FI140},#{FI09802},#{FI09803},#{PC131},#{TC200},#{TI203F},#{TI208A},
+#{TI210H},#{TI266A},#{TI268H},#{TI239},#{TC142},#{TC144},#{FI163},#{FIQ203},#{FIQ100},#{FIQ172},#{FIQ175},#{FIQ162},
+#{FIQ221A},#{FIQ221B},#{FIQ180},#{FIQ9802},#{FIQ9005},#{FIQ9803},#{FI204},#{FI240},#{FI241},#{FI242},#{FI146},
+#{TI5302},#{FIQ159},#{PC165},#{PC166},#{FIQ153},#{P156},#{FQ116},#{TI104},#{TI113},#{TI109},#{PI7},#{TI213},#{TI188},
+#{PC144},#{PDI137},#{TC105},#{TI276},#{TI233},#{TI148},#{TI140},#{FI117},#{FI118},#{FQ146},#{FQ240},#{FQ241},#{FQ242}
+
+)
+</insert>
+<select id="selectAllJfMiddle" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select * from jf_upload_middle order by jf_data_time asc
+</select>
+<insert id="saveDatetoHandl1" parameterType="com.saitejn.pojo.JfRawdataHandle1" useGeneratedKeys="true">
+insert into jf_rawdata_handle_1 (
+jf_data_time,FI100,FC101,FC105,FFY101,FFY105,FI203,PC167,FI175,FI172,FC191,FC133,FI162,FI107,FI207,FI180,
+FI177,FI9005,FI147,FI199,TI106,TI240,TI107,TI124,TI262,TI125,TI132,TC127,TI137,TI153,TI154,TI274,TI275,PI176,PI100 ,PI109A,
+PC117,PC123,PI142,PI182A,PC153,PC156,AI113,AI108,AI100,AI101,AC102,AI103,AC111,TI5301,FI153,FI116,FI140,FI09802,FI09803,PC131,
+TC200,TI203F,TI208A,TI210H,TI266A,TI268H,TI239,TC142,TC144,FI163,FIQ203,FIQ100,FIQ172,FIQ175,FIQ162,FIQ221A,FIQ221B,
+FIQ180,FIQ9802,FIQ9005,FIQ9803,FI204,FI240,FI241,FI242,FI146,TI5302,FIQ159,PC165,PC166,FIQ153,P156,FQ116,
+TI104,TI113,TI109,PI7,TI213,TI188,PC144,PDI137,TC105,TI276,TI233,TI148,TI140,FI117,FI118,FQ146,FQ240,FQ241,FQ242,
+
+Time_FIQ203,
+Time_FIQ100,Time_FIQ172,Time_FIQ175,Time_fuel_gas,Time_FIQ162,
+Time_FIQ221A,Time_FIQ221B,Time_FIQ180,Time_FIQ9802,Time_FIQ9005,Time_steam_coal,Time_steam_gas,
+Time_FIQ9803,Time_FIQ116,Time_water_coal,Time_water_gas,System_load,Hour_nh3,Ton_nh3_gas,
+Ton_nh3_steam,Ton_nh3_water_gas,Ton_nh3_gas_sum,Ton_nh3_comp_cons,Ton_nh3_raw_gas,Ton_fuel_gas
+
+
+)
+values 
+(#{jf_data_time},#{FI100},#{FC101},#{FC105},#{FFY101},#{FFY105},#{FI203},#{PC167},
+#{FI175},#{FI172},#{FC191},#{FC133},#{FI162},#{FI107},#{FI207},#{FI180},#{FI177},#{FI9005},#{FI147},#{FI199},#{TI106},
+#{TI240},#{TI107},#{TI124},#{TI262},#{TI125},#{TI132},#{TC127},#{TI137},#{TI153},#{TI154},#{TI274},#{TI275},#{PI176},
+#{PI100},#{PI109A},#{PC117},#{PC123},#{PI142},#{PI182A},#{PC153},#{PC156},#{AI113},#{AI108},#{AI100},#{AI101},#{AC102},
+#{AI103},#{AC111},#{TI5301},#{FI153},#{FI116},#{FI140},#{FI09802},#{FI09803},#{PC131},#{TC200},#{TI203F},#{TI208A},
+#{TI210H},#{TI266A},#{TI268H},#{TI239},#{TC142},#{TC144},#{FI163},#{FIQ203},#{FIQ100},#{FIQ172},#{FIQ175},#{FIQ162},
+#{FIQ221A},#{FIQ221B},#{FIQ180},#{FIQ9802},#{FIQ9005},#{FIQ9803},#{FI204},#{FI240},#{FI241},#{FI242},#{FI146},
+#{TI5302},#{FIQ159},#{PC165},#{PC166},#{FIQ153},#{P156},#{FQ116},#{TI104},#{TI113},#{TI109},#{PI7},#{TI213},#{TI188},
+#{PC144},#{PDI137},#{TC105},#{TI276},#{TI233},#{TI148},#{TI140},#{FI117},#{FI118},#{FQ146},#{FQ240},#{FQ241},#{FQ242},
+
+#{Time_FIQ203},#{Time_FIQ100},#{Time_FIQ172},
+#{Time_FIQ175},#{Time_fuel_gas},#{Time_FIQ162},#{Time_FIQ221A},#{Time_FIQ221B},#{Time_FIQ180},
+#{Time_FIQ9802},#{Time_FIQ9005},#{Time_steam_coal},#{Time_steam_gas},#{Time_FIQ9803},#{Time_FIQ116},
+#{Time_water_coal},#{Time_water_gas},#{System_load},#{Hour_nh3},#{Ton_nh3_gas},#{Ton_nh3_steam},
+#{Ton_nh3_water_gas},#{Ton_nh3_gas_sum},#{Ton_nh3_comp_cons},#{Ton_nh3_raw_gas},#{Ton_fuel_gas}
+
+)
+</insert>
+<insert id="saveDatetoHandlMiddle" parameterType="com.saitejn.pojo.JfRawdataHandle1" useGeneratedKeys="true">
+insert into jf_rawdata_middle (
+jf_data_time,FI100,FC101,FC105,FFY101,FFY105,FI203,PC167,FI175,FI172,FC191,FC133,FI162,FI107,FI207,FI180,
+FI177,FI9005,FI147,FI199,TI106,TI240,TI107,TI124,TI262,TI125,TI132,TC127,TI137,TI153,TI154,TI274,TI275,PI176,PI100,PI109A,
+PC117,PC123,PI142,PI182A,PC153,PC156,AI113,AI108,AI100,AI101,AC102,AI103,AC111,TI5301,FI153,FI116,FI140,FI09802,FI09803,PC131,
+TC200,TI203F,TI208A,TI210H,TI266A,TI268H,TI239,TC142,TC144,FI163,FIQ203,FIQ100,FIQ172,FIQ175,FIQ162,FIQ221A,FIQ221B,
+FIQ180,FIQ9802,FIQ9005,FIQ9803,FI204,FI240,FI241,FI242,FI146,TI5302,FIQ159,PC165,PC166,FIQ153,P156,FQ116,
+TI104,TI113,TI109,PI7,TI213,TI188,PC144,PDI137,TC105,TI276,TI233,TI148,TI140,FI117,FI118,FQ146,FQ240,FQ241,FQ242,
+Time_FIQ203,
+Time_FIQ100,Time_FIQ172,Time_FIQ175,Time_fuel_gas,Time_FIQ162,
+Time_FIQ221A,Time_FIQ221B,Time_FIQ180,Time_FIQ9802,Time_FIQ9005,Time_steam_coal,Time_steam_gas,
+Time_FIQ9803,Time_FIQ116,Time_water_coal,Time_water_gas,System_load,Hour_nh3,Ton_nh3_gas,
+Ton_nh3_steam,Ton_nh3_water_gas,Ton_nh3_gas_sum,Ton_nh3_comp_cons,Ton_nh3_raw_gas,Ton_fuel_gas
+)
+values 
+(#{jf_data_time},#{FI100},#{FC101},#{FC105},#{FFY101},#{FFY105},#{FI203},#{PC167},
+#{FI175},#{FI172},#{FC191},#{FC133},#{FI162},#{FI107},#{FI207},#{FI180},#{FI177},#{FI9005},#{FI147},#{FI199},#{TI106},
+#{TI240},#{TI107},#{TI124},#{TI262},#{TI125},#{TI132},#{TC127},#{TI137},#{TI153},#{TI154},#{TI274},#{TI275},#{PI176},
+#{PI100},#{PI109A},#{PC117},#{PC123},#{PI142},#{PI182A},#{PC153},#{PC156},#{AI113},#{AI108},#{AI100},#{AI101},#{AC102},
+#{AI103},#{AC111},#{TI5301},#{FI153},#{FI116},#{FI140},#{FI09802},#{FI09803},#{PC131},#{TC200},#{TI203F},#{TI208A},
+#{TI210H},#{TI266A},#{TI268H},#{TI239},#{TC142},#{TC144},#{FI163},#{FIQ203},#{FIQ100},#{FIQ172},#{FIQ175},#{FIQ162},
+#{FIQ221A},#{FIQ221B},#{FIQ180},#{FIQ9802},#{FIQ9005},#{FIQ9803},#{FI204},#{FI240},#{FI241},#{FI242},#{FI146},
+#{TI5302},#{FIQ159},#{PC165},#{PC166},#{FIQ153},#{P156},#{FQ116},#{TI104},#{TI113},#{TI109},#{PI7},#{TI213},#{TI188},
+#{PC144},#{PDI137},#{TC105},#{TI276},#{TI233},#{TI148},#{TI140},#{FI117},#{FI118},#{FQ146},#{FQ240},#{FQ241},#{FQ242},
+#{Time_FIQ203},#{Time_FIQ100},#{Time_FIQ172},
+#{Time_FIQ175},#{Time_fuel_gas},#{Time_FIQ162},#{Time_FIQ221A},#{Time_FIQ221B},#{Time_FIQ180},
+#{Time_FIQ9802},#{Time_FIQ9005},#{Time_steam_coal},#{Time_steam_gas},#{Time_FIQ9803},#{Time_FIQ116},
+#{Time_water_coal},#{Time_water_gas},#{System_load},#{Hour_nh3},#{Ton_nh3_gas},#{Ton_nh3_steam},
+#{Ton_nh3_water_gas},#{Ton_nh3_gas_sum},#{Ton_nh3_comp_cons},#{Ton_nh3_raw_gas},#{Ton_fuel_gas}
+)
+</insert>
+<select id="selectAllHandleMiddle" resultType="com.saitejn.pojo.JfRawdataHandle2">
+select * from jf_rawdata_middle order by jf_data_time asc
+</select>
+<insert id="saveDatetoHandl2" parameterType="com.saitejn.pojo.JfRawdataHandle1" useGeneratedKeys="true">
+insert into jf_rawdata_handle_2 (
+jf_data_time,FI100,FC101,FC105,FFY101,FFY105,FI203,PC167,FI175,FI172,FC191,FC133,FI162,FI107,FI207,FI180,
+FI177,FI9005,FI147,FI199,TI106,TI240,TI107,TI124,TI262,TI125,TI132,TC127,TI137,TI153,TI154,TI274,TI275,PI176,PI100,PI109A,
+PC117,PC123,PI142,PI182A,PC153,PC156,AI113,AI108,AI100,AI101,AC102,AI103,AC111,TI5301,FI153,FI116,FI140,FI09802,FI09803,PC131,
+TC200,TI203F,TI208A,TI210H,TI266A,TI268H,TI239,TC142,TC144,FI163,FIQ203,FIQ100,FIQ172,FIQ175,FIQ162,FIQ221A,FIQ221B,
+FIQ180,FIQ9802,FIQ9005,FIQ9803,FI204,FI240,FI241,FI242,FI146,TI5302,FIQ159,PC165,PC166,FIQ153,P156,FQ116,
+TI104,TI113,TI109,PI7,TI213,TI188,PC144,PDI137,TC105,TI276,TI233,TI148,TI140,FI117,FI118,FQ146,FQ240,FQ241,FQ242,
+Time_FIQ203,
+Time_FIQ100,Time_FIQ172,Time_FIQ175,Time_fuel_gas,Time_FIQ162,
+Time_FIQ221A,Time_FIQ221B,Time_FIQ180,Time_FIQ9802,Time_FIQ9005,Time_steam_coal,Time_steam_gas,
+Time_FIQ9803,Time_FIQ116,Time_water_coal,Time_water_gas,System_load,Hour_nh3,Ton_nh3_gas,
+Ton_nh3_steam,Ton_nh3_water_gas,Ton_nh3_gas_sum,Ton_nh3_comp_cons,Ton_nh3_raw_gas,Ton_fuel_gas
+)
+values 
+(#{jf_data_time},#{FI100},#{FC101},#{FC105},#{FFY101},#{FFY105},#{FI203},#{PC167},
+#{FI175},#{FI172},#{FC191},#{FC133},#{FI162},#{FI107},#{FI207},#{FI180},#{FI177},#{FI9005},#{FI147},#{FI199},#{TI106},
+#{TI240},#{TI107},#{TI124},#{TI262},#{TI125},#{TI132},#{TC127},#{TI137},#{TI153},#{TI154},#{TI274},#{TI275},#{PI176},
+#{PI100},#{PI109A},#{PC117},#{PC123},#{PI142},#{PI182A},#{PC153},#{PC156},#{AI113},#{AI108},#{AI100},#{AI101},#{AC102},
+#{AI103},#{AC111},#{TI5301},#{FI153},#{FI116},#{FI140},#{FI09802},#{FI09803},#{PC131},#{TC200},#{TI203F},#{TI208A},
+#{TI210H},#{TI266A},#{TI268H},#{TI239},#{TC142},#{TC144},#{FI163},#{FIQ203},#{FIQ100},#{FIQ172},#{FIQ175},#{FIQ162},
+#{FIQ221A},#{FIQ221B},#{FIQ180},#{FIQ9802},#{FIQ9005},#{FIQ9803},#{FI204},#{FI240},#{FI241},#{FI242},#{FI146},
+#{TI5302},#{FIQ159},#{PC165},#{PC166},#{FIQ153},#{P156},#{FQ116},#{TI104},#{TI113},#{TI109},#{PI7},#{TI213},#{TI188},
+#{PC144},#{PDI137},#{TC105},#{TI276},#{TI233},#{TI148},#{TI140},#{FI117},#{FI118},#{FQ146},#{FQ240},#{FQ241},#{FQ242},
+#{Time_FIQ203},#{Time_FIQ100},#{Time_FIQ172},
+#{Time_FIQ175},#{Time_fuel_gas},#{Time_FIQ162},#{Time_FIQ221A},#{Time_FIQ221B},#{Time_FIQ180},
+#{Time_FIQ9802},#{Time_FIQ9005},#{Time_steam_coal},#{Time_steam_gas},#{Time_FIQ9803},#{Time_FIQ116},
+#{Time_water_coal},#{Time_water_gas},#{System_load},#{Hour_nh3},#{Ton_nh3_gas},#{Ton_nh3_steam},
+#{Ton_nh3_water_gas},#{Ton_nh3_gas_sum},#{Ton_nh3_comp_cons},#{Ton_nh3_raw_gas},#{Ton_fuel_gas}
+)
+</insert>
+<delete id="deleteUploadMiddle">
+delete from jf_upload_middle 
+</delete>
+<delete id="deleterawdataMiddle">
+delete from jf_rawdata_middle
+</delete>
+<select id="selectTopOneHandl1" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select top 1 * from jf_rawdata_handle_1  order by jf_data_time desc
+</select>
+<!-- 日报表按日查看 -->
+<select id="selectDataByContidion" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(10),jf_data_time,120)+' 00:00:00'  as jf_data_time 
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '00:01:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 )))  &lt;= '23:59:59')
+ and jf_data_time  &gt;= #{0} and jf_data_time   &lt;= #{1}
+group by  convert(varchar(10),jf_data_time,120) order by jf_data_time asc 
+</select> 
+<!-- 日报表中的每一天的00：00 -->
+<select id="selectDataByContidionAndClass3" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(10),jf_data_time,120)+' 00:00:00'  as jf_data_time 
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180, 
+2 'classNumber'
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &lt;= '00:01:59')
+ and jf_data_time  &gt;= #{0} and jf_data_time &lt;= #{1}
+group by  convert(varchar(10),jf_data_time,120) order by jf_data_time asc 
+</select>
+<!-- 日报表按班查看 -->
+<select id="selectDataByContidionAndClass1" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(10),jf_data_time,120)+' 00:00:00'  as jf_data_time
+,sum(Time_FIQ203) Time_FIQ203, 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas,
+count (Time_FIQ180) Time_FIQ180, 
+ 1 'classNumber'
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '08:09:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &lt;= '16:01:00')
+ and jf_data_time &gt;= #{0} and jf_data_time  &lt;= #{1}
+group by  convert(varchar(10),jf_data_time,120) order by jf_data_time asc 
+</select>
+<select id="selectDataByContidionAndClass2" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(10),jf_data_time,120)+' 00:00:00'  as jf_data_time
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180,  2 'classNumber'
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '16:09:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &lt;= '23:59:59')
+ and jf_data_time  &gt;= #{0} and jf_data_time  &lt;= #{1}
+group by  convert(varchar(10),jf_data_time,120) order by jf_data_time asc 
+</select>
+
+<select id="selectDataByContidionAndClass4" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(10),jf_data_time,120)+' 00:00:00'  as jf_data_time
+,sum(Time_FIQ203) Time_FIQ203, 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180,  3 'classNumber'
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '00:09:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &lt;= '08:01:00')
+ and jf_data_time &gt;= #{0} and jf_data_time  &lt;= #{1}
+group by  convert(varchar(10),jf_data_time,120) order by jf_data_time asc 
+</select>
+<!-- 年度报表 -->
+<select id="selectDataByYear" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(7),jf_data_time,120)+'-01 00:00:00'  as jf_data_time 
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &lt;= '23:59:59')
+ and jf_data_time  &gt;= #{0} and jf_data_time  &lt;= #{1}
+group by  convert(varchar(7),jf_data_time,120)+'-01 00:00:00' order by jf_data_time asc  
+</select>
+<select id="selectDataByYearnext" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select  jf_data_time, 
+(Time_FIQ203) Time_FIQ203 , 
+(Time_FIQ162) Time_FIQ162,
+(Time_steam_coal)Time_steam_coal, 
+(Time_steam_gas) Time_steam_gas
+ from jf_rawdata_handle_1 where jf_data_time  &gt;= #{0} and jf_data_time  &lt;= #{1} 
+</select>
+<!-- 季度报表 -->
+<select id="selectDataByQuarter" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(7),jf_data_time,120)+'-01 00:00:00'  as jf_data_time 
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &lt;= '23:59:59')
+ and jf_data_time  &gt;= #{0} and jf_data_time  &lt;= #{1}
+group by  convert(varchar(7),jf_data_time,120)+'-01 00:00:00' order by jf_data_time asc  
+</select>
+<!-- 月报表 -->
+<select id="selectDataByMouth" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(10),jf_data_time,120)+' 00:00:00'  as jf_data_time
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '00:01:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &lt;= '23:59:59')
+ and jf_data_time  &gt;= #{0} and jf_data_time  &lt;= #{1}
+group by  convert(varchar(10),jf_data_time,120)+' 00:00:00' order by jf_data_time asc  
+</select>
+<!-- 月报表，按班查看 -->
+
+<select id="selectDataByMouthAndClass" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(10),jf_data_time,120)+' 00:00:00'  as jf_data_time 
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180,
+ 1 'classNumber'
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '00:10:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &lt;= '08:01:00')
+ and jf_data_time  &gt;= #{0} and jf_data_time  &lt;= #{1}
+group by  convert(varchar(10),jf_data_time,120) order by jf_data_time asc 
+</select>
+<select id="selectDataByMouthAndClass1" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(10),jf_data_time,120)+' 00:00:00'  as jf_data_time 
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180, 2 'classNumber'
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '08:10:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &lt;= '16:01:00')
+ and jf_data_time  &gt;= #{0} and jf_data_time  &lt;= #{1}
+group by  convert(varchar(10),jf_data_time,120) order by jf_data_time asc 
+</select>
+<select id="selectDataByMouthAndClass2" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(10),jf_data_time,120)+' 00:00:00'  as jf_data_time
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180, 3 'classNumber'
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '16:10:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &lt;= '23:59:59')
+ and jf_data_time  &gt;= #{0} and jf_data_time  &lt;= #{1}
+group by  convert(varchar(10),jf_data_time,120) order by jf_data_time asc 
+</select>
+<select id="getLastTime" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select top 1 * from jf_rawdata_handle_1 order by jf_data_time desc
+</select>
+
+
+
+
+<!-- 按工厂里面的时间上一天的8:10到二天的8:00w为一天 -->
+<!-- 日报表按日查看 -->
+<select id="selectNewDataOneByContidion" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(10),jf_data_time,120)+' 00:00:00'  as jf_data_time 
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '08:09:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 )))  &lt;= '23:59:59')
+ and jf_data_time  &gt;= #{0} and jf_data_time   &lt;= #{1}
+group by  convert(varchar(10),jf_data_time,120) order by jf_data_time asc 
+</select> 
+<select id="selectNewDataTwoByContidion" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(10),jf_data_time,120)+' 00:00:00'  as jf_data_time 
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 )))  &lt;= '08:09:59')
+ and jf_data_time  &gt;= #{0} and jf_data_time   &lt;= #{1}
+group by  convert(varchar(10),jf_data_time,120) order by jf_data_time asc 
+</select> 
+<!-- 季度报表 -->
+<select id="selectNewDataOneByQuarter" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(7),jf_data_time,120)+'-01 00:00:00'  as jf_data_time 
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 )))   &lt;= '08:09:59')
+ and jf_data_time  &gt;= #{0} and jf_data_time  &lt;= #{1}
+group by  convert(varchar(7),jf_data_time,120)+'-01 00:00:00' order by jf_data_time asc 
+</select>
+<select id="selectNewDataTwoByQuarter" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(7),jf_data_time,120)+'-01 00:00:00'  as jf_data_time 
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '08:09:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 )))   &lt;= '23:59:59')
+ and jf_data_time  &gt;= #{0} and jf_data_time  &lt;= #{1}
+group by  convert(varchar(7),jf_data_time,120)+'-01 00:00:00' order by jf_data_time asc 
+</select>
+<select id="selectNewDatathreeByQuarter" resultType="com.saitejn.pojo.JfRawdataHandle1">
+select   convert(varchar(7),jf_data_time,120)+'-01 00:00:00'  as jf_data_time 
+,sum(Time_FIQ203) Time_FIQ203 , 
+sum(Time_FIQ162) Time_FIQ162,
+sum(Time_steam_coal)Time_steam_coal, 
+sum(Time_steam_gas) Time_steam_gas ,
+count (Time_FIQ180) Time_FIQ180
+ from jf_rawdata_handle_1  where (((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),jf_data_time,120)  ,8 )))   &lt;= '08:09:59')
+ and jf_data_time  &gt;= #{0} and jf_data_time  &lt;= #{1}
+group by  convert(varchar(7),jf_data_time,120)+'-01 00:00:00' order by jf_data_time asc 
+</select>
+<select id="selectAlljbUser" resultType="com.saitejn.pojo.JbUserifo">
+select * from jb_userifo  order by uid asc
+</select>
+
+<update id="updateJFPassInfo" parameterType="com.saitejn.pojo.JbUserifo" >
+        update jb_userifo set uloginpass=#{uloginpass} where uid=#{uid}
+    </update>
+</mapper>

@@ -1,0 +1,59 @@
+package com.saitejn.services;
+
+import java.util.List;
+
+import com.saitejn.pojo.JbRawdataHandle1;
+import com.saitejn.pojo.JbUserifo;
+import com.saitejn.pojo.JfRawdataHandle1;
+import com.saitejn.pojo.JfUploadMiddle;
+import com.saitejn.pojo.JyRawdataHandle1;
+
+/**
+ * 建峰数据上传
+ * @class JF_UploadServices.java
+ * @Description:
+ * @author:罗康元
+ * Company:赛特工信科技有限公司
+ * @date :2017-1-16
+ */
+public interface JF_UploadServices {
+	//读取建峰Excel数据
+	public List<JfUploadMiddle> readJfXls(String filePath) throws Exception;
+	//增加数据到中间表中
+	public void saveDatetomiddle(JfUploadMiddle jfUploadMiddle) throws Exception; 
+	//保存数据到原始表中
+	public void saveDatetoExcel(JfUploadMiddle jfUploadMiddle) throws Exception; 
+	//将计算后的数据保存到能耗数据集中
+	public void  saveDatetoHandl1()throws Exception;
+	//保存数据到干净数据集
+	public void  saveDatetoHandl2()throws Exception;
+	//删除数据
+	public void deleteUploadMiddle()throws Exception;
+	//删除数据
+	public void deleterawdataMiddle()throws Exception;
+	//日报表查看
+	public List<JfRawdataHandle1> selectDataByContidion(String stime,String btime )throws Exception;
+	//按用户输入的条件查询日报表.按班来查看
+	public List<JfRawdataHandle1> selectDataByContidionAndClass(String stime,String btime)throws Exception;
+	//按用户输入的条件查询年报表
+	public List<JfRawdataHandle1> selectDataByYear(String stime,String btime )throws Exception;
+	//按用户输入的条件查询季度报表
+	public List<JfRawdataHandle1> selectDataByQuarter(String stime,String btime )throws Exception;
+	//按用户输入的条件查询月报表
+	public List<JfRawdataHandle1> selectDataByMouth(String stime,String btime )throws Exception;
+	//按用户输入的条件查询月报表.按班来查看
+	public List<JfRawdataHandle1> selectDataByMouthAndClass(String stime,String btime)throws Exception;
+	//查询能耗数据库中最后一条的数据集的时间
+	public JfRawdataHandle1 getLastTime() throws Exception;
+	
+	//日报表查看适应工厂的时间daunting
+	public List<JfRawdataHandle1> selectNewDataByContidion(String stime,String btime )throws Exception;
+	//月报表按日查看
+	public List<JfRawdataHandle1> selectNewDataByMonth(String stime,String btime )throws Exception;
+	//季度报表
+	public List<JfRawdataHandle1> selectNewDataByQuarter(String stime,String btime )throws Exception;
+	//查询所有的用户信息
+	public List<JbUserifo> selectAlljbUser()throws Exception;
+	//修改用户密码信息
+	public void updateJFPassInfo(JbUserifo jbUserifo)throws Exception;
+}

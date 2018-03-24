@@ -1,0 +1,83 @@
+package com.saitejn.services;
+
+import java.util.Date;
+import java.util.List;
+
+import com.saitejn.pojo.Adminguideifo;
+import com.saitejn.pojo.JbGuiImg;
+import com.saitejn.pojo.JbPushgrid101;
+import com.saitejn.pojo.JbPushgrid111WithBLOBs;
+import com.saitejn.pojo.JbPushgrid112WithBLOBs;
+import com.saitejn.pojo.JbPushgrid113WithBLOBs;
+import com.saitejn.pojo.JbPushgrid114WithBLOBs;
+import com.saitejn.pojo.JbPushgrid31WithBLOBs;
+import com.saitejn.pojo.JbPushgrid41;
+import com.saitejn.pojo.JbPushgrid51;
+import com.saitejn.pojo.JbPushgrid61;
+import com.saitejn.pojo.JbPushgrid71;
+import com.saitejn.pojo.JbPushgrid81WithBLOBs;
+import com.saitejn.pojo.JbPushgrid82WithBLOBs;
+import com.saitejn.pojo.JbPushgrid91WithBLOBs;
+import com.saitejn.pojo.JbPushgrid92WithBLOBs;
+import com.saitejn.pojo.JbPushgrid93WithBLOBs;
+import com.saitejn.pojo.JbPushgrid94WithBLOBs;
+import com.saitejn.pojo.Jb_feedback01;
+import com.saitejn.pojo.Jb_feedback02;
+import com.saitejn.pojo.Jb_feedback05;
+
+public interface AdminGuideDataServices {
+	
+	
+	/**
+	 * 保存用户上传信息
+	 * @param adminguideifo
+	 * @throws Exception
+	 */
+	public void insertUpInfo(Adminguideifo adminguideifo) throws Exception;
+	
+	/**
+	 * 前台指导文件查看
+	 * @param filename
+	 * @return
+	 * @throws Exception
+	 */
+	public String showBefoFile(String filename)throws Exception;
+	/**
+	 * 查询所有的推送记录
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Adminguideifo> getAllAdminGuideifo ()throws Exception;
+	/**
+	 * 查看历史记录
+	 * @return
+	 * @throws Exception
+	 */
+	public String showguidehis(int gid)throws Exception;
+	
+
+	/**
+	 * 根据ID删除用户
+	 * @throws Exception
+	 */
+	public void deleteuserByid(int uid)throws Exception;
+	/**
+	 * 查看对应文件的图片
+	 * @return
+	 * @throws Exception
+	 */
+	public List<JbGuiImg>getGuideImage(Integer fid,Integer imgid)throws Exception;
+	
+	public List<Jb_feedback02> selectVar_jb()throws Exception;
+	
+	//查询文件的审核时间
+	public Date selectCheckTime()throws Exception;
+	
+	public void insertUserVar_jb(Jb_feedback05 jb_feedback05)throws Exception;
+	
+	//查询所有的用户已经输入的记录
+	public List<Jb_feedback01>selectAllfeedback_jb()throws Exception;
+	 //改变用户文件状态
+	 public void updatefeedbacktype_jb()throws Exception;
+
+}

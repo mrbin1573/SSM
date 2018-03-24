@@ -1,0 +1,240 @@
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fun" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta charset="utf-8">
+<title>成都赛特优化节能平台</title>
+<!--时间控件-->
+<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+<script type="text/javascript" src="jedate/jedate.js"></script>
+<link type="text/css" rel="stylesheet" href="jedate/skin/jedate.css">
+
+
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/index.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body onLoad="javascript:window.resizeTo(screen.availWidth,screen.availHeight);window.moveTo(0,0) ">
+
+        <div style="padding-top:5px;background:#fff" class="tab-content navbar-fixed-top print_hidden">
+            <!--右边二级菜单-->
+                <ul id="myTab" class="nav nav-tabs menu_rihgt">
+                    <li ><a class="31" href="jf_to_show_day_data.action" >日 报 表</a></li>
+                   
+                    <li ><a href="jf_do_select_Mouth.action" >月 报 表</a></li>
+                    <li ><a href="jf_do_select_Quarter.action">季度报表</a></li>
+                    <li class="active"><a href="jf_do_select_Year.action">年度报表</a></li>
+                </ul>
+                <!--右边二级菜单结束-->
+                <div class="tab-content menu-third-content">
+                    <!--日报表三级菜单-->
+                    <div class="tab-pane fade in active">
+                        <!--日报表--按班查看---按日查看菜单------>
+                        <ul id="myTab" class="nav nav-tabs menu_rihgt_after">
+                            <li class="active">
+                                <a href="#three_c_31" data-toggle="tab"><img src="images/menu_third.png">&nbsp;&nbsp;按月查看</a>
+                            </li>
+                        </ul>
+                        </div>
+
+</div>  
+                </div>
+                        <!--能耗分期日考核日报表--->
+            		<c:if test="${fun:length(yearList) > 0}">
+                        <div class="tab-content menu_third_page">
+                            <!-----------------------按年查看------------------>
+                            <div class="tab-pane fade in active menu-third" id="three_c_31">
+                                <!-----------------------打印内容------------------>
+                                <div id="printTable">
+                                    <center>
+                                        <div class="fmy">
+                                            <h3>
+                                                <div class="col-md-5 col-sm-5 col-xs-5  print_hidden">
+		                                            <div class="chart_title_l">
+                                                  <form method="post">
+                                                      <span class="date_title">考核时间:</span>
+                                                      <input name="jf_Year_data_begin" class="datainp" id="indate_year" type="text" value="${year_db}" placeholder="选择年份"  readonly>
+                                                      <input type="button" id="year_show" class="look" value="查看">
+                                                </form>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-5 col-sm-5 col-xs-5  ">
+		                                            <div class="chart_title_l">年度报表</div>
+												</div>
+                                                <!--打印按钮-->
+                                                <div class="col-md-2 print_hidden">
+	                                                <!-- <div class="chart_title_r">
+	                                                        <img width="30px" src="images/print.png">
+	                                                        <input class="btn_print" id="" type="button" value="打印"  onclick="javascript:window.print();" >
+	                                                 </div> -->
+                                                </div>
+                                            </h3>
+                                        </div>
+                                        
+                                        <!--表格和折线图-->
+                                        <table id="energy_year" border="1" class="table">
+                                            <tr>
+                                                <th>时间段</th>
+                                               <th>月氨产量(t)</th>
+                                                <th>月天然气耗(Nm<sup>3</sup>)</th>
+                                                <th>月蒸汽耗(折标煤)(kgce)</th>
+                                                <th>月蒸汽耗(折天然气)(Nm<sup>3</sup>)</th>
+                                                <th>小时氨产量(t/h)</th>
+                                                <th>吨氨天然气耗(Nm<sup>3</sup>/tNH<sub>3</sub>)</th>
+                                                <th>吨氨蒸汽耗(折标煤)(kgce/tNH<sub>3</sub>)</th>
+                                                <th>吨氨蒸汽耗(折天然气)(Nm<sup>3</sup>/tNH<sub>3</sub>)</th>
+                                                <th>吨氨气耗(合计)(Nm<sup>3</sup>/tNH<sub>3</sub>)</th>
+                                                <th>吨氨综合消耗(kgce/tNH<sub>3</sub>)</th>
+                                                <th>样本数</th>
+                                            </tr>
+                                            
+                                          <c:if test="${yearList !=null}" >
+                                            	<c:forEach var="day" items="${yearList}">
+                                            	<c:set var="fiq162"><fmt:formatNumber value="${day.time_FIQ162+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></c:set>
+                                            	<c:set var="fiq203"><fmt:formatNumber value="${day.time_FIQ203+ 0.0001}" pattern="##.###" minFractionDigits="3" ></fmt:formatNumber></c:set>
+                                            	<c:set var="coal"><fmt:formatNumber value="${day.time_steam_coal+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></c:set>
+                                            	<c:set var="gas"><fmt:formatNumber value="${day.time_steam_gas+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></c:set>
+                                            	
+                                            	<c:set var="sum">${sum+fiq162}</c:set>
+                                            	<c:set var="sum1">${sum1+fiq203}</c:set>
+                                            	<c:set var="sum2">${sum2+coal}</c:set>
+                                            	<c:set var="sum3">${sum3+gas}</c:set>
+                                            	<c:set var="sum7">${sum7+day.time_FIQ180}</c:set>
+                                            		<tr>
+                                                 <td><fmt:formatDate value="${day.jf_data_time}" pattern="yyyy/MM"/></td>
+                                                <td><fmt:formatNumber value="${day.time_FIQ162+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                                <td><fmt:formatNumber value="${day.time_FIQ203+ 0.0001}" pattern="##.###" minFractionDigits="3" ></fmt:formatNumber></td>
+                                                <td><fmt:formatNumber value="${day.time_steam_coal+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                                <td><fmt:formatNumber value="${day.time_steam_gas+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                                <td><fmt:formatNumber value="${day.time_FIQ162*6/day.time_FIQ180+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                                <td><fmt:formatNumber value="${day.time_FIQ203*1000/day.time_FIQ162+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                                <td><fmt:formatNumber value="${day.time_steam_coal/day.time_FIQ162+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                                 <td><fmt:formatNumber value="${day.time_steam_gas/day.time_FIQ162+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                                <td><fmt:formatNumber value="${day.time_FIQ203/day.time_FIQ162+day.time_steam_gas/day.time_FIQ162+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                                <td><fmt:formatNumber value="${(day.time_FIQ203/day.time_FIQ162+day.time_steam_gas/day.time_FIQ162)*1.2143+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                                <td><fmt:formatNumber value="${day.time_FIQ180}" pattern="##" minFractionDigits="0" ></fmt:formatNumber></td>
+                                            </tr>
+                                            	</c:forEach>
+                                            </c:if>
+                                            <tr style="color: red">
+                                            	<td>合计</td>
+                                            	<!-- 月氨产量 -->
+                                            	<td><fmt:formatNumber value="${sum+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                            	<!-- 月天然气耗 -->
+                                            	<td><fmt:formatNumber value="${sum1+ 0.0001}" pattern="##.###" minFractionDigits="3" ></fmt:formatNumber></td>
+                                            	<!-- 月蒸汽耗(折标煤)(kgce -->
+                                            	<td><fmt:formatNumber value="${sum2+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                            	<!-- 月蒸汽耗(折天然气)(Nm3) -->
+                                            	<td><fmt:formatNumber value="${sum3+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                            	<!-- 小时氨产量 -->
+                                            	<td><fmt:formatNumber value="${sum/sum7*6+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                            	<!-- 吨氨天然气耗 -->
+                                            	<td><fmt:formatNumber value="${sum1*1000/sum+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                            	<!-- 吨氨蒸汽耗(折标煤)(kgce/tNH3) -->
+                                            	<td><fmt:formatNumber value="${sum2/sum+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                            	<td><fmt:formatNumber value="${sum3/sum+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                            	<td><fmt:formatNumber value="${sum3/sum+sum1/sum+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                            	<td><fmt:formatNumber value="${1.2143*(sum3/sum+sum1/sum)+ 0.0001}" pattern="##.##" minFractionDigits="2" ></fmt:formatNumber></td>
+                                            	
+                                            	<td><fmt:formatNumber value="${sum7}" pattern="##"  ></fmt:formatNumber></td>
+                                            </tr>
+                                        </table>
+                                        <!--折线图-->
+                                        <button class="fresh">更新图表</button>
+                                        <div id="lineChart_year">
+                                            <center>
+                                                <br>
+                                                <div class="line-chart" id="container_year"></div>
+                                            </center>
+                                        </div>
+                                        <div id="lineChart_year_1">
+                                            <center>
+                                                <br>
+                                                <div class="line-chart" id="container_year_1"></div>
+                                            </center>
+                                        </div>
+                                        <div id="lineChart_year_2">
+                                            <center>
+                                                <br>
+                                                <div class="line-chart" id="container_year_2"></div>
+                                            </center>
+                                        </div>
+                                        <div id="lineChart_year_3">
+                                            <center>
+                                                <br>
+                                                <div class="line-chart" id="container_year_3"></div>
+                                            </center>
+                                        </div>
+                                        <div id="lineChart_year_4">
+                                            <center>
+                                                <br>
+                                                <div class="line-chart" id="container_year_4"></div>
+                                            </center>
+                                        </div>
+                                    </center>
+                                </div>
+                                
+                                
+                                <br>
+                                <br>
+                                <br>
+
+                            </div>
+                        </div>
+                    </c:if>
+                     <c:if test="${fun:length(yearList) <= 0}">
+                     	<div class="tab-content menu_third_page">
+                            <!-----------------------按年查看------------------>
+                            <div class="tab-pane fade in active menu-third" id="three_c_31">
+                                <!-----------------------打印内容------------------>
+                                <div id="printTable">
+                                    <center>
+                                        <div class="fmy">
+                                            <h3>
+                                            该时段暂无数据！
+                                            </h3>
+                                         </div>
+                                     </center>
+                                 </div>
+                              </div>
+                         </div>
+                                            
+                     </c:if>
+       
+
+</body>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/jquery.blockUI.js"></script>
+<!--折线图-->
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript" src="js/data_jf.js"></script><!--折线图数据位置-->
+<script type="text/javascript" src="js/gridlight.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script>
+     /*自动获取今年年份累加*/
+    var mytime = new Date();
+    var year = mytime.getFullYear();
+    $(function(){
+        for(i = 2016; i<= year; i++){
+            $(".fullyear").after("<option>"+i+"</option>")
+        }
+    })
+/*日期控件*/
+    jeDate({
+        dateCell: "#indate_year", //isinitVal:true,
+        format: "YYYY",
+        isTime: false, //isClear:false,
+        minDate: ""
+    })        
+
+</script>
+
+</html>

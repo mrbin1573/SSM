@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JbRawdataHandle1CustomerMapper" >
+	
+	<select id="selectAllhandle1" resultType="com.saitejn.pojo.JbRawdataHandle1">
+		select * from jb_rawdata_handle_1 order by data_time asc
+	</select>
+	<select id="selectAllhandle2" resultType="com.saitejn.pojo.JbRawdataHandle2">
+		select * from jb_rawdata_handle_2 order by data_time asc
+	</select>
+	
+	
+	<!-- 日报表 -->
+	<select id="selectDataByContidion" resultType="com.saitejn.pojo.JbRawdataHandle1">
+	select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time 
+,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+		sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume
+ from jb_rawdata_handle_1 where
+ (((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '00:01:00' and ((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &lt;= '23:59:59')
+ and  data_time &gt;= #{0} and data_time &lt;= #{1}
+group by convert(varchar(10),data_time,120)+' 00:00:00' order by data_time asc 
+		
+	</select>
+	
+	<select id="selectDataByContidionAndClass1" resultType="com.saitejn.pojo.JbRawdataHandle1">
+	select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time 
+,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+		sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume, 1 'classNumber'
+ from jb_rawdata_handle_1 where (((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '08:09:00' and ((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &lt;= '16:01:00')
+ and data_time  &gt;= #{0} and data_time &lt;= #{1}
+group by convert(varchar(10),data_time,120)+' 00:00:00'  order by data_time asc  
+		
+	</select>
+	<select id="selectDataByContidionAndClass2" resultType="com.saitejn.pojo.JbRawdataHandle1">
+	select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time 
+,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+		sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume, 2 'classNumber'
+ from jb_rawdata_handle_1 where (((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '16:09:00' and ((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &lt;= '23:59:59')
+ and data_time  &gt;= #{0} and data_time &lt;= #{1}
+group by convert(varchar(10),data_time,120)+' 00:00:00'  order by data_time asc  
+		
+	</select>
+	<select id="selectDataByContidionAndClass3" resultType="com.saitejn.pojo.JbRawdataHandle1">
+	select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time 
+,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+		sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume, 2 'classNumber'
+ from jb_rawdata_handle_1 where (((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &lt;= '00:01:59')
+ and data_time  &gt;= #{0} and data_time &lt;= #{1}
+group by convert(varchar(10),data_time,120)+' 00:00:00'  order by data_time asc   
+		
+	</select>
+	<select id="selectDataByContidionAndClass4" resultType="com.saitejn.pojo.JbRawdataHandle1">
+	select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time 
+,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+		sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume, 3 'classNumber'
+ from jb_rawdata_handle_1 where (((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '00:09:00' and ((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &lt;= '08:01:00')
+ and data_time  &gt;= #{0} and data_time &lt;= #{1}
+group by convert(varchar(10),data_time,120)+' 00:00:00'  order by data_time asc  
+		
+	</select>
+	<!-- 月报表 -->
+	<select id="selectDataByMouth" resultType="com.saitejn.pojo.JbRawdataHandle1">
+		select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time 
+,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+		sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume
+ from jb_rawdata_handle_1 where
+ (((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '00:01:00' and ((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &lt;= '23:59:59')
+ and 
+  data_time  &gt;= #{0} and data_time &lt;= #{1}
+group by convert(varchar(10),data_time,120)+' 00:00:00' order by data_time asc 
+	</select>
+	
+	<select id="selectDataByMouthAndClass" resultType="com.saitejn.pojo.JbRawdataHandle1">
+	select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time 
+,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+		sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume, 1 'classNumber'
+ from jb_rawdata_handle_1 where (((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '08:09:00' and ((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &lt;= '16:01:00')
+ and data_time  &gt;= #{0} and data_time &lt;= #{1}
+group by convert(varchar(10),data_time,120)+' 00:00:00'  order by data_time asc 
+	</select>
+	<select id="selectDataByMouthAndClass1" resultType="com.saitejn.pojo.JbRawdataHandle1">
+	select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time 
+,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+		sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume,2 'classNumber'
+ from jb_rawdata_handle_1 where (((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '16:09:00' and ((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &lt;= '23:59:59')
+ and data_time  &gt;= #{0} and data_time &lt;= #{1}
+group by convert(varchar(10),data_time,120)+' 00:00:00'  order by data_time asc 
+	</select>
+	<select id="selectDataByMouthAndClass2" resultType="com.saitejn.pojo.JbRawdataHandle1">
+	select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time 
+,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+		sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume,2 'classNumber'
+ from jb_rawdata_handle_1 where (((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &lt;= '00:01:59')
+ and data_time  &gt;= #{0} and data_time &lt;= #{1}
+group by convert(varchar(10),data_time,120)+' 00:00:00'  order by data_time asc 
+	</select>
+	<select id="selectDataByMouthAndClass3" resultType="com.saitejn.pojo.JbRawdataHandle1">
+	select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time 
+,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+		sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume, 3 'classNumber'
+ from jb_rawdata_handle_1 where (((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '00:09:00' and ((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &lt;= '08:01:00')
+ and data_time  &gt;= #{0} and data_time &lt;= #{1}
+group by convert(varchar(10),data_time,120)+' 00:00:00'  order by data_time asc 
+	</select>
+	<!-- 年报表 -->
+	<select id="selectDataByYear" resultType="com.saitejn.pojo.JbRawdataHandle1">
+		select  convert(varchar(7),data_time,120)+'-01 00:00:00' as data_time 
+,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+		sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume
+ from jb_rawdata_handle_1 where
+ (((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &lt;= '23:59:59')
+ and 
+  data_time &gt;= #{0} and data_time&lt;= #{1}
+group by convert(varchar(7),data_time,120)+'-01 00:00:00' order by data_time asc
+	</select>
+	
+	<select id="selectDateByYearNext" resultType="com.saitejn.pojo.JbRawdataHandle1">
+		select data_time,
+	(time_nh3_yield) time_nh3_yield ,(orig_id)orig_id,
+	(time_electric_consume) time_electric_consume ,(time_raw_gas_consume) time_raw_gas_consume
+	from jb_rawdata_handle_1 where data_time   &gt;= #{0} and data_time  &lt;= #{1}
+	</select>
+	
+	
+	<!-- 季度报表 -->
+	<select id="selectDataByQuarter" resultType="com.saitejn.pojo.JbRawdataHandle1">
+		select  convert(varchar(7),data_time,120)+'-01 00:00:00' as data_time
+	,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+			sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume
+	 from jb_rawdata_handle_1 where
+	 (((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),data_time,120)  ,8 ))) &lt;= '23:59:59')
+	 and 
+	  data_time &gt;= #{0} and data_time &lt;= #{1}
+	group by convert(varchar(7),data_time,120)+'-01 00:00:00' order by data_time asc 
+	</select>
+	<select id="seclectByTime" resultType="com.saitejn.pojo.JbClassinfor" parameterType="String">
+		select * from jb_classinfor where class_time = #{class_time}
+	</select>
+	
+	<select id="getLastTime" resultType="com.saitejn.pojo.JbRawdataHandle1">
+		select top 1 * from jb_rawdata_handle_1 order by data_time desc
+	</select>
+
+</mapper>

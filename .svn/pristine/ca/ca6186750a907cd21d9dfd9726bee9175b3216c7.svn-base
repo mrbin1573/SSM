@@ -1,0 +1,20 @@
+package com.saitejn.services;
+
+import java.util.List;
+
+import com.saitejn.pojo.JbRawdataHandle1;
+
+/**
+ * 金杯能耗
+ * @JB_EnergyServices
+ * @Description
+ * @author 罗康元
+ * @company 成都赛特工信科技有限公司
+ * @date 2017-6-28
+ */
+public interface JB_EnergyServices {
+	//金杯日报表按日查看
+	public List<JbRawdataHandle1> selectDailyreport_jb(String btime,String etime)throws Exception;
+	//金杯日报表按班查看
+	public List<JbRawdataHandle1> selectDailyreportForClass_jb(String btime,String etime)throws Exception;
+}

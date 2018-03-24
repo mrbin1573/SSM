@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.TestMapper" >
+  <resultMap id="BaseResultMap" type="com.saitejn.pojo.Test" >
+    <id column="testid" property="testid" jdbcType="INTEGER" />
+    <result column="testname" property="testname" jdbcType="VARCHAR" />
+    <result column="用户名" property="用户名" jdbcType="FLOAT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    testid, testname, 用户名
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.saitejn.pojo.TestExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from test
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test
+    where testid = #{testid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from test
+    where testid = #{testid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.saitejn.pojo.TestExample" >
+    delete from test
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.saitejn.pojo.Test" >
+    insert into test (testid, testname, 用户名
+      )
+    values (#{testid,jdbcType=INTEGER}, #{testname,jdbcType=VARCHAR}, #{用户名,jdbcType=FLOAT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.saitejn.pojo.Test" >
+    insert into test
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="testid != null" >
+        testid,
+      </if>
+      <if test="testname != null" >
+        testname,
+      </if>
+      <if test="用户名 != null" >
+        用户名,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="testid != null" >
+        #{testid,jdbcType=INTEGER},
+      </if>
+      <if test="testname != null" >
+        #{testname,jdbcType=VARCHAR},
+      </if>
+      <if test="用户名 != null" >
+        #{用户名,jdbcType=FLOAT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.saitejn.pojo.TestExample" resultType="java.lang.Integer" >
+    select count(*) from test
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update test
+    <set >
+      <if test="record.testid != null" >
+        testid = #{record.testid,jdbcType=INTEGER},
+      </if>
+      <if test="record.testname != null" >
+        testname = #{record.testname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.用户名 != null" >
+        用户名 = #{record.用户名,jdbcType=FLOAT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update test
+    set testid = #{record.testid,jdbcType=INTEGER},
+      testname = #{record.testname,jdbcType=VARCHAR},
+      用户名 = #{record.用户名,jdbcType=FLOAT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saitejn.pojo.Test" >
+    update test
+    <set >
+      <if test="testname != null" >
+        testname = #{testname,jdbcType=VARCHAR},
+      </if>
+      <if test="用户名 != null" >
+        用户名 = #{用户名,jdbcType=FLOAT},
+      </if>
+    </set>
+    where testid = #{testid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saitejn.pojo.Test" >
+    update test
+    set testname = #{testname,jdbcType=VARCHAR},
+      用户名 = #{用户名,jdbcType=FLOAT}
+    where testid = #{testid,jdbcType=INTEGER}
+  </update>
+</mapper>

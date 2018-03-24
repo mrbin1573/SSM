@@ -1,0 +1,45 @@
+package com.saitejn.test;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class ForTest {
+	public static void main(String[] args) {
+		
+		List<User> users = new ArrayList<User>();
+		users.add(new User(1, "张三", 12, true));
+		users.add(new User(2, "李四", 12, true));
+		users.add(new User(5, "王五", 12, true));
+		users.add(new User(7, "小四", 12, true));
+		users.add(new User(9, "小吴"));
+		
+		for(int i = 0 ; i <users.size()-1;i++){
+			User euser = users.get(i);
+			User user = users.get(i+1);
+			int v = user.getNumber()-euser.getNumber();
+			System.out.println(user.getName()+v);
+			
+		}
+		List<Integer> ab= new ArrayList<Integer>();
+		ab.add(0);
+		ab.add(5);
+		ab.add(2);
+		ab.add(3);
+		ab.add(4);
+		ab.add(5);
+		ab.add(6);
+		ab.add(7);
+		List<Integer> a= new ArrayList<Integer>();
+		a.add(5);
+		a.add(6);
+		a.add(7);
+		a.add(8);
+		a.add(7);
+		ab.removeAll(a);
+		System.out.println(ab);
+		
+		
+	}
+	
+}

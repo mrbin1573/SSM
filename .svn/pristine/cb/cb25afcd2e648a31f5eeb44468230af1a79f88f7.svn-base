@@ -1,0 +1,775 @@
+package com.saitejn.services.impl;
+
+import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.omg.CORBA.PRIVATE_MEMBER;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.saitejn.mapper.JbRawdataHandle1CustomerMapper;
+import com.saitejn.mapper.JbRawdataHandle1Mapper;
+import com.saitejn.mapper.JbRawdataHandle2Mapper;
+import com.saitejn.pojo.JbClassinfor;
+import com.saitejn.pojo.JbExcelInput;
+import com.saitejn.pojo.JbRawdataHandle1;
+import com.saitejn.pojo.JbRawdataHandle2;
+import com.saitejn.pojo.JfRawdataHandle1;
+import com.saitejn.pojo.JyRawdataHandle1;
+import com.saitejn.services.DataServices;
+import com.saitejn.services.JbRawdataHandle1Services;
+/**
+ * 原始数据存储实现类
+ * @class JbRawdataHandle1ServicesImpl.java
+ * @Description:
+ * @author:罗康元
+ * Company:赛特工信科技有限公司
+ * @date :2016-9-23
+ */
+public class JbRawdataHandle1ServicesImpl implements JbRawdataHandle1Services {
+	@Autowired
+	private JbRawdataHandle1CustomerMapper jbRawdataHandle1CustomerMapper;
+
+	private Double average;
+
+			
+	
+	
+	@Override
+	public List<JbRawdataHandle1> selectDataByContidion(String stime,
+			String btime) throws Exception {
+		List<JbRawdataHandle1> list1 = jbRawdataHandle1CustomerMapper.selectDataByContidion(stime, btime);//时间
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date newdate = sdf.parse(btime);
+		Calendar c = Calendar.getInstance(); 
+		c.setTime(newdate);  
+		c.set(Calendar.DATE, c.get(Calendar.DATE) + 1);
+        Date data2 = c.getTime();
+        String dayBefore = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(data2);
+		List<JbRawdataHandle1>list3 = jbRawdataHandle1CustomerMapper.selectDataByContidionAndClass3(stime, dayBefore);
+		
+		List<JbRawdataHandle1>list5 = new ArrayList<JbRawdataHandle1>();
+		List<JbRawdataHandle1>list6 = new ArrayList<JbRawdataHandle1>();
+		List<JbRawdataHandle1>list7 = new ArrayList<JbRawdataHandle1>();
+		if(list3.size()>0){
+		for(int i = 0; i <list3.size(); i++){
+			
+			JbRawdataHandle1 jb = list3.get(i);
+			Date date = jb.getData_time();
+			Calendar date1 = Calendar.getInstance();
+			date1.setTime(date);
+			date1.set(Calendar.DATE, date1.get(Calendar.DATE) - 1);
+			Date date2 = date1.getTime();
+			jb.setData_time(date2);
+			list5.add(jb);
+		}
+		
+		//将两个集合相同就相加list5(输入的时间一天的所有的0点)和list2
+		for(JbRawdataHandle1 l1:list5){
+			for(JbRawdataHandle1 l2:list1){
+				if(l1.getData_time().getTime()==l2.getData_time().getTime()){
+					JbRawdataHandle1 jbRawdataHandle1 = new JbRawdataHandle1();
+					jbRawdataHandle1.setData_time(l2.getData_time());
+					jbRawdataHandle1.setTime_nh3_yield(l1.getTime_nh3_yield()+l2.getTime_nh3_yield());
+					jbRawdataHandle1.setTime_electric_consume(l1.getTime_electric_consume()+l2.getTime_electric_consume());
+					jbRawdataHandle1.setTime_raw_gas_consume(l1.getTime_raw_gas_consume()+l2.getTime_raw_gas_consume());
+					jbRawdataHandle1.setOrig_id(l1.getOrig_id()+l2.getOrig_id());
+					jbRawdataHandle1.setClassNumber(l1.getClassNumber());
+					list6.add(jbRawdataHandle1);
+					break;
+				}
+			}
+		}
+		for(JbRawdataHandle1 l1:list5){
+			for(JbRawdataHandle1 l2:list1){
+				if(l1.getData_time().getTime()==l2.getData_time().getTime()){
+				     list1.remove(l2);
+					break;
+				}
+			}
+		}
+
+		
+		
+		}
+		
+		list6.addAll(list1);
+		Collections.sort(list6,new Comparator<JbRawdataHandle1>() {
+
+			@Override
+			public int compare(JbRawdataHandle1 o1, JbRawdataHandle1 o2) {
+				if(o1.getData_time().getTime() > o2.getData_time().getTime()){
+					return 1;
+				}
+				if(o1.getData_time().getTime() == o2.getData_time().getTime()){
+					return 0;
+				}
+				
+				return -1;
+			}
+		});
+		return list6;
+	}
+	@Override
+	public List<JbRawdataHandle1> selectDataByMouth(String stime, String btime)
+			throws Exception {
+		
+		List<JbRawdataHandle1> list1 =  jbRawdataHandle1CustomerMapper.selectDataByMouth(stime, btime);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date newdate = sdf.parse(btime);
+		Calendar c = Calendar.getInstance(); 
+		c.setTime(newdate);  
+		c.set(Calendar.DATE, c.get(Calendar.DATE) + 1);
+        Date data2 = c.getTime();
+        String dayBefore = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(data2);
+		List<JbRawdataHandle1>list3 = jbRawdataHandle1CustomerMapper.selectDataByContidionAndClass3(stime, dayBefore);
+		
+		List<JbRawdataHandle1>list5 = new ArrayList<JbRawdataHandle1>();
+		List<JbRawdataHandle1>list6 = new ArrayList<JbRawdataHandle1>();
+		if(list3.size()>0){
+		for(int i = 0; i <list3.size(); i++){
+			
+			JbRawdataHandle1 jb = list3.get(i);
+			Date date = jb.getData_time();
+			Calendar date1 = Calendar.getInstance();
+			date1.setTime(date);
+			date1.set(Calendar.DATE, date1.get(Calendar.DATE) - 1);
+			Date date2 = date1.getTime();
+			jb.setData_time(date2);
+			list5.add(jb);
+		}
+		//将两个集合相同就相加list5和list2
+		for(JbRawdataHandle1 l1:list5){
+			for(JbRawdataHandle1 l2:list1){
+				if(l1.getData_time().getTime()==l2.getData_time().getTime()){
+					JbRawdataHandle1 jbRawdataHandle1 = new JbRawdataHandle1();
+					jbRawdataHandle1.setData_time(l2.getData_time());
+					jbRawdataHandle1.setTime_nh3_yield(l1.getTime_nh3_yield()+l2.getTime_nh3_yield());
+					jbRawdataHandle1.setTime_electric_consume(l1.getTime_electric_consume()+l2.getTime_electric_consume());
+					jbRawdataHandle1.setTime_raw_gas_consume(l1.getTime_raw_gas_consume()+l2.getTime_raw_gas_consume());
+					jbRawdataHandle1.setOrig_id(l1.getOrig_id()+l2.getOrig_id());
+					jbRawdataHandle1.setClassNumber(l1.getClassNumber());
+					list6.add(jbRawdataHandle1);
+					break;
+				}
+			}
+		}
+		for(JbRawdataHandle1 l1:list5){
+			for(JbRawdataHandle1 l2:list1){
+				if(l1.getData_time().getTime()==l2.getData_time().getTime()){
+					 list1.remove(l2);
+					break;
+				}
+			}
+		}
+		
+		
+		}
+		list6.addAll(list1);
+		Collections.sort(list6,new Comparator<JbRawdataHandle1>() {
+			@Override
+			public int compare(JbRawdataHandle1 o1, JbRawdataHandle1 o2) {
+				if(o1.getData_time().getTime() > o2.getData_time().getTime()){
+					return 1;
+				}
+				if(o1.getData_time().getTime() == o2.getData_time().getTime()){
+					return 0;
+				}
+				
+				return -1;
+			}
+		});
+		return list6;
+	}
+	@Override
+	public List<JbRawdataHandle1> selectDataByYear(String stime, String btime)
+			throws Exception {
+		List<JbRawdataHandle1> list1 =  jbRawdataHandle1CustomerMapper.selectDataByYear(stime, btime);
+		List<String> Utime = this.getMonthBetween(stime, btime);
+		List<JbRawdataHandle1>listNext = new ArrayList<JbRawdataHandle1>();
+		
+		for(int i =0;i<Utime.size();i++){
+			String time = Utime.get(i);
+			String betime = time+"-01 00:00:00";
+			String entime = time+"-01 00:01:00";
+			JbRawdataHandle1 jbRawdataHandle1 = jbRawdataHandle1CustomerMapper.selectDateByYearNext(betime, entime);
+			if(jbRawdataHandle1 != null){
+			listNext.add(jbRawdataHandle1);
+			}
+		}
+		for(JbRawdataHandle1 l1:list1){
+			for(JbRawdataHandle1 l2:listNext){
+				Date l1time = l1.getData_time();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+				String lintime = sdf.format(l1time);
+				
+				Date listNextTime = l2.getData_time();
+				
+				String liNeTime = sdf.format(listNextTime);
+				
+				if(lintime.equals(liNeTime)){
+					
+					l1.setData_time(l1.getData_time());
+					l1.setTime_nh3_yield(l1.getTime_nh3_yield()-l2.getTime_nh3_yield());
+					l1.setTime_electric_consume(l1.getTime_electric_consume()-l2.getTime_electric_consume());
+					l1.setTime_raw_gas_consume(l1.getTime_raw_gas_consume()-l2.getTime_raw_gas_consume());
+					l1.setOrig_id(l1.getOrig_id()-1);
+					l1.setClassNumber(l1.getClassNumber());
+					break;
+				}
+			}
+		}
+		for(JbRawdataHandle1 l1:list1){
+			for(JbRawdataHandle1 l2:listNext){
+				Date l1time = l1.getData_time();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+				String lintime = sdf.format(l1time);
+				
+				Date listNextTime = l2.getData_time();
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTime(listNextTime); 
+				calendar.add(Calendar.MONTH, -1);
+				Date newDate = calendar.getTime();
+				
+				String liNeTime = sdf.format(newDate);
+				
+				
+				if(lintime.equals(liNeTime)){
+					l1.setData_time(l1.getData_time());
+					l1.setTime_nh3_yield(l1.getTime_nh3_yield()+l2.getTime_nh3_yield());
+					l1.setTime_electric_consume(l1.getTime_electric_consume()+l2.getTime_electric_consume());
+					l1.setTime_raw_gas_consume(l1.getTime_raw_gas_consume()+l2.getTime_raw_gas_consume());
+					l1.setOrig_id(l1.getOrig_id()+1);
+					l1.setClassNumber(l1.getClassNumber());
+					break;
+				}
+			}
+		}
+				
+		Collections.sort(list1,new Comparator<JbRawdataHandle1>() {
+
+			@Override
+			public int compare(JbRawdataHandle1 o1, JbRawdataHandle1 o2) {
+				if(o1.getData_time().getTime() > o2.getData_time().getTime()){
+					return 1;
+				}
+				if(o1.getData_time().getTime() == o2.getData_time().getTime()){
+					return 0;
+				}
+				
+				return -1;
+			}
+		});
+		
+		return list1;
+		
+		
+	}
+	@Override
+	public List<JbRawdataHandle1> selectDataByQuarter(String stime, String btime)
+			throws Exception {
+		List<JbRawdataHandle1> list1 =  jbRawdataHandle1CustomerMapper.selectDataByQuarter(stime, btime);
+		
+		List<String> Utime = this.getMonthBetween(stime, btime);
+		List<JbRawdataHandle1>listNext = new ArrayList<JbRawdataHandle1>();
+		//查询月份的00：00：00的数据
+		for(int i =0;i<Utime.size();i++){
+			String time = Utime.get(i);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+			Date userDate = sdf.parse(time);
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(userDate); 
+			calendar.add(Calendar.MONTH, +1);
+			Date newDate = calendar.getTime();
+			String rtime = sdf.format(newDate);		
+			String betime = rtime+"-01 00:00:00";
+			String entime = rtime+"-01 00:01:00";
+			JbRawdataHandle1 jbRawdataHandle1 = jbRawdataHandle1CustomerMapper.selectDateByYearNext(betime, entime);
+			if(jbRawdataHandle1 != null){
+			listNext.add(jbRawdataHandle1);
+			}
+		}
+		for(JbRawdataHandle1 l1:list1){
+			for(JbRawdataHandle1 l2:listNext){
+				Date l1time = l1.getData_time();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+				String lintime = sdf.format(l1time);
+				
+				Date listNextTime = l2.getData_time();
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTime(listNextTime); 
+				calendar.add(Calendar.MONTH, -1);
+				Date newDate = calendar.getTime();
+				String liNeTime = sdf.format(newDate);
+				
+				if(lintime.equals(liNeTime)){
+					
+					l1.setData_time(l1.getData_time());
+					l1.setTime_nh3_yield(l1.getTime_nh3_yield()+l2.getTime_nh3_yield());
+					l1.setTime_electric_consume(l1.getTime_electric_consume()+l2.getTime_electric_consume());
+					l1.setTime_raw_gas_consume(l1.getTime_raw_gas_consume()+l2.getTime_raw_gas_consume());
+					l1.setOrig_id(l1.getOrig_id()+1);
+					l1.setClassNumber(l1.getClassNumber());
+					break;
+				}
+			}
+		}
+		for(JbRawdataHandle1 l1:list1){
+			for(JbRawdataHandle1 l2:listNext){
+				Date l1time = l1.getData_time();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+				String lintime = sdf.format(l1time);
+				
+				Date listNextTime = l2.getData_time();
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTime(listNextTime); 
+				calendar.add(Calendar.MONTH, -0);
+				Date newDate = calendar.getTime();
+				String liNeTime = sdf.format(newDate);
+				
+				if(lintime.equals(liNeTime)){
+					
+					l1.setData_time(l1.getData_time());
+					l1.setTime_nh3_yield(l1.getTime_nh3_yield()-l2.getTime_nh3_yield());
+					l1.setTime_electric_consume(l1.getTime_electric_consume()-l2.getTime_electric_consume());
+					l1.setTime_raw_gas_consume(l1.getTime_raw_gas_consume()-l2.getTime_raw_gas_consume());
+					l1.setOrig_id(l1.getOrig_id()-1);
+					l1.setClassNumber(l1.getClassNumber());
+					break;
+				}
+			}
+		}
+		Collections.sort(list1,new Comparator<JbRawdataHandle1>() {
+
+			@Override
+			public int compare(JbRawdataHandle1 o1, JbRawdataHandle1 o2) {
+				if(o1.getData_time().getTime() > o2.getData_time().getTime()){
+					return 1;
+				}
+				if(o1.getData_time().getTime() == o2.getData_time().getTime()){
+					return 0;
+				}
+				
+				return -1;
+			}
+		});
+		
+		return list1;
+		
+		
+	}
+	@Override
+	public JbClassinfor seclectByTime(String time) throws Exception {
+		
+		return jbRawdataHandle1CustomerMapper.seclectByTime(time);
+	}
+	//判断时间是否在区间里面
+	public static boolean isInTime(String sourceTime, String curTime) {
+	    if (sourceTime == null || !sourceTime.contains("-") || !sourceTime.contains(":")) {
+	        throw new IllegalArgumentException("Illegal Argument arg:" + sourceTime);
+	    }
+	    if (curTime == null || !curTime.contains(":")) {
+	        throw new IllegalArgumentException("Illegal Argument arg:" + curTime);
+	    }
+	    String[] args = sourceTime.split("-");
+	    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+	    try {
+	        long now = sdf.parse(curTime).getTime();
+	        long start = sdf.parse(args[0]).getTime();
+	        long end = sdf.parse(args[1]).getTime();
+	        if (args[1].equals("00:00")) {
+	            args[1] = "24:00";
+	        }
+	        if (end < start) {
+	            if (now >= end && now < start) {
+	                return false;
+	            } else {
+	                return true;
+	            }
+	        } 
+	        else {
+	            if (now >= start && now < end) {
+	                return true;
+	            } else {
+	                return false;
+	            }
+	        }
+	    } catch (ParseException e) {
+	        e.printStackTrace();
+	        throw new IllegalArgumentException("Illegal Argument arg:" + sourceTime);
+	    }
+
+	}
+	@Override
+	public List<JbRawdataHandle1> selectDataByContidionAndClass(String stime,
+			String btime) throws Exception {
+		//早班
+		List<JbRawdataHandle1>list1 = jbRawdataHandle1CustomerMapper.selectDataByContidionAndClass1(stime, btime);
+		//添加缺失的早班
+		List<JbRawdataHandle1> list9 = new ArrayList<JbRawdataHandle1>();
+		for(int i = 0; i<list1.size()-1;i++){
+			JbRawdataHandle1 jbRawdataHandle1 = list1.get(i);
+			JbRawdataHandle1 jbRawdataHandle2 = list1.get(i+1);
+			Date jbtime = jbRawdataHandle1.getData_time();
+			Date jbtime2 = jbRawdataHandle2.getData_time();
+			long between=(jbtime2.getTime()-jbtime.getTime())/1000;//除以1000是为了转换成秒
+			long day1=between/(24*3600);
+			if(day1>1){
+				//说明之间有缺失的早班，则添加
+				for(int j = 1;j<day1;j++){
+					//添加
+					JbRawdataHandle1 jb = new JbRawdataHandle1();
+					Calendar date1 = Calendar.getInstance();
+					date1.setTime(jbtime);
+					date1.set(Calendar.DATE, date1.get(Calendar.DATE) +j);
+					Date date2 = date1.getTime();
+					jb.setData_time(date2);
+					jb.setTime_nh3_yield(0.0);
+					jb.setTime_electric_consume(0.0);
+					jb.setTime_raw_gas_consume(0.0);
+					jb.setOrig_id(0);
+					list9.add(jb);
+				}
+			}
+		}
+		list1.addAll(list9);
+		//中班
+		List<JbRawdataHandle1>list2 = jbRawdataHandle1CustomerMapper.selectDataByContidionAndClass2(stime, btime);
+		List<JbRawdataHandle1> list10 = new ArrayList<JbRawdataHandle1>();
+		for(int i = 0; i<list2.size()-1;i++){
+			JbRawdataHandle1 jbRawdataHandle1 = list2.get(i);
+			JbRawdataHandle1 jbRawdataHandle2 = list2.get(i+1);
+			
+			Date jytime = jbRawdataHandle1.getData_time();
+			Date jytime2 = jbRawdataHandle2.getData_time();
+			long between=(jytime2.getTime()-jytime.getTime())/1000;//除以1000是为了转换成秒
+			long day1=between/(24*3600);
+			if(day1>1){
+				//说明之间有缺失的中班，则添加
+				for(int j = 1;j<day1;j++){
+					//添加
+					JbRawdataHandle1 jb = new JbRawdataHandle1();
+					Calendar date1 = Calendar.getInstance();
+					date1.setTime(jytime);
+					date1.set(Calendar.DATE, date1.get(Calendar.DATE) +j);
+					Date date2 = date1.getTime();
+					jb.setData_time(date2);
+					jb.setTime_nh3_yield(0.0);
+					jb.setTime_electric_consume(0.0);
+					jb.setTime_raw_gas_consume(0.0);
+					jb.setOrig_id(0);
+					jb.setClassNumber(2);
+					list10.add(jb);
+				}
+			}
+		}
+		list2.addAll(list10);
+		//晚班
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date evbdate = sdf2.parse(btime);
+		Calendar evc = Calendar.getInstance(); 
+		evc.setTime(evbdate);  
+		evc.set(Calendar.DATE, evc.get(Calendar.DATE) + 1);
+        Date evbdata = evc.getTime();
+        String dayev = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(evbdata);
+        
+        Date mvfdate = sdf2.parse(stime);
+		Calendar mvc = Calendar.getInstance(); 
+		mvc.setTime(mvfdate);  
+		mvc.set(Calendar.DATE, mvc.get(Calendar.DATE) + 1);
+        Date mvbdata = mvc.getTime();
+        String daymv = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(mvbdata);
+		
+        List<JbRawdataHandle1>list4 = jbRawdataHandle1CustomerMapper.selectDataByContidionAndClass4(daymv, dayev);
+        List<JbRawdataHandle1> list17 = new ArrayList<JbRawdataHandle1>();
+		for(int i = 0; i <list4.size(); i++){
+							
+			JbRawdataHandle1 jb4 = list4.get(i);
+			Date date4 = jb4.getData_time();
+			Calendar date14 = Calendar.getInstance();
+			date14.setTime(date4);
+			date14.set(Calendar.DATE, date14.get(Calendar.DATE) - 1);
+			Date date24 = date14.getTime();
+			jb4.setData_time(date24);
+			list17.add(jb4);
+		}
+		List<JbRawdataHandle1> list11 = new ArrayList<JbRawdataHandle1>();
+		for(int i = 0; i<list17.size()-1;i++){
+			JbRawdataHandle1 jbRawdataHandle1 = list17.get(i);
+			JbRawdataHandle1 jbRawdataHandle2 = list17.get(i+1);
+			
+			Date jytime = jbRawdataHandle1.getData_time();
+			Date jytime2 = jbRawdataHandle2.getData_time();
+			long between=(jytime2.getTime()-jytime.getTime())/1000;//除以1000是为了转换成秒
+			long day1=between/(24*3600);
+			if(day1>1){
+				//说明之间有缺失的早班，则添加
+				for(int j = 1;j<day1;j++){
+					//添加
+					JbRawdataHandle1 jb = new JbRawdataHandle1();
+					Calendar date1 = Calendar.getInstance();
+					date1.setTime(jytime);
+					date1.set(Calendar.DATE, date1.get(Calendar.DATE) +j);
+					Date date2 = date1.getTime();
+					jb.setData_time(date2);
+					jb.setTime_nh3_yield(0.0);
+					jb.setTime_electric_consume(0.0);
+					jb.setTime_raw_gas_consume(0.0);
+					jb.setOrig_id(0);
+					jb.setClassNumber(3);
+					list11.add(jb);
+				}
+			}
+		}
+		list17.addAll(list11);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date newdate = sdf.parse(btime);
+		Calendar c = Calendar.getInstance(); 
+		c.setTime(newdate);  
+		c.set(Calendar.DATE, c.get(Calendar.DATE) + 1);
+        Date data2 = c.getTime();
+        String dayBefore = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(data2);
+        
+		//00-00
+        List<JbRawdataHandle1>list3 = jbRawdataHandle1CustomerMapper.selectDataByContidionAndClass3(stime, dayBefore);
+		
+		List<JbRawdataHandle1>list5 = new ArrayList<JbRawdataHandle1>();
+		List<JbRawdataHandle1>list6 = new ArrayList<JbRawdataHandle1>();
+		if(list3.size()>0){
+		for(int i = 0; i <list3.size(); i++){
+			
+			JbRawdataHandle1 jb = list3.get(i);
+			Date date = jb.getData_time();
+			Calendar date1 = Calendar.getInstance();
+			date1.setTime(date);
+			date1.set(Calendar.DATE, date1.get(Calendar.DATE) - 1);
+			Date date2 = date1.getTime();
+			jb.setData_time(date2);
+			list5.add(jb);
+		}
+		List<JbRawdataHandle1> list12 = new ArrayList<JbRawdataHandle1>();
+		for(int i = 0; i<list5.size()-1;i++){
+			JbRawdataHandle1 jbRawdataHandle1 = list5.get(i);
+			JbRawdataHandle1 jbRawdataHandle2 = list5.get(i+1);
+			
+			Date jytime = jbRawdataHandle1.getData_time();
+			Date jytime2 = jbRawdataHandle2.getData_time();
+			long between=(jytime2.getTime()-jytime.getTime())/1000;//除以1000是为了转换成秒
+			long day1=between/(24*3600);
+			if(day1>1){
+				//说明之间有缺失的早班，则添加
+				for(int j = 1;j<day1;j++){
+					//添加
+					JbRawdataHandle1 jb = new JbRawdataHandle1();
+					Calendar date1 = Calendar.getInstance();
+					date1.setTime(jytime);
+					date1.set(Calendar.DATE, date1.get(Calendar.DATE) +j);
+					Date date2 = date1.getTime();
+					jb.setData_time(date2);
+					jb.setTime_nh3_yield(0.0);
+					jb.setTime_electric_consume(0.0);
+					jb.setTime_raw_gas_consume(0.0);
+					jb.setOrig_id(0);
+					jb.setClassNumber(2);
+					list12.add(jb);
+				}
+			}
+		}
+		list5.addAll(list12);
+		//将两个集合相同就相加list5和list2
+		for(JbRawdataHandle1 l1:list5){
+			for(JbRawdataHandle1 l2:list2){
+				if(l1.getData_time().getTime()==l2.getData_time().getTime()){
+					JbRawdataHandle1 jbRawdataHandle1 = new JbRawdataHandle1();
+					jbRawdataHandle1.setData_time(l2.getData_time());
+					jbRawdataHandle1.setTime_nh3_yield(l1.getTime_nh3_yield()+l2.getTime_nh3_yield());
+					jbRawdataHandle1.setTime_electric_consume(l1.getTime_electric_consume()+l2.getTime_electric_consume());
+					jbRawdataHandle1.setTime_raw_gas_consume(l1.getTime_raw_gas_consume()+l2.getTime_raw_gas_consume());
+					jbRawdataHandle1.setOrig_id(l1.getOrig_id()+l2.getOrig_id());
+					jbRawdataHandle1.setClassNumber(l1.getClassNumber());
+					list6.add(jbRawdataHandle1);
+					break;
+				}
+			}
+		}
+		
+		list1.addAll(list6);
+		list1.addAll(list17);
+		}else{
+			list1.addAll(list2);
+			list1.addAll(list17);
+		}
+		Collections.sort(list1,new Comparator<JbRawdataHandle1>() {
+
+			@Override
+			public int compare(JbRawdataHandle1 o1, JbRawdataHandle1 o2) {
+				if(o1.getData_time().getTime() > o2.getData_time().getTime()){
+					return 1;
+				}
+				if(o1.getData_time().getTime() == o2.getData_time().getTime()){
+					return 0;
+				}
+				
+				return -1;
+			}
+		});
+		for(int i = 0; i<list1.size();i++){
+			JbRawdataHandle1 jb2 = list1.get(0);
+			if(jb2.getClassNumber()==2){
+				//说明查询的第一个只有中班，则添加早班
+				JbRawdataHandle1 jb3 = new JbRawdataHandle1();
+				jb3.setData_time(jb2.getData_time());
+				jb3.setTime_nh3_yield(0.0);
+				jb3.setTime_electric_consume(0.0);
+				jb3.setTime_raw_gas_consume(0.0);
+				jb3.setOrig_id(0);
+				jb3.setClassNumber(1);
+				list1.add(0, jb3);
+			}
+		}
+		/*if(list1.size()>0){
+			JbRawdataHandle1 jbRawdataHandle1 = list1.get(list1.size()-1);
+			int eclassn = jbRawdataHandle1.getClassNumber();
+			JbRawdataHandle1 jbRawdataHandle2 = list1.get(list1.size()-2);
+			int eclassn2 = jbRawdataHandle2.getClassNumber();
+			List<JbRawdataHandle1> qslist = new ArrayList<JbRawdataHandle1>();
+			if(eclassn == 3 && eclassn2 == 3){
+				
+				//只有中班，则添加早班
+				//说明查询的第一个只有中班，则添加早班
+				JbRawdataHandle1 jb3 = new JbRawdataHandle1();
+				jb3.setData_time(jbRawdataHandle1.getData_time());
+				jb3.setTime_nh3_yield(0.0);
+				jb3.setTime_electric_consume(0.0);
+				jb3.setTime_raw_gas_consume(0.0);
+				jb3.setOrig_id(0);
+				jb3.setClassNumber(1);
+				qslist.add(jb3);
+				JbRawdataHandle1 jb4 = new JbRawdataHandle1();
+				jb4.setData_time(jbRawdataHandle1.getData_time());
+				jb4.setTime_nh3_yield(0.0);
+				jb4.setTime_electric_consume(0.0);
+				jb4.setTime_raw_gas_consume(0.0);
+				jb4.setOrig_id(0);
+				jb4.setClassNumber(2);
+				qslist.add(jb4);
+				
+				qslist.add(jbRawdataHandle1);
+			}
+			if(qslist.size()>2){
+				list1.remove(list1.get(list1.size()-1));
+				list1.addAll(qslist);
+			}
+		}*/
+		
+		Collections.sort(list1,new Comparator<JbRawdataHandle1>() {
+			@Override
+			public int compare(JbRawdataHandle1 o1, JbRawdataHandle1 o2) {
+				if(o1.getData_time().getTime() > o2.getData_time().getTime()){
+					return 1;
+				}
+				if(o1.getData_time().getTime() == o2.getData_time().getTime()){
+					return 0;
+				}
+				return -1;
+			}
+		});
+		return list1;
+	}
+	@Override
+	public List<JbRawdataHandle1> selectDataByMouthAndClass(String stime,
+			String btime) throws Exception {
+		List<JbRawdataHandle1>list1 = jbRawdataHandle1CustomerMapper.selectDataByMouthAndClass(stime, btime);
+		List<JbRawdataHandle1>list2 = jbRawdataHandle1CustomerMapper.selectDataByMouthAndClass1(stime, btime);
+		List<JbRawdataHandle1>list3 = jbRawdataHandle1CustomerMapper.selectDataByMouthAndClass2(stime, btime);
+		List<JbRawdataHandle1>list4 = jbRawdataHandle1CustomerMapper.selectDataByMouthAndClass3(stime, btime);
+		List<JbRawdataHandle1>list5 = new ArrayList<JbRawdataHandle1>();
+		List<JbRawdataHandle1>list6 = new ArrayList<JbRawdataHandle1>();
+		for(int i = 0; i <list3.size(); i++){
+			
+			JbRawdataHandle1 jb = list3.get(i);
+			Date date = jb.getData_time();
+			Calendar date1 = Calendar.getInstance();
+			date1.setTime(date);
+			date1.set(Calendar.DATE, date1.get(Calendar.DATE) + 1);
+			Date date2 = date1.getTime();
+			jb.setData_time(date2);
+			list5.add(jb);
+		}
+		//将两个集合相同就相加list5和list2
+		for(JbRawdataHandle1 l1:list5){
+			for(JbRawdataHandle1 l2:list2){
+				if(l1.getData_time().getTime()==l2.getData_time().getTime()){
+					JbRawdataHandle1 jbRawdataHandle1 = new JbRawdataHandle1();
+					jbRawdataHandle1.setData_time(l2.getData_time());
+					jbRawdataHandle1.setTime_nh3_yield(l1.getTime_nh3_yield()+l2.getTime_nh3_yield());
+					jbRawdataHandle1.setTime_electric_consume(l1.getTime_electric_consume()+l2.getTime_electric_consume());
+					jbRawdataHandle1.setTime_raw_gas_consume(l1.getTime_raw_gas_consume()+l2.getTime_raw_gas_consume());
+					jbRawdataHandle1.setOrig_id(l1.getOrig_id()+l2.getOrig_id());
+					jbRawdataHandle1.setClassNumber(l1.getClassNumber());
+					list6.add(jbRawdataHandle1);
+					break;
+				}
+			}
+		}
+		list1.addAll(list6);
+		list1.addAll(list4);
+		Collections.sort(list1,new Comparator<JbRawdataHandle1>() {
+
+			@Override
+			public int compare(JbRawdataHandle1 o1, JbRawdataHandle1 o2) {
+				if(o1.getData_time().getTime() > o2.getData_time().getTime()){
+					return 1;
+				}
+				if(o1.getData_time().getTime() == o2.getData_time().getTime()){
+					return 0;
+				}
+				return -1;
+			}
+		});
+		
+		
+		return list1;
+		
+		
+	}
+	
+	@Override
+	public JbRawdataHandle1 getLastTime() throws Exception {
+		
+		return jbRawdataHandle1CustomerMapper.getLastTime();
+	}
+	
+	 private static List<String> getMonthBetween(String minDate, String maxDate) throws Exception {
+		    ArrayList<String> result = new ArrayList<String>();
+		      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");//格式化为年月
+		  
+		      Calendar min = Calendar.getInstance();
+		      Calendar max = Calendar.getInstance();
+		  
+		      min.setTime(sdf.parse(minDate));
+		      min.set(min.get(Calendar.YEAR), min.get(Calendar.MONTH), 1);
+		
+		     max.setTime(sdf.parse(maxDate));
+		     max.set(max.get(Calendar.YEAR), max.get(Calendar.MONTH), 2);
+		 
+		     Calendar curr = min;
+	     while (curr.before(max)) {
+		      result.add(sdf.format(curr.getTime()));
+		      curr.add(Calendar.MONTH, 1);
+		     }
+		 
+		     return result;
+		   }
+
+}

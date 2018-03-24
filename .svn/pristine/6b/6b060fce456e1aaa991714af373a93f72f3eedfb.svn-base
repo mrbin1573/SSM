@@ -1,0 +1,30 @@
+package com.saitejn.test;
+
+import java.awt.Insets;  
+import java.io.File;  
+import java.io.FileOutputStream;  
+import java.io.StringReader;  
+  
+import org.zefer.pd4ml.PD4Constants;  
+import org.zefer.pd4ml.PD4ML; 
+
+public class Converter  {
+	 public static void main(String[] args) throws Exception {  
+	        Converter converter = new Converter();  
+	        converter.generatePDF_2(new File("D:/Test/demo_ch_pd4ml_a.pdf"), "D:/Test/a.htm");  
+	    }  
+	  
+	    // HTML代码来自于HTML文件  
+	    public void generatePDF_2(File outputPDFFile, String inputHTMLFileName) throws Exception {  
+	        FileOutputStream fos = new FileOutputStream(outputPDFFile);  
+	        PD4ML pd4ml = new PD4ML();  
+	        pd4ml.setPageInsets(new Insets(20, 10, 10, 10));  
+	        pd4ml.setHtmlWidth(950);  
+	        pd4ml.setPageSize(pd4ml.changePageOrientation(PD4Constants.A4));  
+	        pd4ml.useTTF("java:fonts", true);  
+	        pd4ml.setDefaultTTFs("KaiTi_GB2312", "KaiTi_GB2312", "KaiTi_GB2312");  
+	        pd4ml.enableDebugInfo();  
+	        pd4ml.render("file:" + inputHTMLFileName, fos);  
+	    }  
+
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.AdminDataMapper" >		
+	
+	<select id="selectMessageByConpany" resultType="com.saitejn.pojo.Messageleaving" parameterType="String">
+		select * from messageleaving where company=#{company} and auditstatus = '已通过审核' order by id desc
+	</select>
+	
+	<select id="selectMessageNumber" resultType="int">
+		select count(*) from messageleaving where company=#{company} and type = '未查看' and auditstatus = '已通过审核'
+	</select>
+	
+	<select id="selectMessageCount" resultType="com.saitejn.pojo.Messageleaving">
+		select * from messageleaving where company=#{company} and type = '未查看' and auditstatus = '已通过审核'
+	</select>
+	
+	<!-- //根据消息ID获取消息 -->
+	<select id="selectMessByid" resultType="com.saitejn.pojo.Messageleaving" parameterType="int">
+		select * from messageleaving where id = #{0}
+	</select>
+	<!-- //修改消息的状态 -->
+	<update id="updateMessByid" >
+		update   messageleaving   set type ='已查看'  
+	</update>
+	<!-- //审核 -->
+ 	<update id="updatejb_pushgrid_1_1" parameterType="int">
+ 		update jb_pushgrid_1_1   set 审核情况 ='已审核通过'  where jb_pushgrid_1_1.序号=#{0}
+ 	</update>
+ 	<update id="updatejb_pushgrid_1_2" parameterType="int">
+ 		update jb_pushgrid_1_2   set 审核情况 ='已审核通过'  where jb_pushgrid_1_2.序号=#{0}
+ 	</update>
+</mapper>

@@ -1,0 +1,12 @@
+
+jdbc.driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+jdbc.url=jdbc:sqlserver://182.138.106.126:1433; DatabaseName=saitejn
+jdbc.username=sa
+jdbc.password=cdstgx2016
+#jdbc.password=cdstgx2016
+#jdbc.driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+#jdbc.url=jdbc:sqlserver://182.138.106.126:1433; DatabaseName=saitejn
+#jdbc.username=saitegxkejn
+#jdbc.password=saite@2016.
+#jdbc.url=jdbc:sqlserver://182.138.106.126:1433; DatabaseName=saitejn
+#jdbc.password=cdstgx2016

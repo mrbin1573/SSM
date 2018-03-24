@@ -1,0 +1,45 @@
+package com.saitejn.services;
+
+import java.util.List;
+
+import com.saitejn.pojo.JbIpq;
+import com.saitejn.pojo.JbRawdataHandle1;
+import com.saitejn.pojo.JbUploadMiddle;
+import com.saitejn.pojo.Jb_csv;
+import com.saitejn.pojo.JfRawdataHandle1;
+
+/**
+ * 建峰数据上传
+ * @class JF_UploadServices.java
+ * @Description:
+ * @author:罗康元
+ * Company:赛特工信科技有限公司
+ * @date :2017-1-16
+ */
+public interface JB_UploadServices {
+	//读取建峰Excel数据
+	public List<JbUploadMiddle> readJbXls(String filePath) throws Exception;
+	//读取建峰csv数据
+	public List<Jb_csv> readJbcsv(String filePath) throws Exception;
+	//增加数据到中间表中
+	public void saveDatetomiddle(JbUploadMiddle jbUploadMiddle) throws Exception; 
+	//保存数据到原始表中
+	public void saveDatetoExcel(JbUploadMiddle jbUploadMiddle) throws Exception; 
+	//将计算后的数据保存到能耗数据集中
+	public void  saveDatetoHandl1()throws Exception;
+	//保存数据到干净数据集
+	public void  saveDatetoHandl2()throws Exception;
+	//删除数据
+	public void deleteUploadMiddle()throws Exception;
+	//删除数据
+	public void deleterawdataMiddle()throws Exception;
+	//查询能耗数据库中最后一条的数据集的时间
+	public JbRawdataHandle1 getLastTime() throws Exception;
+	//转换非标准文件
+	public void saveCopyAs(String xlsfile, String saveAsFile)throws Exception;
+	//想原始数据变中插入电耗数据
+	public void insertExcel_jb(Jb_csv jbIpq)throws Exception;
+	//保存数据到原始数据表中
+	//public void inserttoExcel_jb(JbRawdataHandle1 jbRawdataHandle1)throws Exception;
+	
+}

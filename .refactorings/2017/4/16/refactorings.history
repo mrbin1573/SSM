@@ -1,0 +1,12 @@
+<<<<<<< .mine
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< .mine
+<session version="1.0">&#x0A;<refactoring accessors="true" comment="Delete element from project &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Original project: &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Original element: &apos;index.html&apos;" description="Delete element" element1="WebRoot/index.html" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="1" stamp="1492398641395" subPackages="false" version="1.0"/>&#x0A;<refactoring accessors="true" comment="Delete 3 elements from project &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Original project: &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     tableexport.js&#x0D;&#x0A;     tableexport.min.js&#x0D;&#x0A;     xlsx.core.min.js" description="Delete elements" element1="WebRoot/js/xlsx.core.min.js" element2="WebRoot/js/tableexport.js" element3="WebRoot/js/tableexport.min.js" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="3" stamp="1492743545666" subPackages="false" version="1.0"/>
+=======
+<session version="1.0">&#x0A;<refactoring accessors="true" comment="Delete 3 elements from project &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Original project: &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     tableexport.js&#x0D;&#x0A;     tableexport.min.js&#x0D;&#x0A;     xlsx.core.min.js" description="Delete elements" element1="WebRoot/js/xlsx.core.min.js" element2="WebRoot/js/tableexport.js" element3="WebRoot/js/tableexport.min.js" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="3" stamp="1492742022735" subPackages="false" version="1.0"/>&#x0A;<refactoring accessors="true" comment="Delete element from project &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Original project: &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Original element: &apos;jQuery.print.js&apos;" description="Delete element" element1="WebRoot/js/jQuery.print.js" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="1" stamp="1492742027098" subPackages="false" version="1.0"/>
+</session>=======
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Original project: &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Original element: &apos;index.html&apos;" description="Delete element" element1="WebRoot/index.html" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="1" stamp="1492398641395" subPackages="false" version="1.0"/>
+>>>>>>> .r94
+</session>>>>>>>> .r91

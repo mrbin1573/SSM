@@ -1,0 +1,28 @@
+package com.saitejn.services.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.saitejn.mapper.FileupifoCustomerMapper;
+import com.saitejn.pojo.FileUpInfo;
+import com.saitejn.services.FileUpIfoServices;
+
+/**
+ * 文件上传信息接口实现类
+ * @class FileUpIfoServicesImpl.java
+ * @Description:
+ * @author:罗康元
+ * Company:赛特工信科技有限公司
+ * @date :2016-9-22
+ */
+public class FileUpIfoServicesImpl implements FileUpIfoServices{
+	@Autowired
+	private FileupifoCustomerMapper fileupifoCustomerMapper;
+	@Override
+	public List<FileUpInfo> selectAll() throws Exception {
+		
+		return fileupifoCustomerMapper.selectAll();
+	}
+
+}

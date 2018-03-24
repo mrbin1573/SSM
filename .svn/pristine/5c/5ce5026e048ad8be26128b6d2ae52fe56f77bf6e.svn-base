@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.GajyMapper" >
+	<sql id="gajycolumn">
+	   (data_time,FIC_101_6,
+		FIC_102_2,FI_104_6,TI_104_12,FFI_103_4,TI_104_10,TI_124_1,FI_101_6,FI_161_2,TI_131_2,TI_132_2,
+		<if test="FIC_311_2 != null">
+		FIC_311_2,
+		</if>
+		FI_8007,
+		PI_165_8,FIC_162_1,FIC_201_7,TI_423_1,AI_141_4C,AI_141_4A,TI_122_1,TI_122_2,TI_122_3,TI_122_5,TI_122_8,TI_122_11,
+		TI_140_11,TI_140_17,TI_141_6,FI_140_4,KE_140_70,FI_140_3,KE_140_90,HIC_140_5,HIC_140_7,PIC_163_5,SI_221_2,FIC_221_4,
+		FI_221_5,PI_220_0,FIC_133_3,SI_221_5,PIC_210_4,FI_210_5,TI_301_6,TIC_301_1,TI_302_34,PI_130_4,FI_121_1,TI_303_22,
+		TI_303_30,TI_303_36,TI_302_17,TI_310_3,FI_311_5,FI_312_5,FIC_312_6,FIC_410_2,SI_150_1,FI_150_8,SI_150_5,FI_150_9,
+		PDIC_133_4,PIC_521_2_2,PIC_221_1,FI_211_2,TIC_302_10,TI_302_60,PI_521_2,PIC_521_1,FI_109_1,TI_109_5,FI_109_2,
+		FIC_109_3,FI_1602,FIQ_1602,FIQ_161_2,FIQ_101_6,FIQ_312_5,
+		<if test="FI_8235 !=null">
+		FI_8235,
+		</if>
+		FI_8202,FI_8234,FIQ_8235,FIQ_8202,FIQ_8234)
+		values(
+		#{data_time},#{FIC_101_6},#{FIC_102_2},#{FI_104_6},#{TI_104_12},#{FFI_103_4},
+		#{TI_104_10},#{TI_124_1},#{FI_101_6},#{FI_161_2},#{TI_131_2},#{TI_132_2},
+		<if test="FIC_311_2 != null">
+		#{FIC_311_2},
+		</if>
+		#{FI_8007},#{PI_165_8},
+		#{FIC_162_1},#{FIC_201_7},#{TI_423_1},#{AI_141_4C},#{AI_141_4A},#{TI_122_1},#{TI_122_2},#{TI_122_3},#{TI_122_5},
+		#{TI_122_8},#{TI_122_11},#{TI_140_11},#{TI_140_17},#{TI_141_6},#{FI_140_4},#{KE_140_70},#{FI_140_3},#{KE_140_90},
+		#{HIC_140_5},#{HIC_140_7},#{PIC_163_5},#{SI_221_2},#{FIC_221_4},#{FI_221_5},#{PI_220_0},#{FIC_133_3},#{SI_221_5},
+		#{PIC_210_4},#{FI_210_5},#{TI_301_6},#{TIC_301_1},#{TI_302_34},#{PI_130_4},#{FI_121_1},#{TI_303_22},#{TI_303_30},
+		#{TI_303_36},#{TI_302_17},#{TI_310_3},#{FI_311_5},#{FI_312_5},#{FIC_312_6},#{FIC_410_2},#{SI_150_1},#{FI_150_8},
+		#{SI_150_5},#{FI_150_9},#{PDIC_133_4},#{PIC_521_2_2},#{PIC_221_1},#{FI_211_2},#{TIC_302_10},
+		#{TI_302_60},#{PI_521_2},#{PIC_521_1},#{FI_109_1},#{TI_109_5},#{FI_109_2},#{FIC_109_3},#{FI_1602},#{FIQ_1602},
+		#{FIQ_161_2},#{FIQ_101_6},#{FIQ_312_5},
+		<if test="FI_8235 !=null">
+		#{FI_8235},
+		</if>
+		#{FI_8202},#{FI_8234},#{FIQ_8235},#{FIQ_8202},#{FIQ_8234}
+		)
+	</sql>
+	<!--查询数据库里是否有相同记录  -->
+	<select id="gajyfindInputByTime" parameterType="String" resultType="int">
+		select count(*) from gajy_excel_input where data_time = #{data_time}
+	</select>
+	<!--添加原始数据  -->
+	<insert id="gajyInsertToMiddle" parameterType="com.saitejn.pojo.GajyUploadMiddle" useGeneratedKeys="true">
+		insert into gajy_upload_middle
+		<include refid="gajycolumn"></include>
+	</insert>
+	<insert id="gajyInsertToExcel" parameterType="com.saitejn.pojo.GajyUploadMiddle" useGeneratedKeys="true">
+		insert into gajy_excel_input
+		<include refid="gajycolumn"></include>
+	</insert>
+</mapper>

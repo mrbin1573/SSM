@@ -1,0 +1,44 @@
+package com.saitejn.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.saitejn.pojo.Adminguideifo;
+import com.saitejn.pojo.JbUserifo;
+import com.saitejn.services.AdminGuideDataServices;
+/**
+ * 有关历史记录
+ * @class HistoryController.java
+ * @Description:
+ * @author:罗康元
+ * Company:赛特工信科技有限公司
+ * @date :2016-10-21
+ */
+@Controller
+public class HistoryController {
+	@Autowired
+	private AdminGuideDataServices  adminadminGuideDataServices;
+	@RequestMapping("/showguidehist")
+	public String showguidehist(Model model,@RequestParam(value="page", defaultValue="1") Integer page)throws Exception{
+		PageHelper.startPage(page, 15);
+		List<Adminguideifo> adminguideifos = adminadminGuideDataServices.getAllAdminGuideifo();
+		model.addAttribute("adminguideifos", adminguideifos);
+		model.addAttribute("page", page);
+		//获取分页结果
+		PageInfo<Adminguideifo> pageInfo = new PageInfo<Adminguideifo>(adminguideifos);
+		//总记录数
+		Long count = pageInfo.getTotal();
+		model.addAttribute("count", count);
+		//总页数
+		int pages = pageInfo.getPages();
+		model.addAttribute("pages", pages);
+		return "history";
+		}
+}

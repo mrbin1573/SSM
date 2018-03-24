@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JbExceluploadCustomerMapper" >
+	
+	<select id="fingInputByJbtime" parameterType="String" resultType="int">
+	select count(*) from jb_excel_input where data_time = #{data_time}
+   </select>
+   <insert id="saveDatetomiddle" parameterType="com.saitejn.pojo.JbUploadMiddle" useGeneratedKeys="true">
+		insert into jb_upload_middle (
+		data_time,fi_103,fi_000,fi_104,fi_101,fi_106,fi_109,fr_401,fr_402,fr_405,fr_406,fr_407,fr_408,fi_410,fi_NH3,fr_141,
+		fr_142,fr_143,ti_122,ti_123,ti_164,ti_131,ti_132,ti_211,ti_210a,ti_215,ti_134,
+		tr_413,tr_403,tr_407,ti_407a,ti_407b,pi_213,pi_105,pi_112,pi_114,pi_234,pr_401,pr_403,pi_422,pr_416,pi_288,ar_101,
+		ar_109,ar_110,ai_104,ai_103,ar_111,ar_112,ar_113,ar_114,k_001,h2oc,lr_403,lr_402,fiqnh3,ipq001,ipq002,ipq003,ipq004,fiq101,ftq109,
+		fiq000,system_load)
+		values 
+		(#{data_time},#{fi_103},#{fi_000},#{fi_104},#{fi_101},#{fi_106},#{fi_109},#{fr_401},#{fr_402},#{fr_405},#{fr_406},
+		#{fr_407},#{fr_408},#{fi_410},#{fi_NH3},#{fr_141},#{fr_142},#{fr_143},#{ti_122},#{ti_123},#{ti_164},#{ti_131},#{ti_132},#{ti_211},
+		#{ti_210a},#{ti_215},#{ti_134},#{tr_413},#{tr_403},#{tr_407},#{ti_407a},#{ti_407b},#{pi_213},#{pi_105},#{pi_112},#{pi_114},#{pi_234},
+		#{pr_401},#{pr_403},#{pi_422},#{pr_416},#{pi_288},#{ar_101},#{ar_109},#{ar_110},#{ai_104},#{ai_103},#{ar_111},#{ar_112},
+		#{ar_113},#{ar_114},#{k_001},#{h2oc},#{lr_403},#{lr_402},#{fiqnh3},#{ipq001},#{ipq002},#{ipq003},#{ipq004},#{fiq101},
+		#{ftq109},#{fiq000},#{system_load}
+		)
+	</insert>
+	<insert id="saveDatetoExcel" parameterType="com.saitejn.pojo.JbUploadMiddle" useGeneratedKeys="true">
+		insert into jb_excel_input (
+		data_time,fi_103,fi_000,fi_104,fi_101,fi_106,fi_109,fr_401,fr_402,fr_405,fr_406,fr_407,fr_408,fi_410,fi_NH3,fr_141,
+		fr_142,fr_143,ti_122,ti_123,ti_164,ti_131,ti_132,ti_211,ti_210a,ti_215,ti_134,
+		tr_413,tr_403,tr_407,ti_407a,ti_407b,pi_213,pi_105,pi_112,pi_114,pi_234,pr_401,pr_403,pi_422,pr_416,pi_288,ar_101,
+		ar_109,ar_110,ai_104,ai_103,ar_111,ar_112,ar_113,ar_114,k_001,h2oc,lr_403,lr_402,fiqnh3,ipq001,ipq002,ipq003,ipq004,fiq101,ftq109,
+		fiq000,system_load)
+		values 
+		(#{data_time},#{fi_103},#{fi_000},#{fi_104},#{fi_101},#{fi_106},#{fi_109},#{fr_401},#{fr_402},#{fr_405},#{fr_406},
+		#{fr_407},#{fr_408},#{fi_410},#{fi_NH3},#{fr_141},#{fr_142},#{fr_143},#{ti_122},#{ti_123},#{ti_164},#{ti_131},#{ti_132},#{ti_211},
+		#{ti_210a},#{ti_215},#{ti_134},#{tr_413},#{tr_403},#{tr_407},#{ti_407a},#{ti_407b},#{pi_213},#{pi_105},#{pi_112},#{pi_114},#{pi_234},
+		#{pr_401},#{pr_403},#{pi_422},#{pr_416},#{pi_288},#{ar_101},#{ar_109},#{ar_110},#{ai_104},#{ai_103},#{ar_111},#{ar_112},
+		#{ar_113},#{ar_114},#{k_001},#{h2oc},#{lr_403},#{lr_402},#{fiqnh3},#{ipq001},#{ipq002},#{ipq003},#{ipq004},#{fiq101},
+		#{ftq109},#{fiq000},#{system_load}
+		)
+	</insert>
+	<select id="selectAllJbMiddle" resultType="com.saitejn.pojo.JbRawdataHandle1">
+		select * from jb_upload_middle order by data_time asc
+	</select>
+	<insert id="saveDatetoHandl1" parameterType="com.saitejn.pojo.JbRawdataHandle1" useGeneratedKeys="true">
+		insert into jb_rawdata_handle_1 (
+		data_time,fi_103,fi_000,fi_104,fi_101,fi_106,fi_109,fr_401,fr_402,fr_405,fr_406,fr_407,fr_408,fi_410,fi_NH3,fr_141,
+		fr_142,fr_143,ti_122,ti_123,ti_164,ti_131,ti_132,ti_211,ti_210a,ti_215,ti_134,
+		tr_413,tr_403,tr_407,ti_407a,ti_407b,pi_213,pi_105,pi_112,pi_114,pi_234,pr_401,pr_403,pi_422,pr_416,pi_288,ar_101,
+		ar_109,ar_110,ai_104,ai_103,ar_111,ar_112,ar_113,ar_114,k_001,h2oc,lr_403,lr_402,fiqnh3,ipq001,ipq002,ipq003,ipq004,fiq101,ftq109,
+		fiq000,time_nh3_yield,time_electric_consume,time_raw_gas_consume,time_fuel_consume,time_gas_consume,system_load,hour_nh3_yield,
+		tonnh3_compre_consume,tonnh3_gas_consume,tonnh3_raw_gas_consume,tonnh3_fuel_consume,tonnh3_electric_consume,shift
+		) values (
+		#{data_time},#{fi_103},#{fi_000},#{fi_104},#{fi_101},#{fi_106},#{fi_109},#{fr_401},#{fr_402},#{fr_405},#{fr_406},
+		#{fr_407},#{fr_408},#{fi_410},#{fi_NH3},#{fr_141},#{fr_142},#{fr_143},#{ti_122},#{ti_123},#{ti_164},#{ti_131},#{ti_132},#{ti_211},
+		#{ti_210a},#{ti_215},#{ti_134},#{tr_413},#{tr_403},#{tr_407},#{ti_407a},#{ti_407b},#{pi_213},#{pi_105},#{pi_112},#{pi_114},#{pi_234},
+		#{pr_401},#{pr_403},#{pi_422},#{pr_416},#{pi_288},#{ar_101},#{ar_109},#{ar_110},#{ai_104},#{ai_103},#{ar_111},#{ar_112},
+		#{ar_113},#{ar_114},#{k_001},#{h2oc},#{lr_403},#{lr_402},#{fiqnh3},#{ipq001},#{ipq002},#{ipq003},#{ipq004},#{fiq101},
+		#{ftq109},#{fiq000},#{time_nh3_yield},#{time_electric_consume},#{time_raw_gas_consume},#{time_fuel_consume},#{time_gas_consume},
+		#{system_load},#{hour_nh3_yield},#{tonnh3_compre_consume},
+		#{tonnh3_gas_consume},#{tonnh3_raw_gas_consume},#{tonnh3_fuel_consume},#{tonnh3_electric_consume},#{shift}
+				
+		)
+	</insert>
+	<insert id="saveDatetoHandlMiddle" parameterType="com.saitejn.pojo.JbRawdataHandle1" useGeneratedKeys="true">
+		insert into jb_rawdata_middle (
+		data_time,fi_103,fi_000,fi_104,fi_101,fi_106,fi_109,fr_401,fr_402,fr_405,fr_406,fr_407,fr_408,fi_410,fi_NH3,fr_141,
+		fr_142,fr_143,ti_122,ti_123,ti_164,ti_131,ti_132,ti_211,ti_210a,ti_215,ti_134,
+		tr_413,tr_403,tr_407,ti_407a,ti_407b,pi_213,pi_105,pi_112,pi_114,pi_234,pr_401,pr_403,pi_422,pr_416,pi_288,ar_101,
+		ar_109,ar_110,ai_104,ai_103,ar_111,ar_112,ar_113,ar_114,k_001,h2oc,lr_403,lr_402,fiqnh3,ipq001,ipq002,ipq003,ipq004,fiq101,ftq109,
+		fiq000,time_nh3_yield,time_electric_consume,time_raw_gas_consume,time_fuel_consume,time_gas_consume,system_load,hour_nh3_yield,
+		tonnh3_compre_consume,tonnh3_gas_consume,tonnh3_raw_gas_consume,tonnh3_fuel_consume,tonnh3_electric_consume,shift
+		) values (
+		#{data_time},#{fi_103},#{fi_000},#{fi_104},#{fi_101},#{fi_106},#{fi_109},#{fr_401},#{fr_402},#{fr_405},#{fr_406},
+		#{fr_407},#{fr_408},#{fi_410},#{fi_NH3},#{fr_141},#{fr_142},#{fr_143},#{ti_122},#{ti_123},#{ti_164},#{ti_131},#{ti_132},#{ti_211},
+		#{ti_210a},#{ti_215},#{ti_134},#{tr_413},#{tr_403},#{tr_407},#{ti_407a},#{ti_407b},#{pi_213},#{pi_105},#{pi_112},#{pi_114},#{pi_234},
+		#{pr_401},#{pr_403},#{pi_422},#{pr_416},#{pi_288},#{ar_101},#{ar_109},#{ar_110},#{ai_104},#{ai_103},#{ar_111},#{ar_112},
+		#{ar_113},#{ar_114},#{k_001},#{h2oc},#{lr_403},#{lr_402},#{fiqnh3},#{ipq001},#{ipq002},#{ipq003},#{ipq004},#{fiq101},
+		#{ftq109},#{fiq000},#{time_nh3_yield},#{time_electric_consume},#{time_raw_gas_consume},#{time_fuel_consume},#{time_gas_consume},
+		#{system_load},#{hour_nh3_yield},#{tonnh3_compre_consume},
+		#{tonnh3_gas_consume},#{tonnh3_raw_gas_consume},#{tonnh3_fuel_consume},#{tonnh3_electric_consume},#{shift}
+				
+		)
+	</insert>
+	<select id="selectAllHandleMiddle" resultType="com.saitejn.pojo.JbRawdataHandle2">
+		select * from jb_rawdata_middle order by data_time asc
+	</select>
+	<insert id="saveDatetoHandl2" parameterType="com.saitejn.pojo.JbRawdataHandle1" useGeneratedKeys="true">
+		insert into jb_rawdata_handle_2 (
+		data_time,fi_103,fi_000,fi_104,fi_101,fi_106,fi_109,fr_401,fr_402,fr_405,fr_406,fr_407,fr_408,fi_410,fi_NH3,fr_141,
+		fr_142,fr_143,ti_122,ti_123,ti_164,ti_131,ti_132,ti_211,ti_210a,ti_215,ti_134,
+		tr_413,tr_403,tr_407,ti_407a,ti_407b,pi_213,pi_105,pi_112,pi_114,pi_234,pr_401,pr_403,pi_422,pr_416,pi_288,ar_101,
+		ar_109,ar_110,ai_104,ai_103,ar_111,ar_112,ar_113,ar_114,k_001,h2oc,lr_403,lr_402,fiqnh3,ipq001,ipq002,ipq003,ipq004,fiq101,ftq109,
+		fiq000,time_nh3_yield,time_electric_consume,time_raw_gas_consume,time_fuel_consume,time_gas_consume,system_load,hour_nh3_yield,
+		tonnh3_compre_consume,tonnh3_gas_consume,tonnh3_raw_gas_consume,tonnh3_fuel_consume,tonnh3_electric_consume,shift
+		) values (
+		#{data_time},#{fi_103},#{fi_000},#{fi_104},#{fi_101},#{fi_106},#{fi_109},#{fr_401},#{fr_402},#{fr_405},#{fr_406},
+		#{fr_407},#{fr_408},#{fi_410},#{fi_NH3},#{fr_141},#{fr_142},#{fr_143},#{ti_122},#{ti_123},#{ti_164},#{ti_131},#{ti_132},#{ti_211},
+		#{ti_210a},#{ti_215},#{ti_134},#{tr_413},#{tr_403},#{tr_407},#{ti_407a},#{ti_407b},#{pi_213},#{pi_105},#{pi_112},#{pi_114},#{pi_234},
+		#{pr_401},#{pr_403},#{pi_422},#{pr_416},#{pi_288},#{ar_101},#{ar_109},#{ar_110},#{ai_104},#{ai_103},#{ar_111},#{ar_112},
+		#{ar_113},#{ar_114},#{k_001},#{h2oc},#{lr_403},#{lr_402},#{fiqnh3},#{ipq001},#{ipq002},#{ipq003},#{ipq004},#{fiq101},
+		#{ftq109},#{fiq000},#{time_nh3_yield},#{time_electric_consume},#{time_raw_gas_consume},#{time_fuel_consume},#{time_gas_consume},
+		#{system_load},#{hour_nh3_yield},#{tonnh3_compre_consume},
+		#{tonnh3_gas_consume},#{tonnh3_raw_gas_consume},#{tonnh3_fuel_consume},#{tonnh3_electric_consume},#{shift}
+				
+		)
+	</insert>
+	<delete id="deleteUploadMiddle">
+		delete from jb_upload_middle 
+	</delete>
+	<delete id="deleterawdataMiddle">
+		delete from jb_rawdata_middle
+	</delete>
+	<select id="selectTopOneHandl1" resultType="com.saitejn.pojo.JbRawdataHandle1">
+		select top 1 * from jb_rawdata_handle_1  order by data_time desc
+	</select>
+	<select id="seclectByTime" resultType="com.saitejn.pojo.JbClassinfor" parameterType="String">
+		select * from jb_classinfor where class_time = #{class_time}
+	</select>
+	
+</mapper>

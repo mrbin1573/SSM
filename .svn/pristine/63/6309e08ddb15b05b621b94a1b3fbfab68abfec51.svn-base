@@ -1,0 +1,12 @@
+package com.saitejn.test;
+
+import java.util.UUID;
+
+public class Testuuid {
+	public static void main(String[] args) {
+		String p1 = UUID.randomUUID()+".xls";
+		System.out.println(p1);
+		String p2 = UUID.randomUUID()+".xls";
+		System.out.println(p2);
+	}
+}

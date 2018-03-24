@@ -1,0 +1,79 @@
+package com.saitejn.mapper;
+
+import java.util.List;
+
+import com.saitejn.pojo.Admin;
+import com.saitejn.pojo.JbClassinfor;
+import com.saitejn.pojo.JbUserifo;
+import com.saitejn.pojo.JbuserInfoVo;
+
+/**
+ * 用户扩展接口
+ * @class UserCustomerMapper.java
+ * @Description:
+ * @author:罗康元
+ * Company:赛特工信科技有限公司
+ * @date :2016-9-14
+ */
+public interface UserCustomerMapper {
+	/**
+	 * 根据用户名查询用户
+	 * @param u_loginname 用户名
+	 * @return 用户
+	 * @throws Exception
+	 */
+	public JbUserifo selectByName(String u_loginname) throws Exception;
+	/**
+	 * 根据管理员用户名查询用户
+	 * @param u_loginname 用户名
+	 * @return 用户
+	 * @throws Exception
+	 */
+	public Admin selectByAdminName(String a_loginname) throws Exception;
+	/**
+	 * 用户注册
+	 * @param jbuserInfoVo
+	 * @throws Exception
+	 */
+	public void insertUser(JbuserInfoVo jbuserInfoVo)throws Exception;
+	/**
+	 * 修改用户班次信息
+	 * @param classinfo 班次信息
+	 * @param uid 用户名称
+	 * @throws Exception
+	 */
+	public void updateUser(String classinfo,int uid) throws Exception;
+	/**
+	 * 保存班次记录信息
+	 * @param jbClassinfor
+	 * @throws Exception
+	 */
+	public void saveClassifo(JbClassinfor jbClassinfor) throws Exception;
+	/**
+	 * 修改上次登录时间
+	 * @param lastLogin
+	 * @param uid
+	 */
+	public void updateloginTime(String lastLogin,int uid)throws Exception;
+	/**
+	 * 修改注销时间
+	 * @param exittime
+	 * @param uid
+	 * @throws Exception
+	 */
+	public void updateExitTime(String exittime,int uid)throws Exception;
+	/**
+	 * 修改用户的姓名和密码
+	 * @throws Exception
+	 */
+	 public void updateUserifo(JbUserifo user)throws Exception;
+	/**
+	 * 查询所有的用户信息
+	 * @return
+	 * @throws Exception
+	 */
+	public List<JbUserifo> selectAlljbUser()throws Exception;
+	
+	
+
+}

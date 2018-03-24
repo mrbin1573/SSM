@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JbPushgrid11Mapper" >
+  <resultMap id="BaseResultMap" type="com.saitejn.pojo.JbPushgrid11" >
+    <id column="序号" property="序号" jdbcType="INTEGER" />
+    <result column="运行期" property="运行期" jdbcType="CHAR" />
+    <result column="负荷段下限" property="负荷段下限" jdbcType="INTEGER" />
+    <result column="负荷段上限" property="负荷段上限" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.saitejn.pojo.JbPushgrid11WithBLOBs" extends="BaseResultMap" >
+    <result column="运行期间" property="运行期间" jdbcType="LONGVARCHAR" />
+    <result column="样本数" property="样本数" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    序号, 运行期, 负荷段下限, 负荷段上限
+  </sql>
+  <sql id="Blob_Column_List" >
+    运行期间, 样本数
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.saitejn.pojo.JbPushgrid11Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from jb_pushgrid_1_1
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.saitejn.pojo.JbPushgrid11Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jb_pushgrid_1_1
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from jb_pushgrid_1_1
+    where 序号 = #{序号,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jb_pushgrid_1_1
+    where 序号 = #{序号,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.saitejn.pojo.JbPushgrid11Example" >
+    delete from jb_pushgrid_1_1
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.saitejn.pojo.JbPushgrid11WithBLOBs" >
+    insert into jb_pushgrid_1_1 (序号, 运行期, 负荷段下限, 
+      负荷段上限, 运行期间, 样本数
+      )
+    values (#{序号,jdbcType=INTEGER}, #{运行期,jdbcType=CHAR}, #{负荷段下限,jdbcType=INTEGER}, 
+      #{负荷段上限,jdbcType=INTEGER}, #{运行期间,jdbcType=LONGVARCHAR}, #{样本数,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.saitejn.pojo.JbPushgrid11WithBLOBs" >
+    insert into jb_pushgrid_1_1
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="序号 != null" >
+        序号,
+      </if>
+      <if test="运行期 != null" >
+        运行期,
+      </if>
+      <if test="负荷段下限 != null" >
+        负荷段下限,
+      </if>
+      <if test="负荷段上限 != null" >
+        负荷段上限,
+      </if>
+      <if test="运行期间 != null" >
+        运行期间,
+      </if>
+      <if test="样本数 != null" >
+        样本数,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="序号 != null" >
+        #{序号,jdbcType=INTEGER},
+      </if>
+      <if test="运行期 != null" >
+        #{运行期,jdbcType=CHAR},
+      </if>
+      <if test="负荷段下限 != null" >
+        #{负荷段下限,jdbcType=INTEGER},
+      </if>
+      <if test="负荷段上限 != null" >
+        #{负荷段上限,jdbcType=INTEGER},
+      </if>
+      <if test="运行期间 != null" >
+        #{运行期间,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="样本数 != null" >
+        #{样本数,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.saitejn.pojo.JbPushgrid11Example" resultType="java.lang.Integer" >
+    select count(*) from jb_pushgrid_1_1
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update jb_pushgrid_1_1
+    <set >
+      <if test="record.序号 != null" >
+        序号 = #{record.序号,jdbcType=INTEGER},
+      </if>
+      <if test="record.运行期 != null" >
+        运行期 = #{record.运行期,jdbcType=CHAR},
+      </if>
+      <if test="record.负荷段下限 != null" >
+        负荷段下限 = #{record.负荷段下限,jdbcType=INTEGER},
+      </if>
+      <if test="record.负荷段上限 != null" >
+        负荷段上限 = #{record.负荷段上限,jdbcType=INTEGER},
+      </if>
+      <if test="record.运行期间 != null" >
+        运行期间 = #{record.运行期间,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.样本数 != null" >
+        样本数 = #{record.样本数,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update jb_pushgrid_1_1
+    set 序号 = #{record.序号,jdbcType=INTEGER},
+      运行期 = #{record.运行期,jdbcType=CHAR},
+      负荷段下限 = #{record.负荷段下限,jdbcType=INTEGER},
+      负荷段上限 = #{record.负荷段上限,jdbcType=INTEGER},
+      运行期间 = #{record.运行期间,jdbcType=LONGVARCHAR},
+      样本数 = #{record.样本数,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update jb_pushgrid_1_1
+    set 序号 = #{record.序号,jdbcType=INTEGER},
+      运行期 = #{record.运行期,jdbcType=CHAR},
+      负荷段下限 = #{record.负荷段下限,jdbcType=INTEGER},
+      负荷段上限 = #{record.负荷段上限,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saitejn.pojo.JbPushgrid11WithBLOBs" >
+    update jb_pushgrid_1_1
+    <set >
+      <if test="运行期 != null" >
+        运行期 = #{运行期,jdbcType=CHAR},
+      </if>
+      <if test="负荷段下限 != null" >
+        负荷段下限 = #{负荷段下限,jdbcType=INTEGER},
+      </if>
+      <if test="负荷段上限 != null" >
+        负荷段上限 = #{负荷段上限,jdbcType=INTEGER},
+      </if>
+      <if test="运行期间 != null" >
+        运行期间 = #{运行期间,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="样本数 != null" >
+        样本数 = #{样本数,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where 序号 = #{序号,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.saitejn.pojo.JbPushgrid11WithBLOBs" >
+    update jb_pushgrid_1_1
+    set 运行期 = #{运行期,jdbcType=CHAR},
+      负荷段下限 = #{负荷段下限,jdbcType=INTEGER},
+      负荷段上限 = #{负荷段上限,jdbcType=INTEGER},
+      运行期间 = #{运行期间,jdbcType=LONGVARCHAR},
+      样本数 = #{样本数,jdbcType=LONGVARCHAR}
+    where 序号 = #{序号,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saitejn.pojo.JbPushgrid11" >
+    update jb_pushgrid_1_1
+    set 运行期 = #{运行期,jdbcType=CHAR},
+      负荷段下限 = #{负荷段下限,jdbcType=INTEGER},
+      负荷段上限 = #{负荷段上限,jdbcType=INTEGER}
+    where 序号 = #{序号,jdbcType=INTEGER}
+  </update>
+</mapper>

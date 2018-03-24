@@ -1,0 +1,71 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+
+	<!-- 可以扫描controller、service、...这里让扫描controller，指定controller的包 -->
+	<context:component-scan base-package="com.saitejn"></context:component-scan>
+	<mvc:annotation-driven ></mvc:annotation-driven>
+	<!-- 视图解析器解析jsp解析，默认使用jstl标签，classpath下的得有jstl的包-->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 配置jsp路径的前缀 -->
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<!-- 配置jsp路径的后缀 -->
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	<!-- 自定义参数绑定 -->
+	<!-- <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		转换器
+		<property name="converters">
+			<list>
+				日期类型转换
+				<bean class="com.luo.ssm.converter.CustomDateConverter"/>
+			</list>
+		</property>
+	</bean>
+	 -->
+	<!-- 文件上传配置 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8">
+			
+		</property>
+		<property name="maxUploadSize" value="577693101">
+		<!-- 上传文件大小最多为5M -->
+			
+		</property>
+		
+	</bean>
+	
+	<!-- 拦截器配置 -->
+	<!-- 多个拦截器顺序执行 -->
+	<mvc:interceptors>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.saitejn.Interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+    <!-- 静态资源配置 -->
+	<mvc:resources location="/css/" mapping="/css/**"/>
+	<mvc:resources location="/jedate/" mapping="/jedate/**"/>
+	<mvc:resources location="/stylesheets/" mapping="/stylesheets/**"/>
+	<mvc:resources location="/images/" mapping="/images/**"/>
+	<mvc:resources location="/js/" mapping="/js/**"/>
+	<mvc:resources location="/src/" mapping="/src/**"/>
+	<mvc:resources location="/editor/" mapping="/editor/**"/>
+	<mvc:resources location="/tableExportTest/" mapping="/tableExportTest/**"/>
+	<mvc:resources location="/Huploadify-master/" mapping="/Huploadify-master/**"/>
+	<!-- 定义统一异常处理器 -->
+	<bean class="com.saitejn.exception.CustomExceptionResolver"></bean>
+</beans>

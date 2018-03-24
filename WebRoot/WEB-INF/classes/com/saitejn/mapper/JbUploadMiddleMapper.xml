@@ -1,0 +1,1146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JbUploadMiddleMapper" >
+  <resultMap id="BaseResultMap" type="com.saitejn.pojo.JbUploadMiddle" >
+    <id column="jbid" property="jbid" jdbcType="INTEGER" />
+    <result column="jbtime" property="jbtime" jdbcType="TIMESTAMP" />
+    <result column="fi103" property="fi103" jdbcType="FLOAT" />
+    <result column="fi000" property="fi000" jdbcType="FLOAT" />
+    <result column="fi104" property="fi104" jdbcType="FLOAT" />
+    <result column="fi101" property="fi101" jdbcType="FLOAT" />
+    <result column="fi106" property="fi106" jdbcType="FLOAT" />
+    <result column="fi109" property="fi109" jdbcType="FLOAT" />
+    <result column="fr401" property="fr401" jdbcType="FLOAT" />
+    <result column="fr402" property="fr402" jdbcType="FLOAT" />
+    <result column="fr405" property="fr405" jdbcType="FLOAT" />
+    <result column="fr406" property="fr406" jdbcType="FLOAT" />
+    <result column="fr407" property="fr407" jdbcType="FLOAT" />
+    <result column="fr408" property="fr408" jdbcType="FLOAT" />
+    <result column="fi410" property="fi410" jdbcType="FLOAT" />
+    <result column="finh3" property="finh3" jdbcType="FLOAT" />
+    <result column="fr141" property="fr141" jdbcType="FLOAT" />
+    <result column="fr142" property="fr142" jdbcType="FLOAT" />
+    <result column="fr143" property="fr143" jdbcType="FLOAT" />
+    <result column="ti122" property="ti122" jdbcType="FLOAT" />
+    <result column="ti123" property="ti123" jdbcType="FLOAT" />
+    <result column="ti164" property="ti164" jdbcType="FLOAT" />
+    <result column="ti131" property="ti131" jdbcType="FLOAT" />
+    <result column="ti132" property="ti132" jdbcType="FLOAT" />
+    <result column="ti211" property="ti211" jdbcType="FLOAT" />
+    <result column="ti210a" property="ti210a" jdbcType="FLOAT" />
+    <result column="ti134" property="ti134" jdbcType="FLOAT" />
+    <result column="ti215" property="ti215" jdbcType="FLOAT" />
+    <result column="tr413" property="tr413" jdbcType="FLOAT" />
+    <result column="tr403" property="tr403" jdbcType="FLOAT" />
+    <result column="tr407" property="tr407" jdbcType="FLOAT" />
+    <result column="ti407a" property="ti407a" jdbcType="FLOAT" />
+    <result column="ti407b" property="ti407b" jdbcType="FLOAT" />
+    <result column="pi213" property="pi213" jdbcType="FLOAT" />
+    <result column="pi105" property="pi105" jdbcType="FLOAT" />
+    <result column="pi112" property="pi112" jdbcType="FLOAT" />
+    <result column="pi114" property="pi114" jdbcType="FLOAT" />
+    <result column="pi234" property="pi234" jdbcType="FLOAT" />
+    <result column="pr401" property="pr401" jdbcType="FLOAT" />
+    <result column="pr403" property="pr403" jdbcType="FLOAT" />
+    <result column="ipq113" property="ipq113" jdbcType="FLOAT" />
+    <result column="pi422" property="pi422" jdbcType="FLOAT" />
+    <result column="pr416" property="pr416" jdbcType="FLOAT" />
+    <result column="pi288" property="pi288" jdbcType="FLOAT" />
+    <result column="ipq004" property="ipq004" jdbcType="FLOAT" />
+    <result column="ar101" property="ar101" jdbcType="FLOAT" />
+    <result column="ar109" property="ar109" jdbcType="FLOAT" />
+    <result column="ar110" property="ar110" jdbcType="FLOAT" />
+    <result column="ai104" property="ai104" jdbcType="FLOAT" />
+    <result column="ai103" property="ai103" jdbcType="FLOAT" />
+    <result column="ar111" property="ar111" jdbcType="FLOAT" />
+    <result column="ar112" property="ar112" jdbcType="FLOAT" />
+    <result column="ar113" property="ar113" jdbcType="FLOAT" />
+    <result column="ar114" property="ar114" jdbcType="FLOAT" />
+    <result column="k001" property="k001" jdbcType="FLOAT" />
+    <result column="h2oc" property="h2oc" jdbcType="FLOAT" />
+    <result column="lr403" property="lr403" jdbcType="FLOAT" />
+    <result column="lr402" property="lr402" jdbcType="FLOAT" />
+    <result column="fiqnh3" property="fiqnh3" jdbcType="FLOAT" />
+    <result column="fiq000" property="fiq000" jdbcType="FLOAT" />
+    <result column="ipq001" property="ipq001" jdbcType="FLOAT" />
+    <result column="ipq002" property="ipq002" jdbcType="FLOAT" />
+    <result column="fiq101" property="fiq101" jdbcType="FLOAT" />
+    <result column="ftq109" property="ftq109" jdbcType="FLOAT" />
+    <result column="sysload" property="sysload" jdbcType="FLOAT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    jbid, jbtime, fi103, fi000, fi104, fi101, fi106, fi109, fr401, fr402, fr405, fr406, 
+    fr407, fr408, fi410, finh3, fr141, fr142, fr143, ti122, ti123, ti164, ti131, ti132, 
+    ti211, ti210a, ti134, ti215, tr413, tr403, tr407, ti407a, ti407b, pi213, pi105, pi112, 
+    pi114, pi234, pr401, pr403, ipq113, pi422, pr416, pi288, ipq004, ar101, ar109, ar110, 
+    ai104, ai103, ar111, ar112, ar113, ar114, k001, h2oc, lr403, lr402, fiqnh3, fiq000, 
+    ipq001, ipq002, fiq101, ftq109, sysload
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.saitejn.pojo.JbUploadMiddleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jb_upload_middle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jb_upload_middle
+    where jbid = #{jbid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jb_upload_middle
+    where jbid = #{jbid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.saitejn.pojo.JbUploadMiddleExample" >
+    delete from jb_upload_middle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.saitejn.pojo.JbUploadMiddle" >
+    insert into jb_upload_middle (jbid, jbtime, fi103, 
+      fi000, fi104, fi101, fi106, 
+      fi109, fr401, fr402, fr405, 
+      fr406, fr407, fr408, fi410, 
+      finh3, fr141, fr142, fr143, 
+      ti122, ti123, ti164, ti131, 
+      ti132, ti211, ti210a, ti134, 
+      ti215, tr413, tr403, tr407, 
+      ti407a, ti407b, pi213, pi105, 
+      pi112, pi114, pi234, pr401, 
+      pr403, ipq113, pi422, pr416, 
+      pi288, ipq004, ar101, ar109, 
+      ar110, ai104, ai103, ar111, 
+      ar112, ar113, ar114, k001, 
+      h2oc, lr403, lr402, fiqnh3, 
+      fiq000, ipq001, ipq002, fiq101, 
+      ftq109, sysload)
+    values (#{jbid,jdbcType=INTEGER}, #{jbtime,jdbcType=TIMESTAMP}, #{fi103,jdbcType=FLOAT}, 
+      #{fi000,jdbcType=FLOAT}, #{fi104,jdbcType=FLOAT}, #{fi101,jdbcType=FLOAT}, #{fi106,jdbcType=FLOAT}, 
+      #{fi109,jdbcType=FLOAT}, #{fr401,jdbcType=FLOAT}, #{fr402,jdbcType=FLOAT}, #{fr405,jdbcType=FLOAT}, 
+      #{fr406,jdbcType=FLOAT}, #{fr407,jdbcType=FLOAT}, #{fr408,jdbcType=FLOAT}, #{fi410,jdbcType=FLOAT}, 
+      #{finh3,jdbcType=FLOAT}, #{fr141,jdbcType=FLOAT}, #{fr142,jdbcType=FLOAT}, #{fr143,jdbcType=FLOAT}, 
+      #{ti122,jdbcType=FLOAT}, #{ti123,jdbcType=FLOAT}, #{ti164,jdbcType=FLOAT}, #{ti131,jdbcType=FLOAT}, 
+      #{ti132,jdbcType=FLOAT}, #{ti211,jdbcType=FLOAT}, #{ti210a,jdbcType=FLOAT}, #{ti134,jdbcType=FLOAT}, 
+      #{ti215,jdbcType=FLOAT}, #{tr413,jdbcType=FLOAT}, #{tr403,jdbcType=FLOAT}, #{tr407,jdbcType=FLOAT}, 
+      #{ti407a,jdbcType=FLOAT}, #{ti407b,jdbcType=FLOAT}, #{pi213,jdbcType=FLOAT}, #{pi105,jdbcType=FLOAT}, 
+      #{pi112,jdbcType=FLOAT}, #{pi114,jdbcType=FLOAT}, #{pi234,jdbcType=FLOAT}, #{pr401,jdbcType=FLOAT}, 
+      #{pr403,jdbcType=FLOAT}, #{ipq113,jdbcType=FLOAT}, #{pi422,jdbcType=FLOAT}, #{pr416,jdbcType=FLOAT}, 
+      #{pi288,jdbcType=FLOAT}, #{ipq004,jdbcType=FLOAT}, #{ar101,jdbcType=FLOAT}, #{ar109,jdbcType=FLOAT}, 
+      #{ar110,jdbcType=FLOAT}, #{ai104,jdbcType=FLOAT}, #{ai103,jdbcType=FLOAT}, #{ar111,jdbcType=FLOAT}, 
+      #{ar112,jdbcType=FLOAT}, #{ar113,jdbcType=FLOAT}, #{ar114,jdbcType=FLOAT}, #{k001,jdbcType=FLOAT}, 
+      #{h2oc,jdbcType=FLOAT}, #{lr403,jdbcType=FLOAT}, #{lr402,jdbcType=FLOAT}, #{fiqnh3,jdbcType=FLOAT}, 
+      #{fiq000,jdbcType=FLOAT}, #{ipq001,jdbcType=FLOAT}, #{ipq002,jdbcType=FLOAT}, #{fiq101,jdbcType=FLOAT}, 
+      #{ftq109,jdbcType=FLOAT}, #{sysload,jdbcType=FLOAT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.saitejn.pojo.JbUploadMiddle" >
+    insert into jb_upload_middle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jbid != null" >
+        jbid,
+      </if>
+      <if test="jbtime != null" >
+        jbtime,
+      </if>
+      <if test="fi103 != null" >
+        fi103,
+      </if>
+      <if test="fi000 != null" >
+        fi000,
+      </if>
+      <if test="fi104 != null" >
+        fi104,
+      </if>
+      <if test="fi101 != null" >
+        fi101,
+      </if>
+      <if test="fi106 != null" >
+        fi106,
+      </if>
+      <if test="fi109 != null" >
+        fi109,
+      </if>
+      <if test="fr401 != null" >
+        fr401,
+      </if>
+      <if test="fr402 != null" >
+        fr402,
+      </if>
+      <if test="fr405 != null" >
+        fr405,
+      </if>
+      <if test="fr406 != null" >
+        fr406,
+      </if>
+      <if test="fr407 != null" >
+        fr407,
+      </if>
+      <if test="fr408 != null" >
+        fr408,
+      </if>
+      <if test="fi410 != null" >
+        fi410,
+      </if>
+      <if test="finh3 != null" >
+        finh3,
+      </if>
+      <if test="fr141 != null" >
+        fr141,
+      </if>
+      <if test="fr142 != null" >
+        fr142,
+      </if>
+      <if test="fr143 != null" >
+        fr143,
+      </if>
+      <if test="ti122 != null" >
+        ti122,
+      </if>
+      <if test="ti123 != null" >
+        ti123,
+      </if>
+      <if test="ti164 != null" >
+        ti164,
+      </if>
+      <if test="ti131 != null" >
+        ti131,
+      </if>
+      <if test="ti132 != null" >
+        ti132,
+      </if>
+      <if test="ti211 != null" >
+        ti211,
+      </if>
+      <if test="ti210a != null" >
+        ti210a,
+      </if>
+      <if test="ti134 != null" >
+        ti134,
+      </if>
+      <if test="ti215 != null" >
+        ti215,
+      </if>
+      <if test="tr413 != null" >
+        tr413,
+      </if>
+      <if test="tr403 != null" >
+        tr403,
+      </if>
+      <if test="tr407 != null" >
+        tr407,
+      </if>
+      <if test="ti407a != null" >
+        ti407a,
+      </if>
+      <if test="ti407b != null" >
+        ti407b,
+      </if>
+      <if test="pi213 != null" >
+        pi213,
+      </if>
+      <if test="pi105 != null" >
+        pi105,
+      </if>
+      <if test="pi112 != null" >
+        pi112,
+      </if>
+      <if test="pi114 != null" >
+        pi114,
+      </if>
+      <if test="pi234 != null" >
+        pi234,
+      </if>
+      <if test="pr401 != null" >
+        pr401,
+      </if>
+      <if test="pr403 != null" >
+        pr403,
+      </if>
+      <if test="ipq113 != null" >
+        ipq113,
+      </if>
+      <if test="pi422 != null" >
+        pi422,
+      </if>
+      <if test="pr416 != null" >
+        pr416,
+      </if>
+      <if test="pi288 != null" >
+        pi288,
+      </if>
+      <if test="ipq004 != null" >
+        ipq004,
+      </if>
+      <if test="ar101 != null" >
+        ar101,
+      </if>
+      <if test="ar109 != null" >
+        ar109,
+      </if>
+      <if test="ar110 != null" >
+        ar110,
+      </if>
+      <if test="ai104 != null" >
+        ai104,
+      </if>
+      <if test="ai103 != null" >
+        ai103,
+      </if>
+      <if test="ar111 != null" >
+        ar111,
+      </if>
+      <if test="ar112 != null" >
+        ar112,
+      </if>
+      <if test="ar113 != null" >
+        ar113,
+      </if>
+      <if test="ar114 != null" >
+        ar114,
+      </if>
+      <if test="k001 != null" >
+        k001,
+      </if>
+      <if test="h2oc != null" >
+        h2oc,
+      </if>
+      <if test="lr403 != null" >
+        lr403,
+      </if>
+      <if test="lr402 != null" >
+        lr402,
+      </if>
+      <if test="fiqnh3 != null" >
+        fiqnh3,
+      </if>
+      <if test="fiq000 != null" >
+        fiq000,
+      </if>
+      <if test="ipq001 != null" >
+        ipq001,
+      </if>
+      <if test="ipq002 != null" >
+        ipq002,
+      </if>
+      <if test="fiq101 != null" >
+        fiq101,
+      </if>
+      <if test="ftq109 != null" >
+        ftq109,
+      </if>
+      <if test="sysload != null" >
+        sysload,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jbid != null" >
+        #{jbid,jdbcType=INTEGER},
+      </if>
+      <if test="jbtime != null" >
+        #{jbtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fi103 != null" >
+        #{fi103,jdbcType=FLOAT},
+      </if>
+      <if test="fi000 != null" >
+        #{fi000,jdbcType=FLOAT},
+      </if>
+      <if test="fi104 != null" >
+        #{fi104,jdbcType=FLOAT},
+      </if>
+      <if test="fi101 != null" >
+        #{fi101,jdbcType=FLOAT},
+      </if>
+      <if test="fi106 != null" >
+        #{fi106,jdbcType=FLOAT},
+      </if>
+      <if test="fi109 != null" >
+        #{fi109,jdbcType=FLOAT},
+      </if>
+      <if test="fr401 != null" >
+        #{fr401,jdbcType=FLOAT},
+      </if>
+      <if test="fr402 != null" >
+        #{fr402,jdbcType=FLOAT},
+      </if>
+      <if test="fr405 != null" >
+        #{fr405,jdbcType=FLOAT},
+      </if>
+      <if test="fr406 != null" >
+        #{fr406,jdbcType=FLOAT},
+      </if>
+      <if test="fr407 != null" >
+        #{fr407,jdbcType=FLOAT},
+      </if>
+      <if test="fr408 != null" >
+        #{fr408,jdbcType=FLOAT},
+      </if>
+      <if test="fi410 != null" >
+        #{fi410,jdbcType=FLOAT},
+      </if>
+      <if test="finh3 != null" >
+        #{finh3,jdbcType=FLOAT},
+      </if>
+      <if test="fr141 != null" >
+        #{fr141,jdbcType=FLOAT},
+      </if>
+      <if test="fr142 != null" >
+        #{fr142,jdbcType=FLOAT},
+      </if>
+      <if test="fr143 != null" >
+        #{fr143,jdbcType=FLOAT},
+      </if>
+      <if test="ti122 != null" >
+        #{ti122,jdbcType=FLOAT},
+      </if>
+      <if test="ti123 != null" >
+        #{ti123,jdbcType=FLOAT},
+      </if>
+      <if test="ti164 != null" >
+        #{ti164,jdbcType=FLOAT},
+      </if>
+      <if test="ti131 != null" >
+        #{ti131,jdbcType=FLOAT},
+      </if>
+      <if test="ti132 != null" >
+        #{ti132,jdbcType=FLOAT},
+      </if>
+      <if test="ti211 != null" >
+        #{ti211,jdbcType=FLOAT},
+      </if>
+      <if test="ti210a != null" >
+        #{ti210a,jdbcType=FLOAT},
+      </if>
+      <if test="ti134 != null" >
+        #{ti134,jdbcType=FLOAT},
+      </if>
+      <if test="ti215 != null" >
+        #{ti215,jdbcType=FLOAT},
+      </if>
+      <if test="tr413 != null" >
+        #{tr413,jdbcType=FLOAT},
+      </if>
+      <if test="tr403 != null" >
+        #{tr403,jdbcType=FLOAT},
+      </if>
+      <if test="tr407 != null" >
+        #{tr407,jdbcType=FLOAT},
+      </if>
+      <if test="ti407a != null" >
+        #{ti407a,jdbcType=FLOAT},
+      </if>
+      <if test="ti407b != null" >
+        #{ti407b,jdbcType=FLOAT},
+      </if>
+      <if test="pi213 != null" >
+        #{pi213,jdbcType=FLOAT},
+      </if>
+      <if test="pi105 != null" >
+        #{pi105,jdbcType=FLOAT},
+      </if>
+      <if test="pi112 != null" >
+        #{pi112,jdbcType=FLOAT},
+      </if>
+      <if test="pi114 != null" >
+        #{pi114,jdbcType=FLOAT},
+      </if>
+      <if test="pi234 != null" >
+        #{pi234,jdbcType=FLOAT},
+      </if>
+      <if test="pr401 != null" >
+        #{pr401,jdbcType=FLOAT},
+      </if>
+      <if test="pr403 != null" >
+        #{pr403,jdbcType=FLOAT},
+      </if>
+      <if test="ipq113 != null" >
+        #{ipq113,jdbcType=FLOAT},
+      </if>
+      <if test="pi422 != null" >
+        #{pi422,jdbcType=FLOAT},
+      </if>
+      <if test="pr416 != null" >
+        #{pr416,jdbcType=FLOAT},
+      </if>
+      <if test="pi288 != null" >
+        #{pi288,jdbcType=FLOAT},
+      </if>
+      <if test="ipq004 != null" >
+        #{ipq004,jdbcType=FLOAT},
+      </if>
+      <if test="ar101 != null" >
+        #{ar101,jdbcType=FLOAT},
+      </if>
+      <if test="ar109 != null" >
+        #{ar109,jdbcType=FLOAT},
+      </if>
+      <if test="ar110 != null" >
+        #{ar110,jdbcType=FLOAT},
+      </if>
+      <if test="ai104 != null" >
+        #{ai104,jdbcType=FLOAT},
+      </if>
+      <if test="ai103 != null" >
+        #{ai103,jdbcType=FLOAT},
+      </if>
+      <if test="ar111 != null" >
+        #{ar111,jdbcType=FLOAT},
+      </if>
+      <if test="ar112 != null" >
+        #{ar112,jdbcType=FLOAT},
+      </if>
+      <if test="ar113 != null" >
+        #{ar113,jdbcType=FLOAT},
+      </if>
+      <if test="ar114 != null" >
+        #{ar114,jdbcType=FLOAT},
+      </if>
+      <if test="k001 != null" >
+        #{k001,jdbcType=FLOAT},
+      </if>
+      <if test="h2oc != null" >
+        #{h2oc,jdbcType=FLOAT},
+      </if>
+      <if test="lr403 != null" >
+        #{lr403,jdbcType=FLOAT},
+      </if>
+      <if test="lr402 != null" >
+        #{lr402,jdbcType=FLOAT},
+      </if>
+      <if test="fiqnh3 != null" >
+        #{fiqnh3,jdbcType=FLOAT},
+      </if>
+      <if test="fiq000 != null" >
+        #{fiq000,jdbcType=FLOAT},
+      </if>
+      <if test="ipq001 != null" >
+        #{ipq001,jdbcType=FLOAT},
+      </if>
+      <if test="ipq002 != null" >
+        #{ipq002,jdbcType=FLOAT},
+      </if>
+      <if test="fiq101 != null" >
+        #{fiq101,jdbcType=FLOAT},
+      </if>
+      <if test="ftq109 != null" >
+        #{ftq109,jdbcType=FLOAT},
+      </if>
+      <if test="sysload != null" >
+        #{sysload,jdbcType=FLOAT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.saitejn.pojo.JbUploadMiddleExample" resultType="java.lang.Integer" >
+    select count(*) from jb_upload_middle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update jb_upload_middle
+    <set >
+      <if test="record.jbid != null" >
+        jbid = #{record.jbid,jdbcType=INTEGER},
+      </if>
+      <if test="record.jbtime != null" >
+        jbtime = #{record.jbtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fi103 != null" >
+        fi103 = #{record.fi103,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi000 != null" >
+        fi000 = #{record.fi000,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi104 != null" >
+        fi104 = #{record.fi104,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi101 != null" >
+        fi101 = #{record.fi101,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi106 != null" >
+        fi106 = #{record.fi106,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi109 != null" >
+        fi109 = #{record.fi109,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr401 != null" >
+        fr401 = #{record.fr401,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr402 != null" >
+        fr402 = #{record.fr402,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr405 != null" >
+        fr405 = #{record.fr405,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr406 != null" >
+        fr406 = #{record.fr406,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr407 != null" >
+        fr407 = #{record.fr407,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr408 != null" >
+        fr408 = #{record.fr408,jdbcType=FLOAT},
+      </if>
+      <if test="record.fi410 != null" >
+        fi410 = #{record.fi410,jdbcType=FLOAT},
+      </if>
+      <if test="record.finh3 != null" >
+        finh3 = #{record.finh3,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr141 != null" >
+        fr141 = #{record.fr141,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr142 != null" >
+        fr142 = #{record.fr142,jdbcType=FLOAT},
+      </if>
+      <if test="record.fr143 != null" >
+        fr143 = #{record.fr143,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti122 != null" >
+        ti122 = #{record.ti122,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti123 != null" >
+        ti123 = #{record.ti123,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti164 != null" >
+        ti164 = #{record.ti164,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti131 != null" >
+        ti131 = #{record.ti131,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti132 != null" >
+        ti132 = #{record.ti132,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti211 != null" >
+        ti211 = #{record.ti211,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti210a != null" >
+        ti210a = #{record.ti210a,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti134 != null" >
+        ti134 = #{record.ti134,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti215 != null" >
+        ti215 = #{record.ti215,jdbcType=FLOAT},
+      </if>
+      <if test="record.tr413 != null" >
+        tr413 = #{record.tr413,jdbcType=FLOAT},
+      </if>
+      <if test="record.tr403 != null" >
+        tr403 = #{record.tr403,jdbcType=FLOAT},
+      </if>
+      <if test="record.tr407 != null" >
+        tr407 = #{record.tr407,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti407a != null" >
+        ti407a = #{record.ti407a,jdbcType=FLOAT},
+      </if>
+      <if test="record.ti407b != null" >
+        ti407b = #{record.ti407b,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi213 != null" >
+        pi213 = #{record.pi213,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi105 != null" >
+        pi105 = #{record.pi105,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi112 != null" >
+        pi112 = #{record.pi112,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi114 != null" >
+        pi114 = #{record.pi114,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi234 != null" >
+        pi234 = #{record.pi234,jdbcType=FLOAT},
+      </if>
+      <if test="record.pr401 != null" >
+        pr401 = #{record.pr401,jdbcType=FLOAT},
+      </if>
+      <if test="record.pr403 != null" >
+        pr403 = #{record.pr403,jdbcType=FLOAT},
+      </if>
+      <if test="record.ipq113 != null" >
+        ipq113 = #{record.ipq113,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi422 != null" >
+        pi422 = #{record.pi422,jdbcType=FLOAT},
+      </if>
+      <if test="record.pr416 != null" >
+        pr416 = #{record.pr416,jdbcType=FLOAT},
+      </if>
+      <if test="record.pi288 != null" >
+        pi288 = #{record.pi288,jdbcType=FLOAT},
+      </if>
+      <if test="record.ipq004 != null" >
+        ipq004 = #{record.ipq004,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar101 != null" >
+        ar101 = #{record.ar101,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar109 != null" >
+        ar109 = #{record.ar109,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar110 != null" >
+        ar110 = #{record.ar110,jdbcType=FLOAT},
+      </if>
+      <if test="record.ai104 != null" >
+        ai104 = #{record.ai104,jdbcType=FLOAT},
+      </if>
+      <if test="record.ai103 != null" >
+        ai103 = #{record.ai103,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar111 != null" >
+        ar111 = #{record.ar111,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar112 != null" >
+        ar112 = #{record.ar112,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar113 != null" >
+        ar113 = #{record.ar113,jdbcType=FLOAT},
+      </if>
+      <if test="record.ar114 != null" >
+        ar114 = #{record.ar114,jdbcType=FLOAT},
+      </if>
+      <if test="record.k001 != null" >
+        k001 = #{record.k001,jdbcType=FLOAT},
+      </if>
+      <if test="record.h2oc != null" >
+        h2oc = #{record.h2oc,jdbcType=FLOAT},
+      </if>
+      <if test="record.lr403 != null" >
+        lr403 = #{record.lr403,jdbcType=FLOAT},
+      </if>
+      <if test="record.lr402 != null" >
+        lr402 = #{record.lr402,jdbcType=FLOAT},
+      </if>
+      <if test="record.fiqnh3 != null" >
+        fiqnh3 = #{record.fiqnh3,jdbcType=FLOAT},
+      </if>
+      <if test="record.fiq000 != null" >
+        fiq000 = #{record.fiq000,jdbcType=FLOAT},
+      </if>
+      <if test="record.ipq001 != null" >
+        ipq001 = #{record.ipq001,jdbcType=FLOAT},
+      </if>
+      <if test="record.ipq002 != null" >
+        ipq002 = #{record.ipq002,jdbcType=FLOAT},
+      </if>
+      <if test="record.fiq101 != null" >
+        fiq101 = #{record.fiq101,jdbcType=FLOAT},
+      </if>
+      <if test="record.ftq109 != null" >
+        ftq109 = #{record.ftq109,jdbcType=FLOAT},
+      </if>
+      <if test="record.sysload != null" >
+        sysload = #{record.sysload,jdbcType=FLOAT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update jb_upload_middle
+    set jbid = #{record.jbid,jdbcType=INTEGER},
+      jbtime = #{record.jbtime,jdbcType=TIMESTAMP},
+      fi103 = #{record.fi103,jdbcType=FLOAT},
+      fi000 = #{record.fi000,jdbcType=FLOAT},
+      fi104 = #{record.fi104,jdbcType=FLOAT},
+      fi101 = #{record.fi101,jdbcType=FLOAT},
+      fi106 = #{record.fi106,jdbcType=FLOAT},
+      fi109 = #{record.fi109,jdbcType=FLOAT},
+      fr401 = #{record.fr401,jdbcType=FLOAT},
+      fr402 = #{record.fr402,jdbcType=FLOAT},
+      fr405 = #{record.fr405,jdbcType=FLOAT},
+      fr406 = #{record.fr406,jdbcType=FLOAT},
+      fr407 = #{record.fr407,jdbcType=FLOAT},
+      fr408 = #{record.fr408,jdbcType=FLOAT},
+      fi410 = #{record.fi410,jdbcType=FLOAT},
+      finh3 = #{record.finh3,jdbcType=FLOAT},
+      fr141 = #{record.fr141,jdbcType=FLOAT},
+      fr142 = #{record.fr142,jdbcType=FLOAT},
+      fr143 = #{record.fr143,jdbcType=FLOAT},
+      ti122 = #{record.ti122,jdbcType=FLOAT},
+      ti123 = #{record.ti123,jdbcType=FLOAT},
+      ti164 = #{record.ti164,jdbcType=FLOAT},
+      ti131 = #{record.ti131,jdbcType=FLOAT},
+      ti132 = #{record.ti132,jdbcType=FLOAT},
+      ti211 = #{record.ti211,jdbcType=FLOAT},
+      ti210a = #{record.ti210a,jdbcType=FLOAT},
+      ti134 = #{record.ti134,jdbcType=FLOAT},
+      ti215 = #{record.ti215,jdbcType=FLOAT},
+      tr413 = #{record.tr413,jdbcType=FLOAT},
+      tr403 = #{record.tr403,jdbcType=FLOAT},
+      tr407 = #{record.tr407,jdbcType=FLOAT},
+      ti407a = #{record.ti407a,jdbcType=FLOAT},
+      ti407b = #{record.ti407b,jdbcType=FLOAT},
+      pi213 = #{record.pi213,jdbcType=FLOAT},
+      pi105 = #{record.pi105,jdbcType=FLOAT},
+      pi112 = #{record.pi112,jdbcType=FLOAT},
+      pi114 = #{record.pi114,jdbcType=FLOAT},
+      pi234 = #{record.pi234,jdbcType=FLOAT},
+      pr401 = #{record.pr401,jdbcType=FLOAT},
+      pr403 = #{record.pr403,jdbcType=FLOAT},
+      ipq113 = #{record.ipq113,jdbcType=FLOAT},
+      pi422 = #{record.pi422,jdbcType=FLOAT},
+      pr416 = #{record.pr416,jdbcType=FLOAT},
+      pi288 = #{record.pi288,jdbcType=FLOAT},
+      ipq004 = #{record.ipq004,jdbcType=FLOAT},
+      ar101 = #{record.ar101,jdbcType=FLOAT},
+      ar109 = #{record.ar109,jdbcType=FLOAT},
+      ar110 = #{record.ar110,jdbcType=FLOAT},
+      ai104 = #{record.ai104,jdbcType=FLOAT},
+      ai103 = #{record.ai103,jdbcType=FLOAT},
+      ar111 = #{record.ar111,jdbcType=FLOAT},
+      ar112 = #{record.ar112,jdbcType=FLOAT},
+      ar113 = #{record.ar113,jdbcType=FLOAT},
+      ar114 = #{record.ar114,jdbcType=FLOAT},
+      k001 = #{record.k001,jdbcType=FLOAT},
+      h2oc = #{record.h2oc,jdbcType=FLOAT},
+      lr403 = #{record.lr403,jdbcType=FLOAT},
+      lr402 = #{record.lr402,jdbcType=FLOAT},
+      fiqnh3 = #{record.fiqnh3,jdbcType=FLOAT},
+      fiq000 = #{record.fiq000,jdbcType=FLOAT},
+      ipq001 = #{record.ipq001,jdbcType=FLOAT},
+      ipq002 = #{record.ipq002,jdbcType=FLOAT},
+      fiq101 = #{record.fiq101,jdbcType=FLOAT},
+      ftq109 = #{record.ftq109,jdbcType=FLOAT},
+      sysload = #{record.sysload,jdbcType=FLOAT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.saitejn.pojo.JbUploadMiddle" >
+    update jb_upload_middle
+    <set >
+      <if test="jbtime != null" >
+        jbtime = #{jbtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fi103 != null" >
+        fi103 = #{fi103,jdbcType=FLOAT},
+      </if>
+      <if test="fi000 != null" >
+        fi000 = #{fi000,jdbcType=FLOAT},
+      </if>
+      <if test="fi104 != null" >
+        fi104 = #{fi104,jdbcType=FLOAT},
+      </if>
+      <if test="fi101 != null" >
+        fi101 = #{fi101,jdbcType=FLOAT},
+      </if>
+      <if test="fi106 != null" >
+        fi106 = #{fi106,jdbcType=FLOAT},
+      </if>
+      <if test="fi109 != null" >
+        fi109 = #{fi109,jdbcType=FLOAT},
+      </if>
+      <if test="fr401 != null" >
+        fr401 = #{fr401,jdbcType=FLOAT},
+      </if>
+      <if test="fr402 != null" >
+        fr402 = #{fr402,jdbcType=FLOAT},
+      </if>
+      <if test="fr405 != null" >
+        fr405 = #{fr405,jdbcType=FLOAT},
+      </if>
+      <if test="fr406 != null" >
+        fr406 = #{fr406,jdbcType=FLOAT},
+      </if>
+      <if test="fr407 != null" >
+        fr407 = #{fr407,jdbcType=FLOAT},
+      </if>
+      <if test="fr408 != null" >
+        fr408 = #{fr408,jdbcType=FLOAT},
+      </if>
+      <if test="fi410 != null" >
+        fi410 = #{fi410,jdbcType=FLOAT},
+      </if>
+      <if test="finh3 != null" >
+        finh3 = #{finh3,jdbcType=FLOAT},
+      </if>
+      <if test="fr141 != null" >
+        fr141 = #{fr141,jdbcType=FLOAT},
+      </if>
+      <if test="fr142 != null" >
+        fr142 = #{fr142,jdbcType=FLOAT},
+      </if>
+      <if test="fr143 != null" >
+        fr143 = #{fr143,jdbcType=FLOAT},
+      </if>
+      <if test="ti122 != null" >
+        ti122 = #{ti122,jdbcType=FLOAT},
+      </if>
+      <if test="ti123 != null" >
+        ti123 = #{ti123,jdbcType=FLOAT},
+      </if>
+      <if test="ti164 != null" >
+        ti164 = #{ti164,jdbcType=FLOAT},
+      </if>
+      <if test="ti131 != null" >
+        ti131 = #{ti131,jdbcType=FLOAT},
+      </if>
+      <if test="ti132 != null" >
+        ti132 = #{ti132,jdbcType=FLOAT},
+      </if>
+      <if test="ti211 != null" >
+        ti211 = #{ti211,jdbcType=FLOAT},
+      </if>
+      <if test="ti210a != null" >
+        ti210a = #{ti210a,jdbcType=FLOAT},
+      </if>
+      <if test="ti134 != null" >
+        ti134 = #{ti134,jdbcType=FLOAT},
+      </if>
+      <if test="ti215 != null" >
+        ti215 = #{ti215,jdbcType=FLOAT},
+      </if>
+      <if test="tr413 != null" >
+        tr413 = #{tr413,jdbcType=FLOAT},
+      </if>
+      <if test="tr403 != null" >
+        tr403 = #{tr403,jdbcType=FLOAT},
+      </if>
+      <if test="tr407 != null" >
+        tr407 = #{tr407,jdbcType=FLOAT},
+      </if>
+      <if test="ti407a != null" >
+        ti407a = #{ti407a,jdbcType=FLOAT},
+      </if>
+      <if test="ti407b != null" >
+        ti407b = #{ti407b,jdbcType=FLOAT},
+      </if>
+      <if test="pi213 != null" >
+        pi213 = #{pi213,jdbcType=FLOAT},
+      </if>
+      <if test="pi105 != null" >
+        pi105 = #{pi105,jdbcType=FLOAT},
+      </if>
+      <if test="pi112 != null" >
+        pi112 = #{pi112,jdbcType=FLOAT},
+      </if>
+      <if test="pi114 != null" >
+        pi114 = #{pi114,jdbcType=FLOAT},
+      </if>
+      <if test="pi234 != null" >
+        pi234 = #{pi234,jdbcType=FLOAT},
+      </if>
+      <if test="pr401 != null" >
+        pr401 = #{pr401,jdbcType=FLOAT},
+      </if>
+      <if test="pr403 != null" >
+        pr403 = #{pr403,jdbcType=FLOAT},
+      </if>
+      <if test="ipq113 != null" >
+        ipq113 = #{ipq113,jdbcType=FLOAT},
+      </if>
+      <if test="pi422 != null" >
+        pi422 = #{pi422,jdbcType=FLOAT},
+      </if>
+      <if test="pr416 != null" >
+        pr416 = #{pr416,jdbcType=FLOAT},
+      </if>
+      <if test="pi288 != null" >
+        pi288 = #{pi288,jdbcType=FLOAT},
+      </if>
+      <if test="ipq004 != null" >
+        ipq004 = #{ipq004,jdbcType=FLOAT},
+      </if>
+      <if test="ar101 != null" >
+        ar101 = #{ar101,jdbcType=FLOAT},
+      </if>
+      <if test="ar109 != null" >
+        ar109 = #{ar109,jdbcType=FLOAT},
+      </if>
+      <if test="ar110 != null" >
+        ar110 = #{ar110,jdbcType=FLOAT},
+      </if>
+      <if test="ai104 != null" >
+        ai104 = #{ai104,jdbcType=FLOAT},
+      </if>
+      <if test="ai103 != null" >
+        ai103 = #{ai103,jdbcType=FLOAT},
+      </if>
+      <if test="ar111 != null" >
+        ar111 = #{ar111,jdbcType=FLOAT},
+      </if>
+      <if test="ar112 != null" >
+        ar112 = #{ar112,jdbcType=FLOAT},
+      </if>
+      <if test="ar113 != null" >
+        ar113 = #{ar113,jdbcType=FLOAT},
+      </if>
+      <if test="ar114 != null" >
+        ar114 = #{ar114,jdbcType=FLOAT},
+      </if>
+      <if test="k001 != null" >
+        k001 = #{k001,jdbcType=FLOAT},
+      </if>
+      <if test="h2oc != null" >
+        h2oc = #{h2oc,jdbcType=FLOAT},
+      </if>
+      <if test="lr403 != null" >
+        lr403 = #{lr403,jdbcType=FLOAT},
+      </if>
+      <if test="lr402 != null" >
+        lr402 = #{lr402,jdbcType=FLOAT},
+      </if>
+      <if test="fiqnh3 != null" >
+        fiqnh3 = #{fiqnh3,jdbcType=FLOAT},
+      </if>
+      <if test="fiq000 != null" >
+        fiq000 = #{fiq000,jdbcType=FLOAT},
+      </if>
+      <if test="ipq001 != null" >
+        ipq001 = #{ipq001,jdbcType=FLOAT},
+      </if>
+      <if test="ipq002 != null" >
+        ipq002 = #{ipq002,jdbcType=FLOAT},
+      </if>
+      <if test="fiq101 != null" >
+        fiq101 = #{fiq101,jdbcType=FLOAT},
+      </if>
+      <if test="ftq109 != null" >
+        ftq109 = #{ftq109,jdbcType=FLOAT},
+      </if>
+      <if test="sysload != null" >
+        sysload = #{sysload,jdbcType=FLOAT},
+      </if>
+    </set>
+    where jbid = #{jbid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.saitejn.pojo.JbUploadMiddle" >
+    update jb_upload_middle
+    set jbtime = #{jbtime,jdbcType=TIMESTAMP},
+      fi103 = #{fi103,jdbcType=FLOAT},
+      fi000 = #{fi000,jdbcType=FLOAT},
+      fi104 = #{fi104,jdbcType=FLOAT},
+      fi101 = #{fi101,jdbcType=FLOAT},
+      fi106 = #{fi106,jdbcType=FLOAT},
+      fi109 = #{fi109,jdbcType=FLOAT},
+      fr401 = #{fr401,jdbcType=FLOAT},
+      fr402 = #{fr402,jdbcType=FLOAT},
+      fr405 = #{fr405,jdbcType=FLOAT},
+      fr406 = #{fr406,jdbcType=FLOAT},
+      fr407 = #{fr407,jdbcType=FLOAT},
+      fr408 = #{fr408,jdbcType=FLOAT},
+      fi410 = #{fi410,jdbcType=FLOAT},
+      finh3 = #{finh3,jdbcType=FLOAT},
+      fr141 = #{fr141,jdbcType=FLOAT},
+      fr142 = #{fr142,jdbcType=FLOAT},
+      fr143 = #{fr143,jdbcType=FLOAT},
+      ti122 = #{ti122,jdbcType=FLOAT},
+      ti123 = #{ti123,jdbcType=FLOAT},
+      ti164 = #{ti164,jdbcType=FLOAT},
+      ti131 = #{ti131,jdbcType=FLOAT},
+      ti132 = #{ti132,jdbcType=FLOAT},
+      ti211 = #{ti211,jdbcType=FLOAT},
+      ti210a = #{ti210a,jdbcType=FLOAT},
+      ti134 = #{ti134,jdbcType=FLOAT},
+      ti215 = #{ti215,jdbcType=FLOAT},
+      tr413 = #{tr413,jdbcType=FLOAT},
+      tr403 = #{tr403,jdbcType=FLOAT},
+      tr407 = #{tr407,jdbcType=FLOAT},
+      ti407a = #{ti407a,jdbcType=FLOAT},
+      ti407b = #{ti407b,jdbcType=FLOAT},
+      pi213 = #{pi213,jdbcType=FLOAT},
+      pi105 = #{pi105,jdbcType=FLOAT},
+      pi112 = #{pi112,jdbcType=FLOAT},
+      pi114 = #{pi114,jdbcType=FLOAT},
+      pi234 = #{pi234,jdbcType=FLOAT},
+      pr401 = #{pr401,jdbcType=FLOAT},
+      pr403 = #{pr403,jdbcType=FLOAT},
+      ipq113 = #{ipq113,jdbcType=FLOAT},
+      pi422 = #{pi422,jdbcType=FLOAT},
+      pr416 = #{pr416,jdbcType=FLOAT},
+      pi288 = #{pi288,jdbcType=FLOAT},
+      ipq004 = #{ipq004,jdbcType=FLOAT},
+      ar101 = #{ar101,jdbcType=FLOAT},
+      ar109 = #{ar109,jdbcType=FLOAT},
+      ar110 = #{ar110,jdbcType=FLOAT},
+      ai104 = #{ai104,jdbcType=FLOAT},
+      ai103 = #{ai103,jdbcType=FLOAT},
+      ar111 = #{ar111,jdbcType=FLOAT},
+      ar112 = #{ar112,jdbcType=FLOAT},
+      ar113 = #{ar113,jdbcType=FLOAT},
+      ar114 = #{ar114,jdbcType=FLOAT},
+      k001 = #{k001,jdbcType=FLOAT},
+      h2oc = #{h2oc,jdbcType=FLOAT},
+      lr403 = #{lr403,jdbcType=FLOAT},
+      lr402 = #{lr402,jdbcType=FLOAT},
+      fiqnh3 = #{fiqnh3,jdbcType=FLOAT},
+      fiq000 = #{fiq000,jdbcType=FLOAT},
+      ipq001 = #{ipq001,jdbcType=FLOAT},
+      ipq002 = #{ipq002,jdbcType=FLOAT},
+      fiq101 = #{fiq101,jdbcType=FLOAT},
+      ftq109 = #{ftq109,jdbcType=FLOAT},
+      sysload = #{sysload,jdbcType=FLOAT}
+    where jbid = #{jbid,jdbcType=INTEGER}
+  </update>
+</mapper>

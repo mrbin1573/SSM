@@ -1,0 +1,31 @@
+package com.saitejn.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Testfind {
+	public static void main(String[] args) {
+		Testfind testfind = new Testfind();
+		
+		System.out.println(testfind.find());
+			
+	}
+	 
+	public  boolean find(){
+		List<String> list = new ArrayList<String>();
+		boolean isdates=true;
+		list.add("2015-12-24 05:20:00");
+		list.add("2015-12-25 05:20:00");
+		list.add("2015-12-26 05:20:00");
+		list.add("2015-12-27 05:20:00");
+		for (String temp : list) {
+			if (temp.contains("2015-12-27 05:20:00")) {
+				isdates= true;
+			}else{
+				isdates = false; 
+				}
+			}
+		return isdates;
+	}
+
+}

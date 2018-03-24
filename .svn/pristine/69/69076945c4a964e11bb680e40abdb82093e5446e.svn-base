@@ -1,0 +1,260 @@
+package com.saitejn.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.saitejn.pojo.JbPushgrid101;
+import com.saitejn.pojo.JbPushgrid111WithBLOBs;
+import com.saitejn.pojo.JbPushgrid112WithBLOBs;
+import com.saitejn.pojo.JbPushgrid113WithBLOBs;
+import com.saitejn.pojo.JbPushgrid114WithBLOBs;
+import com.saitejn.pojo.JbPushgrid11WithBLOBs;
+import com.saitejn.pojo.JbPushgrid12;
+import com.saitejn.pojo.JbPushgrid13WithBLOBs;
+import com.saitejn.pojo.JbPushgrid14WithBLOBs;
+import com.saitejn.pojo.JbPushgrid15WithBLOBs;
+import com.saitejn.pojo.JbPushgrid21;
+import com.saitejn.pojo.JbPushgrid22WithBLOBs;
+import com.saitejn.pojo.JbPushgrid23WithBLOBs;
+import com.saitejn.pojo.JbPushgrid24WithBLOBs;
+import com.saitejn.pojo.JbPushgrid31WithBLOBs;
+import com.saitejn.pojo.JbPushgrid41;
+import com.saitejn.pojo.JbPushgrid51;
+import com.saitejn.pojo.JbPushgrid61;
+import com.saitejn.pojo.JbPushgrid71;
+import com.saitejn.pojo.JbPushgrid81WithBLOBs;
+import com.saitejn.pojo.JbPushgrid82WithBLOBs;
+import com.saitejn.pojo.JbPushgrid91WithBLOBs;
+import com.saitejn.pojo.JbPushgrid92WithBLOBs;
+import com.saitejn.pojo.JbPushgrid93WithBLOBs;
+import com.saitejn.pojo.JbPushgrid94WithBLOBs;
+import com.saitejn.services.AdminDataServices;
+import com.saitejn.services.GuideDataServices;
+
+/**
+ * 指导数据控制类
+ * @class GuideDataController.java
+ * @Description:
+ * @author:罗康元
+ * Company:赛特工信科技有限公司
+ * @date :2016-10-8
+ */
+@Controller
+public class GuideDataController {
+	@Autowired
+	private GuideDataServices guideDataServices;
+	private String guide;
+	@Autowired
+	private AdminDataServices adminDataServices;
+
+	//用户审核数据
+		@RequestMapping("/chenkData")
+		public String chenkData(Model model ,Integer tid[])throws Exception{
+			if(tid != null){
+				//获取审核的第一个id,然后就传给前台用户查询的
+				int upchenkDataid1 = tid[0];
+				guideDataServices.updateNumber(upchenkDataid1, "chenkDataid1");
+			
+			//循环修改审核情况
+			for(int j = 0; j<tid.length;j++){
+				int i = tid[j];
+				adminDataServices.updatejb_pushgrid_1_1(i);
+			}
+			}
+			return "redirect:/toguideData.action";
+			
+		}
+		
+		@RequestMapping("/chenkData12")
+		public String chenkData12(Model model ,Integer tid[])throws Exception{
+			if(tid != null){
+				int unchenkDataid2 = tid[0];
+				guideDataServices.updateNumber(unchenkDataid2, "chenkDataid2");
+			//循环修改审核情况
+			for(int j = 0; j<tid.length;j++){
+				int i = tid[j];
+				adminDataServices.updatejb_pushgrid_1_2(i);
+			}
+			}
+			return "redirect:/toguideData.action";
+			
+		}
+
+	
+	@RequestMapping("/guidedatashow")
+	public String guidedatashow(Model model,String guideData)throws Exception{
+		//时间段划分
+	
+		int chenkDataid1 = guideDataServices.getNumberByName("chenkDataid1");
+		List<JbPushgrid11WithBLOBs>jbPushgrid11List = guideDataServices.selectAllPush(chenkDataid1);
+		model.addAttribute("jbPushgrid11List", jbPushgrid11List);
+		//各时间段和全体样本氨产量及能耗统计
+		int chenkDataid2 = guideDataServices.getNumberByName("chenkDataid2");
+		List<JbPushgrid12>jbPushgrid12List = guideDataServices.selectAllPush12(chenkDataid2);
+		model.addAttribute("jbPushgrid12List", jbPushgrid12List);
+		//各时间段样本与全体样本吨氨能耗比较
+		int chenkDataid3 = guideDataServices.getNumberByName("chenkDataid3");
+		List<JbPushgrid13WithBLOBs> jbPushgrid13WithBLOBsList = guideDataServices.selectAllPushgrid13s(chenkDataid3);
+		model.addAttribute("jbPushgrid13WithBLOBsList", jbPushgrid13WithBLOBsList);
+		//各时间段增效效益估算
+		int chenkDataid4 = guideDataServices.getNumberByName("chenkDataid4");
+		List<JbPushgrid14WithBLOBs> jbPushgrid14WithBLOBsList = guideDataServices.selectAllPushgrid14s(chenkDataid4);
+		model.addAttribute("jbPushgrid14WithBLOBsList", jbPushgrid14WithBLOBsList);
+		//各时间段样本与全体样本氨产量、气耗、电耗月度折算比较-日期
+		int chenkDataid5 = guideDataServices.getNumberByName("chenkDataid5");
+		List<JbPushgrid15WithBLOBs> jbPushgrid15WithBLOBsList = guideDataServices.selectAllWithBLOB15s(chenkDataid5);
+		model.addAttribute("jbPushgrid15WithBLOBsList", jbPushgrid15WithBLOBsList);
+		//优类样本、最佳模式样本及全体样本累计量及吨氨能耗统计-日期 
+		int chenkDataid6= guideDataServices.getNumberByName("chenkDataid6");
+		List<JbPushgrid21> jbPushgrid21sList = guideDataServices.selectAllJbPushgrid21s(chenkDataid6);
+		model.addAttribute("jbPushgrid21sList", jbPushgrid21sList);
+		//优类样本、最佳模式样本及全体样本吨氨能耗比较-日期
+		int chenkDataid7 = guideDataServices.getNumberByName("chenkDataid7");
+		List<JbPushgrid22WithBLOBs> jbPushgrid22WithBLOBsList = guideDataServices.selectAllPushgrid22WithBLOBs(chenkDataid7);
+		model.addAttribute("jbPushgrid22WithBLOBsList", jbPushgrid22WithBLOBsList);
+		//优类样本增效效益估算
+		int chenkDataid8 = guideDataServices.getNumberByName("chenkDataid8");
+		List<JbPushgrid23WithBLOBs> jbPushgrid23WithBLOBsList = guideDataServices.selectAllPushgrid23WithBLOBs(chenkDataid8);
+		model.addAttribute("jbPushgrid23WithBLOBsList", jbPushgrid23WithBLOBsList);
+		//优类样本、最佳模式样本及全体样本液氨产量、气耗和电耗月度折算比较-日期
+		int chenkDataid9 = guideDataServices.getNumberByName("chenkDataid9");
+		List<JbPushgrid24WithBLOBs> jbPushgrid24WithBLOBsList = guideDataServices.selectAllPushgrid24WithBLOBs(chenkDataid9);
+		model.addAttribute("jbPushgrid24WithBLOBsList", jbPushgrid24WithBLOBsList);
+		//优化工艺指标
+		int chenkDataid10 = guideDataServices.getNumberByName("chenkDataid10");
+		List<JbPushgrid31WithBLOBs> jbPushgrid31WithBLOBsList = guideDataServices.selectAllPushgrid31WithBLOBs(chenkDataid10);
+		model.addAttribute("jbPushgrid31WithBLOBsList", jbPushgrid31WithBLOBsList);
+		//被动控制变量相关分析表
+		int chenkDataid11 = guideDataServices.getNumberByName("chenkDataid11");
+		List<JbPushgrid41> jbPushgrid41sList = guideDataServices.selectAllPushgrid41s(chenkDataid11);
+		model.addAttribute("jbPushgrid41sList", jbPushgrid41sList);
+		//主动控制变量相关分析表
+		int chenkDataid12 = guideDataServices.getNumberByName("chenkDataid12");
+		List<JbPushgrid51> jbPushgrid51sList = guideDataServices.selectAllPushgrid51s(chenkDataid12);
+		model.addAttribute("jbPushgrid51sList", jbPushgrid51sList);
+		//变量对响应值影响排序-日期
+		int chenkDataid13 = guideDataServices.getNumberByName("chenkDataid13");
+		List<JbPushgrid61> jbPushgrid61sList = guideDataServices.selectAllPushgrid61s(chenkDataid13);
+		model.addAttribute("jbPushgrid61sList", jbPushgrid61sList);
+		int chenkDataid14 = guideDataServices.getNumberByName("chenkDataid14");
+		List<JbPushgrid71> jbPushgrid71sList = guideDataServices.selectAllPushgrid71s(chenkDataid14);
+		model.addAttribute("jbPushgrid71sList", jbPushgrid71sList);
+		//新样本与全体对照样本累计量统计及吨氨能耗比较-日期
+		int chenkDataid15 = guideDataServices.getNumberByName("chenkDataid15");
+		List<JbPushgrid81WithBLOBs> jbPushgrid81WithBLOBsList = guideDataServices.selectAllPushgrid81WithBLOBs(chenkDataid15);
+		model.addAttribute("jbPushgrid81WithBLOBsList", jbPushgrid81WithBLOBsList);
+		//
+		int chenkDataid16= guideDataServices.getNumberByName("chenkDataid16");
+		List<JbPushgrid82WithBLOBs> jbPushgrid82WithBLOBsList = guideDataServices.selectAllPushgrid82WithBLOBs(chenkDataid16);
+		model.addAttribute("jbPushgrid82WithBLOBsList", jbPushgrid82WithBLOBsList);
+		//
+		int chenkDataid17 = guideDataServices.getNumberByName("chenkDataid17");
+		List<JbPushgrid91WithBLOBs> jbPushgrid91WithBLOBsList = guideDataServices.selectAllPushgrid91WithBLOBs(chenkDataid17);
+		model.addAttribute("jbPushgrid91WithBLOBsList", jbPushgrid91WithBLOBsList);
+		//
+		int chenkDataid18 = guideDataServices.getNumberByName("chenkDataid18");
+		List<JbPushgrid92WithBLOBs> jbPushgrid92WithBLOBsList = guideDataServices.selectAllPushgrid92WithBLOBs(chenkDataid18);
+		model.addAttribute("jbPushgrid92WithBLOBsList", jbPushgrid92WithBLOBsList);
+		//
+		int chenkDataid19 = guideDataServices.getNumberByName("chenkDataid19");
+		List<JbPushgrid93WithBLOBs> jbPushgrid93WithBLOBsList = guideDataServices.selectAllPushgrid93WithBLOBs(chenkDataid19);
+		model.addAttribute("jbPushgrid93WithBLOBsList", jbPushgrid93WithBLOBsList);
+		//
+		int chenkDataid20= guideDataServices.getNumberByName("chenkDataid20");
+		List<JbPushgrid94WithBLOBs> jbPushgrid94WithBLOBsList = guideDataServices.selectAllPushgrid94WithBLOBs(chenkDataid20);
+		model.addAttribute("jbPushgrid94WithBLOBsList", jbPushgrid94WithBLOBsList);
+		
+		//
+		int chenkDataid21 = guideDataServices.getNumberByName("chenkDataid21");
+		List<JbPushgrid101> jbPushgrid101WithBLOBsList = guideDataServices.selectAllPushgrid101WithBLOBs(chenkDataid21);
+		model.addAttribute("jbPushgrid101WithBLOBsList", jbPushgrid101WithBLOBsList);
+		if(guideData!=null){
+			if(guideData.equals("班次一")){
+				guide = "1";
+				//
+				List<JbPushgrid111WithBLOBs> jbPushgrid111WithBLOBsList = guideDataServices.selectAllPushgrid111WithBLOBs(guide);
+				model.addAttribute("jbPushgrid111WithBLOBsList", jbPushgrid111WithBLOBsList);
+				//
+				List<JbPushgrid112WithBLOBs> jbPushgrid112WithBLOBsList = guideDataServices.selectAllPushgrid112WithBLOBs(guide);
+				model.addAttribute("jbPushgrid112WithBLOBsList", jbPushgrid112WithBLOBsList);
+				//
+				List<JbPushgrid113WithBLOBs> jbPushgrid113WithBLOBsList = guideDataServices.selectAllPushgrid113WithBLOBs(guide);
+				model.addAttribute("jbPushgrid113WithBLOBsList", jbPushgrid113WithBLOBsList);
+				//
+				List<JbPushgrid114WithBLOBs> jbPushgrid114WithBLOBsList = guideDataServices.selectAllPushgrid114WithBLOBs(guide);
+				model.addAttribute("jbPushgrid114WithBLOBsList", jbPushgrid114WithBLOBsList);
+				model.addAttribute("guideData", guideData);
+			}
+			if(guideData.equals("班次二")){
+				guide = "2";
+				//
+				List<JbPushgrid111WithBLOBs> jbPushgrid111WithBLOBsList = guideDataServices.selectAllPushgrid111WithBLOBs(guide);
+				model.addAttribute("jbPushgrid111WithBLOBsList", jbPushgrid111WithBLOBsList);
+				//
+				List<JbPushgrid112WithBLOBs> jbPushgrid112WithBLOBsList = guideDataServices.selectAllPushgrid112WithBLOBs(guide);
+				model.addAttribute("jbPushgrid112WithBLOBsList", jbPushgrid112WithBLOBsList);
+				//
+				List<JbPushgrid113WithBLOBs> jbPushgrid113WithBLOBsList = guideDataServices.selectAllPushgrid113WithBLOBs(guide);
+				model.addAttribute("jbPushgrid113WithBLOBsList", jbPushgrid113WithBLOBsList);
+				//
+				List<JbPushgrid114WithBLOBs> jbPushgrid114WithBLOBsList = guideDataServices.selectAllPushgrid114WithBLOBs(guide);
+				model.addAttribute("jbPushgrid114WithBLOBsList", jbPushgrid114WithBLOBsList);
+				model.addAttribute("guideData", guideData);
+			}
+			if(guideData.equals("班次三")){
+				guide = "3";
+				//
+				List<JbPushgrid111WithBLOBs> jbPushgrid111WithBLOBsList = guideDataServices.selectAllPushgrid111WithBLOBs(guide);
+				model.addAttribute("jbPushgrid111WithBLOBsList", jbPushgrid111WithBLOBsList);
+				//
+				List<JbPushgrid112WithBLOBs> jbPushgrid112WithBLOBsList = guideDataServices.selectAllPushgrid112WithBLOBs(guide);
+				model.addAttribute("jbPushgrid112WithBLOBsList", jbPushgrid112WithBLOBsList);
+				//
+				List<JbPushgrid113WithBLOBs> jbPushgrid113WithBLOBsList = guideDataServices.selectAllPushgrid113WithBLOBs(guide);
+				model.addAttribute("jbPushgrid113WithBLOBsList", jbPushgrid113WithBLOBsList);
+				//
+				List<JbPushgrid114WithBLOBs> jbPushgrid114WithBLOBsList = guideDataServices.selectAllPushgrid114WithBLOBs(guide);
+				model.addAttribute("jbPushgrid114WithBLOBsList", jbPushgrid114WithBLOBsList);
+				model.addAttribute("guideData", guideData);
+			}
+			if(guideData.equals("班次四")){
+				guide = "4";
+				//
+				List<JbPushgrid111WithBLOBs> jbPushgrid111WithBLOBsList = guideDataServices.selectAllPushgrid111WithBLOBs(guide);
+				model.addAttribute("jbPushgrid111WithBLOBsList", jbPushgrid111WithBLOBsList);
+				//
+				List<JbPushgrid112WithBLOBs> jbPushgrid112WithBLOBsList = guideDataServices.selectAllPushgrid112WithBLOBs(guide);
+				model.addAttribute("jbPushgrid112WithBLOBsList", jbPushgrid112WithBLOBsList);
+				//
+				List<JbPushgrid113WithBLOBs> jbPushgrid113WithBLOBsList = guideDataServices.selectAllPushgrid113WithBLOBs(guide);
+				model.addAttribute("jbPushgrid113WithBLOBsList", jbPushgrid113WithBLOBsList);
+				//
+				List<JbPushgrid114WithBLOBs> jbPushgrid114WithBLOBsList = guideDataServices.selectAllPushgrid114WithBLOBs(guide);
+				model.addAttribute("jbPushgrid114WithBLOBsList", jbPushgrid114WithBLOBsList);
+				model.addAttribute("guideData", guideData);
+			}
+			
+		}
+		if(guideData==null){
+		//
+		List<JbPushgrid111WithBLOBs> jbPushgrid111WithBLOBsList = guideDataServices.selectAllPushgrid111WithBLOBs("1");
+		model.addAttribute("jbPushgrid111WithBLOBsList", jbPushgrid111WithBLOBsList);
+		//
+		List<JbPushgrid112WithBLOBs> jbPushgrid112WithBLOBsList = guideDataServices.selectAllPushgrid112WithBLOBs("1");
+		model.addAttribute("jbPushgrid112WithBLOBsList", jbPushgrid112WithBLOBsList);
+		//
+		List<JbPushgrid113WithBLOBs> jbPushgrid113WithBLOBsList = guideDataServices.selectAllPushgrid113WithBLOBs("1");
+		model.addAttribute("jbPushgrid113WithBLOBsList", jbPushgrid113WithBLOBsList);
+		//
+		List<JbPushgrid114WithBLOBs> jbPushgrid114WithBLOBsList = guideDataServices.selectAllPushgrid114WithBLOBs("1");
+		model.addAttribute("jbPushgrid114WithBLOBsList", jbPushgrid114WithBLOBsList);
+		model.addAttribute("guideData", "班次一");
+		}
+ 		return "guidedatashow";
+	}
+	
+}

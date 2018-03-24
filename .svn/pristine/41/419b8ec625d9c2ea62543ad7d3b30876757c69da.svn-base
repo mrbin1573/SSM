@@ -1,0 +1,57 @@
+package com.saitejn.services;
+
+import java.util.List;
+
+import com.saitejn.pojo.FileUpInfo;
+import com.saitejn.pojo.JbExcelInput;
+import com.saitejn.pojo.JyExcelInput;
+import com.saitejn.pojo.JyFileupifo;
+
+public interface JyDataServices {
+	/**
+	 * 保存用户上传数据到数据库
+	 * @param jbExcelInput
+	 * @throws Exception
+	 */
+	/*public void saveDate(JyExcelInput jyExcelInput)throws Exception ;
+	*//**
+	 * 查询input表的记录数
+	 * @return
+	 * @throws Exception
+	 *//*
+	public int selectcount()throws Exception;
+	*//**
+	 * 查询handle1表的记录数
+	 * @return
+	 * @throws Exception
+	 *//*
+	public int selecthand1count()throws Exception;
+	*//**
+	 * 获取所有的用户上传的数据，用于计算剔除异常数据
+	 * @return
+	 * @throws Exception
+	 *//*
+	public List<JyExcelInput>selectAll()throws Exception;
+	*//**
+	 * 保存文件上传信息
+	 * @param fileupifo
+	 * @throws Exception
+	 *//*
+	public void saveUpFileIfo(JyFileupifo jyFileupifo)throws Exception;
+	*//**
+	 * 用户剔除上传的时候的重复数据
+	 * @param jytime
+	 * @return
+	 * @throws Exception
+	 *//*
+	public int isSameDate(String jytime)throws Exception;
+	*//**
+	 * 读取玖源数据
+	 * @param filePath
+	 * @param year
+	 * @return
+	 * @throws Exception
+	 *//*
+	public List<JyExcelInput> readJyXls(String filePath,String year) throws Exception;*/
+
+}

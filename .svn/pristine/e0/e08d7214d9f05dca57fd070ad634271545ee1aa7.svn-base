@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JyExcelInputCustomerMapper" >
+<insert id="saveDate" parameterType="com.saitejn.pojo.JyExcelInput" useGeneratedKeys="true">
+insert into jy_excel_input (jytime,
+FIQ_6003,TI_501,FIQ_6002,TI_1_51,TI_1_85,TI_1_90,TI_10,TI_281,TI_111,TI_19,TI_272,TI_22,
+TI_24,TI_266,TI_31,TI_70,TI_267,TI_85A,TI_522,
+TI_81,TI_45,TI_12,FI_1,FI_2,FI_3,FI_51,FI_4001,FI_63,FI_27,FI_5,W_C,A_C,
+FI_2000,FI_7,FI_84,FI_84A,FI_84B,FI_314,FI_3110,FI_3116,FI_3117,FI_2301,FI_50,FI_1502,
+PI_657,PI_4,PI_5,PI_6,PI_80,PI_82,PI_9,PI_19,PI_25,AIA_5,AIA_5A,AI_1,
+AI_1B,AI_1401,AI_1401HN,FIQ_6001,FIQ_1502,FIQ_1,FIQ_32,FI_1_FH)
+values 
+(#{jytime},
+#{FIQ_6003},#{TI_501},#{FIQ_6002},#{TI_1_51},#{TI_1_85},#{TI_1_90},#{TI_10},#{TI_281},#{TI_111},#{TI_19},#{TI_272},#{TI_22},
+#{TI_24},#{TI_266},#{TI_31},#{TI_70},#{TI_267},#{TI_85A},#{TI_522},
+ #{TI_81},#{TI_45},#{TI_12},#{FI_1},#{FI_2},#{FI_3},#{FI_51},#{FI_4001},#{FI_63},#{FI_27},#{FI_5},#{W_C},#{A_C},
+#{FI_2000},#{FI_7},#{FI_84},#{FI_84A},#{FI_84B},#{FI_314},#{FI_3110},#{FI_3116},#{FI_3117},#{FI_2301},#{FI_50},#{FI_1502},
+#{PI_657},#{PI_4},#{PI_5},#{PI_6},#{PI_80},#{PI_82},#{PI_9},#{PI_19},#{PI_25},#{AIA_5},#{AIA_5A},#{AI_1},
+#{AI_1B},#{AI_1401},#{AI_1401HN},#{FIQ_6001},#{FIQ_1502},#{FIQ_1},#{FIQ_32},#{FI_1_FH})
+</insert>
+<select id="selectAll" resultType="com.saitejn.pojo.JyExcelInput">
+select * from jy_excel_input order by jytime  asc
+</select>
+<!-- <select id="selectDateByTime"  resultType="com.saitejn.pojo.JbExcelInput">
+        select * from jb_excel_input where jbtime &gt;= #{0} and jbtime &lt;=#{1} 
+</select>
+
+<insert id="saveUpFileIfo" parameterType="com.saitejn.pojo.FileUpInfo" useGeneratedKeys="true">
+insert into fileupifo (uptime,upname,upperson,filtype,fileename) values(#{uptime},#{upname},#{upperson},#{filtype},#{fileename})
+</insert> -->
+<insert id="saveUpFileIfo" parameterType="com.saitejn.pojo.JyFileupifo" useGeneratedKeys="true">
+		insert into jy_fileupifo (uptime,upname,upperson,filtype,fileename) values(#{uptime},#{upname},#{upperson},#{filtype},#{fileename})
+	</insert>
+<select id="selectcount" resultType="int">
+select count(*) from jy_rawdata_handle_1
+</select>
+<select id="selecthand1count" resultType="int">
+select count(*) from jy_rawdata_handle_2
+</select>
+
+<select id="fingInputByJytime" parameterType="String" resultType="int">
+	select count(*) from jy_excel_input where jytime = #{jytime}
+</select>
+
+</mapper>

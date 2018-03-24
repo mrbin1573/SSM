@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.DataMapper" >		
+	<insert id="saveDate" parameterType="com.saitejn.pojo.JbExcelInput">
+		insert into jb_excel_input(jb_time,FI-103(Nm3/h),
+		FI-000(Nm3/h),FI-104(Nm3/h),FI-101(Nm3/h),FI-106(Nm3/h),FI-109(Nm3/h),FR-401(Nm3/h),FR-402(Nm3/h),
+		FR-405(Nm3/h),FR-406(Nm3/h),FR-407(Nm3/h),FR-408(Nm3/h),FI-410(Nm3/h),FI-NH3(kg/h),FR-141(Nm3/h),FR-142(Nm3/h),FR-143(Nm3/h),
+		TI-122(℃),TI-123(℃),TI-164(℃),TI-131(℃),TI-132(℃),TI-211(℃),
+		TI-210a(℃),TI-215(℃),TI-134(℃),TR-413(℃),TR-403(℃),TR-407(℃),TI-407A(℃),TI-407B(℃),PI--213(MPa),PI-105(MPa),
+		PI-112(MPa),PI-114(MPa),PI-234(MPa),PR-401(MPa),PR-403(MPa),IPQ003(kWh),PI-422(MPa),PR-416(MPa),PI_288(MPa),IPQ004(kWh),
+		AR-101(%),AR-109(%),AR-110(%),AI-104(%),AI-103(%),AR-111(%),AR-112(%),AR-113(%),AR-114(%),
+		K-001,H2OC,LR-403,LR-402,FIQNH3(t),FIQ000(Nm3),IPQ001(kWh),IPQ002(kWh),FIQ101(Nm3),FTQ109(Nm3))
+	</insert>
+
+</mapper>

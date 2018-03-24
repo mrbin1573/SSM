@@ -1,0 +1,79 @@
+package com.saitejn.services.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.saitejn.mapper.AdminCustomerMapper;
+import com.saitejn.mapper.AdminDataMapper;
+import com.saitejn.mapper.JbPushgrid11CustomerMapper;
+import com.saitejn.pojo.JbPushgrid101;
+import com.saitejn.pojo.JbPushgrid111WithBLOBs;
+import com.saitejn.pojo.JbPushgrid112WithBLOBs;
+import com.saitejn.pojo.JbPushgrid113WithBLOBs;
+import com.saitejn.pojo.JbPushgrid114WithBLOBs;
+import com.saitejn.pojo.JbPushgrid11WithBLOBs;
+import com.saitejn.pojo.JbPushgrid12;
+import com.saitejn.pojo.JbPushgrid13WithBLOBs;
+import com.saitejn.pojo.JbPushgrid14WithBLOBs;
+import com.saitejn.pojo.JbPushgrid15WithBLOBs;
+import com.saitejn.pojo.JbPushgrid21;
+import com.saitejn.pojo.JbPushgrid22WithBLOBs;
+import com.saitejn.pojo.JbPushgrid23WithBLOBs;
+import com.saitejn.pojo.JbPushgrid24WithBLOBs;
+import com.saitejn.pojo.JbPushgrid31WithBLOBs;
+import com.saitejn.pojo.JbPushgrid41;
+import com.saitejn.pojo.JbPushgrid51;
+import com.saitejn.pojo.JbPushgrid61;
+import com.saitejn.pojo.JbPushgrid71;
+import com.saitejn.pojo.JbPushgrid81WithBLOBs;
+import com.saitejn.pojo.JbPushgrid82WithBLOBs;
+import com.saitejn.pojo.JbPushgrid91WithBLOBs;
+import com.saitejn.pojo.JbPushgrid92WithBLOBs;
+import com.saitejn.pojo.JbPushgrid93WithBLOBs;
+import com.saitejn.pojo.JbPushgrid94WithBLOBs;
+import com.saitejn.pojo.JbUserifo;
+import com.saitejn.pojo.Messageleaving;
+import com.saitejn.services.AdminDataServices;
+
+public class AdminDataServicesImpl implements AdminDataServices {
+	@Autowired
+	private AdminDataMapper adminDataMapper;
+	@Autowired
+	private AdminCustomerMapper jbPushgrid11CustomerMapper;
+	
+	
+	
+	
+	@Override
+	public void updatejb_pushgrid_1_1(int id)
+			throws Exception {
+		adminDataMapper.updatejb_pushgrid_1_1(id);
+		
+	}
+	@Override
+	public void updatejb_pushgrid_1_2(int id) throws Exception {
+		adminDataMapper.updatejb_pushgrid_1_2(id);
+	}
+	@Override
+	public List<Messageleaving> selectMessageByConpany(String company)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return adminDataMapper.selectMessageByConpany(company);
+	}
+	@Override
+	public int selectMessageNumber(String company) throws Exception {
+		
+		return adminDataMapper.selectMessageNumber(company);
+	}
+	@Override
+	public void updateMessage() throws Exception {
+		adminDataMapper.updateMessByid();
+	}
+	@Override
+	public List<Messageleaving> selectMessageCount(String company) throws Exception {
+		// TODO Auto-generated method stub
+		return adminDataMapper.selectMessageCount(company);
+	}
+
+}

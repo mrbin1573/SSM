@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JyRawdataHandle1CustomerMapper" >
+<insert id="saveDate" parameterType="com.saitejn.pojo.JyRawdataHandle1" useGeneratedKeys="true">
+insert into jy_rawdata_handle_1(时间,TI_501,TI_1_51,TI_1_85,TI_1_90,TI_10,TI_281,TI_111,TI_19,TI_272,TI_22,TI_24,TI_266,TI_31,TI_70,
+TI_267,TI_85A,TI_522,TI_81,TI_45,TI_12,FI_1,FI_2,FI_3,FI_51,FI_4001,FI_63,FI_27,FI_5,W_C,A_C,FI_2000,FI_7,
+FI_84,FI_84A,FI_84B,FI_314,FI_3110,FI_3116,FI_3117,FI_2301,FI_50,FI_1502,PI_657,PI_4,PI_5,PI_6,PI_80,PI_82,PI_9,
+PI_19,PI_25,AIA_5,AIA_5A,AI_1,AI_1B,AI_1401,AI_1401HN,累积氨产量,累积总气耗,累积原料气耗,累积燃料气耗,累积快锅燃气,累积快锅产汽,时段氨产量,时段总气耗,时段原料气耗,
+时段燃料气耗,时段快锅气耗,时段净蒸汽耗,时段气耗,时段气耗_含蒸汽折算,系统负荷,小时氨产量,吨氨综合消耗,吨氨气耗,吨氨原料气耗,吨氨燃料气耗,吨氨气耗_含蒸汽折算,班次
+
+) values (#{时间},#{TI_501},#{TI_1_51},#{TI_1_85},#{TI_1_90},#{TI_10},#{TI_281},#{TI_111},
+#{TI_19},#{TI_272},#{TI_22},#{TI_24},#{TI_266},#{TI_31},#{TI_70},#{TI_267},#{TI_85A},#{TI_522},#{TI_81},#{TI_45},#{TI_12},
+#{FI_1},#{FI_2},#{FI_3},#{FI_51},#{FI_4001},#{FI_63},#{FI_27},#{FI_5},#{W_C},#{A_C},#{FI_2000},#{FI_7},#{FI_84},
+#{FI_84A},#{FI_84B},#{FI_314},#{FI_3110},#{FI_3116},#{FI_3117},#{FI_2301},#{FI_50},#{FI_1502},#{PI_657},#{PI_4},#{PI_5},#{PI_6},
+#{PI_80},#{PI_82},#{PI_9},#{PI_19},#{PI_25},#{AIA_5},#{AIA_5A},#{AI_1},#{AI_1B},#{AI_1401},#{AI_1401HN},#{累积氨产量},
+#{累积总气耗},#{累积原料气耗},#{累积燃料气耗},#{累积快锅燃气},#{累积快锅产汽},#{时段氨产量},#{时段总气耗},#{时段原料气耗},#{时段燃料气耗},#{时段快锅气耗},#{时段净蒸汽耗},#{时段气耗},#{时段气耗_含蒸汽折算},
+#{系统负荷},#{小时氨产量},#{吨氨综合消耗},#{吨氨气耗},#{吨氨原料气耗},#{吨氨燃料气耗},#{吨氨气耗_含蒸汽折算},#{班次}
+
+
+)
+</insert>
+<select id="selectAllhandle1" resultType="com.saitejn.pojo.JyRawdataHandle1">
+select * from jy_rawdata_handle_1 order by 时间  asc
+</select>
+
+<insert id="saveToHandl2" parameterType="com.saitejn.pojo.JyRawdataHandle2" useGeneratedKeys="true">
+insert into jy_rawdata_handle_2(
+时间,TI_501,TI_1_51,TI_1_85,TI_1_90,TI_10,TI_281,TI_111,TI_19,TI_272,TI_22,TI_24,
+TI_266,TI_31,TI_70,TI_267,TI_85A,TI_522,TI_81,TI_45,TI_12,FI_1,FI_2,FI_3,FI_51,FI_4001,FI_63,FI_27,
+FI_5,W_C,A_C,FI_2000,FI_7,FI_84,FI_84A,FI_84B,FI_314,FI_3110,FI_3116,FI_3117,FI_2301,FI_50,FI_1502,PI_657,PI_4,PI_5,
+PI_6,PI_80,PI_82,PI_9,PI_19,PI_25,AIA_5,AIA_5A,AI_1,AI_1B,AI_1401,AI_1401HN,累积氨产量,累积总气耗,
+累积原料气耗,累积燃料气耗,累积快锅燃气,累积快锅产汽,时段氨产量,时段总气耗,时段原料气耗,时段燃料气耗,时段快锅气耗,时段净蒸汽耗,时段气耗,时段气耗_含蒸汽折算,
+系统负荷,小时氨产量,吨氨综合消耗,吨氨气耗,吨氨原料气耗,吨氨燃料气耗,吨氨气耗_含蒸汽折算,班次
+
+) values (
+#{时间},#{TI_501},#{TI_1_51},#{TI_1_85},#{TI_1_90},#{TI_10},#{TI_281},#{TI_111},
+#{TI_19},#{TI_272},#{TI_22},#{TI_24},#{TI_266},#{TI_31},#{TI_70},#{TI_267},#{TI_85A},#{TI_522},#{TI_81},#{TI_45},#{TI_12},
+#{FI_1},#{FI_2},#{FI_3},#{FI_51},#{FI_4001},#{FI_63},#{FI_27},#{FI_5},#{W_C},#{A_C},#{FI_2000},#{FI_7},#{FI_84},
+#{FI_84A},#{FI_84B},#{FI_314},#{FI_3110},#{FI_3116},#{FI_3117},#{FI_2301},#{FI_50},#{FI_1502},#{PI_657},#{PI_4},#{PI_5},#{PI_6},
+#{PI_80},#{PI_82},#{PI_9},#{PI_19},#{PI_25},#{AIA_5},#{AIA_5A},#{AI_1},#{AI_1B},#{AI_1401},#{AI_1401HN},#{累积氨产量},
+#{累积总气耗},#{累积原料气耗},#{累积燃料气耗},#{累积快锅燃气},#{累积快锅产汽},#{时段氨产量},#{时段总气耗},#{时段原料气耗},#{时段燃料气耗},#{时段快锅气耗},#{时段净蒸汽耗},#{时段气耗},#{时段气耗_含蒸汽折算},
+#{系统负荷},#{小时氨产量},#{吨氨综合消耗},#{吨氨气耗},#{吨氨原料气耗},#{吨氨燃料气耗},#{吨氨气耗_含蒸汽折算},#{班次})
+
+</insert>
+<delete id="deleteHand1">
+	delete from  jy_rawdata_handle_1
+</delete>
+<delete id="deleteHand2">
+	delete from  jy_rawdata_handle_2
+</delete>
+<!-- 日报表 -->
+<select id="selectDataByContidion" resultType="com.saitejn.pojo.JyRawdataHandle1">
+	select   convert(varchar(10),时间,120)+' 00:00:00'  as 时间 
+,sum(时段氨产量) 时段氨产量 , sum(时段净蒸汽耗)时段净蒸汽耗,sum(时段气耗)时段气耗, 
+sum(吨氨气耗) 吨氨气耗 ,sum(吨氨原料气耗) 吨氨原料气耗,count (累积氨产量) 累积氨产量
+ from jy_rawdata_handle_1  where (((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &gt;= '00:01:00' and ((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &lt;= '23:59:59')
+ and 时间  &gt;= #{0} and 时间  &lt;= #{1}
+group by  convert(varchar(10),时间,120) order by 时间 asc 
+</select> 
+<!-- 日报表按班查看 -->
+
+<select id="selectDataByContidionAndClass1" resultType="com.saitejn.pojo.JyRawdataHandle1">
+	select   convert(varchar(10),时间,120)+' 00:00:00'  as 时间 
+,sum(时段氨产量) 时段氨产量 , sum(时段净蒸汽耗)时段净蒸汽耗,sum(时段气耗)时段气耗, 
+sum(吨氨气耗) 吨氨气耗 ,sum(吨氨原料气耗) 吨氨原料气耗,count (累积氨产量) 累积氨产量, 2 'classNumber'
+ from jy_rawdata_handle_1  where (((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &gt;= '08:09:00' and ((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &lt;= '16:01:00')
+ and 时间  &gt;= #{0} and 时间  &lt;= #{1}
+group by  convert(varchar(10),时间,120) order by 时间 asc 
+</select>
+<select id="selectDataByContidionAndClass2" resultType="com.saitejn.pojo.JyRawdataHandle1">
+	select   convert(varchar(10),时间,120)+' 00:00:00'  as 时间 
+,sum(时段氨产量) 时段氨产量 , sum(时段净蒸汽耗)时段净蒸汽耗,sum(时段气耗)时段气耗, 
+sum(吨氨气耗) 吨氨气耗 ,sum(吨氨原料气耗) 吨氨原料气耗,count (累积氨产量) 累积氨产量, 3 'classNumber'
+ from jy_rawdata_handle_1  where (((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &gt;= '16:09:00' and ((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &lt;= '23:59:59')
+ and 时间  &gt;= #{0} and 时间  &lt;= #{1}
+group by  convert(varchar(10),时间,120) order by 时间 asc 
+</select>
+<select id="selectDataByContidionAndClass3" resultType="com.saitejn.pojo.JyRawdataHandle1">
+	select   convert(varchar(10),时间,120)+' 00:00:00'  as 时间 
+,sum(时段氨产量) 时段氨产量 , sum(时段净蒸汽耗)时段净蒸汽耗,sum(时段气耗)时段气耗, 
+sum(吨氨气耗) 吨氨气耗 ,sum(吨氨原料气耗) 吨氨原料气耗,count (累积氨产量) 累积氨产量, 3 'classNumber'
+ from jy_rawdata_handle_1  where (((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &lt;= '00:01:59')
+ and 时间  &gt;= #{0} and 时间  &lt;= #{1}
+group by  convert(varchar(10),时间,120) order by 时间 asc 
+</select>
+<select id="selectDataByContidionAndClass4" resultType="com.saitejn.pojo.JyRawdataHandle1">
+	select   convert(varchar(10),时间,120)+' 00:00:00'  as 时间 
+,sum(时段氨产量) 时段氨产量 , sum(时段净蒸汽耗)时段净蒸汽耗,sum(时段气耗)时段气耗, 
+sum(吨氨气耗) 吨氨气耗 ,sum(吨氨原料气耗) 吨氨原料气耗,count (累积氨产量) 累积氨产量, 1 'classNumber'
+ from jy_rawdata_handle_1  where (((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &gt;= '00:09:00' and ((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &lt;= '08:01:00')
+ and 时间  &gt;= #{0} and 时间  &lt;= #{1}
+group by  convert(varchar(10),时间,120) order by 时间 asc 
+</select>
+
+<!-- 
+
+-->
+<!-- 日报表按班查看 -->
+<!-- <select id="selectDataByContidionAndClass" resultType="com.saitejn.pojo.JbRawdataHandle1">
+select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time ,shift
+,sum(time_nh3_yield) time_nh3_yield ,count(orig_id)orig_id,
+sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume ,count(orig_id)orig_id
+ from jb_rawdata_handle_1 where data_time &gt;= #{0} and data_time &lt;= #{1} 
+group by convert(varchar(10),data_time,120)+' 00:00:00' ,shift order by data_time asc 
+
+</select> -->
+<!-- 月报表 -->
+<select id="selectDataByMouth" resultType="com.saitejn.pojo.JyRawdataHandle1">
+
+select   convert(varchar(10),时间,120)+' 00:00:00'  as 时间 
+,sum(时段氨产量) 时段氨产量 , sum(时段净蒸汽耗)时段净蒸汽耗,sum(时段气耗)时段气耗, 
+sum(吨氨气耗) 吨氨气耗 ,sum(吨氨原料气耗) 吨氨原料气耗,count (累积氨产量) 累积氨产量
+ from jy_rawdata_handle_1  where (((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &gt;= '00:01:00' and ((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &lt;= '23:59:59')
+ and 时间  &gt;= #{0} and 时间  &lt;= #{1}
+group by  convert(varchar(10),时间,120)+' 00:00:00' order by 时间 asc  
+</select>
+<!-- 月报表，按班查看 -->
+
+<select id="selectDataByMouthAndClass" resultType="com.saitejn.pojo.JyRawdataHandle1">
+	select   convert(varchar(10),时间,120)+' 00:00:00'  as 时间 
+,sum(时段氨产量) 时段氨产量 , sum(时段净蒸汽耗)时段净蒸汽耗,sum(时段气耗)时段气耗, 
+sum(吨氨气耗) 吨氨气耗 ,sum(吨氨原料气耗) 吨氨原料气耗,count (累积氨产量) 累积氨产量, 1 'classNumber'
+ from jy_rawdata_handle_1  where (((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &gt;= '00:10:00' and ((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &lt;= '08:01:00')
+ and 时间  &gt;= #{0} and 时间  &lt;= #{1}
+group by  convert(varchar(10),时间,120) order by 时间 asc 
+</select>
+<select id="selectDataByMouthAndClass1" resultType="com.saitejn.pojo.JyRawdataHandle1">
+	select   convert(varchar(10),时间,120)+' 00:00:00'  as 时间 
+,sum(时段氨产量) 时段氨产量 , sum(时段净蒸汽耗)时段净蒸汽耗,sum(时段气耗)时段气耗, 
+sum(吨氨气耗) 吨氨气耗 ,sum(吨氨原料气耗) 吨氨原料气耗,count (累积氨产量) 累积氨产量, 2 'classNumber'
+ from jy_rawdata_handle_1  where (((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &gt;= '08:10:00' and ((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &lt;= '16:01:00')
+ and 时间  &gt;= #{0} and 时间  &lt;= #{1}
+group by  convert(varchar(10),时间,120) order by 时间 asc 
+</select>
+<select id="selectDataByMouthAndClass2" resultType="com.saitejn.pojo.JyRawdataHandle1">
+	select   convert(varchar(10),时间,120)+' 00:00:00'  as 时间 
+,sum(时段氨产量) 时段氨产量 , sum(时段净蒸汽耗)时段净蒸汽耗,sum(时段气耗)时段气耗, 
+sum(吨氨气耗) 吨氨气耗 ,sum(吨氨原料气耗) 吨氨原料气耗,count (累积氨产量) 累积氨产量, 3 'classNumber'
+ from jy_rawdata_handle_1  where (((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &gt;= '16:10:00' and ((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &lt;= '23:59:59')
+ and 时间  &gt;= #{0} and 时间  &lt;= #{1}
+group by  convert(varchar(10),时间,120) order by 时间 asc 
+</select>
+
+
+<!-- <select id="selectDataByMouthAndClass" resultType="com.saitejn.pojo.JbRawdataHandle1">
+select  convert(varchar(10),data_time,120)+' 00:00:00' as data_time ,shift
+,sum(time_nh3_yield) time_nh3_yield ,
+sum(time_electric_consume) time_electric_consume ,sum(time_raw_gas_consume) time_raw_gas_consume,count(orig_id)orig_id
+ from jb_rawdata_handle_1 where data_time &gt;= #{0} and data_time &lt;= #{1} 
+group by convert(varchar(10),data_time,120)+' 00:00:00',shift order by data_time asc 
+</select> -->
+<!-- 年报表 -->
+<select id="selectDataByYear" resultType="com.saitejn.pojo.JyRawdataHandle1">
+select   convert(varchar(7),时间,120)+'-01 00:00:00'  as 时间 
+,sum(时段氨产量) 时段氨产量 , sum(时段净蒸汽耗)时段净蒸汽耗,sum(时段气耗)时段气耗, 
+sum(吨氨气耗) 吨氨气耗 ,sum(吨氨原料气耗) 吨氨原料气耗,count (累积氨产量) 累积氨产量
+ from jy_rawdata_handle_1  where (((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &lt;= '23:59:59')
+ and 时间  &gt;= #{0} and 时间  &lt;= #{1}
+group by  convert(varchar(7),时间,120)+'-01 00:00:00' order by 时间 asc  
+</select>
+<select id="selectDataByYearnext" resultType="com.saitejn.pojo.JyRawdataHandle1">
+select  时间, 
+(时段氨产量) 时段氨产量 , (时段净蒸汽耗)时段净蒸汽耗,(时段气耗)时段气耗, 
+(吨氨气耗) 吨氨气耗 ,(吨氨原料气耗) 吨氨原料气耗
+ from jy_rawdata_handle_1 where 时间  &gt;= #{0} and 时间  &lt;= #{1} 
+</select>
+
+
+<!-- 季度报表 -->
+<select id="selectDataByQuarter" resultType="com.saitejn.pojo.JyRawdataHandle1">
+select   convert(varchar(7),时间,120)+'-01 00:00:00'  as 时间 
+,sum(时段氨产量) 时段氨产量 , sum(时段净蒸汽耗)时段净蒸汽耗,sum(时段气耗)时段气耗, 
+sum(吨氨气耗) 吨氨气耗 ,sum(吨氨原料气耗) 吨氨原料气耗,count (累积氨产量) 累积氨产量
+ from jy_rawdata_handle_1  where (((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &gt;= '00:00:00' and ((RIGHT (convert(varchar(50),时间,120)  ,8 ))) &lt;= '23:59:59')
+ and 时间  &gt;= #{0} and 时间  &lt;= #{1}
+group by  convert(varchar(7),时间,120)+'-01 00:00:00' order by 时间 asc  
+</select>
+<!-- <select id="seclectByTime" resultType="com.saitejn.pojo.JbClassinfor" parameterType="String">
+select * from jb_classinfor where class_time = #{class_time}
+</select> -->
+<!-- 前台指导文件查看 -->
+ 	<select id="BeforFileShow" parameterType="String" resultType="String">
+ 		select top 1 newname from jy_adminguideifo where oldname like '%${_parameter}%'and cheactype = '已通过审核' order by id desc
+ 	</select>
+ 	<select id="getAllAdminGuideifo" resultType="com.saitejn.pojo.JyAdminguideifo">
+ 		select * from jy_adminguideifo where cheactype = '已通过审核' order by id desc
+ 	</select>
+	<!-- 根据时间删除异常数据 -->
+	<delete id="deleteByTime" parameterType="String">
+	delete from jy_rawdata_handle_2 where 时间 = #{时间}
+	</delete>
+	<select id="getLastTime" resultType="com.saitejn.pojo.JyRawdataHandle1">
+		select top 1 * from jy_rawdata_handle_1 order by 时间 desc
+	</select>
+	
+	
+</mapper>

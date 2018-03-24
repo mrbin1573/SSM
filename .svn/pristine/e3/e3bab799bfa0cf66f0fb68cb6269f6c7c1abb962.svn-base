@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.JF_guidePageMapper" >
+	<select id="BeforFileShow" parameterType="String" resultType="String">
+ 		select top 1 newname from jf_adminguideifo where oldname like '%${_parameter}%' and cheactype = '已通过审核' order by id desc
+ 	</select>
+ 	<select id="getAllAdminGuideifo" resultType="com.saitejn.pojo.Adminguideifo">
+ 		select * from jf_adminguideifo where cheactype = '已通过审核' order by id desc
+ 	</select>
+ 	<select id="getGuideImage" resultType="com.saitejn.pojo.JbGuiImg" parameterType="int">
+ 		select * from jf_gui_img where jb_gui_id = #{0} and imagenumber = #{1}
+ 	</select>
+  <select id="selectByPrimaryKey" parameterType="int" resultType="com.saitejn.pojo.Adminguideifo">
+  	select * from jf_adminguideifo where id = #{0}
+  </select>
+  
+  <resultMap type="com.saitejn.pojo.Jb_feedback02" id="uservarMap">
+ 		<id column="fid" property="id"/>
+ 		<result column="passivevar" property="passivevar"/>
+ 		<collection property="feedback03s" ofType="com.saitejn.pojo.Jb_feedback03">
+ 		<id column="id" property="id"/>
+ 			<result column="activevar" property="activevar"/>
+ 			
+ 		</collection>
+ 	</resultMap>
+ 	<select id="selectFeedBack01" resultType="com.saitejn.pojo.Jb_feedback01">
+ 		select top 1 * from jf_feedback01  where type='1' order by id desc
+ 	</select>
+ 	
+ 	<select id="selectvarByid" parameterType="int" resultMap="uservarMap">
+ 		select jf_feedback03.id ,jf_feedback02.id as fid,jf_feedback02.passivevar,jf_feedback03.activevar from  jf_feedback02,jf_feedback03 where jf_feedback03.parid = jf_feedback02.id and jf_feedback02.timid =#{0}
+ 	</select>
+ 	<insert id="insertUserVar" parameterType="com.saitejn.pojo.Jb_feedback05">
+ 		insert into  jf_feedback05 (parid,useractive) values (#{parid},#{useractive})
+ 	</insert>
+ 	<select id="selectAllfeedback" resultType="com.saitejn.pojo.Jb_feedback01">
+ 		select * from  jf_feedback01 where type = '3' or type = '4' order by id desc
+ 	</select>
+ 	<update id="updatefeedbacktype" parameterType="int" >
+ 		update jf_feedback01 set type = '3' where id = #{0}
+ 	</update>
+ 	<update id="updatefeedbacktype1" parameterType="int" >
+ 		update jf_feedback01 set type = '5' where id = #{0}
+ 	</update>
+ 	
+ 	<update id="updatefeedbacktype2" parameterType="int" >
+ 		update jf_feedback01 set type = '4' where id = #{0}
+ 	</update>
+ 	<!-- 用户填写的历史记录 -->
+ 	<resultMap type="com.saitejn.pojo.Jb_feedback02" id="hismap">
+ 		<id column="fid" property="id"/>
+ 		<result column="passivevar" property="passivevar"/>
+ 		<result column="timid" property="timid"/>
+ 		<collection property="feedback05s" ofType="com.saitejn.pojo.Jb_feedback05" >
+ 			<id column="id" property="id"/>
+ 			<result column="useractive" property="useractive"/>
+ 		</collection>
+ 	</resultMap>
+ 	<select id="selectFeedbackforhis" parameterType="int" resultMap="hismap">
+ 		select jf_feedback05.id ,jf_feedback02.id as fid,jf_feedback02.timid,jf_feedback02.passivevar,jf_feedback05.useractive from  jf_feedback02,jf_feedback05 where jf_feedback05.parid = jf_feedback02.id and jf_feedback02.timid =#{0}
+ 	</select>
+ 	<select id="selectMessageByConpany" resultType="com.saitejn.pojo.Messageleaving" parameterType="String">
+		select * from messageleaving where company=#{company} and auditstatus = '已通过审核' order by id desc
+	</select>
+	<update id="updateMessByid" >
+		update   messageleaving   set type ='已查看'  
+	</update>
+ 	<insert id="insertfeedback01" parameterType="com.saitejn.pojo.Jb_feedback01">
+ 		insert into jf_feedback01(time,type) values (#{time},#{type})
+ 	</insert>
+ 	<select id="selectfeedback01id" resultType="int">
+ 		select top 1 id from jf_feedback01 order by id desc
+ 	</select>
+ 	<insert id="insertfeedback02" parameterType="com.saitejn.pojo.Jb_feedback02">
+ 		insert into jf_feedback02(passivevar,type,timid) values (#{passivevar},#{type},#{timid})
+ 	</insert>
+ 	<insert id="insertfeedback03" parameterType="com.saitejn.pojo.Jb_feedback03">
+ 		insert into jf_feedback03(activevar,parid) values (#{activevar},#{parid})
+ 	</insert>
+ 	<select id="selectfeedback02id" resultType="int">
+ 		select top 1 id from jf_feedback02 order by id desc
+ 	</select>
+</mapper>

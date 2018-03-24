@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 elements from project &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Original project: &apos;SaiTeGXJN&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     jf_chart_day.jsp&#x0D;&#x0A;     jf_chart_month.jsp&#x0D;&#x0A;     jf_chart_season.jsp&#x0D;&#x0A;     jf_chart_year.jsp" description="Delete elements" element1="WebRoot/WEB-INF/jsp/jf/jf_chart_year.jsp" element2="WebRoot/WEB-INF/jsp/jf/jf_chart_month.jsp" element3="WebRoot/WEB-INF/jsp/jf/jf_chart_season.jsp" element4="WebRoot/WEB-INF/jsp/jf/jf_chart_day.jsp" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="4" stamp="1499140761394" subPackages="false" version="1.0"/>
+</session>

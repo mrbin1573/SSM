@@ -1,0 +1,13 @@
+package com.saitejn.mapper;
+
+import com.saitejn.pojo.Adminguideifo;
+import com.saitejn.pojo.AdminguideifoExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface AdminguideifoMapper {
+   
+    public Adminguideifo selectByPrimaryKey(Integer id);
+
+    
+}

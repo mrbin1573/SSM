@@ -1,0 +1,13 @@
+package com.saitejn.test;
+
+public class Testint {
+	public static void main(String[] args) {
+		double a = 2;
+		double b = 3;
+		double x = 3.5;
+		double y = 2.5;
+		System.out.println((a+b)/2+x%y); 
+	}
+	
+
+}

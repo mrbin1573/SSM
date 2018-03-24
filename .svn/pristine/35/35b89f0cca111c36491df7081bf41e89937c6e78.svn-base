@@ -1,0 +1,177 @@
+package com.saitejn.test;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import com.saitejn.pojo.JbClassinfor;
+
+public class TestB {
+	static int a = 0;
+	public void testdd(){
+		
+		TestA testA = new TestA();
+		
+	}
+	 public static void display(String dateFirst, String dateSecond){
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	        
+	        try{
+	            Date dateOne = dateFormat.parse(dateFirst);
+	            Date dateTwo = dateFormat.parse(dateSecond);
+	             
+	            Calendar calendar = Calendar.getInstance();
+	             
+	            calendar.setTime(dateOne);
+	            int i = 0;
+	            String classinfo = "";
+	            System.out.println("时间日期"+"                   早班"+"          中班"+"           晚班");
+	            while(calendar.getTime().before(dateTwo)){               
+	             
+	               i++;
+	               if(i%3 ==0){
+	            	   classinfo = "312";
+	   			}if(i%3 ==1){
+	   			 classinfo = "123";
+	   			}
+	   			if(i%3 ==2){
+	   			 classinfo = "231";
+	   			}
+	   			String mon = classinfo.substring(0, 1);
+	   			String aft = classinfo.substring(1, 2);
+	   			String eve = classinfo.substring(2, 3);
+	   			
+	            	System.out.println(dateFormat.format(calendar.getTime())+"        "+mon+"             "+aft+"                   "+eve);
+	                 
+	                calendar.add(Calendar.DAY_OF_MONTH, 1);               
+	            }
+	        }
+	        catch(Exception e){
+	            e.printStackTrace();
+	        }
+	         
+	    }
+	public static void main(String[] args) throws ParseException {
+		 // display("2016-01-08", "2018-08-24");
+		//Date date = new Date();
+		//System.out.println(date.getTime()+"==========");
+		//String classtime = new SimpleDateFormat("yyyy-MM-dd HH:MM:ss").format(date);
+		//年
+		//String year = classtime.substring(0, 10);
+		//String datee = classtime.substring(11, 19);
+		//System.out.println(datee);
+		//System.out.println(year);
+		 /*  System.out.println(isInTime("20:00-01:00", "01:00"));
+		    System.out.println(isInTime("20:00-01:00", "00:00"));
+		    System.out.println(isInTime("20:00-01:00", "03:00"));
+		    System.out.println();
+		    System.out.println(isInTime("20:00-23:00", "03:00"));
+		    System.out.println(isInTime("20:00-23:00", "22:00"));
+		    System.out.println(isInTime("20:00-23:00", "18:00"));
+		    System.out.println(isInTime("20:00-23:00", "20:00"));
+		    System.out.println(isInTime("20:00-23:00", "23:00"));*/
+		
+		    classplay("2016-04-22", "2016-10-24");
+		 }
+		
+	public static boolean isInTime(String sourceTime, String curTime) {
+	    if (sourceTime == null || !sourceTime.contains("-") || !sourceTime.contains(":")) {
+	        throw new IllegalArgumentException("Illegal Argument arg:" + sourceTime);
+	    }
+	    if (curTime == null || !curTime.contains(":")) {
+	        throw new IllegalArgumentException("Illegal Argument arg:" + curTime);
+	    }
+	    String[] args = sourceTime.split("-");
+	    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+	    try {
+	        long now = sdf.parse(curTime).getTime();
+	        long start = sdf.parse(args[0]).getTime();
+	        long end = sdf.parse(args[1]).getTime();
+	        if (args[1].equals("00:00")) {
+	            args[1] = "24:00";
+	        }
+	        if (end < start) {
+	            if (now >= end || now < start) {
+	                return false;
+	            } else {
+	                return true;
+	            }
+	        } 
+	        else {
+	            if (now >= start || now < end) {
+	                return true;
+	            } else {
+	                return false;
+	            }
+	        }
+	    } catch (ParseException e) {
+	        e.printStackTrace();
+	        throw new IllegalArgumentException("Illegal Argument arg:" + sourceTime);
+	    }
+
+	}
+	public static  void classplay(String dateFirst, String dateSecond){
+		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	        //获取用户班次信息，并截取字符串
+		 String classinfo = "123123123231231231312312312";
+		   String mon = classinfo.substring(0,9);
+		   String emon = mon.substring(0, 3);
+		   System.out.println("======="+mon);
+		   String aft = classinfo.substring(9, 18);
+		   String eaft = aft.substring(0,3);
+		   System.out.println("======="+aft);
+		   String eve = classinfo.substring(18,27);
+		   String eeve = eve.substring(0,3);
+		   System.out.println("======="+eve);
+	        try{
+	            Date dateOne = dateFormat.parse(dateFirst);
+	            Date dateTwo = dateFormat.parse(dateSecond);
+	             
+	            Calendar calendar = Calendar.getInstance();
+	             
+	            calendar.setTime(dateOne);
+	            int i = 0;
+	            
+	            //System.out.println("时间日期"+"                   早班"+"          中班"+"           晚班");
+	            while(calendar.getTime().before(dateTwo)){               
+	             
+	               i++;
+	               if(i%9 ==7||i%9 ==8||i%9 ==0){
+	            	   classinfo = eeve;
+	   			}
+	               if(i%9 ==1||i%9 ==2||i%9 ==3){
+	   			 classinfo = emon;
+	   			}
+	   			if(i%9 ==4||i%9 ==5||i%9 ==6){
+	   			 classinfo = eaft;
+	   			}
+	   			String eemon = classinfo.substring(0, 1);
+	   			int cmon = Integer.parseInt(eemon);
+	   			String eeaft = classinfo.substring(1, 2);
+	   			int caft = Integer.parseInt(eeaft);
+	   			String eeeve = classinfo.substring(2, 3);
+	   			int ceve = Integer.parseInt(eeeve);
+	   			
+	   			System.out.println(dateFormat.format(calendar.getTime())+"        "+cmon+"             "+caft+"                   "+ceve);
+	                JbClassinfor jbClassinfor = new JbClassinfor();
+	                //将String装换为Date,
+	               /* SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	                Date date = sdf.parse(dateFormat.format(calendar.getTime()));
+	                jbClassinfor.setClass_time(date);
+	                jbClassinfor.setMorclass(cmon);
+	                jbClassinfor.setAftclass(caft);
+	                jbClassinfor.setEveclass(ceve);*/
+	              
+	                //保存班次记录
+	                 
+	                calendar.add(Calendar.DAY_OF_MONTH, 1);               
+	            }
+	        }
+	        catch(Exception e){
+	            e.printStackTrace();
+	        }
+	      
+	}
+
+}

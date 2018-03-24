@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.saitejn.mapper.AdminGuideDataMapper" >
+
+  <select id="selectAllPushgrid31WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid31WithBLOBs">
+ 		select * from jb_pushgrid_3_1   order by 序号 asc
+ 	</select>
+ 	
+ 	
+ 	<select id="selectAllPushgrid41s" resultType="com.saitejn.pojo.JbPushgrid41">
+ 		select * from jb_pushgrid_4_1     order by 序号 asc
+ 	</select>
+ 	
+	
+ 	
+ 	<select id="selectAllPushgrid51s" resultType="com.saitejn.pojo.JbPushgrid51">
+ 		select * from jb_pushgrid_5_1     order by 序号 asc
+ 	</select>
+ 	
+	
+ 	<select id="selectAllPushgrid61s" resultType="com.saitejn.pojo.JbPushgrid61">
+ 		select * from jb_pushgrid_6_1     order by 变量影响排序 asc
+ 	</select>
+ 	
+	
+ 	<select id="selectAllPushgrid71s" resultType="com.saitejn.pojo.JbPushgrid71">
+ 		select * from jb_pushgrid_7_1    order by  序号 asc
+ 	</select>
+ 	
+	
+ 	<select id="selectAllPushgrid81WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid81WithBLOBs">
+ 		select * from jb_pushgrid_8_1      order by 序号 asc
+ 	</select>
+ 	
+	
+ 	<select id="selectAllPushgrid82WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid82WithBLOBs">
+ 		select * from jb_pushgrid_8_2     order by 序号 asc
+ 	</select>
+ 	
+ 	<select id="selectAllPushgrid91WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid91WithBLOBs">
+ 		select * from jb_pushgrid_9_1     order by 序号 asc
+ 	</select>
+ 	
+	
+ 	<select id="selectAllPushgrid92WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid92WithBLOBs">
+ 		select * from jb_pushgrid_9_2     order by 序号 asc
+ 	</select>
+ 	
+ 	<select id="selectAllPushgrid93WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid93WithBLOBs">
+ 		select * from jb_pushgrid_9_3      order by 序号 asc
+ 	</select>
+ 	
+	
+ 	<select id="selectAllPushgrid94WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid94WithBLOBs">
+ 		select * from jb_pushgrid_9_4   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	
+	
+ 	<select id="selectAllPushgrid101WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid101">
+ 		select * from jb_pushgrid_10_1     order by 序号 asc
+ 	</select>
+
+	
+ 	<select id="selectAllPushgrid111WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid111WithBLOBs">
+ 		select * from jb_pushgrid_11_1  where 班次 = #{0}   order by 序号 asc
+ 	</select>
+ 	
+ 	
+ 	<select id="selectAllPushgrid112WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid112WithBLOBs">
+ 		select * from jb_pushgrid_11_2 where 班次 = #{0}   order by 序号 asc
+ 	</select>
+ 	
+ 	
+ 	
+ 	<select id="selectAllPushgrid113WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid113WithBLOBs">
+ 		select * from jb_pushgrid_11_3 where 班次 = #{0}      order by 序号 asc
+ 	</select>
+ 	
+ 	
+ 	
+ 	<select id="selectAllPushgrid114WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid114WithBLOBs">
+ 		select * from jb_pushgrid_11_4 where 班次 = #{0}     order by 序号 asc
+ 	</select>
+ 	
+
+	<!-- 根据id删除用户 -->
+	<delete id="deleteuserByid" parameterType="int">
+		 delete from jb_userifo where uid=#{uid}
+	</delete>
+
+
+
+
+
+
+
+
+	<!-- 时间段划分 -->
+	<!-- <select id="selectAllPush" resultType="com.saitejn.pojo.JbPushgrid11WithBLOBs">
+		select * from jb_pushgrid_1_1 where 序号 &gt;#{0} and  序号 &lt;=#{1} where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+	</select>
+  各时间段和全体样本氨产量及能耗统计
+ 	<select id="selectAllPush12" resultType="com.saitejn.pojo.JbPushgrid12">
+ 		select * from jb_pushgrid_1_2   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	各时间段样本与全体样本吨氨能耗比较
+ 	<select id="selectAllPushgrid13s" resultType="com.saitejn.pojo.JbPushgrid13WithBLOBs">
+ 		select * from jb_pushgrid_1_3   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	各时间段增效效益估算
+ 	<select id="selectAllPushgrid14s" resultType="com.saitejn.pojo.JbPushgrid14WithBLOBs">
+ 		select * from jb_pushgrid_1_4   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	各时间段样本与全体样本氨产量、气耗、电耗月度折算比较-日期
+ 	<select id="selectAllWithBLOB15s" resultType="com.saitejn.pojo.JbPushgrid15WithBLOBs">
+ 		select * from jb_pushgrid_1_5   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	优类样本、最佳模式样本及全体样本累计量及吨氨能耗统计-日期
+ 	<select id="selectAllJbPushgrid21s" resultType="com.saitejn.pojo.JbPushgrid21">
+ 		select * from jb_pushgrid_2_1   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	 优类样本、最佳模式样本及全体样本吨氨能耗比较-日期
+ 	<select id="selectAllPushgrid22WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid22WithBLOBs">
+ 		select * from jb_pushgrid_2_2   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	优类样本增效效益估算
+ 	<select id="selectAllPushgrid23WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid23WithBLOBs">
+ 		select * from jb_pushgrid_2_3   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	优类样本、最佳模式样本及全体样本液氨产量、气耗和电耗月度折算比较-日期
+ 	<select id="selectAllPushgrid24WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid24WithBLOBs">
+ 		select * from jb_pushgrid_2_4   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	优化工艺指标
+ 	<select id="selectAllPushgrid31WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid31WithBLOBs">
+ 		select * from jb_pushgrid_3_1   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select> -->
+ 	
+ 	<!-- 优化工艺指标 -->
+ 	<!-- <select id="selectAllPushgrid31WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid31WithBLOBs">
+ 		select * from jb_pushgrid_3_1   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid31WithBLOBsn" resultType="int">
+		select top 1 序号 from jb_pushgrid_3_1 order by 序号 desc
+	</select>
+ 	被动控制变量相关分析表
+ 	<select id="selectAllPushgrid41s" resultType="com.saitejn.pojo.JbPushgrid41">
+ 		select * from jb_pushgrid_4_1   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid41sn" resultType="int">
+		select top 1 序号 from jb_pushgrid_4_1 order by 序号 desc
+	</select>
+	
+ 	主动控制变量相关分析表
+ 	<select id="selectAllPushgrid51s" resultType="com.saitejn.pojo.JbPushgrid51">
+ 		select * from jb_pushgrid_5_1   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid51sn" resultType="int">
+		select top 1 序号 from jb_pushgrid_5_1 order by 序号 desc
+	</select>
+	
+ 	<select id="selectAllPushgrid61s" resultType="com.saitejn.pojo.JbPushgrid61">
+ 		select * from jb_pushgrid_6_1   where 变量影响排序 &gt;#{0} and  变量影响排序 &lt;=#{1}   order by 变量影响排序 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid61sn" resultType="int">
+		select top 1 变量影响排序 from jb_pushgrid_6_1 order by 变量影响排序 desc
+	</select>
+	
+ 	<select id="selectAllPushgrid71s" resultType="com.saitejn.pojo.JbPushgrid71">
+ 		select * from jb_pushgrid_7_1   where 序号 &gt;#{0} and 序号 &lt;=#{1}   order by  序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid71sn" resultType="int">
+		select top 1序号 from jb_pushgrid_7_1 order by 序号 desc
+	</select>
+	
+ 	<select id="selectAllPushgrid81WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid81WithBLOBs">
+ 		select * from jb_pushgrid_8_1   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid81WithBLOBsn" resultType="int">
+		select top 1 序号 from jb_pushgrid_8_1 order by 序号 desc
+	</select>
+	
+ 	<select id="selectAllPushgrid82WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid82WithBLOBs">
+ 		select * from jb_pushgrid_8_2   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid82WithBLOBsn" resultType="int">
+		select top 1 序号 from jb_pushgrid_8_2 order by 序号 desc
+	</select>
+	
+ 	<select id="selectAllPushgrid91WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid91WithBLOBs">
+ 		select * from jb_pushgrid_9_1   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid91WithBLOBsn" resultType="int">
+		select top 1 序号 from jb_pushgrid_9_1 order by 序号 desc
+	</select>
+	
+ 	<select id="selectAllPushgrid92WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid92WithBLOBs">
+ 		select * from jb_pushgrid_9_2   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid92WithBLOBsn" resultType="int">
+		select top 1 序号 from jb_pushgrid_9_2 order by 序号 desc
+	</select>
+	
+ 	<select id="selectAllPushgrid93WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid93WithBLOBs">
+ 		select * from jb_pushgrid_9_3   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid93WithBLOBsn" resultType="int">
+		select top 1 序号 from jb_pushgrid_9_3 order by 序号 desc
+	</select>
+	
+ 	<select id="selectAllPushgrid94WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid94WithBLOBs">
+ 		select * from jb_pushgrid_9_4   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid94WithBLOBsn" resultType="int">
+		select top 1 序号 from jb_pushgrid_9_4 order by 序号 desc
+	</select>
+	
+ 	<select id="selectAllPushgrid101WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid101">
+ 		select * from jb_pushgrid_10_1   where 序号 &gt;#{0} and  序号 &lt;=#{1}   order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid101WithBLOBsn" resultType="int">
+		select top 1 序号 from jb_pushgrid_10_1 order by 序号 desc
+	</select>
+	
+	
+	
+	
+	
+	
+ 	<select id="selectAllPushgrid111WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid111WithBLOBs">
+ 		select * from jb_pushgrid_11_1  where 班次 = #{0} and 序号 &gt;#{1} and  序号 &lt;=#{2}  order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid111WithBLOBsn" resultType="int">
+		select top 1 序号 from jb_pushgrid_11_1 order by 序号 desc
+	</select>
+ 	
+ 	
+ 	<select id="selectAllPushgrid112WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid112WithBLOBs">
+ 		select * from jb_pushgrid_11_2 where 班次 = #{0}  and 序号 &gt;#{1} and  序号 &lt;=#{2}    order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid112WithBLOBsn" resultType="int">
+		select top 1 序号 from jb_pushgrid_11_2 order by 序号 desc
+	</select>
+ 	
+ 	
+ 	<select id="selectAllPushgrid113WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid113WithBLOBs">
+ 		select * from jb_pushgrid_11_3 where 班次 = #{0}  and 序号 &gt;#{1} and  序号 &lt;=#{2}    order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid113WithBLOBsn" resultType="int">
+		select top 1 序号 from jb_pushgrid_11_3 order by 序号 desc
+	</select>
+ 	
+ 	
+ 	<select id="selectAllPushgrid114WithBLOBs" resultType="com.saitejn.pojo.JbPushgrid114WithBLOBs">
+ 		select * from jb_pushgrid_11_4 where 班次 = #{0}  and 序号 &gt;#{1} and  序号 &lt;=#{2}   order by 序号 asc
+ 	</select>
+ 	查询数据表中记录的最大序号值
+	<select id="selectAllPushgrid114WithBLOBsn" resultType="int">
+		select top 1 序号 from jb_pushgrid_11_4 order by 序号 desc
+	</select> -->
+	
+	
+ 	<!-- 查询数据表中每一个数据的原始记录位置 -->
+ 	<select id="getNumberByName" resultType="int" parameterType="String">
+		select number from jb_guidenumifo where tablename = #{tablename}
+	</select>
+	<!-- 保存后台管理员上传信息 -->
+	<insert id="insertUpInfo" parameterType="com.saitejn.pojo.Adminguideifo">
+		insert into adminguideifo (upperson,uptime,newname,oldname) values (#{upperson},#{uptime},#{newname},#{oldname})
+	</insert>
+	<!-- 修改数据记录的位置 -->
+	<update id="updateNumber">
+			update jb_guidenumifo  set number =#{0}  where  jb_guidenumifo.tablename=#{1}
+	</update>
+	<!-- 前台指导文件查看 -->
+ 	<select id="BeforFileShow" parameterType="String" resultType="String">
+ 		select top 1 newname from adminguideifo where oldname like '%${_parameter}%' and cheactype = '已通过审核' order by id desc
+ 	</select>
+ 	<select id="getAllAdminGuideifo" resultType="com.saitejn.pojo.Adminguideifo">
+ 		select * from adminguideifo where cheactype = '已通过审核' order by id desc
+ 	</select>
+ 	<select id="getGuideImage" resultType="com.saitejn.pojo.JbGuiImg" parameterType="int">
+ 		select * from jb_gui_img where jb_gui_id = #{0} and imagenumber = #{1}
+ 	</select>
+ 	
+ 	
+ 	<!-- 1.查询时间表中最新的一条且被审核的文件的id
+ 	2.根据id组合查询被动变量和关联变量 -->
+ 	<resultMap type="com.saitejn.pojo.Jb_feedback02" id="uservarMap">
+ 		<id column="fid" property="id"/>
+ 		<result column="passivevar" property="passivevar"/>
+ 		<collection property="feedback03s" ofType="com.saitejn.pojo.Jb_feedback03">
+ 		<id column="id" property="id"/>
+ 			<result column="activevar" property="activevar"/>
+ 			
+ 		</collection>
+ 	</resultMap>
+ 	<select id="selectFeedBack01" resultType="com.saitejn.pojo.Jb_feedback01">
+ 		select top 1 * from jb_feedback01  where type='1' order by id desc
+ 	</select>
+ 	
+ 	<select id="selectvarByid_jb" parameterType="int" resultMap="uservarMap">
+ 		select jb_feedback03.id ,jb_feedback02.id as fid,jb_feedback02.passivevar,jb_feedback03.activevar from  jb_feedback02,jb_feedback03 where jb_feedback03.parid = jb_feedback02.id and jb_feedback02.timid =#{0}
+ 	</select>
+ 	<insert id="insertUserVar_jb" parameterType="com.saitejn.pojo.Jb_feedback05">
+ 		insert into  jb_feedback05 (parid,useractive) values (#{parid},#{useractive})
+ 	</insert>
+ 	
+ 	
+</mapper>
